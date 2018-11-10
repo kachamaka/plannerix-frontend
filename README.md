@@ -12,7 +12,7 @@ The theme is defined in `src/theme.scss`.
 
 ## Icons
 
-Icons can be downloaded through `https://www.flaticon.com/collections/NDYxNjE3MQ==`.
+Icons can be downloaded through [Flaticons](https://www.flaticon.com/collections/NDYxNjE3MQ==).
 Only the font folders should be placed in `src/assets`.
 
 
