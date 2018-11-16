@@ -2,55 +2,12 @@
 
 <section>
   <h3>This week's grades</h3>
-  <section>
-      <h5>Monday</h5>
-      <div>
-          English - 6
-      </div>
-      <div>
-          Math - 5
-      </div>
-  </section>
-  <section>
-      <h5>Tuesday</h5>
-      <div>
-          English - 6
-      </div>
-      <div>
-          Math - 5
-      </div>
-  </section>
-  <section>
-      <h5>Wednesday</h5>
-      <div>
-          English - 6
-      </div>
-      <div>
-          Math - 5
-      </div>
-  </section>
-  <section>
-      <h5>Thursday</h5>
-      <div>
-          English - 6
-      </div>
-      <div>
-          Math - 5
-      </div>
-  </section>
-  <section>
-      <h5>Friday</h5>
-      <div>
-          English - 6
-      </div>
-      <div>
-          Math - 5
-      </div>
-  </section>
-    <!-- <section *ngFor="let day of days">
-        <h5>{{day}}</h5>
-
-    </section> -->
+    <section *ngFor="let day of days">
+        <h5>{{day.day}}</h5>
+        <section *ngFor="let score of day.scores">
+            <div >{{score.subject}} - {{score.grade}}</div>
+        </section>
+    </section>
     
 </section>
 <mat-divider></mat-divider>

@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportCComponent implements OnInit {
 
-  days = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+  days = [{"day":"Monday","scores":[{"subject":"English","grade":5},{"subject":"Math","grade":6}]},
+  {"day":"Tuesday","scores":[{"subject":"English","grade":5},{"subject":"Math","grade":6}]},
+  {"day":"Wednesday","scores":[{"subject":"English","grade":5},{"subject":"Math","grade":6}]},
+  {"day":"Thursday","scores":[{"subject":"English","grade":5},{"subject":"Math","grade":6}]},
+  {"day":"Friday","scores":[{"subject":"English","grade":5},{"subject":"Math","grade":6}]}];
   constructor() { }
 
   ngOnInit() {
