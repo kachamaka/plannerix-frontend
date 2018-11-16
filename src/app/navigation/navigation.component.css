@@ -4,10 +4,19 @@
 [class*=" flaticon-"]:after {
     font-size: 2rem;
 }
+
 .container {
+    margin: 0px;
+    padding: 0px;
     height: 100%;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas: "schedule calendar home grades settings";
+}
+
+
+
+.flaticon-home-1:focus{
+    outline: 0px;
 }

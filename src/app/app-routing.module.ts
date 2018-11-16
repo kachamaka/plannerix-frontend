@@ -8,10 +8,13 @@ import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
+  {path: 'home', redirectTo: '' },
+  // {path: 'not-found', component: NotFoundComponent},
   {path: "calendar", component: CalendarComponent},
   {path: "schedule", component: ScheduleComponent},
   {path: "my-grades", component: ReportCComponent},
-  {path: "settings", component: SettingsComponent}
+  {path: "settings", component: SettingsComponent},
+  // {path: '**', redirectTo: 'not-found'}
 ];
 
 @NgModule({
