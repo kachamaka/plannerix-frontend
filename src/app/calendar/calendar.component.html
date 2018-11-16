@@ -1,3 +1,13 @@
-<p>
-  calendar works!
-</p>
+<h2 align="center">Test dates</h2>
+
+<section>
+  <h3>Upcomming tests</h3>
+    <section *ngFor="let upcommingTestDate of upcommingTestDates ">
+        <h5>{{upcommingTestDate.date | date:"dd/MM/yy"}} - {{upcommingTestDate.subject}}</h5>
+        <!-- <section *ngFor="let date of day">
+            <div >{{score.subject}} - {{score.grade}}</div>
+        </section> -->
+    </section>
+</section>
+
+<mat-divider></mat-divider>
