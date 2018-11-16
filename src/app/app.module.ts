@@ -12,6 +12,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {MatDividerModule} from '@angular/material/divider';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

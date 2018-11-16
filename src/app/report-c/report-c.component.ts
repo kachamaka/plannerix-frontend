@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportCComponent implements OnInit {
 
+  days = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
   constructor() { }
 
   ngOnInit() {
