@@ -1,7 +1,17 @@
-<mat-toolbar color="primary" style="background-color: indigo" class="container">
-  <span routerLink="/schedule" class="flaticon-checklist" style="grid-area: schedule"></span>
-  <span routerLink="/calendar" class="flaticon-calendar" style="grid-area: calendar"></span>
-  <span routerLink="/home" class="flaticon-home-1" style="grid-area: home"></span>
-  <span routerLink="/settings" class="flaticon-settings-work-tool" style="grid-area: settings"></span> <!-- or Profile -->
-  <span routerLink="/my-grades" class="flaticon-scores" style="grid-area: grades"></span>
+<mat-toolbar color="primary" class="container">
+  <div style="grid-area: schedule">
+    <span routerLink="/schedule" class="flaticon-checklist"></span>
+  </div>
+  <div style="grid-area: calendar">
+    <span routerLink="/calendar" class="flaticon-calendar"></span>
+  </div>
+  <div style="grid-area: home">
+    <span routerLink="/home" class="flaticon-home-1"></span>
+  </div>
+  <div style="grid-area: settings">
+    <span routerLink="/settings" class="flaticon-settings-work-tool"></span> <!-- or Profile -->
+  </div>
+  <div style="grid-area: grades">
+    <span routerLink="/my-grades" class="flaticon-scores"></span>
+  </div>
 </mat-toolbar>
