@@ -1,1 +1,22 @@
 <h2 align="center">Grades</h2>
+
+<section>
+  <h3>This week's grades</h3>
+    <section *ngFor="let day of days">
+        <h5>{{day.day}}</h5>
+        <section *ngFor="let score of day.scores">
+            <div >{{score.subject}} - {{score.grade}}</div>
+        </section>
+    </section>
+    
+</section>
+<mat-divider></mat-divider>
+<section>
+    <h3>All grades</h3>
+    <section *ngFor="let grade of allGrades">
+        <h5>{{grade.subject}}</h5>
+        <div *ngFor="let singleGrade of grade.grades">{{singleGrade}}</div>
+    </section>
+</section>
+
+<button mat-flat-button color="primary">View older grades</button>
