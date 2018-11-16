@@ -12,6 +12,11 @@ export class ReportCComponent implements OnInit {
   {"day":"Wednesday","scores":[{"subject":"English","grade":5},{"subject":"Math","grade":6}]},
   {"day":"Thursday","scores":[{"subject":"English","grade":5},{"subject":"Math","grade":6}]},
   {"day":"Friday","scores":[{"subject":"English","grade":5},{"subject":"Math","grade":6}]}];
+
+  allGrades = [{"subject":"BG","grades":[5,6,4,2]},
+  {"subject":"Math","grades":[6,6,6,6,6]},
+  {"subject":"English","grades":[5,6,4,6]}];
+
   constructor() { }
 
   ngOnInit() {

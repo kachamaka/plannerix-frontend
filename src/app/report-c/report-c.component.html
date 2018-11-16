@@ -13,46 +13,10 @@
 <mat-divider></mat-divider>
 <section>
     <h3>All grades</h3>
-    <section>
-    <h5>BG</h5>
-    <div>
-        6
-    </div>
-    <div>
-        5
-    </div>
+    <section *ngFor="let grade of allGrades">
+        <h5>{{grade.subject}}</h5>
+        <div *ngFor="let singleGrade of grade.grades">{{singleGrade}}</div>
     </section>
-    
-    <section>
-    <h5>German</h5>
-    <div>
-        6
-    </div>
-    <div>
-        5
-    </div>
-    </section>
-
-    <section>
-    <h5>Math</h5>
-    <div>
-        6
-    </div>
-    <div>
-        5
-    </div>
-    </section>
-
-    <section>
-    <h5>English</h5>
-    <div>
-        6
-    </div>
-    <div>
-        5
-    </div>
-    </section>
-
 </section>
 
 <button mat-flat-button color="primary">View older grades</button>
