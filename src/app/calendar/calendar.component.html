@@ -1,13 +1,12 @@
 <h2 align="center">Test dates</h2>
 
-<section>
-  <h3>Upcomming tests</h3>
-    <section *ngFor="let upcommingTestDate of upcommingTestDates ">
-        <h5>{{upcommingTestDate.date | date:"dd/MM/yy"}} - {{upcommingTestDate.subject}}</h5>
-        <!-- <section *ngFor="let date of day">
-            <div >{{score.subject}} - {{score.grade}}</div>
-        </section> -->
-    </section>
-</section>
+  <h3 style="padding-left:10px">Upcomming tests</h3>
+  <mat-divider></mat-divider>
 
-<mat-divider></mat-divider>
+    <section style="border-bottom: thin solid lightgray; padding:0px; margin:0px; padding-left:10px" *ngFor="let upcommingTestDate of upcommingTestDates ">
+    <p>
+        {{upcommingTestDate.date | date:"dd/MM/yy"}} - {{upcommingTestDate.subject}}
+    </p>
+
+    </section>
+
