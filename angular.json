@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/normalize.css/normalize.css",
               "src/theme.scss",
               "src/styles.css",
               "src/assets/font/flaticon.css"

@@ -10,8 +10,10 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 
 
@@ -31,6 +33,7 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatDividerModule,
+    MatTableModule,
     MatButtonModule
   ],
   providers: [],
