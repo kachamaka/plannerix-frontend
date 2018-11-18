@@ -1,17 +1,28 @@
 <mat-toolbar color="primary" class="container">
-  <div style="grid-area: schedule">
-    <span routerLink="/schedule" class="flaticon-checklist"></span>
+  <div class="schedule" [ngClass]="{
+    'gray':currentUrl=='schedule'
+  }">
+    <i routerLink="/schedule" class="flaticon-checklist"></i>
   </div>
-  <div style="grid-area: calendar">
-    <span routerLink="/calendar" class="flaticon-calendar"></span>
+  <div class="calendar" [ngClass]="{
+    'gray':currentUrl=='calendar'
+  }">
+    <i routerLink="/calendar" class="flaticon-calendar">
+    </i>
   </div>
-  <div style="grid-area: home">
-    <span routerLink="/home" class="flaticon-home-1"></span>
+  <div class="home" [ngClass]="{
+    'gray':currentUrl=='home'
+  }">
+    <i routerLink="/home" class="flaticon-home-1"></i>
   </div>
-  <div style="grid-area: settings">
-    <span routerLink="/settings" class="flaticon-settings-work-tool"></span> <!-- or Profile -->
+  <div class="grades" [ngClass]="{
+    'gray':currentUrl=='grades'
+  }">
+    <i routerLink="/grades" class="flaticon-scores"></i>
   </div>
-  <div style="grid-area: grades">
-    <span routerLink="/my-grades" class="flaticon-scores"></span>
+  <div class="settings" [ngClass]="{
+    'gray':currentUrl=='settings'
+  }">
+    <i routerLink="/settings" class="flaticon-settings-work-tool"></i> <!-- or Profile -->
   </div>
 </mat-toolbar>
