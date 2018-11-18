@@ -1,8 +1,110 @@
 <mat-toolbar color="primary" class="container">
+<!-- 
+    <button 
+    style="height:100%"
+    mat-button="" 
+    [ngClass]="{
+      'gray':currentUrl=='schedule'
+    }"
+    class="mat-button">
+    
+    <i routerLink="/schedule" class="mat-button-wrapper flaticon-checklist"></i>
+    <div 
+    class="mat-button-ripple mat-ripple" 
+    matripple="" 
+    ng-reflect-centered="false" 
+    ng-reflect-disabled="false" 
+    ng-reflect-trigger="[object HTMLButtonElement]"
+    class="schedule">
+    </div>
+    <div class="mat-button-focus-overlay"></div>
+    </button>
+
+    <button 
+  style="height:100%"
+  mat-button="" 
+  [ngClass]="{
+    'gray':currentUrl=='calendar'
+  }"
+  class="mat-button">
+  
+  <i routerLink="/calendar" class="mat-button-wrapper flaticon-calendar"></i>
+  <div 
+  class="mat-button-ripple mat-ripple" 
+  matripple="" 
+  ng-reflect-centered="false" 
+  ng-reflect-disabled="false" 
+  ng-reflect-trigger="[object HTMLButtonElement]"
+  class="calendar">
+  </div>
+  <div class="mat-button-focus-overlay"></div>
+  </button>
+  <button 
+  style="height:100%"
+  mat-button="" 
+  [ngClass]="{
+    'gray':currentUrl=='home'
+  }"
+  class="mat-button">
+  
+  <i routerLink="/home" class="mat-button-wrapper flaticon-home-1"></i>
+  <div 
+  class="mat-button-ripple mat-ripple" 
+  matripple="" 
+  ng-reflect-centered="false" 
+  ng-reflect-disabled="false" 
+  ng-reflect-trigger="[object HTMLButtonElement]"
+  class="home">
+  </div>
+  <div class="mat-button-focus-overlay"></div>
+  </button>
+  <button 
+  style="height:100%"
+  mat-button="" 
+  [ngClass]="{
+    'gray':currentUrl=='grades'
+  }"
+  class="mat-button">
+  
+  <i routerLink="/grades" class="mat-button-wrapper flaticon-scores"></i>
+  <div 
+  class="mat-button-ripple mat-ripple" 
+  matripple="" 
+  ng-reflect-centered="false" 
+  ng-reflect-disabled="false" 
+  ng-reflect-trigger="[object HTMLButtonElement]"
+  class="grades">
+  </div>
+  <div class="mat-button-focus-overlay"></div>
+  </button>
+  <button 
+  style="height:100%"
+  mat-button="" 
+  [ngClass]="{
+    'gray':currentUrl=='settings'
+  }"
+  class="mat-button">
+  
+  <i routerLink="/settings" class="mat-button-wrapper flaticon-settings-work-tool"></i>
+  <div 
+  class="mat-button-ripple mat-ripple" 
+  matripple="" 
+  ng-reflect-centered="false" 
+  ng-reflect-disabled="false" 
+  ng-reflect-trigger="[object HTMLButtonElement]"
+  class="settings">
+  </div>
+  <div class="mat-button-focus-overlay"></div>
+  </button> -->
+
+  <!-- -------------------------------------------------- -->
+  
+  
   <div class="schedule" [ngClass]="{
     'gray':currentUrl=='schedule'
   }">
-    <i routerLink="/schedule" class="flaticon-checklist"></i>
+    <i routerLink="/schedule" class="flaticon-checklist">
+    </i>
   </div>
   <div class="calendar" [ngClass]="{
     'gray':currentUrl=='calendar'
@@ -23,6 +125,7 @@
   <div class="settings" [ngClass]="{
     'gray':currentUrl=='settings'
   }">
-    <i routerLink="/settings" class="flaticon-settings-work-tool"></i> <!-- or Profile -->
-  </div>
+    <i routerLink="/settings" class="flaticon-settings-work-tool"></i> 
+  </div> 
+
 </mat-toolbar>
