@@ -4,7 +4,7 @@
   <mat-divider></mat-divider>
 
     <section style="border-bottom: thin solid lightgray; padding:0px; margin:0px; padding-left:10px" *ngFor="let upcommingTestDate of upcommingTestDates ">
-    <p>
+    <p *ngIf="checkDueDate(upcommingTestDate.date)">
         {{upcommingTestDate.date | date:"dd/MM/yy"}} - {{upcommingTestDate.subject}}
     </p>
 

@@ -16,6 +16,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
+import { OldGradesComponent } from './report-c/old-grades/old-grades.component';
+import { GradesComponent } from './report-c/grades/grades.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -27,7 +30,10 @@ import {MatListModule} from '@angular/material/list';
     ReportCComponent,
     CalendarComponent,
     ScheduleComponent,
-    SettingsComponent
+    SettingsComponent,
+    OldGradesComponent,
+    GradesComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

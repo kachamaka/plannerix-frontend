@@ -1,0 +1,8 @@
+<h2 align="center">Old grades</h2>
+<section>
+    <h3>All grades</h3>
+    <div *ngFor="let grade of allGrades">
+        <h5 style="margin:10px 0 10px 0;padding-left: 3px">{{grade.subject}}</h5>
+        <div style="display: inline-block" *ngFor="let singleGrade of grade.grades">{{singleGrade}} &nbsp;</div>
+    </div>
+</section>
