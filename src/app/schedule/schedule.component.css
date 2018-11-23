@@ -6,7 +6,7 @@ table {
     display: grid;
     grid-row: auto;
     grid-column: 1fr auto 1fr;
-    grid-template-areas: "left . . . right"
+    grid-template-areas: "left . right"
 }
 
 .mat-column-time {
