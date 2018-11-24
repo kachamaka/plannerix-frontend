@@ -103,30 +103,75 @@
   <!-- -------------------------------------------------- -->
 
 <!--   
-  <div routerLink="/schedule" class="schedule" [ngClass]="{
-    'color':currentUrl=='schedule'
+  <div 
+  routerLink="/schedule" 
+  class="schedule" 
+  matRipple
+  [matRippleCentered]="centered"
+  [matRippleDisabled]="disabled"
+  [matRippleUnbounded]="unbounded"
+  [matRippleRadius]="radius"
+  [matRippleColor]="color"
+  [ngClass]="{
+    'color':setColor()=='schedule'
   }">
     <i class="flaticon-checklist">
     </i>
   </div>
-  <div routerLink="/calendar" class="calendar" [ngClass]="{
-    'color':currentUrl=='calendar'
+  <div 
+  routerLink="/calendar" 
+  class="calendar" 
+  matRipple
+  [matRippleCentered]="centered"
+  [matRippleDisabled]="disabled"
+  [matRippleUnbounded]="unbounded"
+  [matRippleRadius]="radius"
+  [matRippleColor]="color"
+  [ngClass]="{
+    'color':setColor()=='calendar'
   }">
     <i class="flaticon-calendar">
     </i>
   </div>
-  <div routerLink="/home" class="home" [ngClass]="{
-    'color':currentUrl=='home'
+  <div 
+  routerLink="/home" 
+  class="home" 
+  matRipple
+  [matRippleCentered]="centered"
+  [matRippleDisabled]="disabled"
+  [matRippleUnbounded]="unbounded"
+  [matRippleRadius]="radius"
+  [matRippleColor]="color"
+  [ngClass]="{
+    'color':setColor()=='home'
   }">
     <i class="flaticon-home-1"></i>
   </div>
-  <div routerLink="/grades" class="grades" [ngClass]="{
-    'color':currentUrl=='grades'
+  <div 
+  routerLink="/grades" 
+  class="grades"
+  matRipple
+  [matRippleCentered]="centered"
+  [matRippleDisabled]="disabled"
+  [matRippleUnbounded]="unbounded"
+  [matRippleRadius]="radius"
+  [matRippleColor]="color" 
+  [ngClass]="{
+    'color':setColor()=='grades'
   }">
     <i class="flaticon-scores"></i>
   </div>
-  <div routerLink="/settings" class="settings" [ngClass]="{
-    'color':currentUrl=='settings'
+  <div 
+  routerLink="/settings" 
+  class="settings" 
+  matRipple
+  [matRippleCentered]="centered"
+  [matRippleDisabled]="disabled"
+  [matRippleUnbounded]="unbounded"
+  [matRippleRadius]="radius"
+  [matRippleColor]="color"
+  [ngClass]="{
+    'color':setColor()=='settings'
   }">
     <i class="flaticon-settings-work-tool"></i> 
   </div>  -->

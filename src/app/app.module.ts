@@ -11,6 +11,9 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule, MatRippleModule} from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
@@ -19,6 +22,11 @@ import {MatListModule} from '@angular/material/list';
 import { OldGradesComponent } from './report-c/old-grades/old-grades.component';
 import { GradesComponent } from './report-c/grades/grades.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EditProfileComponent } from './settings/edit-profile/edit-profile.component';
+import { NotificationSettingsComponent } from './settings/notification-settings/notification-settings.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -33,7 +41,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SettingsComponent,
     OldGradesComponent,
     GradesComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EditProfileComponent,
+    NotificationSettingsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +55,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatDividerModule,
     MatTableModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatRippleModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
