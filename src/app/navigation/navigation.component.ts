@@ -11,6 +11,7 @@ export class NavigationComponent implements OnInit {
   el: HTMLCollectionOf<HTMLElement>;
   prevEl: HTMLCollectionOf<HTMLElement>;
   route: any;
+  emptyString = "";
 
   private previousUrl: string;
   private currentUrl: string;
@@ -31,6 +32,14 @@ export class NavigationComponent implements OnInit {
   checkRoute(){
     this.route = this.router.url.split("/");
     console.log(this.route[1]);
+  }
+
+  setColor(){
+    if (this.currentUrl=="home"||this.currentUrl==""){
+      return "home";
+    }else{
+      return this.currentUrl;
+    }
   }
 
 

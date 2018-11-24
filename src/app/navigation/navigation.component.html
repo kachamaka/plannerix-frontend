@@ -4,7 +4,7 @@
   style="height:100%; border-radius: 0"
   mat-button="" 
   [ngClass]="{
-    'color':currentUrl=='schedule'
+    'color':setColor()=='schedule'
   }"
   routerLink="/schedule" 
   class="mat-button">
@@ -24,7 +24,7 @@
   style="height:100%; border-radius: 0"
   mat-button="" 
   [ngClass]="{
-    'color':currentUrl=='calendar'
+    'color':setColor()=='calendar'
   }"
   routerLink="/calendar" 
   class="mat-button">
@@ -44,7 +44,7 @@
   style="height:100%; border-radius: 0"
   mat-button="" 
   [ngClass]="{
-    'color':currentUrl=='home'
+    'color':setColor()=='home'
   }"
   routerLink="/home" 
   class="mat-button">  
@@ -64,7 +64,7 @@
   style="height:100%; border-radius: 0"
   mat-button="" 
   [ngClass]="{
-    'color':currentUrl=='grades'
+    'color':setColor()=='grades'
   }"
   routerLink="/grades" 
   class="mat-button">
@@ -84,7 +84,7 @@
   style="height:100%; border-radius: 0"
   mat-button="" 
   [ngClass]="{
-    'color':currentUrl=='settings'
+    'color':setColor()=='settings'
   }"
   routerLink="/settings" 
   class="mat-button">
