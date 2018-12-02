@@ -1,0 +1,20 @@
+<p>
+  schedule-input works!
+</p>
+
+<div style="float:right">
+<button 
+[routerLink]="['/register/subjects']"
+mat-flat-button 
+style="margin-right:2px;background-color:lightseagreen"
+color="primary">Previous
+</button>
+<button 
+(click)="log()"
+[disabled]="checkRegisterValidation()"
+*ngIf="this.storageService.fullUrl=='/register/schedule-input'"
+mat-flat-button 
+style="float:right;background-color:lightseagreen"
+color="primary">Register
+</button>
+</div>

@@ -1,3 +1,4 @@
+import { StorageService } from './../shared/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { isUndefined } from 'util';
@@ -13,32 +14,30 @@ export class NavigationComponent implements OnInit {
   route: any;
   emptyString = "";
 
-  private previousUrl: string;
-  private currentUrl: string;
+  // private previousUrl: string;
+  // private currentUrl: string;
 
-  constructor(private router: Router) {
-    router.events.subscribe((val)=>{
-      if(val instanceof NavigationEnd){
-        this.previousUrl = this.currentUrl;
-        this.currentUrl = val.url.split("/")[1];
-      }
-    })
-   }
+  // constructor(private router: Router) {
+  //   router.events.subscribe((val)=>{
+  //     if(val instanceof NavigationEnd){
+  //       this.previousUrl = this.currentUrl;
+  //       this.currentUrl = val.url.split("/")[1];
+  //     }
+  //   })
+  //  }
+  constructor(private storageService: StorageService){
 
-  ngOnInit(){
   }
 
-
-  checkRoute(){
-    this.route = this.router.url.split("/");
-    console.log(this.route[1]);
+  ngOnInit(){
+    
   }
 
   setColor(){
-    if (this.currentUrl=="home"||this.currentUrl==""){
+    if (this.storageService.currentUrl=="home"||this.storageService.currentUrl==""){
       return "home";
     }else{
-      return this.currentUrl;
+      return this.storageService.currentUrl;
     }
   }
 

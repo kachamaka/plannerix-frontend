@@ -1,22 +1,22 @@
-import { SingleSubject } from './../../models/subject.model';
-import { HttpService } from './../../shared/http.service';
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { isNull } from 'util';
+import { StorageService } from './../../../shared/storage.service';
+import { HttpService } from './../../../shared/http.service';
+import { SingleSubject } from './../../../models/subject.model';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-schedule-input',
+  templateUrl: './schedule-input.component.html',
+  styleUrls: ['./schedule-input.component.css']
 })
-export class RegisterComponent implements OnInit, OnDestroy {
-  
-  constructor(
-    private httpService: HttpService){
+export class ScheduleInputComponent implements OnInit {
 
-  }
-  
+  constructor(private httpService: HttpService,
+    private storageService: StorageService) { }
+
   ngOnInit() {
   }
-
+  
   log(){
     let checkedSubjects: SingleSubject[] = [];
     this.httpService.subjects.forEach(subject => {
@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   checkRegisterValidation(){
     let checkedSubs = false;
     for(let i = 0; i< this.httpService.subjects.length; i++){
-      
       if(this.httpService.subjects[i].checked == true ||
         this.httpService.subjects[i].SIP == true || 
         this.httpService.subjects[i].ZIP == true){
@@ -46,13 +45,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
         break;
       }
     }
-    // this.httpService.subjects.forEach(subject => {
-    //   if(subject.checked == true || subject.SIP == true || subject.ZIP == true){
-    //     checkedSubs = true;
-    //     return;
-    //   }
-    // });
-    if(localStorage.getItem("username")!=""&&
+
+    if(
+    !isNull(localStorage.getItem("username")) &&
+    !isNull(localStorage.getItem("firstname")) &&
+    !isNull(localStorage.getItem("password")) &&
+    localStorage.getItem("username")!=""&&
     localStorage.getItem("firstname")!="" &&
     localStorage.getItem("password")!="" &&
     checkedSubs == true){
@@ -60,12 +58,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }else{
       return true;
     }
-  }
-
-  ngOnDestroy(): void {
-    localStorage.removeItem("username");
-    localStorage.removeItem("firstname");
-    localStorage.removeItem("password");
   }
 
 }

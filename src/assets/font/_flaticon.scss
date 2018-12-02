@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 10/11/2018 13:18
+    Creation date: 30/11/2018 18:06
     */
 
     @font-face {
@@ -36,18 +36,30 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-home:before { content: "\f100"; }
-.flaticon-home-1:before { content: "\f101"; }
-.flaticon-settings:before { content: "\f102"; }
-.flaticon-settings-work-tool:before { content: "\f103"; }
-.flaticon-calendar:before { content: "\f104"; }
-.flaticon-scores:before { content: "\f105"; }
-.flaticon-checklist:before { content: "\f106"; }
+    .flaticon-back-1:before { content: "\f100"; }
+.flaticon-home:before { content: "\f101"; }
+.flaticon-arrow:before { content: "\f102"; }
+.flaticon-next:before { content: "\f103"; }
+.flaticon-arrow-2:before { content: "\f104"; }
+.flaticon-arrow-1:before { content: "\f105"; }
+.flaticon-next-1:before { content: "\f106"; }
+.flaticon-arrow-3:before { content: "\f107"; }
+.flaticon-back:before { content: "\f108"; }
+.flaticon-settings-work-tool:before { content: "\f109"; }
+.flaticon-calendar:before { content: "\f10a"; }
+.flaticon-scores:before { content: "\f10b"; }
+.flaticon-checklist:before { content: "\f10c"; }
     
-    $font-Flaticon-home: "\f100";
-    $font-Flaticon-home-1: "\f101";
-    $font-Flaticon-settings: "\f102";
-    $font-Flaticon-settings-work-tool: "\f103";
-    $font-Flaticon-calendar: "\f104";
-    $font-Flaticon-scores: "\f105";
-    $font-Flaticon-checklist: "\f106";
+    $font-Flaticon-back-1: "\f100";
+    $font-Flaticon-home: "\f101";
+    $font-Flaticon-arrow: "\f102";
+    $font-Flaticon-next: "\f103";
+    $font-Flaticon-arrow-2: "\f104";
+    $font-Flaticon-arrow-1: "\f105";
+    $font-Flaticon-next-1: "\f106";
+    $font-Flaticon-arrow-3: "\f107";
+    $font-Flaticon-back: "\f108";
+    $font-Flaticon-settings-work-tool: "\f109";
+    $font-Flaticon-calendar: "\f10a";
+    $font-Flaticon-scores: "\f10b";
+    $font-Flaticon-checklist: "\f10c";

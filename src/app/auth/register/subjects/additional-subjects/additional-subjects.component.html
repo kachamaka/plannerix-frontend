@@ -1,0 +1,66 @@
+<!-- <h2 align="center" mat-dialog-title>Choose subjects</h2> -->
+
+<mat-dialog-content style="overflow: scroll; padding:5px; padding-left: 10px;">
+        <div style="margin-bottom:10px">
+                <table mat-table [dataSource]="dataSource" >
+        
+                  <ng-container matColumnDef="subject">
+                      
+                    <th mat-header-cell *matHeaderCellDef> Subject </th>
+                    <td style="padding:0" mat-cell *matCellDef="let subject"> 
+
+                      <mat-checkbox [(ngModel)]="subject.checked" style="padding: 0; margin: 0;padding-right:15px">
+                      </mat-checkbox>
+                        <mat-form-field>
+                      <input matInput [(ngModel)]="subject.subject" style="padding: 0; margin: 0">
+
+                        </mat-form-field>
+                    </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="SIP">
+                    <th mat-header-cell *matHeaderCellDef> SIP </th>
+                    <td style="padding:0" mat-cell *matCellDef="let subject"> 
+                        <mat-checkbox [(ngModel)]="subject.SIP" style="padding: 0; margin: 0"></mat-checkbox>
+                    </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="ZIP">
+                    <th mat-header-cell *matHeaderCellDef> ZIP </th>
+                    <td style="padding:0" mat-cell *matCellDef="let subject; index as i">
+                        <mat-checkbox (click)="log(i)" [(ngModel)]="subject.ZIP" style="padding: 0; margin: 0"></mat-checkbox>              
+                        
+                    <button
+                    (click)="removeSubject(i)"
+                    mat-mini-fab
+                    color="primary" 
+                    style="margin-left:5px;background-color: #ff1919;border-radius: 5px">✘</button>
+                    </td>
+                  </ng-container>
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="buttons" style="float: right">
+    <button 
+    class="discard"
+    color="primary"
+    mat-mini-fab 
+    (click)="close(false)">Discard</button>
+    <button 
+    class="add"
+    mat-mini-fab 
+    [disabled]="checkAdd()"
+    color="primary"
+    (click)="addSubject()">Add</button>
+    <button 
+    class="save"
+    color="primary"
+    mat-mini-fab 
+    (click)="close(true)">Save</button>
+    <!-- <button (click)="log()" style="background-color:lightseagreen" mat-button color="primary">TEST</button> -->
+
+</mat-dialog-actions>

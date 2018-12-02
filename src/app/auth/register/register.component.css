@@ -1,0 +1,8 @@
+
+.mat-dialog-container{
+    padding: 0px;
+  }
+
+i,div,li:focus{
+    outline: 0px;
+}

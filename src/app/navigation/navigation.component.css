@@ -75,13 +75,13 @@
     grid-template-columns: auto;
     grid-template-areas: ". hom .";
 }
-.flaticon-home-1{
+.flaticon-home{
     grid-area: hom;
     align-self: center;
     display: inline-block;
     text-align: center;
 }
-.flaticon-home-1::before{
+.flaticon-home::before{
     align-self: center;
     align-content: center;
     /* text-align: center; */

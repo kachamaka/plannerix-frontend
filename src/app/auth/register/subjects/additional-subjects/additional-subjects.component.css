@@ -1,0 +1,40 @@
+table {
+    width: 100%;
+}
+
+.buttons {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 3px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "discard . . add . save";
+}
+
+.discard{
+  grid-area: discard;
+  float: left;
+  width: 100%;
+  margin-right: 5px;
+  background-color:lightseagreen;
+  border-radius: 5px;
+}
+
+.add{
+  margin-right:5px;
+  background-color: #00e500;
+  border-radius: 5px;
+  grid-area: add;
+  width: 100%; 
+  float: right;
+}
+
+.save{
+  grid-area: save;
+  float: left;
+  width: 100%;
+  background-color:lightseagreen;
+  border-radius: 5px;
+}

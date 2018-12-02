@@ -1,0 +1,32 @@
+  .singleSubject{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 40% 40% 40%;
+    grid-template-areas: "subject sip zip";
+}
+.subject{
+  grid-area: subject;
+  height: 100%;
+  width: 100%; 
+}
+.sip{
+  grid-area: sip;
+  height: 100%;
+  width: 100%; 
+}
+.zip{
+  grid-area: zip;
+  height: 100%;
+  width: 100%; 
+}
+table {
+  width: 100%;
+}
+.mat-column-SIP{
+  width: 10%
+}
+.mat-column-ZIP{
+  width: 10%
+}

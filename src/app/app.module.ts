@@ -11,8 +11,11 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule, MatRippleModule} from '@angular/material';
+import {MatInputModule, MatRippleModule, MatDialogModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
@@ -27,6 +30,10 @@ import { NotificationSettingsComponent } from './settings/notification-settings/
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdditionalSubjectsComponent } from './auth/register/subjects/additional-subjects/additional-subjects.component';
+import { CredentialsComponent } from './auth/register/credentials/credentials.component';
+import { SubjectsComponent } from './auth/register/subjects/subjects.component';
+import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-input.component';
 
 
 
@@ -45,7 +52,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditProfileComponent,
     NotificationSettingsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdditionalSubjectsComponent,
+    CredentialsComponent,
+    SubjectsComponent,
+    ScheduleInputComponent
   ],
   imports: [
     BrowserModule,
@@ -60,10 +71,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatInputModule,
     MatRippleModule,
+    MatCheckboxModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatTooltipModule,
     FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AdditionalSubjectsComponent]
 })
 export class AppModule { }
