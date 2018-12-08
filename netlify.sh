@@ -5,9 +5,9 @@ NC='\033[0m' # NC = no color
 
 if [ $(git rev-parse --abbrev-ref HEAD) == "master" ]; then
     if [ -z "$(git status --porcelain)" ]; then
+        git checkout prod
         ng build --prod
         git add -f ./dist/*
-        git checkout prod
         git commit -m "auto built"
         git push origin prod
         git checkout master
