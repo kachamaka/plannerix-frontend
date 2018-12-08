@@ -11,8 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScheduleInputComponent implements OnInit {
 
-  constructor(private httpService: HttpService,
-    private storageService: StorageService) { }
+  constructor(public httpService: HttpService,
+    public storageService: StorageService) { }
 
   ngOnInit() {
   }
