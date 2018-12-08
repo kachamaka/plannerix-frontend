@@ -15,7 +15,7 @@ export class CredentialsComponent implements OnInit, OnDestroy {
   @ViewChild('confirmPassword') confirmPassword: ElementRef;
   
 
-  constructor(private storageService: StorageService) { }
+  constructor(public storageService: StorageService) { }
 
   ngOnInit() {
     // localStorage.removeItem("password");
