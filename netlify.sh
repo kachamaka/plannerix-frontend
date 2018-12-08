@@ -8,6 +8,7 @@ if [ $(git rev-parse --abbrev-ref HEAD) == "master" ]; then
         git checkout prod
         git merge -X theirs master
         ng build --prod
+        git add .
         git add -f ./dist/*
         git commit -m "auto built"
         git push origin prod
