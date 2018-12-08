@@ -6,7 +6,7 @@ NC='\033[0m' # NC = no color
 if [ $(git rev-parse --abbrev-ref HEAD) == "master" ]; then
     if [ -z "$(git status --porcelain)" ]; then
         git checkout prod
-        git merge -X theirs master
+        git merge -X theirs -m "auto merge" master
         ng build --prod
         git add .
         git add -f ./dist/*
