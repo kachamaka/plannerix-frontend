@@ -18,9 +18,9 @@ export class SubjectsComponent implements OnInit {
 
   displayedColumns: string[] = ['subject', 'SIP', 'ZIP'];
 
-  constructor(private dialog: MatDialog,
-    private httpService: HttpService,
-    private storageService: StorageService) {
+  constructor(public dialog: MatDialog,
+    public httpService: HttpService,
+    public storageService: StorageService) {
 
      }
 

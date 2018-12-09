@@ -20,8 +20,8 @@ export class ScheduleInputComponent implements OnInit {
   [{"time": "7:30-8:10", "subject": "Kaka Emi"}]]
   
   constructor(private atp: AmazingTimePickerService,
-    private httpService: HttpService,
-    private storageService: StorageService) { }
+    public httpService: HttpService,
+    public storageService: StorageService) { }
 
   ngOnInit() {
     if(this.todayDay!=0 && this.todayDay!=6){
