@@ -1,11 +1,44 @@
-<p>
-  schedule-input works!
-</p>
+<h4 style="margin:0 0 7px 0" align="center">{{days[currentDay]}}</h4>
+<!-- <mat-form-field>
+  <mat-label>Length of periods</mat-label>
+  <input matInput type="number" [(ngModel)]="lengthOfPeriods" (input)="checkLog()">
+</mat-form-field> -->
+<button color="primary" mat-button style="background-color: lightskyblue" (click)="open()">Time</button>
+{{selectedTime}}
 
+<table mat-table [dataSource]="periods[currentDay-1]">
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef> Time </th>
+    <td mat-cell *matCellDef="let subject"> {{subject.time}} </td>
+  </ng-container>
+  <ng-container matColumnDef="subject">
+      <th mat-header-cell *matHeaderCellDef> Subject </th>
+      <td mat-cell *matCellDef="let subject"> {{subject.subject}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<div class="nav">
+  <button (click)="previousDay()" mat-button style="grid-area: left;"><</button>
+  <button (click)="nextDay()" mat-button style="grid-area: right;">></button>
+</div>
+
+
+
+
+
+<button 
+class="add"
+mat-mini-fab 
+color="primary"
+(click)="addPeriod()">Add</button>
 <div style="float:right">
 <button 
 [routerLink]="['/register/subjects']"
-mat-flat-button 
+mat-flat-button   
 style="margin-right:2px;background-color:lightseagreen"
 color="primary">Previous
 </button>

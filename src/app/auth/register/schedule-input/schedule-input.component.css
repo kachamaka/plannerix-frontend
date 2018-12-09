@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+}
+
+.nav {
+    display: grid;
+    grid-row: auto;
+    grid-column: 1fr auto 1fr;
+    grid-template-areas: "left . right"
+}
+
+.mat-column-time {
+    width: 35%;
+}
+
+.add{
+    margin-right:5px;
+    background-color: #00e500;
+    border-radius: 5px;
+    /* grid-area: add; */
+    /* width: 100%;  */
+    float: left;
+  }

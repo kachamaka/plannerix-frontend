@@ -11,6 +11,9 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AmazingTimePickerModule } from 'amazing-time-picker'; 
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -73,10 +76,12 @@ import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-
     MatRippleModule,
     MatCheckboxModule,
     MatTabsModule,
+    MatDatepickerModule,
     MatDialogModule,
     MatTooltipModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AmazingTimePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

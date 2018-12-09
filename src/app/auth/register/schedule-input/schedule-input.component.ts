@@ -3,6 +3,7 @@ import { StorageService } from './../../../shared/storage.service';
 import { HttpService } from './../../../shared/http.service';
 import { SingleSubject } from './../../../models/subject.model';
 import { Component, OnInit } from '@angular/core';
+import { AmazingTimePickerService } from 'amazing-time-picker';
 
 @Component({
   selector: 'app-schedule-input',
@@ -10,11 +11,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./schedule-input.component.css']
 })
 export class ScheduleInputComponent implements OnInit {
-
-  constructor(private httpService: HttpService,
+  selectedTime;
+  lengthOfPeriods;
+  periods = [[{"time": "7:30-8:10", "subject": "Kaka Emi"}],
+  [{"time": "7:30-8:10", "subject": "gospoja Klasna"}],
+  [{"time": "7:30-8:10", "subject": "Kaka Emi"}],
+  [{"time": "7:30-8:10", "subject": "Kaka Emi"}],
+  [{"time": "7:30-8:10", "subject": "Kaka Emi"}]]
+  
+  constructor(private atp: AmazingTimePickerService,
+    private httpService: HttpService,
     private storageService: StorageService) { }
 
   ngOnInit() {
+    if(this.todayDay!=0 && this.todayDay!=6){
+      this.currentDay = this.todayDay;
+    }else{
+      this.currentDay = 1;
+    }
   }
   
   log(){
@@ -59,5 +73,47 @@ export class ScheduleInputComponent implements OnInit {
       return true;
     }
   }
+  
+  
+  currentDay;
+  todayDay = new Date().getDay();
+  // today = new Date("2018-11-31T16:00:00");
+
+  days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  displayedColumns: string[] = ['time','subject'];
+
+  checkLog(){
+    console.log(this.lengthOfPeriods);
+  }
+
+  previousDay(){
+    if(this.currentDay==1){
+      this.currentDay=5;
+    }else{
+      this.currentDay--;
+    }
+    // console.log(this.currentDay);
+  }
+
+  nextDay(){
+    if(this.currentDay==5){
+      this.currentDay=1;
+    }else{
+      this.currentDay++;
+    }
+  }
+
+
+  open() {
+    const amazingTimePicker = this.atp.open({
+      theme: "material-blue",
+      animation: "fade",
+      changeToMinutes: true
+    });
+    amazingTimePicker.afterClose().subscribe(time => {
+        this.selectedTime = time;
+    });
+}
 
 }
