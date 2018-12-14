@@ -57,6 +57,7 @@ export class ScheduleInputComponent implements OnInit {
     // console.log(this.currentDay);
   }
 
+  
   nextDay(){
     if(this.currentDay==5){
       this.currentDay=1;
