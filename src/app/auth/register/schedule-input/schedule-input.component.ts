@@ -2,8 +2,7 @@ import { isNull } from 'util';
 import { StorageService } from './../../../shared/storage.service';
 import { HttpService } from './../../../shared/http.service';
 import { SingleSubject } from './../../../models/subject.model';
-import { Component, OnInit } from '@angular/core';
-import { AmazingTimePickerService } from 'amazing-time-picker';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-schedule-input',
@@ -13,14 +12,20 @@ import { AmazingTimePickerService } from 'amazing-time-picker';
 export class ScheduleInputComponent implements OnInit {
   selectedTime;
   lengthOfPeriods;
-  periods = [[{"time": "7:30-8:10", "subject": "Kaka Emi"}],
+  test;
+  periods = [
   [{"time": "7:30-8:10", "subject": "gospoja Klasna"}],
   [{"time": "7:30-8:10", "subject": "Kaka Emi"}],
   [{"time": "7:30-8:10", "subject": "Kaka Emi"}],
-  [{"time": "7:30-8:10", "subject": "Kaka Emi"}]]
+  [{"time": "7:30-8:10", "subject": "Kaka Emi"}],
+
+  [{"time": "7:30-8:10", "subject": "Kaka Emi"},
+  {"time": "8:20-9:00", "subject": "Gospoja Frau"},
+  {"time": "9:10-9:50", "subject": "Test"}]]
   
-  constructor(private atp: AmazingTimePickerService,
-    public httpService: HttpService,
+  @ViewChild('fullTime') fullTime;
+
+  constructor(public httpService: HttpService,
     public storageService: StorageService) { }
 
   ngOnInit() {
@@ -29,51 +34,7 @@ export class ScheduleInputComponent implements OnInit {
     }else{
       this.currentDay = 1;
     }
-  }
-  
-  log(){
-    let checkedSubjects: SingleSubject[] = [];
-    this.httpService.subjects.forEach(subject => {
-      if(subject.checked == true || subject.SIP == true || subject.ZIP == true){
-        checkedSubjects.push(subject);
-      }
-    });
-    let registerCredentials = {
-      "username": localStorage.getItem("username"),
-      "firstname":localStorage.getItem("firstname"),
-      "password": localStorage.getItem("password")
-    }
-    console.log("credentials", registerCredentials);
-    // console.log("subjects",this.httpService.subjects);
-    console.log("checked subs",checkedSubjects);
-    console.log("additional subs",this.httpService.additionalSubjects);
-  }
-
-  checkRegisterValidation(){
-    let checkedSubs = false;
-    for(let i = 0; i< this.httpService.subjects.length; i++){
-      if(this.httpService.subjects[i].checked == true ||
-        this.httpService.subjects[i].SIP == true || 
-        this.httpService.subjects[i].ZIP == true){
-        checkedSubs = true;
-        break;
-      }
-    }
-
-    if(
-    !isNull(localStorage.getItem("username")) &&
-    !isNull(localStorage.getItem("firstname")) &&
-    !isNull(localStorage.getItem("password")) &&
-    localStorage.getItem("username")!=""&&
-    localStorage.getItem("firstname")!="" &&
-    localStorage.getItem("password")!="" &&
-    checkedSubs == true){
-      return false;
-    }else{
-      return true;
-    }
-  }
-  
+  }  
   
   currentDay;
   todayDay = new Date().getDay();
@@ -96,6 +57,7 @@ export class ScheduleInputComponent implements OnInit {
     // console.log(this.currentDay);
   }
 
+  
   nextDay(){
     if(this.currentDay==5){
       this.currentDay=1;
@@ -103,17 +65,10 @@ export class ScheduleInputComponent implements OnInit {
       this.currentDay++;
     }
   }
-
-
-  open() {
-    const amazingTimePicker = this.atp.open({
-      theme: "material-blue",
-      animation: "fade",
-      changeToMinutes: true
-    });
-    amazingTimePicker.afterClose().subscribe(time => {
-        this.selectedTime = time;
-    });
-}
+  setTime(){
+    this.selectedTime = this.fullTime.selectedHour.time+":"+this.fullTime.selectedMinute.time;
+    // console.log(this.fullTime);
+    console.log(this.selectedTime);
+  }
 
 }

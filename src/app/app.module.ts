@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +11,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AmazingTimePickerModule } from 'amazing-time-picker'; 
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -41,6 +42,7 @@ import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-
 
 
 @NgModule({
+  // schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     NavigationComponent,
@@ -81,7 +83,7 @@ import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    AmazingTimePickerModule
+    NgxMaterialTimepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
