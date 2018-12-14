@@ -42,7 +42,7 @@ export class ScheduleInputComponent implements OnInit {
 
   days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
-  displayedColumns: string[] = ['time','subject'];
+  displayedColumns: string[] = ['startTime', 'endTime', 'subject'];
 
   checkLog(){
     console.log(this.lengthOfPeriods);
