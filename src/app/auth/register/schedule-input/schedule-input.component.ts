@@ -1,8 +1,7 @@
-import { isNull } from 'util';
 import { StorageService } from './../../../shared/storage.service';
 import { HttpService } from './../../../shared/http.service';
-import { SingleSubject } from './../../../models/subject.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-schedule-input',
@@ -13,36 +12,30 @@ export class ScheduleInputComponent implements OnInit {
   selectedTime;
   lengthOfPeriods;
   test;
-  periods = [
-  [{"time": "7:30-8:10", "subject": "gospoja Klasna"}],
-  [{"time": "7:30-8:10", "subject": "Kaka Emi"}],
-  [{"time": "7:30-8:10", "subject": "Kaka Emi"}],
-  [{"time": "7:30-8:10", "subject": "Kaka Emi"}],
-
-  [{"time": "7:30-8:10", "subject": "Kaka Emi"},
-  {"time": "8:20-9:00", "subject": "Gospoja Frau"},
-  {"time": "9:10-9:50", "subject": "Test"}]]
+  // periods = [[],[],[],[],[]];
   
-  @ViewChild('fullTime') fullTime;
-
+  @ViewChild('startTime') startTime;
+  @ViewChild('endTime') endTime;
+  
   constructor(public httpService: HttpService,
     public storageService: StorageService) { }
 
   ngOnInit() {
-    if(this.todayDay!=0 && this.todayDay!=6){
-      this.currentDay = this.todayDay;
+    if(this.today!=0 && this.today!=6){
+      this.currentDay = this.today;
     }else{
       this.currentDay = 1;
     }
   }  
   
   currentDay;
-  todayDay = new Date().getDay();
+  today = new Date().getDay();
   // today = new Date("2018-11-31T16:00:00");
+  dataSource = new MatTableDataSource(this.httpService.periods);
 
   days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
-  displayedColumns: string[] = ['startTime', 'endTime', 'subject'];
+  displayedColumns: string[] = ['startTime', 'endTime', 'subject', 'remove'];
 
   checkLog(){
     console.log(this.lengthOfPeriods);
@@ -56,7 +49,6 @@ export class ScheduleInputComponent implements OnInit {
     }
     // console.log(this.currentDay);
   }
-
   
   nextDay(){
     if(this.currentDay==5){
@@ -65,10 +57,19 @@ export class ScheduleInputComponent implements OnInit {
       this.currentDay++;
     }
   }
-  setTime(){
-    this.selectedTime = this.fullTime.selectedHour.time+":"+this.fullTime.selectedMinute.time;
-    // console.log(this.fullTime);
-    console.log(this.selectedTime);
+
+  testLog(){
+    console.log(this.httpService.periods);
+  }
+  addPeriod(){
+    this.httpService.periods[this.currentDay-1].push({"startTime": "", "endTime":"", "subject": "gospoja Klasna"});
+  }
+  removePeriod(i){
+    this.httpService.periods[this.currentDay-1].splice(i, 1);
+  }
+  getDataSource(){
+    let dataSource = new MatTableDataSource(this.httpService.periods[this.currentDay-1]);
+    return dataSource;
   }
 
 }

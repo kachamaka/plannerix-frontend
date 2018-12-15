@@ -13,52 +13,48 @@ export class ScheduleComponent implements OnInit {
   days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
   constructor() { }
-  displayedColumns: string[] = ['time','subject'];
-  schedule = [[
-    {"time": "7:30-8:10", "subject": "Kaka Emi"},
-    {"time": "8:20-9:00", "subject": "Mat"},
-    {"time": "9:10-9:50", "subject":"Rusgench"},
-    {"time": "9:50-10:10", "subject": "Golqmo"},
-    {"time": "10:10-10:50", "subject": "NE"},
-    {"time": "11:00-11:40", "subject": "NE"},
-    {"time": "11:50-12:30", "subject": "FVS"},
-    {"time": "12:40-13:30", "subject": "-"}
+  displayedColumns: string[] = ['startTime', 'endTime','subject'];
+  schedule = [
+    [
+    {"startTime": "7:30", "endTime": "8:10", "subject": "Kaka Emi"},
+    {"startTime": "8:20", "endTime": "9:00", "subject": "Mat"},
+    {"startTime": "9:10", "endTime": "9:50", "subject":"Rusgench"},
+    {"startTime": "10:10", "endTime": "10:50", "subject": "NE"},
+    {"startTime": "11:00", "endTime": "11:40", "subject": "NE"},
+    {"startTime": "11:50", "endTime": "12:30", "subject": "FVS"},
+    {"startTime": "12:40", "endTime": "13:20", "subject": "-"}
     ],[
-      {"time": "7:30-8:10", "subject": "ZIP"},
-      {"time": "8:20-9:00", "subject": "ZIP"},
-      {"time": "9:10-9:50", "subject":"Nasko"},
-      {"time": "9:50-10:10", "subject": "Golqmo"},
-      {"time": "10:10-10:50", "subject": "Zlatitu"},
-      {"time": "11:00-11:40", "subject": "FVS"},
-      {"time": "11:50-12:30", "subject": "AE"},
-      {"time": "12:40-13:30", "subject": "AE"}
+      {"startTime": "7:30", "endTime": "8:10", "subject": "ZIP"},
+      {"startTime": "8:20", "endTime": "9:00", "subject": "ZIP"},
+      {"startTime": "9:10", "endTime": "9:50", "subject":"Nasko"},
+      {"startTime": "10:10", "endTime": "10:50", "subject": "Zlatitu"},
+      {"startTime": "11:00", "endTime": "11:40", "subject": "FVS"},
+      {"startTime": "11:50", "endTime": "12:30", "subject": "AE"},
+      {"startTime": "12:40", "endTime": "13:20", "subject": "AE"}
     ],[
-      {"time": "7:30-8:10", "subject": "NE"},
-      {"time": "8:20-9:00", "subject": "NE"},
-      {"time": "9:10-9:50", "subject":"Az znam che nishto ne znam"},
-      {"time": "9:50-10:10", "subject": "Golqmo"},
-      {"time": "10:10-10:50", "subject": "A golqmo a malko"},
-      {"time": "11:00-11:40", "subject": "AE"},
-      {"time": "11:50-12:30", "subject": "AE"},
-      {"time": "12:40-13:30", "subject": "Chasa na klasnata"}
+      {"startTime": "7:30", "endTime": "8:10", "subject": "NE"},
+      {"startTime": "8:20", "endTime": "9:00", "subject": "NE"},
+      {"startTime": "9:10", "endTime": "9:50", "subject":"Az znam che nishto ne znam"},
+      {"startTime": "10:10", "endTime": "10:50", "subject": "A golqmo a malko"},
+      {"startTime": "11:00", "endTime": "11:40", "subject": "AE"},
+      {"startTime": "11:50", "endTime": "12:30", "subject": "AE"},
+      {"startTime": "12:40", "endTime": "13:20", "subject": "Chasa na klasnata"}
     ],[
-      {"time": "7:30-8:10", "subject": "Gospoja klasna"},
-      {"time": "8:20-9:00", "subject": "Kaka Emi"},
-      {"time": "9:10-9:50", "subject":"Rusgench"},
-      {"time": "9:50-10:10", "subject": "Golqmo"},
-      {"time": "10:10-10:50", "subject": "NE"},
-      {"time": "11:00-11:40", "subject": "NE"},
-      {"time": "11:50-12:30", "subject": "Meca pak"},
-      {"time": "12:40-13:30", "subject": "-"}
+      {"startTime": "7:30", "endTime": "8:10", "subject": "Gospoja klasna"},
+      {"startTime": "8:20", "endTime": "9:00", "subject": "Kaka Emi"},
+      {"startTime": "9:10", "endTime": "9:50", "subject":"Rusgench"},
+      {"startTime": "10:10", "endTime": "10:50", "subject": "NE"},
+      {"startTime": "11:00", "endTime": "11:40", "subject": "NE"},
+      {"startTime": "11:50", "endTime": "12:30", "subject": "Meca pak"},
+      {"startTime": "12:40", "endTime": "13:20", "subject": "-"}
     ],[
-      {"time": "7:30-8:10", "subject": "Naskicha"},
-      {"time": "8:20-9:00", "subject": "Rusgench"},
-      {"time": "9:10-9:50", "subject":"Gospoja klasna pak"},
-      {"time": "9:50-10:10", "subject": "Golqmo"},
-      {"time": "10:10-10:50", "subject": "NE"},
-      {"time": "11:00-11:40", "subject": "NE"},
-      {"time": "11:50-12:30", "subject": "Matematika"},
-      {"time": "12:40-13:30", "subject": "Zlatka"}
+      {"startTime": "7:30", "endTime": "8:10", "subject": "Naskicha"},
+      {"startTime": "8:20", "endTime": "9:00", "subject": "Rusgench"},
+      {"startTime": "9:10", "endTime": "9:50", "subject":"Gospoja klasna pak"},
+      {"startTime": "10:10", "endTime": "10:50", "subject": "NE"},
+      {"startTime": "11:00", "endTime": "11:40", "subject": "NE"},
+      {"startTime": "11:50", "endTime": "12:30", "subject": "Matematika"},
+      {"startTime": "12:40", "endTime": "13:20", "subject": "Zlatka"}
     ]
   ]
 

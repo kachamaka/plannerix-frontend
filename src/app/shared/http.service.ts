@@ -18,5 +18,9 @@ export class HttpService {
   {"subject":"Bio","checked":false,"SIP":false,"ZIP":false},
   {"subject":"Chemistry","checked":false,"SIP":false,"ZIP":false},
   {"subject":"Physic","checked":false,"SIP":false,"ZIP":false}];
+
+  allCheckedSubjects: SingleSubject[] = [];
+
+  periods = [[],[],[],[],[]];
   
 }

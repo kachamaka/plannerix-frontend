@@ -20,21 +20,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   log(){
-    let checkedSubjects: SingleSubject[] = [];
-    this.httpService.subjects.forEach(subject => {
-      if(subject.checked == true || subject.SIP == true || subject.ZIP == true){
-        checkedSubjects.push(subject);
-      }
-    });
     let registerCredentials = {
       "username": localStorage.getItem("username"),
       "firstname":localStorage.getItem("firstname"),
       "password": localStorage.getItem("password")
     }
     console.log("credentials", registerCredentials);
-    // console.log("subjects",this.httpService.subjects);
-    console.log("checked subs",checkedSubjects);
-    console.log("additional subs",this.httpService.additionalSubjects);
+    console.log("checked subs",this.httpService.allCheckedSubjects);
+    console.log("periods", this.httpService.periods);
   }
 
   checkRegisterValidation(){

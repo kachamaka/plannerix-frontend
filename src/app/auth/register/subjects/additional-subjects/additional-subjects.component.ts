@@ -15,7 +15,6 @@ export class AdditionalSubjectsComponent implements OnInit {
   dataSource = new MatTableDataSource(this.httpService.additionalSubjects);
   
   constructor(private httpService: HttpService,
-    private changeDetectorRefs: ChangeDetectorRef,
     public dialogRef: MatDialogRef<AdditionalSubjectsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
