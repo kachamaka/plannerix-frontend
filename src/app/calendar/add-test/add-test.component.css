@@ -1,0 +1,28 @@
+table{
+    width: 100%;
+}
+.buttons {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "discard . . save";
+}
+.discard{
+  grid-area: discard;
+  float: left;
+  width: 100%;
+  margin-right: 5px;
+  background-color:lightseagreen;
+  border-radius: 5px;
+}
+
+.save{
+  grid-area: save;
+  width: 100%;
+  background-color:lightseagreen;
+  border-radius: 5px;
+}

@@ -62,7 +62,7 @@ export class ScheduleInputComponent implements OnInit {
     console.log(this.httpService.periods);
   }
   addPeriod(){
-    this.httpService.periods[this.currentDay-1].push({"startTime": "", "endTime":"", "subject": "gospoja Klasna"});
+    this.httpService.periods[this.currentDay-1].push({"startTime": "", "endTime":"", "subject": "---"});
   }
   removePeriod(i){
     this.httpService.periods[this.currentDay-1].splice(i, 1);

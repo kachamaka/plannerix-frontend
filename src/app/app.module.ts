@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +19,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule, MatRippleModule, MatDialogModule} from '@angular/material';
+import {MatInputModule, MatRippleModule, MatDialogModule, DateAdapter, MatNativeDateModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
@@ -38,7 +38,11 @@ import { AdditionalSubjectsComponent } from './auth/register/subjects/additional
 import { CredentialsComponent } from './auth/register/credentials/credentials.component';
 import { SubjectsComponent } from './auth/register/subjects/subjects.component';
 import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-input.component';
+import { DatePipe, registerLocaleData } from '@angular/common';
+import localeBg from '@angular/common/locales/bg';
+import { AddTestComponent } from './calendar/add-test/add-test.component';
 
+registerLocaleData(localeBg);
 
 
 @NgModule({
@@ -61,7 +65,8 @@ import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-
     AdditionalSubjectsComponent,
     CredentialsComponent,
     SubjectsComponent,
-    ScheduleInputComponent
+    ScheduleInputComponent,
+    AddTestComponent
   ],
   imports: [
     BrowserModule,
@@ -79,14 +84,18 @@ import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-
     MatCheckboxModule,
     MatTabsModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatDialogModule,
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: "bg-BG"
+  }, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [AdditionalSubjectsComponent]
+  entryComponents: [AdditionalSubjectsComponent, AddTestComponent]
 })
 export class AppModule { }

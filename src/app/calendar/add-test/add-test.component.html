@@ -1,0 +1,53 @@
+<!-- <h2 align="center" mat-dialog-title>Choose subjects</h2> -->
+<!-- <h2 align="center" mat-dialog-title>Choose subjects</h2> -->
+
+<mat-dialog-content style="overflow: overlay;padding-left:15px;padding-right:15px">
+        <table mat-table [dataSource]="getDataSource()" >
+    
+            <ng-container matColumnDef="subjectName">
+                <th mat-header-cell *matHeaderCellDef>Предмет</th>
+                <td style="padding:0 0 0 15px;" mat-cell *matCellDef="let subject; index as i">
+                <mat-form-field style="width:90%;">
+                    <mat-select [(ngModel)]="subject.subject">
+                        <!-- <mat-option value="---">Math</mat-option> -->
+                        <!-- da se mahne tova otgore -->
+                        <mat-option *ngFor="let singleSubject of this.httpService.allCheckedSubjects" [value]="singleSubject.subject">
+                            {{singleSubject.subject}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </td>
+            </ng-container>
+            
+            <ng-container style="margin-left:10px;" matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Дата </th>
+            <td style="padding:0;" mat-cell *matCellDef="let subject"> 
+                    <input
+                    matInput 
+                    [min]="this.httpService.minDate"
+                    [max]="this.httpService.maxDate"
+                    [matDatepicker]="picker" 
+                    (click)="picker.open()" 
+                    [(ngModel)]="subject.date" readonly>
+                    <mat-datepicker #picker></mat-datepicker>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+</mat-dialog-content>
+
+<mat-dialog-actions class="buttons" style="float: right">
+<button 
+class="discard"
+color="primary"
+mat-mini-fab 
+(click)="close(false, {})">Discard</button>
+<button 
+class="save"
+color="primary"
+mat-mini-fab 
+(click)="close(true, this.test[0])">Save</button>
+<!-- <button (click)="log()" style="background-color:lightseagreen" mat-button color="primary">TEST</button> -->
+
+</mat-dialog-actions>

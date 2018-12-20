@@ -9,9 +9,6 @@ table {
     grid-template-areas: "left . right"
 }
 
-.mat-column-time {
-    width: 35%;
-}
 
 .add{
     margin-right:5px;
@@ -19,4 +16,13 @@ table {
     /* grid-area: add; */
     /* width: 100%;  */
     float: left;
+}
+.mat-column-startTime{
+    width: 20%;
+}
+.mat-column-endTime{
+    width: 16%;
+}
+.mat-column-subject{
+    width: 50%;
 }
