@@ -1,0 +1,15 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+.title {
+    display: inline-block;
+}
+.menu {
+    position: absolute;
+    top: 2.5rem;
+    right: 10px;
+}
+.active{
+    background-color: lightblue;
+}

@@ -2,6 +2,36 @@ section{
     margin-left: 1rem;
     margin-bottom: 1.5rem;
 }
+
 table {
     width: 100%;
-  }
+}
+
+.header{
+    display: grid;
+    grid-row: auto;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-template-areas: "cancel title edit";
+    height: 15.8%;
+}
+.title{
+    grid-area: title;
+}
+.edit{
+    grid-area: edit;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    /* display: inline-block; */
+    text-align: center;
+    /* width: 20%; */
+}
+.cancel{
+    grid-area: cancel;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    /* display: inline-block; */
+    text-align: center;
+    /* width: 20%; */
+}

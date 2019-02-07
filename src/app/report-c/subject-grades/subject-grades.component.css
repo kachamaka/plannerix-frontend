@@ -1,0 +1,9 @@
+.grades>span {
+    padding-right: 1em;
+}
+.grades{
+    overflow-wrap: break-word;
+}
+.grades>span:nth-child(even) {
+    /* background-color: rgb(126, 245, 126); */
+}

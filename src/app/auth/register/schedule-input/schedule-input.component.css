@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+}
+
+.nav {
+    display: grid;
+    grid-row: auto;
+    grid-column: 1fr auto 1fr;
+    grid-template-areas: "left . right"
+}
+
+
+.add{
+    margin-right:5px;
+    background-color: #00e500;
+    /* grid-area: add; */
+    /* width: 100%;  */
+    float: left;
+}
+.mat-column-startTime{
+    width: 20%;
+}
+.mat-column-endTime{
+    width: 16%;
+}
+.mat-column-subject{
+    width: 50%;
+}

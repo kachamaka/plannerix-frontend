@@ -3,6 +3,46 @@
 <mat-divider style="margin-bottom:5px"></mat-divider>
 <router-outlet></router-outlet>
 
+<div class="buttons" style="float:right">
+  <button 
+  *ngIf="this.storageService.fullUrl=='/register'"
+  [routerLink]="['/register/subjects']"
+  mat-flat-button 
+  style="margin-right:5px;background-color:lightseagreen"
+  color="primary">Next
+  </button>
+  
+  <button 
+  *ngIf="this.storageService.fullUrl=='/register/subjects'"
+  [routerLink]="['/register/schedule-input']"
+  mat-flat-button 
+  style="float:right;background-color:lightseagreen"
+  color="primary">Next
+  </button>
+  <button 
+  *ngIf="this.storageService.fullUrl=='/register/subjects'"
+  [routerLink]="['/register']"
+  mat-flat-button 
+  style="float:right;margin-right:2px;background-color:lightseagreen"
+  color="primary">Previous
+  </button>
+
+  <button 
+  [routerLink]="['/register/subjects']"
+  *ngIf="this.storageService.fullUrl=='/register/schedule-input'"
+  mat-flat-button   
+  style="margin-right:2px;background-color:lightseagreen"
+  color="primary">Previous
+  </button>
+  <button 
+  (click)="log()"
+  [disabled]="checkRegisterValidation()"
+  *ngIf="this.storageService.fullUrl=='/register/schedule-input'"
+  mat-flat-button 
+  style="float:right;background-color:lightseagreen"
+  color="primary">Register
+  </button>
+</div>
 <!-- <div 
 [routerLink]="['/register']"
 class="left" 
