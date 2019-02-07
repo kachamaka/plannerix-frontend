@@ -1,0 +1,8 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let year of allGrades">
+    <mat-expansion-panel-header>
+      <h3>{{year.year}}</h3>
+    </mat-expansion-panel-header>
+    <app-subject-grades *ngFor="let grades of year.grades" [subject]="grades.subject" [grades]="grades.grades"></app-subject-grades>
+  </mat-expansion-panel>
+</mat-accordion>

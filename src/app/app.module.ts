@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
-import { ReportCComponent } from './report-c/report-c.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -19,15 +18,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule, MatRippleModule, MatDialogModule, DateAdapter, MatNativeDateModule} from '@angular/material';
+import {MatInputModule, MatRippleModule, MatDialogModule, DateAdapter, MatNativeDateModule, MatMenuModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
-import { OldGradesComponent } from './report-c/old-grades/old-grades.component';
-import { GradesComponent } from './report-c/grades/grades.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EditProfileComponent } from './settings/edit-profile/edit-profile.component';
 import { NotificationSettingsComponent } from './settings/notification-settings/notification-settings.component';
@@ -41,6 +38,8 @@ import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localeBg from '@angular/common/locales/bg';
 import { AddTestComponent } from './calendar/add-test/add-test.component';
+import { ReportCardModule } from './report-c/report-card.module';
+import { DateTimeService } from './shared/date-time.service';
 
 registerLocaleData(localeBg);
 
@@ -51,12 +50,9 @@ registerLocaleData(localeBg);
     AppComponent,
     NavigationComponent,
     HomeComponent,
-    ReportCComponent,
     CalendarComponent,
     ScheduleComponent,
     SettingsComponent,
-    OldGradesComponent,
-    GradesComponent,
     NotFoundComponent,
     EditProfileComponent,
     NotificationSettingsComponent,
@@ -89,12 +85,13 @@ registerLocaleData(localeBg);
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaterialTimepickerModule.forRoot()
+    NgxMaterialTimepickerModule.forRoot(),
+    ReportCardModule
   ],
   providers: [{
     provide: LOCALE_ID,
     useValue: "bg-BG"
-  }, DatePipe],
+  }, DatePipe, DateTimeService],
   bootstrap: [AppComponent],
   entryComponents: [AdditionalSubjectsComponent, AddTestComponent]
 })
