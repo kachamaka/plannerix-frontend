@@ -26,3 +26,16 @@ input:focus{
     outline: 0;
     outline: none;
 }
+
+.read-only .mat-form-field-underline {
+    display: none;
+    height: 0;
+}
+
+.read-only > div > div >.mat-select-value-text {
+    color: black !important;
+}
+.mat-form-field  .mat-select.mat-select-disabled.read-only  .mat-select-arrow  {
+    /* display: none; */
+    color: transparent;
+}

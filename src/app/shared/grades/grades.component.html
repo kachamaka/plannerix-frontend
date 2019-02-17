@@ -1,6 +1,7 @@
 <table>
   <tr *ngFor="let grade of grades">
     <td class="first-cell">{{grade.subject}}</td>
+    <td>|</td>
     <td *ngFor="let gr of grade.grades">{{gr}}</td>
   </tr>
 </table>

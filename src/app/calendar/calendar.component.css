@@ -2,6 +2,30 @@ section{
     margin-left: 1rem;
     margin-bottom: 1.5rem;
 }
+.block{
+    display: inline-block; 
+    right: 1rem; 
+    position: absolute; 
+    top: 2.5rem;
+}
+.flaticon-add-1 {
+    position: absolute;
+    right: 1rem;
+    color: green;
+}
+
+.flaticon-rubbish-bin:before{
+    color: red;
+}
+
+.title {
+    display: inline-block;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
 
 table {
     width: 100%;

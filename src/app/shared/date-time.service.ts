@@ -4,6 +4,20 @@ import { Injectable } from '@angular/core';
 
 export class DateTimeService {
     constructor() {}
+    dateToString(date: Date):string {
+        let day ="0" + date.getDate();
+        let month = "0" + (date.getMonth() + 1);
+        month = month.substr(-2);
+        day = day.substr(-2);
+        let str='';
+        str+=day
+        str+='.';
+        str+=month;
+        str+='.';
+        str+=date.getFullYear();
+        return str
+    }
+
     stringToDate(date:string):Date {
         let separators = [".", "-", "/"];
         let newDate:Array<string>;

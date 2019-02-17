@@ -18,7 +18,6 @@ const routes: Routes = [
   {path: 'not-found', component: NotFoundComponent},
   {path: 'calendar', component: CalendarComponent, data: {animation: 'Calendar'}},
   {path: 'schedule', component: ScheduleComponent, data: {animation: 'Schedule'}},
-  
   {path: 'settings', component: SettingsComponent, data: {animation: 'Settings'}},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent,
@@ -28,8 +27,8 @@ const routes: Routes = [
       {path: 'schedule-input', component: ScheduleInputComponent}      
     ]
   },
-  {path: "grades", loadChildren: ()=>ReportCardModule, data:{animation: 'ReportC'}}
-  // {path: '**', redirectTo: 'not-found'} // This sould be exported to separate Module
+  {path: "grades", loadChildren: ()=>ReportCardModule, data:{animation: 'ReportC'}},
+  {path: '**', redirectTo: 'not-found'} // This sould be exported to separate Module
 ];
 
 @NgModule({

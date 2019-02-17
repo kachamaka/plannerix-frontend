@@ -1,5 +1,6 @@
 import { SingleSubject } from './../models/subject.model';
 import { Injectable } from '@angular/core';
+import { SchoolEvent } from './event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,32 +13,36 @@ export class HttpService {
 
   additionalSubjects: SingleSubject[] = [];
   
-  subjects: SingleSubject[] = [{"subject":"Math","checked":false,"SIP":false,"ZIP":false},
-  {"subject":"English","checked":false,"SIP":false,"ZIP":false},
-  {"subject":"BG","checked":false,"SIP":false,"ZIP":false},
-  {"subject":"German","checked":false,"SIP":false,"ZIP":false},
-  {"subject":"Geo","checked":false,"SIP":false,"ZIP":false},
-  {"subject":"Bio","checked":false,"SIP":false,"ZIP":false},
-  {"subject":"Chemistry","checked":false,"SIP":false,"ZIP":false},
-  {"subject":"Physic","checked":false,"SIP":false,"ZIP":false}];
+  subjects: SingleSubject[] = [
+    {"subject":"Math","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"English","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"BG","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"German","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Geo","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Bio","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Chemistry","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Physic","checked":false,"SIP":false,"ZIP":false}
+  ];
 
   // allCheckedSubjects: SingleSubject[] = [];
-  allCheckedSubjects: SingleSubject[] = [{"subject":"Math","checked":true,"SIP":false,"ZIP":false},
-  {"subject":"Physic","checked":true,"SIP":false,"ZIP":false},
-  {"subject":"Bio","checked":true,"SIP":false,"ZIP":false},
-  {"subject":"Geo","checked":true,"SIP":false,"ZIP":false},
-  {"subject":"Chem","checked":true,"SIP":false,"ZIP":false}];
+  allCheckedSubjects: SingleSubject[] = [
+    {"subject":"Math","checked":true,"SIP":false,"ZIP":false},
+    {"subject":"Physic","checked":true,"SIP":false,"ZIP":false},
+    {"subject":"Bio","checked":true,"SIP":false,"ZIP":false},
+    {"subject":"Geo","checked":true,"SIP":false,"ZIP":false},
+    {"subject":"Chem","checked":true,"SIP":false,"ZIP":false}
+  ];
 
   // periods = [[],[],[],[],[]];
   periods = [
     [
-    {"startTime": "07:30", "endTime": "8:10", "subject": "Kaka Emi"},
-    {"startTime": "08:20", "endTime": "9:00", "subject": "Math"},
-    {"startTime": "09:10", "endTime": "9:50", "subject":"Rusgench"},
-    {"startTime": "10:10", "endTime": "10:50", "subject": "NE"},
-    {"startTime": "11:00", "endTime": "11:40", "subject": "NE"},
-    {"startTime": "11:50", "endTime": "12:30", "subject": "FVS"},
-    {"startTime": "12:40", "endTime": "13:20", "subject": "-"}
+      {"startTime": "07:30", "endTime": "8:10", "subject": "Kaka Emi"},
+      {"startTime": "08:20", "endTime": "9:00", "subject": "Math"},
+      {"startTime": "09:10", "endTime": "9:50", "subject":"Rusgench"},
+      {"startTime": "10:10", "endTime": "10:50", "subject": "NE"},
+      {"startTime": "11:00", "endTime": "11:40", "subject": "NE"},
+      {"startTime": "11:50", "endTime": "12:30", "subject": "FVS"},
+      {"startTime": "12:40", "endTime": "13:20", "subject": "-"}
     ],[
       {"startTime": "07:30", "endTime": "8:10", "subject": "ZIP"},
       {"startTime": "08:20", "endTime": "9:00", "subject": "ZIP"},
@@ -79,5 +84,14 @@ export class HttpService {
   // {"date":new Date(2018,11,29),"subject":"Mat"},
   // {"date":new Date(2018,11,19),"subject":"Fizika"},
   // {"date":new Date(2018,11,25),"subject":"Bel"}];
-  
+  getEvents() {
+    let events: Array<SchoolEvent> = [
+      new SchoolEvent(1549752546, "Something", 1),
+      new SchoolEvent(1549752546, "Istoriq", 2),
+      new SchoolEvent(1549752546, "Filosofiq", 0),
+      new SchoolEvent(1549752546, "Math", 3),
+      new SchoolEvent(1549752546, "Hello", 1)
+    ]
+    return events;
+  }
 }
