@@ -1,6 +1,8 @@
 import { SingleSubject } from './../models/subject.model';
 import { Injectable } from '@angular/core';
 import { SchoolEvent } from './event.model';
+import 'rxjs/add/operator/map' ;
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,16 @@ export class HttpService {
   minDate = new Date();
   maxDate = new Date(new Date().setUTCFullYear(new Date().getUTCFullYear() + 1));
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      "Access-Control-Allow-Headers": 'Content-Type',
+      "Access-Control-Allow-Methods": 'POST',    
+      "Access-Control-Allow-Origin":  '*'
+    })
+  };
+  
 
   additionalSubjects: SingleSubject[] = [];
   
@@ -94,4 +105,12 @@ export class HttpService {
     ]
     return events;
   }
+  
+
+  loginUser(user){
+    this.http.post('https://l1n5cmczkh.execute-api.eu-central-1.amazonaws.com/dev/login', user).subscribe((data)=>{
+      console.log(data);
+    });
+  }
+  
 }

@@ -1,3 +1,4 @@
+import { HttpService } from './shared/http.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 
@@ -43,6 +44,8 @@ import { GradesModule } from './shared/grades/grades.module';
 import { HomeComponent } from './home/home.component';
 import { EventDialogComponent } from './shared/event/event-dialog/event-dialog.component';
 import { EventListModule } from './shared/event/event-list.module';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeBg);
 
@@ -96,12 +99,14 @@ registerLocaleData(localeBg);
     ReportCardModule,
     MatMenuModule,
     GradesModule,
-    EventListModule
+    EventListModule,
+    HttpModule,
+    HttpClientModule
   ],
   providers: [{
     provide: LOCALE_ID,
     useValue: "bg-BG"
-  }, DatePipe, DateTimeService],
+  }, DatePipe, DateTimeService, HttpService],
   bootstrap: [AppComponent],
   entryComponents: [AdditionalSubjectsComponent, AddTestComponent, EventDialogComponent]
 })

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../shared/http.service';
+
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public httpService: HttpService) { }
 
   ngOnInit() {
+    let user = {
+      username: "trayan",
+      password: "motherfucker"
+    }
+    // this.httpService.loginUser(user).subscribe((data:any)=>{
+    //   console.log(data);
+    // })
+    this.httpService.loginUser(user);
   }
 
 }
