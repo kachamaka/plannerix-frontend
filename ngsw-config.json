@@ -10,6 +10,10 @@
           "/index.html",
           "/*.css",
           "/*.js"
+        ],
+        "urls":[
+          "https://fonts.googleapis.com/icon?family=Material+Icons",
+          "https://fonts.googleapis.com/css?family=Roboto:300,400,500"
         ]
       }
     }, {
@@ -20,6 +24,20 @@
         "files": [
           "/assets/**"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name":"posts",
+      "urls":[
+
+      ],
+      "cacheConfig":{
+        "maxSize":5,
+        "maxAge":"6h",
+        "timeout":"10s",
+        "strategy": "performance"
       }
     }
   ]
