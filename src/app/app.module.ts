@@ -43,8 +43,9 @@ import { GradesModule } from './shared/grades/grades.module';
 import { HomeComponent } from './home/home.component';
 import { EventDialogComponent } from './shared/event/event-dialog/event-dialog.component';
 import { EventListModule } from './shared/event/event-list.module';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeBg);
 
@@ -99,7 +100,8 @@ registerLocaleData(localeBg);
     MatMenuModule,
     GradesModule,
     EventListModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    HttpClientModule
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{
     provide: LOCALE_ID,
