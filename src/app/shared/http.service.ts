@@ -94,15 +94,12 @@ export class HttpService {
   // {"date":new Date(2018,11,29),"subject":"Mat"},
   // {"date":new Date(2018,11,19),"subject":"Fizika"},
   // {"date":new Date(2018,11,25),"subject":"Bel"}];
-  getEvents() {
-    let events: Array<SchoolEvent> = [
-      new SchoolEvent(1549752546, "Something", 1),
-      new SchoolEvent(1549752546, "Istoriq", 2),
-      new SchoolEvent(1549752546, "Filosofiq", 0),
-      new SchoolEvent(1549752546, "Math", 3),
-      new SchoolEvent(1549752546, "Hello", 1)
-    ]
-    return events;
+  getEvents(data) {
+    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getAllEvents', data); 
+  }
+
+  createEvent(data) {
+    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/createEvent', data); 
   }
 
   loadToken() {

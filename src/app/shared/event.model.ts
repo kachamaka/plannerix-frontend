@@ -1,10 +1,12 @@
 export class SchoolEvent{
     date: number;
-    title: string;
+    subject: string;
+    description: string;
     type: number
-    constructor(date:number, title: string, type: number) {
+    constructor(date:number, subject:string, description: string, type: number) {
         this.date = date;
-        this.title = title;
+        this.subject = subject;
+        this.description = description;
         this.type = type;
     }
     getDate() {

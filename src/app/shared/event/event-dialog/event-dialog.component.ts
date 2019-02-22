@@ -10,11 +10,12 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./event-dialog.component.css']
 })
 export class EventDialogComponent implements OnInit {
-
+  
+  minDate = new Date();
   date:Date;
   edit: boolean = false;
   current_event = new FormGroup({
-    title : new FormControl(''),
+    subject : new FormControl(''),
     date: new FormControl(),
     type: new FormControl(''),
     description: new FormControl('')
@@ -32,7 +33,7 @@ export class EventDialogComponent implements OnInit {
     this.event = this.data.event;
     this.date = this.event.getDate();
     this.current_event.setValue({
-      title: this.event.title,
+      subject: this.event.subject,
       type: this.event.type.toString(),
       date: this.date,
       description : "place holder"
@@ -40,7 +41,7 @@ export class EventDialogComponent implements OnInit {
     this.current_event.controls['date'].disable();
     this.current_event.controls['type'].disable();
     this.current_event.controls['description'].disable();
-    this.current_event.controls['title'].disable();
+    this.current_event.controls['subject'].disable();
  
   }
   openDatePicker() {
@@ -68,7 +69,7 @@ export class EventDialogComponent implements OnInit {
     this.fallback = this.current_event.value;
     this.current_event.controls['type'].enable();
     this.current_event.controls['description'].enable();
-    this.current_event.controls['title'].enable();
+    this.current_event.controls['subject'].enable();
   }
   isInEditMode() {
     return this.edit;
@@ -82,7 +83,7 @@ export class EventDialogComponent implements OnInit {
     this.edit = false;
     this.current_event.controls['type'].disable();
     this.current_event.controls['description'].disable();
-    this.current_event.controls['title'].disable();
+    this.current_event.controls['subject'].disable();
     this.current_event.setValue(this.fallback);
   }
 
@@ -93,7 +94,8 @@ export class EventDialogComponent implements OnInit {
       }
       let out:SchoolEvent =new SchoolEvent(
         this.current_event.controls['date'].value.getTime()/1000, 
-        this.current_event.controls['title'].value,
+        this.current_event.controls['subject'].value,
+        this.current_event.controls['description'].value,
         parseInt(this.current_event.controls['type'].value)
       )
       this.dialogRef.close(out);
@@ -102,7 +104,7 @@ export class EventDialogComponent implements OnInit {
     this.edit = false;
     this.current_event.controls['type'].disable();
     this.current_event.controls['description'].disable();
-    this.current_event.controls['title'].disable();
+    this.current_event.controls['subject'].disable();
     //send to server and refresh
   }
 }

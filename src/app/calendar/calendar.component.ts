@@ -19,7 +19,14 @@ export class CalendarComponent implements OnInit {
   // backupTests;
   fileNameDialogRef: MatDialogRef<AddTestComponent>;
 
-  events: Array<SchoolEvent>
+  events: Array<SchoolEvent> = [
+    new SchoolEvent(1549752546, "Something", "Some desc", 1),
+    new SchoolEvent(1549752546, "Istoriq", "Some desc", 2),
+    new SchoolEvent(1549752546, "Filosofiq", "Some desc", 0),
+    new SchoolEvent(1549752546, "Math", "Some desc", 3),
+    new SchoolEvent(1549752546, "Hello", "Some desc", 1)
+  ]
+  fetchedEvents: any;
 
   constructor(public httpService: HttpService,
     public dialog: MatDialog) { }
@@ -32,7 +39,13 @@ export class CalendarComponent implements OnInit {
   // {"date":new Date(2018,11,25).toISOString(),"subject":"Bel"}];
 
   ngOnInit() {
-    this.events =this.httpService.getEvents();
+    let postData = {
+      "token": localStorage.getItem("token")
+    }
+
+    this.httpService.getEvents(postData).subscribe((data:any)=>{
+      console.log(data);
+    });
     setTimeout(()=>{
       // this.addEvent();
     }, 500)
@@ -41,7 +54,7 @@ export class CalendarComponent implements OnInit {
   addEvent() {
     let dialogRef= this.dialog.open(EventDialogComponent, {
       data: {
-        event: new SchoolEvent(Date.now()/1000, "", -1),
+        event: new SchoolEvent(Date.now()/1000, "", "", -1),
         editable: true,
         new: true
       }
