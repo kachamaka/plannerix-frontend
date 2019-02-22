@@ -12,7 +12,7 @@
             [format]="24" 
             [ngxTimepicker]="startTime" 
             placeholder="12:00"
-            [(ngModel)]="this.httpService.periods[currentDay-1][i].startTime"
+            [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].startTime"
             readonly>
             <ngx-material-timepicker #startTime></ngx-material-timepicker>
           </div>
@@ -29,7 +29,7 @@
           [format]="24" 
           [ngxTimepicker]="endTime" 
           placeholder="12:00"
-          [(ngModel)]="this.httpService.periods[currentDay-1][i].endTime"
+          [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].endTime"
           readonly>
           <ngx-material-timepicker #endTime></ngx-material-timepicker>
         </div>
@@ -39,10 +39,10 @@
       <th mat-header-cell *matHeaderCellDef>Предмет</th>
       <td style="width:30%" mat-cell *matCellDef="let subject; index as i"> 
         <div style="margin:0;padding:0;">
-          <mat-select [(ngModel)]="this.httpService.periods[currentDay-1][i].subject">
+          <mat-select [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].subject">
             <mat-option value="---">---</mat-option>
-              <mat-option *ngFor="let singleSubject of this.httpService.allCheckedSubjects" [value]="singleSubject.subject">
-                {{singleSubject.subject}}
+              <mat-option *ngFor="let singleSubject of this.httpService.allCheckedSubjects" [value]="singleSubject">
+                {{singleSubject}}
               </mat-option>
           </mat-select>
         </div>

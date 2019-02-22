@@ -28,14 +28,31 @@ export class SubjectsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.httpService.allCheckedSubjects = [];
+
     this.httpService.subjects.forEach(singleSubject => {
-      if(singleSubject.checked == true || singleSubject.SIP == true || singleSubject.ZIP == true){
-        this.httpService.allCheckedSubjects.push(singleSubject);
+      if(singleSubject.checked == true){
+        this.httpService.allCheckedSubjects.push(singleSubject.subject);
+      }
+      if(singleSubject.SIP == true){
+        this.httpService.allCheckedSubjects.push(singleSubject.subject+"-СИП");
+      }
+      if(singleSubject.ZIP == true){
+        this.httpService.allCheckedSubjects.push(singleSubject.subject+"-ЗИП");
       }
     });
+
     this.httpService.additionalSubjects.forEach(subject =>{
-      this.httpService.allCheckedSubjects.push(subject);
+      if(subject.checked == true){
+        this.httpService.allCheckedSubjects.push(subject.subject);
+      }
+      if(subject.SIP == true){
+        this.httpService.allCheckedSubjects.push(subject.subject+"-СИП");
+      }
+      if(subject.ZIP == true){
+        this.httpService.allCheckedSubjects.push(subject.subject+"-ЗИП");
+      }
     })
+
   }
 
   
