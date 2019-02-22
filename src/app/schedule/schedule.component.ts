@@ -1,3 +1,4 @@
+import { isUndefined } from 'util';
 import { HttpService } from './../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
@@ -111,8 +112,10 @@ export class ScheduleComponent implements OnInit {
   }
   
   getDataSource(){
-    let dataSource = new MatTableDataSource(this.httpService.periods[this.currentDay-1].periods);
-    return dataSource;
+    if(!isUndefined(this.httpService.periods)){
+      let dataSource = new MatTableDataSource(this.httpService.periods[this.currentDay-1].periods);
+      return dataSource;
+    }
   }
 
   getScheduleData(){
@@ -133,6 +136,7 @@ export class ScheduleComponent implements OnInit {
     this.edit = !this.edit;
     // console.log(this.httpService.periods[4].periods);
     this.getBackupPeriods();
+    console.log(this.backupPeriods);
   }
 
   removePeriod(i){

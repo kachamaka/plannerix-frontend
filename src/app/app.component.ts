@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       this.httpService.periods = data.schedule;
     })
     this.httpService.getSubjects(tokenData).subscribe((data:any)=>{
-      this.httpService.subjectData = data.subjects
+      this.httpService.subjectData = data.subjects;
     })
   }
 
