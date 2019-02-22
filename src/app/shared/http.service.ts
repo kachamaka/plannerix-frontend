@@ -41,6 +41,7 @@ export class HttpService {
   //   {"subject":"Geo","checked":true,"SIP":false,"ZIP":false},
   //   {"subject":"Chem","checked":true,"SIP":false,"ZIP":false}
   // ];
+  subjectData = [];
 
   periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
   // periods = [
@@ -136,6 +137,10 @@ export class HttpService {
 
   getSchedule(data){
     return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule', data);
+  }
+
+  getSubjects(data){
+    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSubjects', data);
   }
   
 }

@@ -68,7 +68,20 @@ export class ScheduleComponent implements OnInit {
     }else{
       this.currentDay = 1;
     }
-    this.getScheduleData();
+
+    let postData = {
+      "token": localStorage.getItem("token")
+    }
+
+    this.httpService.getSchedule(postData).subscribe((data:any)=>{
+      console.log(data);
+      if(data.success==true){
+        this.httpService.periods = data.schedule;
+        console.log(this.httpService.periods);
+        // return this.httpService.periods
+        // console.log("done");
+      }
+    })
     // console.log("curday",this.currentDay);
     // console.log(this.days[this.todayDay]); 
   }
@@ -110,12 +123,15 @@ export class ScheduleComponent implements OnInit {
       console.log(data);
       if(data.success==true){
         this.httpService.periods = data.schedule;
+        return this.httpService.periods
+        // console.log("done");
       }
     })
   }
 
   editMenu(){
     this.edit = !this.edit;
+    // console.log(this.httpService.periods[4].periods);
     this.getBackupPeriods();
   }
 
