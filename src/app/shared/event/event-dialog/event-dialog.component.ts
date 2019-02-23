@@ -1,3 +1,4 @@
+import { HttpService } from './../../http.service';
 import { Component, OnInit, Input, Inject, ViewChild, ElementRef } from '@angular/core';
 import { SchoolEvent } from 'src/app/shared/event.model';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDatepicker } from '@angular/material';
@@ -11,6 +12,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class EventDialogComponent implements OnInit {
   
+  tempData = "---";
   minDate = new Date();
   date:Date;
   edit: boolean = false;
@@ -23,9 +25,13 @@ export class EventDialogComponent implements OnInit {
   event: SchoolEvent;
   fallback;
   @ViewChild('picker') picker: MatDatepicker<null>;
-  constructor(public dialogRef: MatDialogRef<EventDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any, private dateTimeS: DateTimeService) { }
+  constructor(public dialogRef: MatDialogRef<EventDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, 
+    private dateTimeS: DateTimeService,
+    private httpService: HttpService) { }
 
   ngOnInit() {
+    // console.log(this.httpService.periods);
     if(this.data.new) {
       this.newEvent();
       return
@@ -88,12 +94,12 @@ export class EventDialogComponent implements OnInit {
   }
 
   acceptEdit() {
-    if(this.data.new ) {
+    if(this.data.new) {
       if (!this.current_event.valid || !this.current_event.controls['date'].value) {
         return
       }
       let out:SchoolEvent =new SchoolEvent(
-        this.current_event.controls['date'].value.getTime()/1000, 
+        this.current_event.controls['date'].value.getTime(), 
         this.current_event.controls['subject'].value,
         this.current_event.controls['description'].value,
         parseInt(this.current_event.controls['type'].value)

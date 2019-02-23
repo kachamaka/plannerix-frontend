@@ -1,16 +1,20 @@
 <form [formGroup]="current_event" >
 
-  <mat-form-field class="title-box" [appReadOnly]="isInEditMode()">
+  <!-- <mat-form-field class="title-box" [appReadOnly]="isInEditMode()">
       <mat-label *ngIf="data.new">Заглавие</mat-label>
       <input type="text" matInput  class="title " formControlName="subject" required>
       <mat-error>Empty</mat-error>
-  </mat-form-field>
-  <mat-select [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].subject">
-    <mat-option value="---">---</mat-option>
+  </mat-form-field> -->
+<mat-form-field>
+  <mat-label *ngIf="data.new">Предмет</mat-label>
+  <mat-select formControlName="subject">
       <mat-option *ngFor="let singleSubject of this.httpService.subjectData" [value]="singleSubject">
         {{singleSubject}}
       </mat-option>
   </mat-select>
+  <mat-error>Empty</mat-error>
+</mat-form-field>
+
   <br>
   <mat-form-field class="read-only" (click)="openDatePicker()" >
       <input type="text" matInput [min]="minDate" placeholder="Дата" formControlName="date" [matDatepicker]="picker" required>

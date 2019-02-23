@@ -4,10 +4,11 @@ export class SchoolEvent{
     description: string;
     type: number
     constructor(date:number, subject:string, description: string, type: number) {
-        this.date = date;
+        this.date = date/1000;
         this.subject = subject;
         this.description = description;
         this.type = type;
+        console.log(this.date)
     }
     getDate() {
         let d = new Date(this.date*1000);
