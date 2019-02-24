@@ -19,7 +19,7 @@ export class CalendarComponent implements OnInit {
   // backupTests;
   fileNameDialogRef: MatDialogRef<AddTestComponent>;
 
-  events: Array<SchoolEvent>
+  fetchedEvents: any;
 
   constructor(public httpService: HttpService,
     public dialog: MatDialog) { }
@@ -32,16 +32,21 @@ export class CalendarComponent implements OnInit {
   // {"date":new Date(2018,11,25).toISOString(),"subject":"Bel"}];
 
   ngOnInit() {
-    this.events =this.httpService.getEvents();
+    this.httpService.loadEvents();
+      // this.events = data.events;
+      // console.log(data.events);
     setTimeout(()=>{
       // this.addEvent();
     }, 500)
   }
 
+  
+
   addEvent() {
+
     let dialogRef= this.dialog.open(EventDialogComponent, {
       data: {
-        event: new SchoolEvent(Date.now()/1000, "", -1),
+        event: new SchoolEvent(Date.now(), "", "", -1),
         editable: true,
         new: true
       }
@@ -51,7 +56,22 @@ export class CalendarComponent implements OnInit {
         console.log("canceled");
       }
       if(out) {
-        console.log(out);
+        console.log(out.date);
+        // return;
+        let postData = {
+          token: localStorage.getItem("token"),
+          timestamp: out.date,
+          subject: out.subject,
+          description: out.description,
+          subjectType: out.type
+        } 
+        // console.log(postData);
+        this.httpService.createEvent(postData).subscribe((data:any)=>{
+          console.log(data);
+          if(data.success==true){
+            this.httpService.loadEvents();
+          }
+        })
       }
     })
   }

@@ -1,3 +1,4 @@
+import { HttpService } from './shared/http.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 
@@ -45,6 +46,7 @@ import { EventDialogComponent } from './shared/event/event-dialog/event-dialog.c
 import { EventListModule } from './shared/event/event-list.module';
 // import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeBg);
@@ -100,13 +102,18 @@ registerLocaleData(localeBg);
     MatMenuModule,
     GradesModule,
     EventListModule,
+<<<<<<< HEAD
     HttpClientModule
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+=======
+    HttpModule,
+    HttpClientModule
+>>>>>>> c04bdd476e40523a6a51e2d3cef0997f56030feb
   ],
   providers: [{
     provide: LOCALE_ID,
     useValue: "bg-BG"
-  }, DatePipe, DateTimeService],
+  }, DatePipe, DateTimeService, HttpService],
   bootstrap: [AppComponent],
   entryComponents: [AdditionalSubjectsComponent, AddTestComponent, EventDialogComponent]
 })

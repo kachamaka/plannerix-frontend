@@ -1,7 +1,7 @@
 <ul>
   <li *ngFor="let event of events" (click)="openModal(event)">
     <div class="color" eventColor [type]="event.type"></div>
-    <span class="title" >{{event.title}} - {{event.typeToString()}}</span>
+    <span class="title" >{{event.subject}} - {{event.typeToString()}}</span>
     <span class="date">{{dateTimeS.dateToString(event.getDate())}}</span>
   </li>
 </ul>

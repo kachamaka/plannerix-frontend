@@ -62,13 +62,13 @@ export class ScheduleInputComponent implements OnInit {
     console.log(this.httpService.periods);
   }
   addPeriod(){
-    this.httpService.periods[this.currentDay-1].push({"startTime": "", "endTime":"", "subject": "---"});
+    this.httpService.periods[this.currentDay-1].periods.push({"startTime": "", "endTime":"", "subject": "---"});
   }
   removePeriod(i){
-    this.httpService.periods[this.currentDay-1].splice(i, 1);
+    this.httpService.periods[this.currentDay-1].periods.splice(i, 1);
   }
   getDataSource(){
-    let dataSource = new MatTableDataSource(this.httpService.periods[this.currentDay-1]);
+    let dataSource = new MatTableDataSource(this.httpService.periods[this.currentDay-1].periods);
     return dataSource;
   }
 

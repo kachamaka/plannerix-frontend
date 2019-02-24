@@ -1,3 +1,4 @@
+import { HttpService } from './../../http.service';
 import { Component, OnInit, Input, Inject, ViewChild, ElementRef } from '@angular/core';
 import { SchoolEvent } from 'src/app/shared/event.model';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDatepicker } from '@angular/material';
@@ -10,11 +11,13 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./event-dialog.component.css']
 })
 export class EventDialogComponent implements OnInit {
-
+  
+  tempData = "---";
+  minDate = new Date();
   date:Date;
   edit: boolean = false;
   current_event = new FormGroup({
-    title : new FormControl(''),
+    subject : new FormControl(''),
     date: new FormControl(),
     type: new FormControl(''),
     description: new FormControl('')
@@ -22,9 +25,13 @@ export class EventDialogComponent implements OnInit {
   event: SchoolEvent;
   fallback;
   @ViewChild('picker') picker: MatDatepicker<null>;
-  constructor(public dialogRef: MatDialogRef<EventDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any, private dateTimeS: DateTimeService) { }
+  constructor(public dialogRef: MatDialogRef<EventDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, 
+    private dateTimeS: DateTimeService,
+    private httpService: HttpService) { }
 
   ngOnInit() {
+    // console.log(this.httpService.periods);
     if(this.data.new) {
       this.newEvent();
       return
@@ -32,15 +39,15 @@ export class EventDialogComponent implements OnInit {
     this.event = this.data.event;
     this.date = this.event.getDate();
     this.current_event.setValue({
-      title: this.event.title,
+      subject: this.event.subject,
       type: this.event.type.toString(),
       date: this.date,
-      description : "place holder"
+      description : this.event.description
     })
     this.current_event.controls['date'].disable();
     this.current_event.controls['type'].disable();
     this.current_event.controls['description'].disable();
-    this.current_event.controls['title'].disable();
+    this.current_event.controls['subject'].disable();
  
   }
   openDatePicker() {
@@ -68,7 +75,7 @@ export class EventDialogComponent implements OnInit {
     this.fallback = this.current_event.value;
     this.current_event.controls['type'].enable();
     this.current_event.controls['description'].enable();
-    this.current_event.controls['title'].enable();
+    this.current_event.controls['subject'].enable();
   }
   isInEditMode() {
     return this.edit;
@@ -82,27 +89,59 @@ export class EventDialogComponent implements OnInit {
     this.edit = false;
     this.current_event.controls['type'].disable();
     this.current_event.controls['description'].disable();
-    this.current_event.controls['title'].disable();
+    this.current_event.controls['subject'].disable();
     this.current_event.setValue(this.fallback);
   }
 
+  deleteEvent() {
+    // let out:SchoolEvent =new SchoolEvent(
+    //   this.current_event.controls['date'].value.getTime(), 
+    //   this.current_event.controls['subject'].value,
+    //   this.current_event.controls['description'].value,
+    //   parseInt(this.current_event.controls['type'].value)
+    // )
+    let out = {
+      timestamp: this.current_event.controls['date'].value.getTime()/1000,
+      action: "delete"
+    }
+    // console.log(timestamp);
+    this.dialogRef.close(out);
+  }
+
   acceptEdit() {
-    if(this.data.new ) {
+    // console.log(this.data);
+    if(this.data.new) {
       if (!this.current_event.valid || !this.current_event.controls['date'].value) {
+        // console.log(this.current_event.valid, this.current_event.controls['date'].value);
         return
       }
       let out:SchoolEvent =new SchoolEvent(
-        this.current_event.controls['date'].value.getTime()/1000, 
-        this.current_event.controls['title'].value,
+        this.current_event.controls['date'].value.getTime(), 
+        this.current_event.controls['subject'].value,
+        this.current_event.controls['description'].value,
         parseInt(this.current_event.controls['type'].value)
       )
+      console.log(out);
       this.dialogRef.close(out);
       return
     }
     this.edit = false;
     this.current_event.controls['type'].disable();
     this.current_event.controls['description'].disable();
-    this.current_event.controls['title'].disable();
+    this.current_event.controls['subject'].disable();
+
+    // console.log(this.current_event.controls['type'].value);
+
+    let out:SchoolEvent = new SchoolEvent(
+      this.current_event.controls['date'].value.getTime(), 
+      this.current_event.controls['subject'].value,
+      this.current_event.controls['description'].value,
+      parseInt(this.current_event.controls['type'].value)
+    )
+
+    // console.log(out);
+
+    this.dialogRef.close(out)
     //send to server and refresh
   }
 }

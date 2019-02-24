@@ -1,3 +1,4 @@
+import { isUndefined } from 'util';
 import { HttpService } from './../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
@@ -12,7 +13,7 @@ export class ScheduleComponent implements OnInit {
   todayDay = new Date().getDay();
   edit = false;
   // today = new Date("2018-11-31T16:00:00");
-  backupPeriods = [[],[],[],[],[]];
+  backupPeriods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
 
   days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
@@ -68,13 +69,13 @@ export class ScheduleComponent implements OnInit {
     }else{
       this.currentDay = 1;
     }
-    // console.log("curday",this.currentDay);
-    // console.log(this.days[this.todayDay]); 
+
+    this.httpService.loadSchedule();
   }
 
   getBackupPeriods(){
     for(let i = 0;i<this.httpService.periods.length;i++){
-      this.backupPeriods[i] = this.httpService.periods[i].slice(0);
+      this.backupPeriods[i].periods = this.httpService.periods[i].periods.slice(0);
     }
   }
 
@@ -97,36 +98,48 @@ export class ScheduleComponent implements OnInit {
   }
   
   getDataSource(){
-    let dataSource = new MatTableDataSource(this.httpService.periods[this.currentDay-1]);
-    return dataSource;
+    if(!isUndefined(this.httpService.periods)){
+      let dataSource = new MatTableDataSource(this.httpService.periods[this.currentDay-1].periods);
+      return dataSource;
+    }
   }
 
   editMenu(){
     this.edit = !this.edit;
+    // console.log(this.httpService.periods[4].periods);
     this.getBackupPeriods();
+    console.log(this.backupPeriods);
   }
 
   removePeriod(i){
-    this.httpService.periods[this.currentDay-1].splice(i, 1);
+    this.httpService.periods[this.currentDay-1].periods.splice(i, 1);
     console.log(this.backupPeriods[this.currentDay-1]);
   }
   addPeriod(){
-    this.httpService.periods[this.currentDay-1].push({"startTime": "", "endTime":"", "subject": "---"});
+    this.httpService.periods[this.currentDay-1].periods.push({"startTime": "", "endTime":"", "subject": "---"});
   }
 
   saveEdit(){
     this.editMenu();
+    let postData = {
+      token: localStorage.getItem("token"),
+      schedule: this.httpService.periods
+    }
+    this.httpService.updateSchedule(postData).subscribe((data:any)=>{
+      console.log(data);
+      // this.httpService.loadSchedule();
+    })
   }
 
   cancelEdit(){
     for(let i = 0;i<this.httpService.periods.length;i++){
-      this.httpService.periods[i] = this.backupPeriods[i].slice(0);
+      this.httpService.periods[i].periods = this.backupPeriods[i].periods.slice(0);
     }
     this.editMenu();
   }
 
   sortPeriods(day){
-    this.httpService.periods[day].sort((a, b) => {
+    this.httpService.periods[day].periods.sort((a, b) => {
       console.log(this.getMinutes(a.startTime),this.getMinutes(b.startTime));      
       return this.getMinutes(a.startTime) - this.getMinutes(b.startTime);
     });
