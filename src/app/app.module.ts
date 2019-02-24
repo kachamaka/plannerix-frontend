@@ -102,13 +102,8 @@ registerLocaleData(localeBg);
     MatMenuModule,
     GradesModule,
     EventListModule,
-<<<<<<< HEAD
-    HttpClientModule
-    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-=======
     HttpModule,
     HttpClientModule
->>>>>>> c04bdd476e40523a6a51e2d3cef0997f56030feb
   ],
   providers: [{
     provide: LOCALE_ID,
