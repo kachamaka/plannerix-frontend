@@ -37,7 +37,7 @@
   <div class="control">
       <i class="flaticon-cancel" (click)="cancelEditMode()" *ngIf="isInEditMode()"></i>
       <i class="flaticon-edit" (click)="startEdit()" *ngIf="!isInEditMode()&&data.editable"></i>
-      <i class="flaticon-rubbish-bin" *ngIf="isInEditMode()&&!data.new"></i>
+      <i class="flaticon-rubbish-bin" (click)="deleteEvent()" *ngIf="isInEditMode()&&!data.new"></i>
       <i class="flaticon-checked" (click)="acceptEdit()"></i>
   </div>
 </form>

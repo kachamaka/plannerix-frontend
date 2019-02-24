@@ -42,7 +42,7 @@ export class EventDialogComponent implements OnInit {
       subject: this.event.subject,
       type: this.event.type.toString(),
       date: this.date,
-      description : "place holder"
+      description : this.event.description
     })
     this.current_event.controls['date'].disable();
     this.current_event.controls['type'].disable();
@@ -93,9 +93,26 @@ export class EventDialogComponent implements OnInit {
     this.current_event.setValue(this.fallback);
   }
 
+  deleteEvent() {
+    // let out:SchoolEvent =new SchoolEvent(
+    //   this.current_event.controls['date'].value.getTime(), 
+    //   this.current_event.controls['subject'].value,
+    //   this.current_event.controls['description'].value,
+    //   parseInt(this.current_event.controls['type'].value)
+    // )
+    let out = {
+      timestamp: this.current_event.controls['date'].value.getTime()/1000,
+      action: "delete"
+    }
+    // console.log(timestamp);
+    this.dialogRef.close(out);
+  }
+
   acceptEdit() {
+    // console.log(this.data);
     if(this.data.new) {
       if (!this.current_event.valid || !this.current_event.controls['date'].value) {
+        // console.log(this.current_event.valid, this.current_event.controls['date'].value);
         return
       }
       let out:SchoolEvent =new SchoolEvent(
@@ -104,6 +121,7 @@ export class EventDialogComponent implements OnInit {
         this.current_event.controls['description'].value,
         parseInt(this.current_event.controls['type'].value)
       )
+      console.log(out);
       this.dialogRef.close(out);
       return
     }
@@ -111,6 +129,19 @@ export class EventDialogComponent implements OnInit {
     this.current_event.controls['type'].disable();
     this.current_event.controls['description'].disable();
     this.current_event.controls['subject'].disable();
+
+    // console.log(this.current_event.controls['type'].value);
+
+    let out:SchoolEvent = new SchoolEvent(
+      this.current_event.controls['date'].value.getTime(), 
+      this.current_event.controls['subject'].value,
+      this.current_event.controls['description'].value,
+      parseInt(this.current_event.controls['type'].value)
+    )
+
+    // console.log(out);
+
+    this.dialogRef.close(out)
     //send to server and refresh
   }
 }

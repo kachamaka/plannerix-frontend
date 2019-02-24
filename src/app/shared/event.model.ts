@@ -8,7 +8,7 @@ export class SchoolEvent{
         this.subject = subject;
         this.description = description;
         this.type = type;
-        console.log(this.date)
+        // console.log(new Date(this.date*1000))
     }
     getDate() {
         let d = new Date(this.date*1000);

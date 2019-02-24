@@ -70,17 +70,7 @@ export class ScheduleComponent implements OnInit {
       this.currentDay = 1;
     }
 
-    let postData = {
-      "token": localStorage.getItem("token")
-    }
-
-    this.httpService.getSchedule(postData).subscribe((data:any)=>{
-      console.log(data);
-      if(data.success==true){
-        this.httpService.periods = data.schedule;
-        console.log(this.httpService.periods);
-      }
-    })
+    this.httpService.loadSchedule();
   }
 
   getBackupPeriods(){
@@ -131,6 +121,14 @@ export class ScheduleComponent implements OnInit {
 
   saveEdit(){
     this.editMenu();
+    let postData = {
+      token: localStorage.getItem("token"),
+      schedule: this.httpService.periods
+    }
+    this.httpService.updateSchedule(postData).subscribe((data:any)=>{
+      console.log(data);
+      // this.httpService.loadSchedule();
+    })
   }
 
   cancelEdit(){

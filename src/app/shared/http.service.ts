@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { SchoolEvent } from './event.model';
 import 'rxjs/add/operator/map' ;
 import { HttpClient } from '@angular/common/http';
-import { RequestOptions } from '@angular/http';
-import { Headers } from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +14,7 @@ export class HttpService {
     "token":""
   };
   options;
+  domain = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/";
 
   constructor(private http: HttpClient) { }
  
@@ -34,91 +33,41 @@ export class HttpService {
   ];
 
   allCheckedSubjects = [];
-  // allCheckedSubjects: SingleSubject[] = [
-  //   {"subject":"Math","checked":true,"SIP":false,"ZIP":false},
-  //   {"subject":"Physic","checked":true,"SIP":false,"ZIP":false},
-  //   {"subject":"Bio","checked":true,"SIP":false,"ZIP":false},
-  //   {"subject":"Geo","checked":true,"SIP":false,"ZIP":false},
-  //   {"subject":"Chem","checked":true,"SIP":false,"ZIP":false}
-  // ];
   subjectData = [];
 
-  periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
-  // periods = [
-  //   [
-  //     {"startTime": "07:30", "endTime": "8:10", "subject": "Kaka Emi"},
-  //     {"startTime": "08:20", "endTime": "9:00", "subject": "Math"},
-  //     {"startTime": "09:10", "endTime": "9:50", "subject":"Rusgench"},
-  //     {"startTime": "10:10", "endTime": "10:50", "subject": "NE"},
-  //     {"startTime": "11:00", "endTime": "11:40", "subject": "NE"},
-  //     {"startTime": "11:50", "endTime": "12:30", "subject": "FVS"},
-  //     {"startTime": "12:40", "endTime": "13:20", "subject": "-"}
-  //   ],[
-  //     {"startTime": "07:30", "endTime": "8:10", "subject": "ZIP"},
-  //     {"startTime": "08:20", "endTime": "9:00", "subject": "ZIP"},
-  //     {"startTime": "09:10", "endTime": "9:50", "subject":"Nasko"},
-  //     {"startTime": "10:10", "endTime": "10:50", "subject": "Zlatitu"},
-  //     {"startTime": "11:00", "endTime": "11:40", "subject": "FVS"},
-  //     {"startTime": "11:50", "endTime": "12:30", "subject": "AE"},
-  //     {"startTime": "12:40", "endTime": "13:20", "subject": "AE"}
-  //   ],[
-  //     {"startTime": "07:30", "endTime": "8:10", "subject": "NE"},
-  //     {"startTime": "08:20", "endTime": "9:00", "subject": "NE"},
-  //     {"startTime": "09:10", "endTime": "9:50", "subject":"Az znam che nishto ne znam"},
-  //     {"startTime": "10:10", "endTime": "10:50", "subject": "A golqmo a malko"},
-  //     {"startTime": "11:00", "endTime": "11:40", "subject": "AE"},
-  //     {"startTime": "11:50", "endTime": "12:30", "subject": "AE"},
-  //     {"startTime": "12:40", "endTime": "13:20", "subject": "Chasa na klasnata"}
-  //   ],[
-  //     {"startTime": "07:30", "endTime": "8:10", "subject": "Gospoja klasna"},
-  //     {"startTime": "08:20", "endTime": "9:00", "subject": "Kaka Emi"},
-  //     {"startTime": "09:10", "endTime": "9:50", "subject":"Rusgench"},
-  //     {"startTime": "10:10", "endTime": "10:50", "subject": "NE"},
-  //     {"startTime": "11:00", "endTime": "11:40", "subject": "NE"},
-  //     {"startTime": "11:50", "endTime": "12:30", "subject": "Meca pak"},
-  //     {"startTime": "12:40", "endTime": "13:20", "subject": "-"}
-  //   ],[
-  //     {"startTime": "07:30", "endTime": "8:10", "subject": "Naskicha"},
-  //     {"startTime": "08:20", "endTime": "9:00", "subject": "Rusgench"},
-  //     {"startTime": "09:10", "endTime": "9:50", "subject":"Gospoja klasna pak"},
-  //     {"startTime": "10:10", "endTime": "10:50", "subject": "NE"},
-  //     {"startTime": "11:00", "endTime": "11:40", "subject": "NE"},
-  //     {"startTime": "11:50", "endTime": "12:30", "subject": "Matematika"},
-  //     {"startTime": "12:40", "endTime": "13:20", "subject": "Zlatka"}
-  //   ]
-  // ]
+  events: Array<SchoolEvent> = [ ]
 
-  // upcommingTestDates = [{"date":new Date(2018,11,26),"subject":"History"},
-  // {"date":new Date(2018,11, 23),"subject":"NE"},
-  // {"date":new Date(2018,11,22),"subject":"NE"},
-  // {"date":new Date(2018,11,29),"subject":"Mat"},
-  // {"date":new Date(2018,11,19),"subject":"Fizika"},
-  // {"date":new Date(2018,11,25),"subject":"Bel"}];
+  
+
+  periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
+
   getEvents(data) {
-    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getAllEvents', data); 
+    return this.http.post(this.domain + 'getAllEvents', data); 
+  }
+
+  getWeeklyEvents(data) {
+    return this.http.post(this.domain + 'getWeeklyEvents', data); 
   }
 
   createEvent(data) {
-    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/createEvent', data); 
+    return this.http.post(this.domain + 'createEvent', data); 
   }
+  
+  editEvent(data) {
+    return this.http.post(this.domain + 'editEvent', data); 
+  }
+
+  deleteEvent(data) {
+    return this.http.post(this.domain + 'deleteEvent', data); 
+  }  
 
   loadToken() {
     this.authToken.token = localStorage.getItem('token');
   }
 
-  createAuthenticationHeaders() {
-    this.loadToken();
-    this.options = new RequestOptions({
-      headers: new Headers({
-        'Content-Type': 'application/json',
-        'authorization': this.authToken
-      })
-    });
-  }
-  
 
   loginUser(user){
-    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/login', user);
+    return this.http.post(this.domain + 'login', user);
   }
 
   logoutUser() {
@@ -127,17 +76,68 @@ export class HttpService {
   }
 
   registerUser(user){
-    this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/register', user).subscribe((data)=>{
+    this.http.post(this.domain + 'register', user).subscribe((data)=>{
       console.log(data);
     });
   }
 
   getSchedule(data){
-    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule', data);
+    return this.http.post(this.domain + 'getSchedule', data);
+  }
+  
+  updateSchedule(data){
+    return this.http.post(this.domain + 'updateSchedule', data);
   }
 
   getSubjects(data){
-    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSubjects', data);
+    return this.http.post(this.domain + 'getSubjects', data);
   }
+
+  getNextPeriod(data){
+    return this.http.post(this.domain + 'getNextPeriod', data);
+  }
+
+  getWeeklyGrades(data){
+    return this.http.post(this.domain + 'getWeeklyGrades', data);
+  }
+
+  loadSchedule(){
+    let postData = {
+      "token": localStorage.getItem("token")
+    }
+
+    this.getSchedule(postData).subscribe((data:any)=>{
+      console.log(data);
+      if(data.success==true){
+        this.periods = data.schedule;
+        console.log(this.periods);
+      }
+    })
+  }
+
+
+  loadEvents(){
+    let postData = {
+      "token": localStorage.getItem("token")
+    }
+
+    this.getEvents(postData).subscribe((data:any)=>{
+      console.log(data);
+        if(data.success==true){
+          this.events = [];
+          for(let i = 0;i<data.events.length; i++){
+            this.events.push(
+              new SchoolEvent(
+                data.events[i].timestamp*1000,
+                data.events[i].subject,
+                data.events[i].description,
+                data.events[i].subjectType
+                )
+              );
+            }
+          }
+        }
+      )
+    }
   
 }
