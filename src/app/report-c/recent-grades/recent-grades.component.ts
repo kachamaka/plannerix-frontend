@@ -26,10 +26,6 @@ export class RecentGradesComponent implements OnInit {
     let day = d.getDay();
     let diff = d.getDate() - day + (day == 0 ? -6 : 1);
     this.thisWeekMonday = new Date((d.setDate(diff))).getTime();
-    // console.log(new Date(this.thisWeekMonday));
-    // console.log(this.getDateFormat(this.thisWeekMonday.toLocaleDateString()));
-    // console.log(this.thisWeekMonday.toLocaleDateString() + 86400000);
-
 
     for(let i = 0; i<5;i++){
       // let day = ;

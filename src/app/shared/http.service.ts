@@ -101,6 +101,14 @@ export class HttpService {
     return this.http.post(this.domain + 'getWeeklyGrades', data);
   }
 
+  getYearGrades(data){
+    return this.http.post(this.domain + 'getYearGrades', data);
+  }
+
+  getAllGrades(data){
+    return this.http.post(this.domain + 'getAllGrades', data);
+  }
+
   loadSchedule(){
     let postData = {
       "token": localStorage.getItem("token")

@@ -1,3 +1,4 @@
+import { HttpService } from './../../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { ReportCardHttpService } from '../report-card-http.service';
 
@@ -23,11 +24,29 @@ export class AllGradesComponent implements OnInit {
       ]
     }
   ]
-  constructor(private httpS: ReportCardHttpService) { }
+  today = new Date();
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    let postData = {
+      token: localStorage.getItem("token")
+    }
+    console.log(this.today.getMonth()+1)
+    if(this.today.getMonth()+1 >= 2 && this.today.getMonth()+1 <= 8){
 
-    this.yearGrades = this.httpS.getYearsGrades();
+    }
+    let firstTerm = {
+      start: new Date(this.today.getFullYear(), 8, 1, 0, 0, 0, 0),
+      end: new Date(this.today.getFullYear()+1, 0, 31, 23, 59, 0, 0)
+    }
+    console.log(firstTerm);
+    this.httpService.getAllGrades(postData).subscribe((data:any)=>{
+      console.log(data);
+      if(data.success==true){
+        
+      }
+    });
+    
   }
 
 }
