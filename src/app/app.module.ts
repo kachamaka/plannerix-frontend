@@ -1,10 +1,10 @@
+import { HttpService } from './shared/http.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { HomeComponent } from './home/home.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -40,6 +40,15 @@ import localeBg from '@angular/common/locales/bg';
 import { AddTestComponent } from './calendar/add-test/add-test.component';
 import { ReportCardModule } from './report-c/report-card.module';
 import { DateTimeService } from './shared/date-time.service';
+import { GradesModule } from './shared/grades/grades.module';
+import { HomeComponent } from './home/home.component';
+import { EventDialogComponent } from './shared/event/event-dialog/event-dialog.component';
+import { EventListModule } from './shared/event/event-list.module';
+// import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localeBg);
 
@@ -48,8 +57,8 @@ registerLocaleData(localeBg);
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
-    NavigationComponent,
     HomeComponent,
+    NavigationComponent,
     CalendarComponent,
     ScheduleComponent,
     SettingsComponent,
@@ -62,7 +71,11 @@ registerLocaleData(localeBg);
     CredentialsComponent,
     SubjectsComponent,
     ScheduleInputComponent,
-    AddTestComponent
+    AddTestComponent,
+    // EventComponent,
+    // EventColorDirective,
+    // EventDialogComponent,
+    // ReadOnlyDirective
   ],
   imports: [
     BrowserModule,
@@ -86,13 +99,19 @@ registerLocaleData(localeBg);
     FormsModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule.forRoot(),
-    ReportCardModule
+    MatMenuModule,
+    GradesModule,
+    EventListModule,
+    HttpModule,
+    ReportCardModule,
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{
     provide: LOCALE_ID,
     useValue: "bg-BG"
-  }, DatePipe, DateTimeService],
+  }, DatePipe, DateTimeService, HttpService],
   bootstrap: [AppComponent],
-  entryComponents: [AdditionalSubjectsComponent, AddTestComponent]
+  entryComponents: [AdditionalSubjectsComponent, AddTestComponent, EventDialogComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-<div class="header">
+<!-- <div class="header">
   <div *ngIf="edit==true" class="cancel" style="margin:0;padding:0">
     <button (click)="cancelEdit()" style="background-color: #00bfff" mat-flat-button>Откажи </button>
   </div>
@@ -7,7 +7,32 @@
     <button *ngIf="edit==false" (click)="editMenu()" style="background-color: #00bfff" mat-flat-button>Промени </button>
     <button *ngIf="edit==true" (click)="saveEdit()" style="background-color: #00bfff" mat-flat-button>Запази </button>
   </div>
+</div>  -->
+
+<div class="container">
+  <h1 class="title">График</h1>
+  <div class="block">
+    <i class="flaticon-edit" *ngIf="edit==false" (click)="editMenu()"></i>
+    <i class="menu flaticon-menu" *ngIf="edit==true" [matMenuTriggerFor]="menu"></i>
+    <mat-menu #menu="matMenu" class="menuItems">
+      <div mat-menu-item (click)="cancelEdit()">
+       <i class="flaticon-cancel menuItem"></i><span class="menuItemText">Cancel</span>
+      </div>
+      <div mat-menu-item (click)="saveEdit()">
+        <i class="flaticon-checked menuItem"></i><span class="menuItemText">Save</span>
+      </div>
+      <div mat-menu-item (click)="addPeriod()">
+          <i class="flaticon-add menuItem"></i><span class="menuItemText">Add Item</span>
+      </div>
+      <div mat-menu-item (click)="sortPeriods(this.currentDay-1)">
+          <i class="flaticon-sort-by-attributes-interface-button-option menuItem"></i><span class="menuItemText">Sort</span>
+      </div>
+      
+    </mat-menu>
+    <!-- <i class="flaticon-checked" *ngIf="edit==true" (click)="saveEdit()"></i> -->
+  </div>
 </div>
+
 <mat-divider style="margin-bottom:5px"></mat-divider>
 
 <h4 style="margin:0 0 7px 0" align="center">{{days[currentDay]}}</h4>
@@ -25,7 +50,7 @@
             [format]="24" 
             [ngxTimepicker]="startTime" 
             placeholder="12:00"
-            [(ngModel)]="this.httpService.periods[currentDay-1][i].startTime"
+            [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].startTime"
             readonly>
             <ngx-material-timepicker #startTime></ngx-material-timepicker>
           </div>
@@ -44,7 +69,7 @@
           [format]="24" 
           [ngxTimepicker]="endTime" 
           placeholder="12:00"
-          [(ngModel)]="this.httpService.periods[currentDay-1][i].endTime"
+          [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].endTime"
           readonly>
           <ngx-material-timepicker #endTime></ngx-material-timepicker>
         </div>
@@ -53,7 +78,7 @@
     </ng-container>
     <ng-container matColumnDef="subject">
       <th mat-header-cell *matHeaderCellDef>Предмет</th>
-      <td style="width:30%" mat-cell *matCellDef="let subject; index as i"> 
+      <td style="width:20%" mat-cell *matCellDef="let subject; index as i"> 
           <p 
           *ngIf="edit==false"
           style="
@@ -65,10 +90,10 @@
           white-space: -o-pre-wrap;
           word-wrap: break-word;">{{subject.subject}}</p>
         <div *ngIf="edit==true" style="margin:0;padding:0;">
-          <mat-select [(ngModel)]="this.httpService.periods[currentDay-1][i].subject">
+          <mat-select [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].subject">
             <mat-option value="---">---</mat-option>
-              <mat-option *ngFor="let singleSubject of this.httpService.allCheckedSubjects" [value]="singleSubject.subject">
-                {{singleSubject.subject}}
+              <mat-option *ngFor="let singleSubject of this.httpService.subjectData" [value]="singleSubject">
+                {{singleSubject}}
               </mat-option>
           </mat-select>
         </div>
@@ -78,13 +103,13 @@
   
     <ng-container matColumnDef="remove">
       <th mat-header-cell *matHeaderCellDef style="display:none"></th>
-      <td mat-cell *matCellDef="let subject; index as i">
-        <button
-        *ngIf="edit==true"
-        (click)="removePeriod(i)"
-        mat-mini-fab
-        color="primary" 
-        style="margin-left:5px;background-color: #ff1919;border-radius: 5px">✘</button>
+      <td mat-cell *matCellDef="let subject; index as i" style="padding: 0">
+        <i 
+          *ngIf="edit==true"
+          (click)="removePeriod(i)"
+          class="flaticon-rubbish-bin"
+        >
+        </i>
       </td>
     </ng-container>
   
@@ -96,17 +121,13 @@
 </mat-form-field>
 
 <div class="nav">
-  <button (click)="previousDay()" mat-button style="grid-area: left;"><</button>
-  <button (click)="nextDay()" mat-button style="grid-area: right;">></button>
+  <!-- <button (click)="previousDay()" mat-button style="grid-area: left;"><</button> -->
+  <!-- <button (click)="nextDay()" mat-button style="grid-area: right;">></button> -->
+  <i class="flaticon-back left" (click)="previousDay()"></i>
+  <i class="flaticon-back right" (click)="nextDay()"></i>
 </div>
 
-<div *ngIf="edit==true" style="margin-bottom:20px;padding-bottom: 20px;">
-  <button 
-  class="add"
-  mat-flat-button 
-  (click)="addPeriod()">Добави</button>
-  <button 
-  class="sort"
-  mat-flat-button 
-  (click)="sortPeriods(this.currentDay-1)">Сортирай</button>
+<div *ngIf="edit==true" class="editMenu">
+  
+
 </div>

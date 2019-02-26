@@ -1,0 +1,51 @@
+table {
+    width: 100%;
+    border-spacing: 0 1rem;
+    border-collapse: collapse;
+    
+}
+tr td{
+    min-height: 4rem;
+    border-bottom: 1pt solid gray;
+    border-top: 1pt solid gray;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    display: block;
+    position: relative;
+    height: 2rem;
+    margin: 10px;
+    margin-left: 0;
+}
+.title {
+    position: absolute;
+    left: 1rem;
+    margin: 0;
+}
+.color {
+    display: inline-block;
+    width: 7px;
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+}
+.date {
+    position: absolute;
+    right: 1rem;
+}
+
+.title , .date {
+    /* line-height: 100%; */
+    padding: 0.5rem 0;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}

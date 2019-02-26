@@ -1,24 +1,20 @@
-<h2 class="title" align="center">SO Kowalski</h2>
-
+<div class="container">
+  <h1 class="title">S-Org</h1>
+</div>
+<mat-divider style="margin-bottom:5px"></mat-divider>
 <section class="next-lesson">
-  <h3>Next lesson:</h3>
-  <p class="lesson">The lesson</p>
+  <h3>Next period:</h3>
+  <p class="lesson">{{nextLesson}}</p>
 </section>
 <mat-divider></mat-divider>
 <section>
   <h3>Today's grades</h3>
-  <!-- TODO: make a component that displays grades given an array -->
-  <div>
-    English - 6
-  </div>
-  <div>
-    Math - 5
-  </div>
+  <app-grades [grades]="grades"></app-grades>
   <!-- TODO: add a button that adds grades -->
 </section>
 <mat-divider></mat-divider>
 <section>
   <h3>This week's tests</h3>
-  <!-- TODO: make a component that displays test given an array -->
-  <p>19.12.18 -Biology</p>
 </section>
+<!-- TODO: make a component that displays test given an array -->
+<app-events [events]="events"></app-events>

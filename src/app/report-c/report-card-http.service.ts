@@ -1,3 +1,4 @@
+import { HttpService } from './../shared/http.service';
 import { Injectable } from '@angular/core';
 import { DailyGrades } from '../shared/weeklyGrades.model';
 import { DateTimeService } from '../shared/date-time.service';
@@ -5,7 +6,9 @@ import { Grade } from '../shared/grades.model';
 
 @Injectable()
 export class ReportCardHttpService {
-    constructor(private dateTime: DateTimeService){}
+    constructor(
+        private httpService:HttpService,
+        private dateTime: DateTimeService){}
     // a function that returns the grades from the last 7 days
     // a function that returns all grades from this year
     // a function that returns all grades from all years

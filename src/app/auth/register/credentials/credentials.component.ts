@@ -10,7 +10,7 @@ export class CredentialsComponent implements OnInit, OnDestroy {
   
   @ViewChild('test') test: ElementRef;
   @ViewChild('username') username: ElementRef;
-  @ViewChild('firstname') firstname: ElementRef;
+  @ViewChild('email') email: ElementRef;
   @ViewChild('password') password: ElementRef;
   @ViewChild('confirmPassword') confirmPassword: ElementRef;
   
@@ -23,14 +23,14 @@ export class CredentialsComponent implements OnInit, OnDestroy {
 
   saveData(){
     localStorage.setItem("username", this.username.nativeElement.value);
-    localStorage.setItem("firstname", this.firstname.nativeElement.value);
+    localStorage.setItem("email", this.email.nativeElement.value);
     localStorage.setItem("password", this.password.nativeElement.value);
   }
 
   getData(){
     let user = {
       "username":localStorage.getItem("username"),
-      "firstname":localStorage.getItem("firstname"),
+      "email":localStorage.getItem("email"),
     }
     return user;
   }

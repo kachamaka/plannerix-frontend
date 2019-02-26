@@ -11,7 +11,7 @@ import { isNull } from 'util';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   
-  constructor(private storageService: StorageService,
+  constructor(public storageService: StorageService,
     private httpService: HttpService){
 
   }
@@ -23,12 +23,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
   log(){
     let registerCredentials = {
       "username": localStorage.getItem("username"),
-      "firstname":localStorage.getItem("firstname"),
-      "password": localStorage.getItem("password")
+      "email":localStorage.getItem("email"),
+      "password": localStorage.getItem("password"),
+      "subjects": this.httpService.allCheckedSubjects,
+      "schedule": this.httpService.periods
     }
     console.log("credentials", registerCredentials);
     console.log("checked subs",this.httpService.allCheckedSubjects);
     console.log("periods", this.httpService.periods);
+    this.httpService.registerUser(registerCredentials);
   }
 
   checkRegisterValidation(){
@@ -44,10 +47,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     if(
     !isNull(localStorage.getItem("username")) &&
-    !isNull(localStorage.getItem("firstname")) &&
+    !isNull(localStorage.getItem("email")) &&
     !isNull(localStorage.getItem("password")) &&
     localStorage.getItem("username")!=""&&
-    localStorage.getItem("firstname")!="" &&
+    localStorage.getItem("email")!="" &&
     localStorage.getItem("password")!="" &&
     checkedSubs == true){
       return false;
@@ -58,7 +61,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     localStorage.removeItem("username");
-    localStorage.removeItem("firstname");
+    localStorage.removeItem("email");
     localStorage.removeItem("password");
   }
 
