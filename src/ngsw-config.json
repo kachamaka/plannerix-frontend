@@ -29,7 +29,8 @@
     {
       "name": "lambda-api",
       "urls": [
-        "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule"
+        "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule",
+        "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getWeeklyEvents"
       ],
       "cacheConfig": {
         "strategy": "freshness",
