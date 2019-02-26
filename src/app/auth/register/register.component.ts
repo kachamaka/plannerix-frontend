@@ -11,7 +11,7 @@ import { isNull } from 'util';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   
-  constructor(private storageService: StorageService,
+  constructor(public storageService: StorageService,
     private httpService: HttpService){
 
   }

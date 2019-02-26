@@ -2,6 +2,7 @@ import { HttpService } from './../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { Grade } from '../shared/grades.model';
 import { SchoolEvent } from '../shared/event.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +36,8 @@ export class HomeComponent implements OnInit {
     })
     this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
       console.log(data);
+      console.log("weeklyEvents");
+      console.log(data.weeklyEvents);
       for(let i = 0; i<data.weeklyEvents.length; i++){
         this.events.push(
           new SchoolEvent(
