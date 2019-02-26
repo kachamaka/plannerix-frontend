@@ -10,7 +10,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import {ReportCardModule } from './report-c/report-card.module'
+import { ReportCardModule } from './report-c/report-card.module';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, data: {animation: 'Home'}},
@@ -27,7 +27,7 @@ const routes: Routes = [
       {path: 'schedule-input', component: ScheduleInputComponent}      
     ]
   },
-  {path: "grades", loadChildren: ()=>ReportCardModule, data:{animation: 'ReportC'}},
+  {path: "grades", loadChildren: './report-c/report-card.module#ReportCardModule', data:{animation: 'ReportC'}},
   {path: '**', redirectTo: 'not-found'} // This sould be exported to separate Module
 ];
 
@@ -35,4 +35,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  constructor() {
+    console.log(()=>ReportCardModule);
+  }
+}

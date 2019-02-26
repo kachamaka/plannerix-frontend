@@ -9,11 +9,8 @@
           "/favicon.ico",
           "/index.html",
           "/*.css",
-          "/*.js"
-        ],
-        "urls":[
-          "https://fonts.googleapis.com/icon?family=Material+Icons",
-          "https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+          "/*.js",
+          "/*.json"
         ]
       }
     }, {
@@ -22,22 +19,23 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/**"
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
     }
   ],
-  "dataGroups": [
+  "dataGroups":[
     {
-      "name":"posts",
-      "urls":[
-
+      "name": "lambda-api",
+      "urls": [
+        "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule"
       ],
-      "cacheConfig":{
-        "maxSize":5,
-        "maxAge":"6h",
-        "timeout":"10s",
-        "strategy": "performance"
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 20,
+        "maxAge": "1h",
+        "timeout": "10s"
       }
     }
   ]

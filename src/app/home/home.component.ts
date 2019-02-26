@@ -20,13 +20,6 @@ export class HomeComponent implements OnInit {
     // new SchoolEvent(1549752546, "Math", "test", 1)
   ];
   nextLesson = "Chem";
-<<<<<<< HEAD
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
-    this.http.post("https://l1n5cmczkh.execute-api.eu-central-1.amazonaws.com/dev/login", {"username":"trayan", "password":"motherfucker"}).subscribe((data)=>{
-      console.log(data);
-=======
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
@@ -43,6 +36,8 @@ export class HomeComponent implements OnInit {
     })
     this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
       console.log(data);
+      console.log("weeklyEvents");
+      console.log(data.weeklyEvents);
       for(let i = 0; i<data.weeklyEvents.length; i++){
         this.events.push(
           new SchoolEvent(
@@ -53,7 +48,6 @@ export class HomeComponent implements OnInit {
           )
         );
       }
->>>>>>> c04bdd476e40523a6a51e2d3cef0997f56030feb
     })
   }
 

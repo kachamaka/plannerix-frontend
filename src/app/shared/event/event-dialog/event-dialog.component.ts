@@ -28,7 +28,7 @@ export class EventDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<EventDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, 
     private dateTimeS: DateTimeService,
-    private httpService: HttpService) { }
+    public httpService: HttpService) { }
 
   ngOnInit() {
     // console.log(this.httpService.periods);

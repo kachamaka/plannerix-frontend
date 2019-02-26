@@ -48,6 +48,7 @@ import { EventListModule } from './shared/event/event-list.module';
 import { environment } from '../environments/environment';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localeBg);
 
@@ -98,12 +99,13 @@ registerLocaleData(localeBg);
     FormsModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule.forRoot(),
-    ReportCardModule,
     MatMenuModule,
     GradesModule,
     EventListModule,
     HttpModule,
-    HttpClientModule
+    ReportCardModule,
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{
     provide: LOCALE_ID,
