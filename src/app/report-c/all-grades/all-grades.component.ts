@@ -93,12 +93,12 @@ export class AllGradesComponent implements OnInit {
 
   getTermsForYear(year){
     let term1 = {
-      start: new Date(year, 8, 1, 0, 0, 0, 0),
+      start: new Date(year, 8, 15, 0, 0, 0, 0),
       end: new Date(year+1, 0, 31, 23, 59, 0, 0)
     }
     let term2 = {
       start: new Date(year+1, 1, 1, 0, 0, 0, 0),
-      end: new Date(year+1, 7, 31, 23, 59, 0, 0)
+      end: new Date(year+1, 8, 14, 23, 59, 0, 0)
     }    
     let terms = {
       term1: term1,
