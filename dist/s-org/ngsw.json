@@ -1,0 +1,111 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main.171c52ab0a8f5f2166ad.js",
+        "/manifest.json",
+        "/polyfills.fc510f06a398d75acd2d.js",
+        "/runtime.0e3bb0483cdaca8f32a8.js",
+        "/styles.d5d73316b57ec7fc4e90.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/Flaticon.0a21b1667eb192097d8b.svg",
+        "/Flaticon.1ece31e7859a97af545a.woff2",
+        "/Flaticon.7f3507cfbc36128cde78.woff",
+        "/Flaticon.8675b0f11dbb047603d5.ttf",
+        "/Flaticon.b0d5986b57571edfcbb0.eot",
+        "/assets/font/Flaticon.eot",
+        "/assets/font/Flaticon.svg",
+        "/assets/font/Flaticon.ttf",
+        "/assets/font/Flaticon.woff",
+        "/assets/font/Flaticon.woff2",
+        "/assets/font/_flaticon.scss",
+        "/assets/font/flaticon.css",
+        "/assets/font/flaticon.html",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "lambda-api",
+      "patterns": [
+        "https:\\/\\/np777gmeqe\\.execute-api\\.eu-central-1\\.amazonaws\\.com\\/dev\\/getSchedule"
+      ],
+      "strategy": "freshness",
+      "maxSize": 20,
+      "maxAge": 3600000,
+      "timeoutMs": 10000,
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/Flaticon.0a21b1667eb192097d8b.svg": "7f6e1ab80b079accbef4856cdf79b5bf7c3b9f14",
+    "/Flaticon.1ece31e7859a97af545a.woff2": "46aa8886068f2061360de0531599ee615fff5d73",
+    "/Flaticon.7f3507cfbc36128cde78.woff": "1ad0358d307d25e6ca7272bdbb2d82f7af55f765",
+    "/Flaticon.8675b0f11dbb047603d5.ttf": "c4558a0420760a104163baddab94b089490f2a48",
+    "/Flaticon.b0d5986b57571edfcbb0.eot": "cc38a6a92eef114b50d8a2127e2ab241bef009d8",
+    "/assets/font/Flaticon.eot": "cc38a6a92eef114b50d8a2127e2ab241bef009d8",
+    "/assets/font/Flaticon.svg": "7f6e1ab80b079accbef4856cdf79b5bf7c3b9f14",
+    "/assets/font/Flaticon.ttf": "c4558a0420760a104163baddab94b089490f2a48",
+    "/assets/font/Flaticon.woff": "1ad0358d307d25e6ca7272bdbb2d82f7af55f765",
+    "/assets/font/Flaticon.woff2": "46aa8886068f2061360de0531599ee615fff5d73",
+    "/assets/font/_flaticon.scss": "9e71f15906017c553926aab2b535053cab86a2fb",
+    "/assets/font/flaticon.css": "4d206d9966938a7ef385c9f9b285de00ed27fe9f",
+    "/assets/font/flaticon.html": "31f7cc5f22f297250f028f61a41d4ffd2b92cb51",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "/index.html": "ee6bf59eaa8b0912ba89562324bf49c9b271dad0",
+    "/main.171c52ab0a8f5f2166ad.js": "d8f9486b2a33de76de4317e116bc1663841afc99",
+    "/manifest.json": "14558f8d08965d7394c92ba49b3c29a8bf51a0ae",
+    "/polyfills.fc510f06a398d75acd2d.js": "69f80c057debaa9d0c94dce34f676dab716cbdab",
+    "/runtime.0e3bb0483cdaca8f32a8.js": "21109b3561b5a6c3ed51bc3015962f05da8e57b3",
+    "/styles.d5d73316b57ec7fc4e90.css": "5a2e3146417bab5276a4a11228aab16e9c05ebe8"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
