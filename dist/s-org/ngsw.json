@@ -9,7 +9,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.2ddac54355b7dca57f4c.js",
+        "/main.548b311f456e2af7da83.js",
         "/manifest.json",
         "/polyfills.fc510f06a398d75acd2d.js",
         "/runtime.0e3bb0483cdaca8f32a8.js",
@@ -51,6 +51,7 @@
     {
       "name": "lambda-api",
       "patterns": [
+        "https:\\/\\/api\\.chucknorris\\.io\\/jokes\\/random",
         "https:\\/\\/np777gmeqe\\.execute-api\\.eu-central-1\\.amazonaws\\.com\\/dev\\/getSchedule",
         "https:\\/\\/np777gmeqe\\.execute-api\\.eu-central-1\\.amazonaws\\.com\\/dev\\/getWeeklyEvents"
       ],
@@ -84,8 +85,8 @@
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/index.html": "2cd983b23dc7d90d276e1fbeff3efb77b08fbb4d",
-    "/main.2ddac54355b7dca57f4c.js": "b53aac5f39071f7630b2b5c97b23aa42c4752261",
+    "/index.html": "e3fce30abdb5adebd9e5c01b24ae4b926e8ddb0c",
+    "/main.548b311f456e2af7da83.js": "64522249340bfd07de3f15422234eb7a8a91c685",
     "/manifest.json": "14558f8d08965d7394c92ba49b3c29a8bf51a0ae",
     "/polyfills.fc510f06a398d75acd2d.js": "69f80c057debaa9d0c94dce34f676dab716cbdab",
     "/runtime.0e3bb0483cdaca8f32a8.js": "21109b3561b5a6c3ed51bc3015962f05da8e57b3",

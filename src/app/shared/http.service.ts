@@ -41,6 +41,10 @@ export class HttpService {
 
   periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
 
+  getJoke() {
+    return this.http.get("https://api.chucknorris.io/jokes/random");
+  }
+
   getEvents(data) {
     return this.http.post(this.domain + 'getAllEvents', data); 
   }

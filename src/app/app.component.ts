@@ -30,7 +30,9 @@ export class AppComponent implements OnInit {
     this.httpService.getSubjects(tokenData).subscribe((data:any)=>{
       this.httpService.subjectData = data.subjects;
     })
-
+    this.httpService.getJoke().subscribe((data:any)=>{
+      console.log(data);
+    })
   }
 
   prepareRoute(outlet: RouterOutlet) {
