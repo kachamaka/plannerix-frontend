@@ -13,3 +13,36 @@
 .active{
     background-color: lightblue;
 }
+
+.menuItem::before, .menuItem{
+    margin-left: 0;
+    width: auto;
+}
+.menuItemText {
+    margin-left: 10px;
+    vertical-align: super;
+}
+
+.flaticon-rubbish-bin:before{
+    color: red;
+}
+
+
+i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
+    width: 25px;
+    height: 25px;
+}
+.flaticon-back.left {
+    position: absolute;
+    left: 1rem;
+}
+
+.flaticon-back.right {
+    transform: scaleX(-1);
+    position: absolute;
+    right: 1rem;
+}
+
+.test{
+    background-color: lightskyblue;
+}

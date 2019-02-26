@@ -12,7 +12,7 @@
             [format]="24" 
             [ngxTimepicker]="startTime" 
             placeholder="12:00"
-            [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].startTime"
+            [(ngModel)]="this.httpService.subjectData[currentDay-1].periods[i].startTime"
             readonly>
             <ngx-material-timepicker #startTime></ngx-material-timepicker>
           </div>

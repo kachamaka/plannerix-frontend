@@ -10,7 +10,7 @@ import { ReportCardHttpService } from "./report-card-http.service";
 import { RecentGradesComponent } from "./recent-grades/recent-grades.component";
 import { YearGradesComponent } from './year-grades/year-grades.component';
 import { SubjectGradesComponent } from './subject-grades/subject-grades.component';
-import { MatMenuModule, MatExpansionModule } from "@angular/material";
+import { MatMenuModule, MatExpansionModule, MatSnackBarModule } from "@angular/material";
 import { AllGradesComponent } from './all-grades/all-grades.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/compiler/src/core";
 
@@ -30,7 +30,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/compiler/src/core";
         MatListModule,
         GradesModule,
         MatMenuModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatSnackBarModule
         //input other modules here
     ],
     providers: [ReportCardHttpService]

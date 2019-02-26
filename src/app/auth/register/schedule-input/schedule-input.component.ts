@@ -21,6 +21,7 @@ export class ScheduleInputComponent implements OnInit {
     public storageService: StorageService) { }
 
   ngOnInit() {
+    console.log(this.httpService.subjectData);
     if(this.today!=0 && this.today!=6){
       this.currentDay = this.today;
     }else{

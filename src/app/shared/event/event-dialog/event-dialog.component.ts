@@ -2,7 +2,6 @@ import { HttpService } from './../../http.service';
 import { Component, OnInit, Input, Inject, ViewChild, ElementRef } from '@angular/core';
 import { SchoolEvent } from 'src/app/shared/event.model';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDatepicker } from '@angular/material';
-import { DateTimeService } from 'src/app/shared/date-time.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -26,8 +25,7 @@ export class EventDialogComponent implements OnInit {
   fallback;
   @ViewChild('picker') picker: MatDatepicker<null>;
   constructor(public dialogRef: MatDialogRef<EventDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, 
-    private dateTimeS: DateTimeService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private httpService: HttpService) { }
 
   ngOnInit() {

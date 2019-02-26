@@ -1,5 +1,5 @@
 <app-day-grades 
-  *ngFor="let day of weeklyGrades" 
+  *ngFor="let day of this.httpService.weeklyGrades" 
   [date]="day.date" 
   [grades]="day.grades">
 </app-day-grades>

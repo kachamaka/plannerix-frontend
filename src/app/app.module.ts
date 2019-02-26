@@ -46,6 +46,8 @@ import { EventDialogComponent } from './shared/event/event-dialog/event-dialog.c
 import { EventListModule } from './shared/event/event-list.module';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { GradeDialogComponent } from './shared/grades/grade-dialog/grade-dialog.component';
+import { GradeToastComponent } from './shared/grades/grade-toast/grade-toast.component';
 
 registerLocaleData(localeBg);
 
@@ -108,6 +110,12 @@ registerLocaleData(localeBg);
     useValue: "bg-BG"
   }, DatePipe, DateTimeService, HttpService],
   bootstrap: [AppComponent],
-  entryComponents: [AdditionalSubjectsComponent, AddTestComponent, EventDialogComponent]
+  entryComponents: [
+    AdditionalSubjectsComponent,
+    AddTestComponent,
+    EventDialogComponent,
+    GradeDialogComponent,
+    GradeToastComponent
+  ]
 })
 export class AppModule { }

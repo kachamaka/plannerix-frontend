@@ -28,4 +28,8 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  logout(){
+    this.httpService.logoutUser();
+  }
+
 }

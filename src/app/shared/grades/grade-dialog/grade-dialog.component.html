@@ -1,0 +1,27 @@
+<form>
+
+  <mat-form-field>
+    <mat-label>Предмет</mat-label>
+    <mat-select #subject>
+        <mat-option *ngFor="let singleSubject of this.httpService.subjectData" [value]="singleSubject">
+          {{singleSubject}}
+        </mat-option>
+    </mat-select>
+    <mat-error>Empty</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Оценка</mat-label>
+    <mat-select #gradeValue>
+        <mat-option *ngFor="let gradeValue of this.gradeValues" [value]="gradeValue">
+          {{gradeValue}}
+        </mat-option>
+    </mat-select>
+    <mat-error>Empty</mat-error>
+  </mat-form-field>
+
+  <br>
+  <div style="float:right" class="control">
+      <i class="flaticon-checked" (click)="addGrade()"></i>
+  </div>
+</form>

@@ -19,14 +19,10 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(){
     let tokenData = {
-      "token":localStorage.getItem("token")
+      token: localStorage.getItem("token")
     }
-    this.httpService.getSchedule(tokenData).subscribe((data:any)=>{
-      this.httpService.periods = data.schedule;
-    })
-    this.httpService.getSubjects(tokenData).subscribe((data:any)=>{
-      this.httpService.subjectData = data.subjects;
-    })
+    this.httpService.loadSchedule();
+    this.httpService.loadSubjects();
   }
 
   prepareRoute(outlet: RouterOutlet) {
