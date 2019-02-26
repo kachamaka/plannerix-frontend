@@ -52,22 +52,23 @@ export class EventComponent implements OnInit {
         }else{
           // console.log("wrong");
           // return
-
-          let postData = {
-            token: localStorage.getItem("token"),
-            timestamp: out.date,
-            subject: out.subject,
-            description: out.description,
-            subjectType: out.type
-          } 
-          
-          this.httpService.editEvent(postData).subscribe((data:any)=>{
-            if(data.success==true){
-              console.log(data);
-              // this.calComp.getEvents();
-              this.httpService.loadEvents();
-            }
-          })
+          if(this.editable== true){
+            let postData = {
+              token: localStorage.getItem("token"),
+              timestamp: out.date,
+              subject: out.subject,
+              description: out.description,
+              subjectType: out.type
+            } 
+            
+            this.httpService.editEvent(postData).subscribe((data:any)=>{
+              if(data.success==true){
+                console.log(data);
+                // this.calComp.getEvents();
+                this.httpService.loadEvents();
+              }
+            })
+          }
         }
       }
     });

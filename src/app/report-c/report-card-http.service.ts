@@ -22,12 +22,6 @@ export class ReportCardHttpService {
     }
 
     getWeeklyGrades() {
-        // let postData = {
-        //     "token": localStorage.getItem("token")
-        // }
-        // this.httpService.getWeeklyGrades(postData).subscribe((data:any)=>{
-
-        // })
         //should return an observable with 7 days
         let weeklyGrades: Array<DailyGrades> = [
             {date: "06.01.2019",grades:[
