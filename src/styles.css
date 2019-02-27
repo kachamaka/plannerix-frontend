@@ -39,3 +39,7 @@ input:focus{
     /* display: none; */
     color: transparent;
 }
+.mat-menu-item:focus{
+    outline: 0;
+    outline: none;
+}

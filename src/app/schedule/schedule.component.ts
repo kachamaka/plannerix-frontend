@@ -70,7 +70,7 @@ export class ScheduleComponent implements OnInit {
       this.currentDay = 1;
     }
 
-    this.httpService.loadSchedule();
+    // this.httpService.loadSchedule();
   }
 
   getBackupPeriods(){

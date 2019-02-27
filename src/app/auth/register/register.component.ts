@@ -1,5 +1,4 @@
 import { StorageService } from './../../shared/storage.service';
-import { SingleSubject } from './../../models/subject.model';
 import { HttpService } from './../../shared/http.service';
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { isNull } from 'util';

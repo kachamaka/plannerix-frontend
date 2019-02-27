@@ -2,6 +2,10 @@ table {
     width: 100%;
 }
 
+.menuItem::before, .menuItem{
+  margin-left: 0;
+  width: auto;
+}
 .buttons {
   margin: 0px;
   padding: 0px;
@@ -18,13 +22,13 @@ table {
   float: left;
   width: 100%;
   margin-right: 5px;
-  background-color:lightseagreen;
+  /* background-color:lightseagreen; */
   border-radius: 5px;
 }
 
 .add{
   margin-right:5px;
-  background-color: #00e500;
+  /* background-color: #00e500; */
   border-radius: 5px;
   grid-area: add;
   width: 100%; 
@@ -35,6 +39,23 @@ table {
   grid-area: save;
   float: left;
   width: 100%;
-  background-color:lightseagreen;
+  /* background-color:lightseagreen; */
   border-radius: 5px;
+}
+
+.flaticon-checked::before{
+  color: green;
+}
+
+.flaticon-add::before{
+  color: green;
+}
+
+.flaticon-cancel::before{
+  color: red;
+}
+i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
+    width: 25px;
+    height: 25px;
+    color: red;
 }

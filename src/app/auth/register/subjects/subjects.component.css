@@ -30,3 +30,11 @@ table {
 .mat-column-ZIP{
   width: 10%
 }
+.menuItem::before, .menuItem{
+    margin-left: 0;
+    width: auto;
+}
+.menuItemText {
+    margin-left: 10px;
+    vertical-align: super;
+}

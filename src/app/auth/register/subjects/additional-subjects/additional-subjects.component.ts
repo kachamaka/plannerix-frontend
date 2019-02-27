@@ -1,5 +1,5 @@
 import { HttpService } from './../../../../shared/http.service';
-import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
 
 @Component({
@@ -10,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/mate
 
 export class AdditionalSubjectsComponent implements OnInit {
 
-  displayedColumns: string[] = ['subject', 'SIP', 'ZIP'];
+  displayedColumns: string[] = ['subject', 'SIP', 'ZIP', 'remove'];
 
   dataSource = new MatTableDataSource(this.httpService.additionalSubjects);
   
