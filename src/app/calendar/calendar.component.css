@@ -1,3 +1,8 @@
+.container{
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
 section{
     margin-left: 1rem;
     margin-bottom: 1.5rem;
@@ -22,10 +27,6 @@ section{
     display: inline-block;
 }
 
-.container{
-    width: 90%;
-    margin: 0 auto;
-}
 
 table {
     width: 100%;

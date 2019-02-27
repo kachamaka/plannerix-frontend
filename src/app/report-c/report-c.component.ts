@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import { isUndefined } from 'util';
 import { GradeToastComponent } from '../shared/grades/grade-toast/grade-toast.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,11 +15,14 @@ import { GradeToastComponent } from '../shared/grades/grade-toast/grade-toast.co
 
 export class ReportCComponent implements OnInit {
   constructor(
-    private snackBar: MatSnackBar,
-    public dialog: MatDialog,
-    private httpService: HttpService){}
+      private snackBar: MatSnackBar,
+      public dialog: MatDialog,
+      private httpService: HttpService,
+      private router: Router
+    ){}
 
   ngOnInit() {
+    console.log(this.router.url);
   }
 
   addGradeDialog(): void {

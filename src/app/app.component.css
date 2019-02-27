@@ -7,10 +7,21 @@
     "nav";
     height: 100%;
 }
+
 .body {
     grid-area: body;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .navigation {
     grid-area: nav;
+}
+
+@media only screen and (min-width: 600px) {
+    .main {
+        display: block;
+    }
+    .body {
+        height: 100%;
+        width: 100%;
+    }
 }

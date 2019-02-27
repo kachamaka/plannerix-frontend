@@ -1,0 +1,30 @@
+.navbar {
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    left: 0;
+    box-shadow: 1px 1px 1px 1px gray;
+
+}
+.desktop-body {
+    width: 72%;
+    /* height: 70%; */
+    position: absolute;
+    right: 1%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 65vh 65vh;
+    grid-row-gap: 10px;
+    grid-column-gap: 15px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+.grades {
+}
+.desktop-item {
+    overflow-y: auto;
+    box-shadow: 1px 1px 1px 1px gray;
+}
+.main {
+    position: relative;
+}

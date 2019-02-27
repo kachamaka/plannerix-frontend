@@ -10,7 +10,6 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ReportCardModule } from './report-c/report-card.module';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, data: {animation: 'Home'}},
@@ -28,6 +27,7 @@ const routes: Routes = [
     ]
   },
   {path: "grades", loadChildren: './report-c/report-card.module#ReportCardModule', data:{animation: 'ReportC'}},
+  {path: "desktop", loadChildren: './desktop/desktop.module#DesktopModule'},
   {path: '**', redirectTo: 'not-found'} // This sould be exported to separate Module
 ];
 

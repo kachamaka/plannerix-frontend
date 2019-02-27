@@ -1,8 +1,8 @@
 .container{
     width: 90%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     display: block;
-    height: auto;
+    /* height: auto; */
     position: relative;
 }
 

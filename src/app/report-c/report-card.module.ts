@@ -34,6 +34,14 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/compiler/src/core";
         MatSnackBarModule
         //input other modules here
     ],
+    exports: [
+        ReportCComponent, 
+        DayGradesComponent,
+        RecentGradesComponent,
+        YearGradesComponent,
+        SubjectGradesComponent,
+        AllGradesComponent
+    ],
     providers: [ReportCardHttpService]
 })
 
