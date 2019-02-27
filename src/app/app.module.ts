@@ -104,7 +104,6 @@ registerLocaleData(localeBg);
     GradesModule,
     EventListModule,
     HttpModule,
-    ReportCardModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
