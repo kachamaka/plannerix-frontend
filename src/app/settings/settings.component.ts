@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../shared/http.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,9 @@ import { HttpService } from '../shared/http.service';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(public httpService: HttpService) { }
+  constructor(
+    private router: Router,
+    public httpService: HttpService) { }
 
   ngOnInit() {
     let user = {
@@ -30,6 +33,7 @@ export class SettingsComponent implements OnInit {
 
   logout(){
     this.httpService.logoutUser();
+    this.router.navigate(['/login']);
   }
 
 }

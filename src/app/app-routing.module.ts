@@ -10,14 +10,15 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent, data: {animation: 'Home'}},
+  {path: 'home', component: HomeComponent, data: {animation: 'Home'}, canActivate: [AuthGuard]},
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'not-found', component: NotFoundComponent},
-  {path: 'calendar', component: CalendarComponent, data: {animation: 'Calendar'}},
-  {path: 'schedule', component: ScheduleComponent, data: {animation: 'Schedule'}},
-  {path: 'settings', component: SettingsComponent, data: {animation: 'Settings'}},
+  {path: 'calendar', component: CalendarComponent, data: {animation: 'Calendar'}, canActivate: [AuthGuard]},
+  {path: 'schedule', component: ScheduleComponent, data: {animation: 'Schedule'}, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, data: {animation: 'Settings'}, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent,
     children: [
@@ -26,8 +27,8 @@ const routes: Routes = [
       {path: 'schedule-input', component: ScheduleInputComponent}      
     ]
   },
-  {path: "grades", loadChildren: './report-c/report-card.module#ReportCardModule', data:{animation: 'ReportC'}},
-  {path: "desktop", loadChildren: './desktop/desktop.module#DesktopModule'},
+  {path: "grades", loadChildren: './report-c/report-card.module#ReportCardModule', data:{animation: 'ReportC'}, canActivate: [AuthGuard]},
+  {path: "desktop", loadChildren: './desktop/desktop.module#DesktopModule', canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'not-found'} // This sould be exported to separate Module
 ];
 
