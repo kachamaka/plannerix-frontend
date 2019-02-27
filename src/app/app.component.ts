@@ -27,9 +27,8 @@ export class AppComponent implements OnInit {
     // this.httpService.loadSchedule();
     this.httpService.loadSubjects();
     this.showNav();
-    setTimeout(()=>{
-      this.showNav()
-    }, 2000);
+    this.onResize();
+    window.addEventListener("resize", this.onResize.bind(this));
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -46,6 +45,19 @@ export class AppComponent implements OnInit {
     }
     return false;
     // console.log(url);
+  }
+  onResize() {
+    // window.addEventListener("resize",)
+    let url= this.router.url;
+    if (window.innerWidth < 800) {
+      if (url.includes("desktop")) {
+        this.router.navigate(["/home"]);
+      }
+    } else {
+      if (!url.includes("desktop")) {
+        this.router.navigate(["/desktop"]);
+      }
+    }
   }
 
 }
