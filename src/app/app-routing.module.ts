@@ -37,6 +37,6 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
   constructor() {
-    console.log(()=>ReportCardModule);
+    // console.log(()=>ReportCardModule);
   }
 }
