@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Grade } from '../shared/grades.model';
 import { SchoolEvent } from '../shared/event.model';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
     // new SchoolEvent(1549752546, "Math", "test", 1)
   ];
   nextLesson = "Chem";
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private router:Router) { }
 
   ngOnInit() {
     let postData = {
@@ -49,6 +50,21 @@ export class HomeComponent implements OnInit {
         );
       }
     })
+  }
+
+  isDesktop() {
+    let url= this.router.url;
+    let routesToHideNav = ["desktop"];
+    for(let i=0; i < routesToHideNav.length; i++) {
+      // console.log(i);
+      if (url.includes(routesToHideNav[i])){
+        // console.log(true)
+        return true;
+      }
+    }
+    // console.log(false);
+    return false;
+    // console.log(url);
   }
 
 

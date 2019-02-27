@@ -43,3 +43,18 @@ input:focus{
     outline: 0;
     outline: none;
 }
+
+/* .show-on-desktop {
+    display: none;
+}
+@media only screen and (min-width: 650px) {
+    .show-on-desktop {
+        display: unset;
+    }
+}
+
+@media only screen and (max-device-width: 650px) {
+    .show-on-mobile {
+        display: none;
+    }
+} */

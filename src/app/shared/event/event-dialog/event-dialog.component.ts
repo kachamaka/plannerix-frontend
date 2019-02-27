@@ -26,7 +26,7 @@ export class EventDialogComponent implements OnInit {
   @ViewChild('picker') picker: MatDatepicker<null>;
   constructor(public dialogRef: MatDialogRef<EventDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private httpService: HttpService) { }
+    public httpService: HttpService) { }
 
   ngOnInit() {
     // console.log(this.httpService.periods);

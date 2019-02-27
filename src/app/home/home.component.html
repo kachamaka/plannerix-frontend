@@ -1,5 +1,6 @@
 <div class="container">
-  <h1 class="title">Plannerix</h1>
+  <h1 class="title" *ngIf="!isDesktop()">Plannerix</h1>
+  <h1 class="title" *ngIf="isDesktop()">На кратко</h1>
 </div>
 <mat-divider style="margin-bottom:5px"></mat-divider>
 <section class="next-lesson">

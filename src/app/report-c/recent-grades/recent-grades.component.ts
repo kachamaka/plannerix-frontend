@@ -9,7 +9,7 @@ import { getLocaleFirstDayOfWeek } from '@angular/common';
   styleUrls: ['./recent-grades.component.css']
 })
 export class RecentGradesComponent implements OnInit {
-  constructor(private httpService: HttpService){}
+  constructor(public httpService: HttpService){}
 
   
   // weeklyGrades:Array<DailyGrades> = [];

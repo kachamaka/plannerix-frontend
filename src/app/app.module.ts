@@ -50,7 +50,11 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { GradeDialogComponent } from './shared/grades/grade-dialog/grade-dialog.component';
 import { GradeToastComponent } from './shared/grades/grade-toast/grade-toast.component';
-
+import { DesktopComponent } from './desktop/desktop.component';
+import {SettingsModule} from './settings/settings.module';
+import {HomeModule } from './home/home.module';
+import {CalendarModule} from './calendar/calendar.module';
+import {ScheduleModule} from './schedule/schedule.module';
 registerLocaleData(localeBg);
 
 
@@ -58,25 +62,14 @@ registerLocaleData(localeBg);
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
-    HomeComponent,
     NavigationComponent,
-    CalendarComponent,
-    ScheduleComponent,
-    SettingsComponent,
     NotFoundComponent,
-    EditProfileComponent,
-    NotificationSettingsComponent,
     LoginComponent,
     RegisterComponent,
     AdditionalSubjectsComponent,
     CredentialsComponent,
     SubjectsComponent,
     ScheduleInputComponent,
-    AddTestComponent,
-    // EventComponent,
-    // EventColorDirective,
-    // EventDialogComponent,
-    // ReadOnlyDirective
   ],
   imports: [
     BrowserModule,
@@ -104,9 +97,13 @@ registerLocaleData(localeBg);
     GradesModule,
     EventListModule,
     HttpModule,
-    ReportCardModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    SettingsModule,
+    HomeModule,
+    CalendarModule,
+    ScheduleModule
+
   ],
   providers: [{
     provide: LOCALE_ID,

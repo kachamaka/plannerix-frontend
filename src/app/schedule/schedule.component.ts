@@ -69,8 +69,8 @@ export class ScheduleComponent implements OnInit {
     }else{
       this.currentDay = 1;
     }
-
-    // this.httpService.loadSchedule();
+    // console.log("hello from schedule");
+    this.httpService.loadSchedule();
   }
 
   getBackupPeriods(){

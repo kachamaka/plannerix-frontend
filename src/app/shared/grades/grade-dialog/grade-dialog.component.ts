@@ -14,7 +14,7 @@ export class GradeDialogComponent implements OnInit {
   gradeValues = [2,3,4,5,6];
   constructor(public dialogRef: MatDialogRef<GradeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private httpService: HttpService) { }
+    public httpService: HttpService) { }
 
   ngOnInit() {
   }
