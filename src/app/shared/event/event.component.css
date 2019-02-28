@@ -43,11 +43,12 @@ li {
 }
 
 .red {
-    background-color: red;
+    background-color: #E56D6F;
 }
 
 .green {
-    background-color: rgb(69, 228, 69);
+    /* background-color: rgb(69, 228, 69); */
+    background-color: #00E676;
 }
 
 .gray {

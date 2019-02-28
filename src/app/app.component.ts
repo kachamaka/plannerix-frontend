@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     let tokenData = {
       token: localStorage.getItem("token")
     }
-    // this.httpService.loadSchedule();
+    this.httpService.loadSchedule();
     this.httpService.loadSubjects();
     this.showNav();
     this.onResize();
