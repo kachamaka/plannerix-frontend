@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class NotAuthGuard implements CanActivate {
   constructor(
     private httpService: HttpService,
     private router: Router) {}
@@ -15,11 +15,11 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       // console.log(this.httpService.isLogged());
-      if(this.httpService.isLogged()==true){
+      if(this.httpService.isLogged()==false){
         return true;
       }else{
         //check for desktop or mobile
-        this.router.navigate(['/login']);            
+        this.router.navigate(['/home']);            
         return false;
       }
   }

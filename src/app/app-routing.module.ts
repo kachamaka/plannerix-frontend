@@ -11,6 +11,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './shared/auth.guard';
+import { NotAuthGuard } from './shared/notAuth.guard';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, data: {animation: 'Home'}, canActivate: [AuthGuard]},
@@ -19,8 +20,8 @@ const routes: Routes = [
   {path: 'calendar', component: CalendarComponent, data: {animation: 'Calendar'}, canActivate: [AuthGuard]},
   {path: 'schedule', component: ScheduleComponent, data: {animation: 'Schedule'}, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, data: {animation: 'Settings'}, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent,
+  {path: 'login', component: LoginComponent, canActivate: [NotAuthGuard]},
+  {path: 'register', component: RegisterComponent, canActivate: [NotAuthGuard],
     children: [
       {path: '', component: CredentialsComponent},
       {path: 'subjects', component: SubjectsComponent},    

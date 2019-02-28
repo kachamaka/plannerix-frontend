@@ -3,19 +3,22 @@
   <h3 style="padding-left:10px"></h3>
   <mat-divider></mat-divider>
 
-  <div class="example-container">
-    <mat-form-field hintLabel="Max 10 characters">
-      <input matInput #username maxlength="10" placeholder="Username">
-      <mat-hint align="end">{{username.value?.length || 0}}/10</mat-hint>
+  <div [formGroup]="userCredentials" class="example-container">
+    <mat-form-field  hintLabel="Max 16 characters">
+      <input knifeAlphanumeric formControlName="usernameField" (keydown.enter)="onKeydown()" matInput #username minlength="3" maxlength="16" placeholder="Username" required>
+      <mat-hint align="end">{{username.value?.length || 0}}/16</mat-hint>
+      <mat-error *ngIf="f.usernameField.invalid || f.usernameField.hasError || usernameInvalid">{{usernameInvalid}}</mat-error>
     </mat-form-field>
-    <mat-form-field hintLabel="Max 10 characters">
-      <input matInput #password maxlength="10" placeholder="Password">
-      <mat-hint align="end">{{password.value?.length || 0}}/10</mat-hint>
+    <mat-form-field hintLabel="Max 35 characters">
+      <input type="password" knifeNoCopyPaste formControlName="passwordField" (keydown.enter)="onKeydown()" matInput #password minlength="8" maxlength="35" placeholder="Password">
+      <mat-hint align="end">{{password.value?.length || 0}}/35</mat-hint>
+      <mat-error *ngIf="f.passwordField.invalid || f.passwordField.hasError || passwordInvalid">{{passwordInvalid}}</mat-error>
     </mat-form-field>
       <br>
       <div class="buttons">
           <button (click)="openRegister()" style="color:white;float:left;background-color:lightseagreen" mat-button color="primary">Register</button>
           <button (click)="login()" style="color:white;float:right;background-color:lightseagreen" mat-button color="primary">Login</button>
+          <button (click)="log()" style="color:white;float:right;background-color:lightseagreen" mat-button color="primary">Log</button>
       </div>
     
   </div>

@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
+import { NgKnifeModule } from 'ng-knife';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -56,6 +57,7 @@ import {HomeModule } from './home/home.module';
 import {CalendarModule} from './calendar/calendar.module';
 import {ScheduleModule} from './schedule/schedule.module';
 import { AuthGuard } from './shared/auth.guard';
+import { NotAuthGuard } from './shared/notAuth.guard';
 registerLocaleData(localeBg);
 
 
@@ -103,13 +105,13 @@ registerLocaleData(localeBg);
     SettingsModule,
     HomeModule,
     CalendarModule,
-    ScheduleModule
-
+    ScheduleModule,
+    NgKnifeModule
   ],
   providers: [{
     provide: LOCALE_ID,
     useValue: "bg-BG"
-  }, DatePipe, DateTimeService, HttpService, AuthGuard],
+  }, DatePipe, DateTimeService, HttpService, AuthGuard, NotAuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [
     AdditionalSubjectsComponent,

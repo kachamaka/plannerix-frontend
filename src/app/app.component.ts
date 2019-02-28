@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   showNav() {
     let url= this.router.url;
-    let routesToHideNav = ["desktop"];
+    let routesToHideNav = ["desktop", "login", "register"];
     for(let i=0; i < routesToHideNav.length; i++) {
       if (url.includes(routesToHideNav[i])){
         return true;

@@ -18,6 +18,8 @@ export class HttpService {
   };
   options;
   domain = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/";
+  usernameRegex = new RegExp("^\\w.{3,16}$");
+  passwordRegex = new RegExp("^[a-z0-9]{8,35}$");
 
   constructor(private http: HttpClient) { }
  
