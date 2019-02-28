@@ -58,3 +58,31 @@ input:focus{
         display: none;
     }
 } */
+
+@media only screen and (min-width: 800px) {
+    *::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 0px;
+        /* background-color: #e62739; */
+        background-color: #555;
+        
+    }
+
+    *::-webkit-scrollbar
+    {
+        width: 7px;
+        /* background-color: #e62739; */
+        background-color: #555;
+        
+    }
+
+    *::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        /* background-color: #555; */
+        background-color: #e62739;
+        
+    }
+}

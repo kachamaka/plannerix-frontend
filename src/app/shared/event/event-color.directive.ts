@@ -10,11 +10,11 @@ export class EventColorDirective implements OnInit{
     constructor (private el: ElementRef) {}
     ngOnInit() {
         if (this.eventType == 0) {
-            this.el.nativeElement.style.backgroundColor = "red";
+            this.el.nativeElement.classList.add("red");
         } else if (this.eventType == 1) {
-            this.el.nativeElement.style.backgroundColor = "green";
+            this.el.nativeElement.classList.add("green");
         } else {
-            this.el.nativeElement.style.backgroundColor = "gray";
+            this.el.nativeElement.classList.add("gray");
         }
     }
 }

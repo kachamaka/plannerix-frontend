@@ -16,7 +16,7 @@ section{
 .flaticon-add-1 {
     position: absolute;
     right: 1rem;
-    color: green;
+    /* color: rgb(16, 199, 16); */
 }
 
 .flaticon-rubbish-bin:before{
