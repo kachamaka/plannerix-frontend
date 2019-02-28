@@ -2,6 +2,7 @@ import { StorageService } from './../../shared/storage.service';
 import { HttpService } from './../../shared/http.service';
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { isNull } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,7 @@ import { isNull } from 'util';
 export class RegisterComponent implements OnInit, OnDestroy {
   
   constructor(public storageService: StorageService,
+    private router: Router,
     private httpService: HttpService){
 
   }
@@ -19,7 +21,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     
   }
 
-  log(){
+  register(){
     let registerCredentials = {
       "username": localStorage.getItem("username"),
       "email":localStorage.getItem("email"),
@@ -30,7 +32,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     console.log("credentials", registerCredentials);
     console.log("checked subs",this.httpService.allCheckedSubjects);
     console.log("periods", this.httpService.periods);
-    this.httpService.registerUser(registerCredentials);
+    this.httpService.registerUser(registerCredentials).subscribe((data:any)=>{
+
+    });
   }
 
   checkRegisterValidation(){
@@ -43,6 +47,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
         break;
       }
     }
+    let hasScheduleData = true;
+    for(let k = 0; k<this.httpService.periods.length; k++){
+      if(this.httpService.periods[k].periods.length==0){
+        hasScheduleData = false;
+        break;
+      }
+    }
 
     if(
     !isNull(localStorage.getItem("username")) &&
@@ -51,11 +62,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
     localStorage.getItem("username")!=""&&
     localStorage.getItem("email")!="" &&
     localStorage.getItem("password")!="" &&
-    checkedSubs == true){
+    checkedSubs == true && hasScheduleData == true){
       return false;
     }else{
       return true;
     }
+  }
+
+  openLogin(){
+    this.router.navigate(['/login']);    
   }
 
   ngOnDestroy(): void {

@@ -3,7 +3,16 @@
 <mat-divider style="margin-bottom:5px"></mat-divider>
 <router-outlet></router-outlet>
 
+<div style="margin-left: 5px;">
+    <button 
+    *ngIf="this.storageService.fullUrl=='/register'"
+    (click)="openLogin()" 
+    style="color:white;float:left;background-color:lightseagreen" 
+    mat-button 
+    color="primary">Login</button>
+</div>
 <div class="buttons" style="float:right">
+
   <button 
   *ngIf="this.storageService.fullUrl=='/register'"
   [routerLink]="['/register/subjects']"
@@ -35,7 +44,7 @@
   color="primary">Previous
   </button>
   <button 
-  (click)="log()"
+  (click)="register()"
   [disabled]="checkRegisterValidation()"
   *ngIf="this.storageService.fullUrl=='/register/schedule-input'"
   mat-flat-button 

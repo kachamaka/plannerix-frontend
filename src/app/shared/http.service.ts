@@ -1,9 +1,11 @@
+import { isUndefined } from 'util';
 import { SingleSubject } from './../models/subject.model';
 import { Injectable } from '@angular/core';
 import { SchoolEvent } from './event.model';
 import 'rxjs/add/operator/map' ;
 import { HttpClient } from '@angular/common/http';
 import { DailyGrades } from './weeklyGrades.model';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -78,10 +80,16 @@ export class HttpService {
     localStorage.clear();
   }
 
+  isLogged(){
+    if(!localStorage.getItem("token")){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
   registerUser(user){
-    this.http.post(this.domain + 'register', user).subscribe((data)=>{
-      console.log(data);
-    });
+    return this.http.post(this.domain + 'register', user);
   }
 
   getSchedule(data){

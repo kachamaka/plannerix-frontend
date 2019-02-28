@@ -56,7 +56,6 @@ export class AdditionalSubjectsComponent implements OnInit {
 
   close(msg) {
     console.log(msg);
-    // this.httpService.additionalSubjects = this.httpService.additionalSubjects;
     this.dialogRef.close(msg);
   }
 
