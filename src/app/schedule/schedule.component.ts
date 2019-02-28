@@ -75,8 +75,14 @@ export class ScheduleComponent implements OnInit {
 
   getBackupPeriods(){
     for(let i = 0;i<this.httpService.periods.length;i++){
-      this.backupPeriods[i].periods = this.httpService.periods[i].periods.slice(0);
+      this.backupPeriods[i].periods = JSON.parse(JSON.stringify(this.httpService.periods[i].periods.slice(0)));
     }
+    console.log(this.httpService.periods[4].periods);
+    console.log(this.backupPeriods[4].periods);
+  }
+
+  getArray(array){
+    return array;
   }
 
 
@@ -131,7 +137,13 @@ export class ScheduleComponent implements OnInit {
     })
   }
 
+  log(){
+    console.log(this.httpService.periods[4].periods[0].subject);
+    console.log(this.backupPeriods[4].periods[0].subject);
+  }
+
   cancelEdit(){
+    console.log(this.backupPeriods);
     for(let i = 0;i<this.httpService.periods.length;i++){
       this.httpService.periods[i].periods = this.backupPeriods[i].periods.slice(0);
     }

@@ -92,7 +92,7 @@
         <div *ngIf="edit==true" style="margin:0;padding:0;">
           <mat-select [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].subject">
             <mat-option value="---">---</mat-option>
-              <mat-option *ngFor="let singleSubject of this.httpService.allCheckedSubjects" [value]="singleSubject">
+              <mat-option *ngFor="let singleSubject of this.httpService.subjectData" [value]="singleSubject">
                 {{singleSubject}}
               </mat-option>
           </mat-select>
@@ -126,6 +126,7 @@
   <i class="flaticon-back left" (click)="previousDay()"></i>
   <i class="flaticon-back right" (click)="nextDay()"></i>
 </div>
+<button (click)="log()">Log</button>
 
 <div *ngIf="edit==true" class="editMenu">
   
