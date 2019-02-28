@@ -1,6 +1,6 @@
-<div class="main">
+<div class="main scroll">
   <app-navigation class="navigation" *ngIf="!showNav()"></app-navigation>
   <div [@routeAnimations]="prepareRoute(outlet)" class="body">
-    <router-outlet #outlet="outlet"></router-outlet>
+    <router-outlet #outlet="outlet" class="scroll"></router-outlet>
   </div>
 </div>

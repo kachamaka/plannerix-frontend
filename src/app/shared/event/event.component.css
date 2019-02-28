@@ -47,5 +47,9 @@ li {
 }
 
 .green {
-    background-color: green;
+    background-color: rgb(69, 228, 69);
+}
+
+.gray {
+    background-color: gray;
 }
