@@ -7,26 +7,16 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-<<<<<<< HEAD
         "/1.5b1eb8fe812bdec1375b.js",
         "/5.c9d641b67bc98374d082.js",
         "/favicon.ico",
         "/index.html",
-        "/main.d6556f71e9a68a95da68.js",
+        "/main.db933807b3a7c942d6f3.js",
         "/manifest.json",
         "/polyfills.0999deab96aaf6ec1502.js",
         "/runtime.d392796857722ffcbb03.js",
         "/styles.94e998a9c844afa46482.css",
         "/sw-worker-custom.js"
-=======
-        "/favicon.ico",
-        "/index.html",
-        "/main.548b311f456e2af7da83.js",
-        "/manifest.json",
-        "/polyfills.fc510f06a398d75acd2d.js",
-        "/runtime.0e3bb0483cdaca8f32a8.js",
-        "/styles.c4c3c75160797913ef63.css"
->>>>>>> 2c8249ff42c134e11716de2ef0a7da945fa204ac
       ],
       "patterns": []
     },
@@ -35,17 +25,10 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-<<<<<<< HEAD
         "/Flaticon.1ece31e7859a97af545a.woff2",
         "/Flaticon.7f3507cfbc36128cde78.woff",
         "/Flaticon.8675b0f11dbb047603d5.ttf",
         "/Flaticon.917b1cc60b4e74418b33.svg",
-=======
-        "/Flaticon.0a21b1667eb192097d8b.svg",
-        "/Flaticon.1ece31e7859a97af545a.woff2",
-        "/Flaticon.7f3507cfbc36128cde78.woff",
-        "/Flaticon.8675b0f11dbb047603d5.ttf",
->>>>>>> 2c8249ff42c134e11716de2ef0a7da945fa204ac
         "/Flaticon.b0d5986b57571edfcbb0.eot",
         "/assets/font/Flaticon.eot",
         "/assets/font/Flaticon.svg",
@@ -71,13 +54,9 @@
     {
       "name": "lambda-api",
       "patterns": [
-<<<<<<< HEAD
-        "https:\\/\\/np777gmeqe\\.execute-api\\.eu-central-1\\.amazonaws\\.com\\/dev\\/getSchedule"
-=======
         "https:\\/\\/api\\.chucknorris\\.io\\/jokes\\/random",
         "https:\\/\\/np777gmeqe\\.execute-api\\.eu-central-1\\.amazonaws\\.com\\/dev\\/getSchedule",
         "https:\\/\\/np777gmeqe\\.execute-api\\.eu-central-1\\.amazonaws\\.com\\/dev\\/getWeeklyEvents"
->>>>>>> 2c8249ff42c134e11716de2ef0a7da945fa204ac
       ],
       "strategy": "freshness",
       "maxSize": 20,
@@ -87,7 +66,6 @@
     }
   ],
   "hashTable": {
-<<<<<<< HEAD
     "/1.5b1eb8fe812bdec1375b.js": "9daea96010e95e922d80f28b0cc86bf8a49e44f3",
     "/5.c9d641b67bc98374d082.js": "a3c5fa6cefdb7438f053c294fde1afc168db9b8a",
     "/Flaticon.1ece31e7859a97af545a.woff2": "46aa8886068f2061360de0531599ee615fff5d73",
@@ -103,21 +81,6 @@
     "/assets/font/_flaticon.scss": "0f4925fd28e88cad7c04d91cf369f473278932ad",
     "/assets/font/flaticon.css": "e1a3b266e7a4fc191653b272b554d27b2e854935",
     "/assets/font/flaticon.html": "d50a2242b76c3d25e8fb61308f696b396e631a37",
-=======
-    "/Flaticon.0a21b1667eb192097d8b.svg": "7f6e1ab80b079accbef4856cdf79b5bf7c3b9f14",
-    "/Flaticon.1ece31e7859a97af545a.woff2": "46aa8886068f2061360de0531599ee615fff5d73",
-    "/Flaticon.7f3507cfbc36128cde78.woff": "1ad0358d307d25e6ca7272bdbb2d82f7af55f765",
-    "/Flaticon.8675b0f11dbb047603d5.ttf": "c4558a0420760a104163baddab94b089490f2a48",
-    "/Flaticon.b0d5986b57571edfcbb0.eot": "cc38a6a92eef114b50d8a2127e2ab241bef009d8",
-    "/assets/font/Flaticon.eot": "cc38a6a92eef114b50d8a2127e2ab241bef009d8",
-    "/assets/font/Flaticon.svg": "7f6e1ab80b079accbef4856cdf79b5bf7c3b9f14",
-    "/assets/font/Flaticon.ttf": "c4558a0420760a104163baddab94b089490f2a48",
-    "/assets/font/Flaticon.woff": "1ad0358d307d25e6ca7272bdbb2d82f7af55f765",
-    "/assets/font/Flaticon.woff2": "46aa8886068f2061360de0531599ee615fff5d73",
-    "/assets/font/_flaticon.scss": "9e71f15906017c553926aab2b535053cab86a2fb",
-    "/assets/font/flaticon.css": "4d206d9966938a7ef385c9f9b285de00ed27fe9f",
-    "/assets/font/flaticon.html": "31f7cc5f22f297250f028f61a41d4ffd2b92cb51",
->>>>>>> 2c8249ff42c134e11716de2ef0a7da945fa204ac
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -127,22 +90,13 @@
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-<<<<<<< HEAD
-    "/index.html": "63f70329d23ed77ece7e371b9deaf22ff66c950a",
-    "/main.d6556f71e9a68a95da68.js": "be8ab4bf1a50767f047b4c99b68d6471a2c7cb09",
+    "/index.html": "0f4cdda0cce915eeb5cc3d0fac95a089b072862f",
+    "/main.db933807b3a7c942d6f3.js": "2bcc1a4945d0c061d9ca3594ba10cd0383cfa6e0",
     "/manifest.json": "79ba6fc5fd96b80a7f05854d0f5065f4449784a6",
     "/polyfills.0999deab96aaf6ec1502.js": "f74cb77289d73f571412f0b62746fec4b19e6220",
     "/runtime.d392796857722ffcbb03.js": "8e7d0ed9e514d56f4126cb66791560896cf01c07",
     "/styles.94e998a9c844afa46482.css": "1cbde9af3936ed883aeea76e3ca5bda474d7b698",
     "/sw-worker-custom.js": "47e8c068a03706609fc48564c3c3a702a1e4cb9e"
-=======
-    "/index.html": "e3fce30abdb5adebd9e5c01b24ae4b926e8ddb0c",
-    "/main.548b311f456e2af7da83.js": "64522249340bfd07de3f15422234eb7a8a91c685",
-    "/manifest.json": "14558f8d08965d7394c92ba49b3c29a8bf51a0ae",
-    "/polyfills.fc510f06a398d75acd2d.js": "69f80c057debaa9d0c94dce34f676dab716cbdab",
-    "/runtime.0e3bb0483cdaca8f32a8.js": "21109b3561b5a6c3ed51bc3015962f05da8e57b3",
-    "/styles.c4c3c75160797913ef63.css": "804c7be7d0f12833170d40dad4484041ce03f77d"
->>>>>>> 2c8249ff42c134e11716de2ef0a7da945fa204ac
   },
   "navigationUrls": [
     {
