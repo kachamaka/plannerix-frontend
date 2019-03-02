@@ -45,6 +45,11 @@ export class HomeComponent implements OnInit {
         );
       }
     })
+    this.httpService.getSchedule(postData);
+    this.httpService.getYearGrades(postData).subscribe(d=>{
+      console.log("Data from year grades",d);
+    })
+    this.httpService.getWeeklyEvents(postData);
   }
 
   isDesktop() {
