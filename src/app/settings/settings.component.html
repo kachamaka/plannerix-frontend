@@ -1,6 +1,9 @@
 <div class="color">
-    <h1 align="center">Plannerix</h1>
-    <h2 align="center">Profile</h2>
+    <!-- <h1 align="center">Plannerix</h1> -->
+    <!-- for ng b -->
+    <img *ngIf="this.storageService.isDesktop()" align="center" style="width: 97%" src="assets/logo/plannerixLogo.png">
+    <!-- <img *ngIf="this.storageService.isDesktop()" align="center" style="width: 97%" src="../../assets/plannerixLogo.png"> -->
+    <h2 *ngIf="!this.storageService.isDesktop()" align="center">Profile</h2>
 </div>
 <div class="main-body">
   <section style="padding-left:10px">

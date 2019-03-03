@@ -1,3 +1,4 @@
+import { StorageService } from './../shared/storage.service';
 import { HttpService } from './../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { Grade } from '../shared/grades.model';
@@ -16,7 +17,10 @@ export class HomeComponent implements OnInit {
     // new SchoolEvent(1549752546, "Math", "test", 1)
   ];
   nextLesson = "Chem";
-  constructor(private httpService: HttpService, private router:Router) { }
+  constructor(
+    public storageService: StorageService,
+    private httpService: HttpService,
+    private router:Router) { }
 
   ngOnInit() {
     let postData = {
@@ -53,20 +57,7 @@ export class HomeComponent implements OnInit {
     this.httpService.getWeeklyEvents(postData);
   }
 
-  isDesktop() {
-    let url= this.router.url;
-    let routesToHideNav = ["desktop"];
-    for(let i=0; i < routesToHideNav.length; i++) {
-      // console.log(i);
-      if (url.includes(routesToHideNav[i])){
-        // console.log(true)
-        return true;
-      }
-    }
-    // console.log(false);
-    return false;
-    // console.log(url);
-  }
+ 
 
   onResize() {
     // window.addEventListener("resize",)

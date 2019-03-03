@@ -1,7 +1,7 @@
+import { StorageService } from './../shared/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../shared/http.service';
 import { Router } from '@angular/router';
-import { StorageService } from '../shared/storage.service';
 
 
 @Component({
@@ -33,6 +33,7 @@ export class SettingsComponent implements OnInit {
       }
     });
   }
+  
 
   logout(){
     this.httpService.logoutUser();
