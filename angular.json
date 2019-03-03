@@ -23,7 +23,8 @@
               "src/assets",
               "src/_redirects",
               "src/manifest.json",
-              "src/sw-worker-custom.js"
+              "src/sw-worker-custom.js",
+              "src/googlefbc0ca3ebe6bcb8f.html"
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",
