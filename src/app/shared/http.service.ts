@@ -57,7 +57,7 @@ export class HttpService {
 
   getWeeklyEvents(data) {
     console.log(data);
-    return this.http.post('https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getWeeklyEvents', data); 
+    return this.http.post(this.domain + 'getWeeklyEvents', data); 
   }
 
   createEvent(data) {
