@@ -1,10 +1,10 @@
 <div class="color">
-    <!-- <h1 align="center">Plannerix</h1> -->
-    <!-- for ng b -->
     <img *ngIf="this.storageService.isDesktop()" align="center" style="width: 97%" src="assets/logo/plannerixLogo.png">
-    <!-- <img *ngIf="this.storageService.isDesktop()" align="center" style="width: 97%" src="../../assets/plannerixLogo.png"> -->
-    <h1 *ngIf="!this.storageService.isDesktop()" >Profile</h1>
+    <div class="container" >
+      <h1 *ngIf="!this.storageService.isDesktop()" class="title">Profile</h1>
+    </div>
 </div>
+<mat-divider style="margin-bottom:5px"></mat-divider>
 <div class="main-body">
   <section style="padding-left:10px">
       <h4>Kowalski Martin XI a klas</h4>  

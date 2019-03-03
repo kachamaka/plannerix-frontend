@@ -1,4 +1,3 @@
-import { CalendarComponent } from './../../calendar/calendar.component';
 import { Component, OnInit, Input } from '@angular/core';
 import {SchoolEvent} from '../../shared/event.model';
 import { DateTimeService } from 'src/app/shared/date-time.service';
@@ -13,7 +12,7 @@ import { HttpService } from '../http.service';
 })
 export class EventComponent implements OnInit {
   @Input('events') events: Array<SchoolEvent>;
-  @Input('editable') editable:boolean;
+  @Input('editable') editable: Boolean;
   constructor(
     private httpService: HttpService,
      public dateTimeS: DateTimeService,

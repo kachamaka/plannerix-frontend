@@ -6,12 +6,28 @@ let reg = new RegExp(".*\.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|j
 let cacheRequests = [
     "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule",
     "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getWeeklyEvents",
-    "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getYearGrades"
+    "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getYearGrades",
+    "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/nextPeriod"
 ]
 
 let routers = [
   "/calendar", // ==> "/"
-
+  "/home",
+  "/not-found",
+  "/schedule",
+  "/settings",
+  "/login",
+  "/register",
+  "/register/subjects",
+  "/register/schedule-input",
+  "/grades",
+  "/grades/recent-grades",
+  "/grades/year-grades",
+  "/grades/all-grades",
+  "/desktop",  
+  "/desktop/recent-grades",
+  "/desktop/year-grades",
+  "/desktop/all-grades",
 ]
 
 self.addEventListener("install", (e)=>{
@@ -36,22 +52,13 @@ self.addEventListener("activate", (e)=>{
 })
 
 self.addEventListener("fetch",function(event) {
-    // console.log(event);
     let url = event.request.url;
     event.respondWith(
       fetch(event.request).then(res=>{
         const resClone = res.clone();
-        // console.log(url, validUrl(url));
         if(url.startsWith("http") && validUrl(url)){
-          // console.log("this is true");
-          // console.log(resClone);
-          // let newClone = resClone.clone();
-          // newClone.text().then(result => {
-          //   console.log(result);
-          // })
           caches.open(version)
           .then(cache => {
-              // console.log(url);
             cache.put(url, resClone)
           })
           }
