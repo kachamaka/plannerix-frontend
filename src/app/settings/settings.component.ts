@@ -18,20 +18,16 @@ export class SettingsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    let user = {
-      username: "testUser",
-      password: "testing1",
-      // email: "test@abv.bg",
-      // subjects: ["Math"],
-      // schedule: [{periods: []},{periods: []},{periods: []},{periods: []},{periods: []}]
-    }
-    // this.httpService.registerUser(user);
-    this.httpService.loginUser(user).subscribe((data:any)=>{
-      if(data.success==true){
-        console.log(data);
-        localStorage.setItem('token', data.token);
-      }
-    });
+    // let user = {
+    //   username: "testUser",
+    //   password: "testing1",
+    // }
+    // this.httpService.loginUser(user).subscribe((data:any)=>{
+    //   if(data.success==true){
+    //     console.log(data);
+    //     localStorage.setItem('token', data.token);
+    //   }
+    // });
   }
   
 

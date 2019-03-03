@@ -14,7 +14,7 @@
             placeholder="12:00"
             [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].startTime"
             readonly>
-            <ngx-material-timepicker #startTime></ngx-material-timepicker>
+            <ngx-material-timepicker [minutesGap]="5" #startTime></ngx-material-timepicker>
           </div>
     </td>
     </ng-container>

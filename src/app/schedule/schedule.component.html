@@ -12,7 +12,7 @@
 <div class="color">
 
   <div class="container">
-    <h1 class="title">График</h1>
+    <h1 class="title">Програма</h1>
     <div class="block">
       <i class="flaticon-edit" *ngIf="edit==false" (click)="editMenu()"></i>
       <i class="menu flaticon-menu" *ngIf="edit==true" [matMenuTriggerFor]="menu"></i>
@@ -74,7 +74,7 @@
           placeholder="12:00"
           [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].endTime"
           readonly>
-          <ngx-material-timepicker #endTime></ngx-material-timepicker>
+          <ngx-material-timepicker [minutesGap]="5" #endTime></ngx-material-timepicker>
         </div>
         
       </td>

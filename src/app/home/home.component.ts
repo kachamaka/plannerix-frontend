@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
     // new SchoolEvent(1549752546, "Math", "test", 1)
   ];
   nextLesson = "Chem";
+  lessonTime;
   constructor(
     public storageService: StorageService,
     private httpService: HttpService,
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
         this.nextLesson = data.message;
       }else{
         this.nextLesson = data.nextPeriod.subject;
+        this.lessonTime = data.nextPeriod.startTime;
       }
     })
     this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
