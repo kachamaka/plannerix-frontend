@@ -1,17 +1,17 @@
 <div class="color">
   <div class="container">
     <h1 class="title" *ngIf="!this.storageService.isDesktop()">Plannerix</h1>
-    <h1 class="title" *ngIf="this.storageService.isDesktop()">На кратко</h1>
+    <h1 class="title" *ngIf="this.storageService.isDesktop()">Накратко</h1>
   </div>
 </div>
 <mat-divider style="margin-bottom:5px"></mat-divider>
 <section class="next-lesson">
-  <h3>Next period:</h3>
-  <p class="lesson">{{nextLesson}}</p>
+  <h3>Следващ час:</h3>
+  <p class="lesson">{{nextLesson}} в {{lessonTime}} ч.</p>
 </section>
 <mat-divider></mat-divider>
 <section>
-  <h3>This week's tests</h3>
+  <h3>За тази седмица:</h3>
 </section>
 <!-- TODO: make a component that displays test given an array -->
 <app-events [events]="events"></app-events>
