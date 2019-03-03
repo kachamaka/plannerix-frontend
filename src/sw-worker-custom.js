@@ -181,13 +181,15 @@ let getNotifications = new Promise((resolve, reject)=>{
               verbesserungSubjects.push(sub);
             }
           }
-          let n = self.registration.showNotification("Предмети за подобряване", {
-            body: `Трябва да си подобриш успеха по тези предмети: ${verbesserungSubjects}`,
-            actions: [
-              {action: "cancel",title: "cancel"}
-            ],
-            tag: "verbesserung-subjects"
-          })
+          if(verbesserungSubjects.length > 0){
+            let n = self.registration.showNotification("Предмети за подобряване", {
+              body: `Трябва да си подобриш успеха по тези предмети: ${verbesserungSubjects}`,
+              actions: [
+                {action: "cancel",title: "cancel"}
+              ],
+              tag: "verbesserung-subjects"
+            })
+          }
         }).catch(err => {
           console.log(`Error with getting year grades: ${err}`);
         })
