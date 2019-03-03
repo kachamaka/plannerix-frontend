@@ -101,7 +101,7 @@ registerLocaleData(localeBg);
     EventListModule,
     HttpModule,
     HttpClientModule,
-    ServiceWorkerModule.register('sw-worker-custom.js', { enabled: environment.production }),
+    // ServiceWorkerModule.register('sw-worker-custom.js', { enabled: environment.production }),
     SettingsModule,
     HomeModule,
     CalendarModule,

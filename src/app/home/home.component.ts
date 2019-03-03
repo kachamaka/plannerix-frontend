@@ -58,6 +58,13 @@ export class HomeComponent implements OnInit {
     Notification.requestPermission().then((perm)=>{
       console.log(`Notification permission: ${perm}`);
     })
+    navigator.serviceWorker.register("../sw-worker-custom.js").then(res=>{
+      console.warn("Registration succeeds:", res);
+    }).catch(err =>{
+      console.error("An error occured when registering service worker", err);
+    }).finally().then(fin=>{
+      console.log("Yeah dont know bout this one", fin)
+    })
   }
 
  
