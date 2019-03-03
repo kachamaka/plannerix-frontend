@@ -143,5 +143,7 @@ i,div,li:focus{
 }
 
 .color{
-    background-color: lightskyblue;
+    /* background-color: lightskyblue; */
+    background-color: #0589E8;
+    color: #eee;
 }
