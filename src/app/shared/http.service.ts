@@ -188,14 +188,9 @@ export class HttpService {
       let thisWeekMonday = new Date((d.setDate(diff))).getTime();
       this.weeklyGrades = [];
       for(let i = 0; i<5;i++){
-<<<<<<< HEAD
-        let gradesDate = this.getDateFormat(new Date(thisWeekMonday + i*86400000).toLocaleDateString());
-
-=======
         // console.log(new Date(thisWeekMonday + i*86400000).toLocaleDateString('bg-BG'));
         let gradesDate = this.getDateFormat(new Date(thisWeekMonday + i*86400000).toLocaleDateString('bg-BG'));
         // console.log("gradesDate", gradesDate);
->>>>>>> 0d5f2ac3f4abefb0948a6888c6ae540e468842ff
         let newWeeklyGrade = {
           date: gradesDate,
           grades: []

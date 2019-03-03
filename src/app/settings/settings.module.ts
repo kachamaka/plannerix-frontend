@@ -19,7 +19,8 @@ import { MatDividerModule, MatButtonModule, MatListModule } from '@angular/mater
   exports: [
     NotificationSettingsComponent,
     EditProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    MatDividerModule
   ]
 })
 export class SettingsModule { }
