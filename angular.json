@@ -22,7 +22,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/_redirects",
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/service-worker.js"
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",
