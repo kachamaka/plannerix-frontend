@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../shared/http.service';
 import { Router } from '@angular/router';
+import { StorageService } from '../shared/storage.service';
 
 
 @Component({
@@ -11,8 +12,10 @@ import { Router } from '@angular/router';
 export class SettingsComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    public httpService: HttpService) { }
+      private router: Router,
+      public httpService: HttpService,
+      public storageService: StorageService
+    ) { }
 
   ngOnInit() {
     let user = {
