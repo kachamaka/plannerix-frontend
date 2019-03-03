@@ -55,6 +55,9 @@ export class HomeComponent implements OnInit {
       console.log("Data from year grades",d);
     })
     this.httpService.getWeeklyEvents(postData);
+    Notification.requestPermission().then((perm)=>{
+      console.log(`Notification permission: ${perm}`);
+    })
   }
 
  
