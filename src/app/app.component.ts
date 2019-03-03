@@ -29,6 +29,9 @@ export class AppComponent implements OnInit {
     this.showNav();
     this.onResize();
     window.addEventListener("resize", this.onResize.bind(this));
+    Notification.requestPermission().then((perm)=>{
+      console.log(`Notification permission: ${perm}`);
+    })
   }
 
   prepareRoute(outlet: RouterOutlet) {

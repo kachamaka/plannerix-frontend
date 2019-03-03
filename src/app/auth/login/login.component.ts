@@ -59,7 +59,9 @@ export class LoginComponent implements OnInit {
     this.httpService.loginUser(postData).subscribe((data:any)=>{
       if(data.success==true){
         localStorage.setItem("token", data.token)
+        
         this.router.navigate(['/home'])
+        
         //redirect
       }else{
         // if(data.errMsg)
