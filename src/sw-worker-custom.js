@@ -159,8 +159,8 @@ let getNotifications = new Promise((resolve, reject)=>{
       if(parseTime("08:00") == getTime()){
         getWeeklyEvents.then((weeklyEventsCount)=>{
           if(weeklyEventsCount > 0){
-            let n = self.registration.showNotification("Next week events", {
-              body: `${weeklyEventsCount} events for the next week`,
+            let n = self.registration.showNotification("Седмични събития", {
+              body: `${weeklyEventsCount} събития за следващата седмица`,
               actions: [
                 {action: "cancel",title: "cancel"}
               ],
@@ -181,8 +181,8 @@ let getNotifications = new Promise((resolve, reject)=>{
               verbesserungSubjects.push(sub);
             }
           }
-          let n = self.registration.showNotification("Verbesserung Subjects", {
-            body: `You should verbessern dich in ${verbesserungSubjects}`,
+          let n = self.registration.showNotification("Предмети за подобряване", {
+            body: `Трябва да си подобриш успеха по тези предмети: ${verbesserungSubjects}`,
             actions: [
               {action: "cancel",title: "cancel"}
             ],
@@ -212,8 +212,8 @@ let getNotifications = new Promise((resolve, reject)=>{
     if (p!=undefined && parsedTime - 60*60 ==getTime()) { // change (13*60*60 + 0 + 0) + i to getTime()
       i++;
       console.log("should notify");
-      let n = self.registration.showNotification("Next period", {
-        body: `Next period in: ${p.startTime} hours`,
+      let n = self.registration.showNotification("Следващ час", {
+        body: `Следваш час в ${p.startTime} ч.`,
         actions: [
           {action: "cancel",title: "cancel"}
         ],

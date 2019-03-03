@@ -56,7 +56,7 @@ export class HttpService {
   }
 
   getWeeklyEvents(data) {
-    console.log(data);
+    // console.log(data);
     return this.http.post(this.domain + 'getWeeklyEvents', data); 
   }
 
@@ -148,10 +148,10 @@ export class HttpService {
     }
 
     this.getSchedule(postData).subscribe((data:any)=>{
-      console.log(data);
+      // console.log(data);
       if(data.success==true){
         this.periods = data.schedule;
-        console.log(this.periods);
+        // console.log(this.periods);
       }
     })
   }
@@ -163,7 +163,7 @@ export class HttpService {
     }
 
     this.getEvents(postData).subscribe((data:any)=>{
-      console.log(data);
+      // console.log(data);
         if(data.success==true){
           this.events = [];
           for(let i = 0;i<data.events.length; i++){
@@ -188,7 +188,9 @@ export class HttpService {
       let thisWeekMonday = new Date((d.setDate(diff))).getTime();
       this.weeklyGrades = [];
       for(let i = 0; i<5;i++){
-        let gradesDate = this.getDateFormat(new Date(thisWeekMonday + i*86400000).toLocaleDateString());
+        // console.log(new Date(thisWeekMonday + i*86400000).toLocaleDateString('bg-BG'));
+        let gradesDate = this.getDateFormat(new Date(thisWeekMonday + i*86400000).toLocaleDateString('bg-BG'));
+        // console.log("gradesDate", gradesDate);
         let newWeeklyGrade = {
           date: gradesDate,
           grades: []
@@ -201,7 +203,7 @@ export class HttpService {
       this.getWeeklyGrades(postData).subscribe((data:any)=>{
         // console.log(data);
         for(let k = 0; k<data.weeklyGrades.length; k++){
-          let gradeRawDate = new Date(data.weeklyGrades[k].timestamp*1000).toLocaleDateString();
+          let gradeRawDate = new Date(data.weeklyGrades[k].timestamp*1000).toLocaleDateString('bg-BG');
           let gradeDate = this.getDateFormat(gradeRawDate);
           // console.log(gradeDate);
           for(let j = 0; j<this.weeklyGrades.length; j++){
@@ -232,15 +234,19 @@ export class HttpService {
       });
     }
 
-  getDateFormat(date){
-    let dateField = date.split("/")
+  getDateFormat(initDate: string){
+    // console.log(initDate);
+    let date = initDate.replace(/\./g, "/");
+    let dateField = date.split("/");
+    // console.log("dateField",dateField);
     if(dateField[0].length == 1){
       dateField[0] = "0" + dateField[0];
     }
     if(dateField[1].length == 1 ){
       dateField[1] = "0" + dateField[1];
     }
-    let dateData = dateField[1]+"."+dateField[0]+"."+dateField[2];
+    let dateData = dateField[0]+"."+dateField[1]+"."+dateField[2];
+    // console.log("dateData", dateData);
     return dateData
   }
     

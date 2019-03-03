@@ -50,9 +50,7 @@ export class EventComponent implements OnInit {
           })
 
         }else{
-          // console.log("wrong");
-          // return
-          if(this.editable== true){
+          if(this.editable == true){
             let postData = {
               token: localStorage.getItem("token"),
               timestamp: out.date,

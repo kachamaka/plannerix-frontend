@@ -16,6 +16,7 @@ export class RecentGradesComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.loadWeeklyGrades();
+    // console.log(this.httpService.weeklyGrades);
   }
 
 

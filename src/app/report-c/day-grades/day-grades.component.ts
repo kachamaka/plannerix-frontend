@@ -15,6 +15,7 @@ export class DayGradesComponent implements OnInit {
 
   ngOnInit() {
     let date = this.dateTime.stringToDate(this.date);
+    console.log(date);
     this.day = this.dateTime.getDay(date);
   }
 
