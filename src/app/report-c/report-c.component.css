@@ -47,3 +47,7 @@ i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
 .test{
     background-color: lightskyblue;
 }
+.color {
+    background-color: #0589E8;
+    color: #eee;
+}

@@ -1,0 +1,9 @@
+.color {
+    padding: 1rem;
+    background-color: #0589E8;
+    color: #eee;
+}
+.main-body {
+    padding: 1rem;
+    /* background-image: linear-gradient(#0488E8, white) */
+}

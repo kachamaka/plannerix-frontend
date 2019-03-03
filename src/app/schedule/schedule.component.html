@@ -9,30 +9,33 @@
   </div>
 </div>  -->
 
-<div class="container">
-  <h1 class="title">График</h1>
-  <div class="block">
-    <i class="flaticon-edit" *ngIf="edit==false" (click)="editMenu()"></i>
-    <i class="menu flaticon-menu" *ngIf="edit==true" [matMenuTriggerFor]="menu"></i>
-    <mat-menu #menu="matMenu" class="menuItems">
-      <div mat-menu-item (click)="cancelEdit()">
-       <i class="flaticon-cancel menuItem"></i><span class="menuItemText">Cancel</span>
-      </div>
-      <div mat-menu-item (click)="saveEdit()">
-        <i class="flaticon-checked menuItem"></i><span class="menuItemText">Save</span>
-      </div>
-      <div mat-menu-item (click)="addPeriod()">
+<div class="color">
+
+  <div class="container">
+    <h1 class="title">График</h1>
+    <div class="block">
+      <i class="flaticon-edit" *ngIf="edit==false" (click)="editMenu()"></i>
+      <i class="menu flaticon-menu" *ngIf="edit==true" [matMenuTriggerFor]="menu"></i>
+      <mat-menu #menu="matMenu" class="menuItems">
+        <div mat-menu-item (click)="cancelEdit()">
+          <i class="flaticon-cancel menuItem"></i><span class="menuItemText">Cancel</span>
+        </div>
+        <div mat-menu-item (click)="saveEdit()">
+          <i class="flaticon-checked menuItem"></i><span class="menuItemText">Save</span>
+        </div>
+        <div mat-menu-item (click)="addPeriod()">
           <i class="flaticon-add menuItem"></i><span class="menuItemText">Add Item</span>
-      </div>
-      <div mat-menu-item (click)="sortPeriods(this.currentDay-1)">
+        </div>
+        <div mat-menu-item (click)="sortPeriods(this.currentDay-1)">
           <i class="flaticon-sort-by-attributes-interface-button-option menuItem"></i><span class="menuItemText">Sort</span>
-      </div>
-      
-    </mat-menu>
-    <!-- <i class="flaticon-checked" *ngIf="edit==true" (click)="saveEdit()"></i> -->
+        </div>
+        
+      </mat-menu>
+      <!-- <i class="flaticon-checked" *ngIf="edit==true" (click)="saveEdit()"></i> -->
+    </div>
   </div>
 </div>
-
+  
 <mat-divider style="margin-bottom:5px"></mat-divider>
 
 <h4 style="margin:0 0 7px 0" align="center">{{days[currentDay]}}</h4>
