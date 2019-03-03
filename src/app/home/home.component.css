@@ -7,10 +7,17 @@ section{
     margin: 0 auto;
     margin-bottom: 1rem;
 }
+.container::before{
+    background-color: #78C6FF;
+}
 .container{ 
     width: 90%;
     margin: 0 auto;
 }
 .title {
     display: inline-block;
+}
+.color {
+    background-color: #0589E8;
+    color: #eee;
 }

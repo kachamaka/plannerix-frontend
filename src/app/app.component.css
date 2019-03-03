@@ -6,11 +6,13 @@
     "body"
     "nav";
     height: 100%;
+    background-color: #fefefe;
+    /* overflow: hidden; */
 }
 
 .body {
     grid-area: body;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .navigation {
     grid-area: nav;

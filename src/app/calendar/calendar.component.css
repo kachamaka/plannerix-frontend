@@ -60,3 +60,7 @@ table {
     text-align: center;
     /* width: 20%; */
 }
+.color {
+    background-color: #0589E8;
+    color: #eee;
+}

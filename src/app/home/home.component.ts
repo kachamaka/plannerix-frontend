@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
         );
       }
     })
+    this.onResize();
     this.httpService.getSchedule(postData);
     this.httpService.getYearGrades(postData).subscribe(d=>{
       console.log("Data from year grades",d);
@@ -65,6 +66,20 @@ export class HomeComponent implements OnInit {
     // console.log(false);
     return false;
     // console.log(url);
+  }
+
+  onResize() {
+    // window.addEventListener("resize",)
+    let url= this.router.url;
+    if (window.innerWidth < 800) {
+      if (url.includes("desktop")) {
+        this.router.navigate(["/home"]);
+      }
+    } else {
+      if (!url.includes("desktop")) {
+        this.router.navigate(["/desktop"]);
+      }
+    }
   }
 
 
