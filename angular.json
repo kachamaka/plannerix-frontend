@@ -23,11 +23,7 @@
               "src/assets",
               "src/_redirects",
               "src/manifest.json",
-<<<<<<< HEAD
-              "src/service-worker.js"
-=======
               "src/sw-worker-custom.js"
->>>>>>> 025b05b5c6f9502cfc06f66bf472bad7ba792f67
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",
