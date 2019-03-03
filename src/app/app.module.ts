@@ -58,6 +58,7 @@ import {CalendarModule} from './calendar/calendar.module';
 import {ScheduleModule} from './schedule/schedule.module';
 import { AuthGuard } from './shared/auth.guard';
 import { NotAuthGuard } from './shared/notAuth.guard';
+import { StorageService } from './shared/storage.service';
 registerLocaleData(localeBg);
 
 
@@ -111,7 +112,7 @@ registerLocaleData(localeBg);
   providers: [{
     provide: LOCALE_ID,
     useValue: "bg-BG"
-  }, DatePipe, DateTimeService, HttpService, AuthGuard, NotAuthGuard],
+  }, DatePipe, DateTimeService, HttpService, AuthGuard, NotAuthGuard, StorageService],
   bootstrap: [AppComponent],
   entryComponents: [
     AdditionalSubjectsComponent,
