@@ -1,4 +1,3 @@
-import { CalendarComponent } from './../../calendar/calendar.component';
 import { Component, OnInit, Input } from '@angular/core';
 import {SchoolEvent} from '../../shared/event.model';
 import { DateTimeService } from 'src/app/shared/date-time.service';
@@ -13,7 +12,7 @@ import { HttpService } from '../http.service';
 })
 export class EventComponent implements OnInit {
   @Input('events') events: Array<SchoolEvent>;
-  @Input('editable') editable:boolean;
+  @Input('editable') editable: Boolean;
   constructor(
     private httpService: HttpService,
      public dateTimeS: DateTimeService,
@@ -52,6 +51,8 @@ export class EventComponent implements OnInit {
         }else{
           // console.log("wrong");
           // return
+          console.log(this.editable, typeof this.editable, this.editable == true)
+
           if(this.editable== true){
             let postData = {
               token: localStorage.getItem("token"),

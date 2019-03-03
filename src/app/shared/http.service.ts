@@ -189,6 +189,7 @@ export class HttpService {
       this.weeklyGrades = [];
       for(let i = 0; i<5;i++){
         let gradesDate = this.getDateFormat(new Date(thisWeekMonday + i*86400000).toLocaleDateString());
+
         let newWeeklyGrade = {
           date: gradesDate,
           grades: []
@@ -232,8 +233,9 @@ export class HttpService {
       });
     }
 
-  getDateFormat(date){
-    let dateField = date.split("/")
+  getDateFormat(date: string){
+    date = date.replace(".", "/");
+    let dateField = date.split("/");
     if(dateField[0].length == 1){
       dateField[0] = "0" + dateField[0];
     }
