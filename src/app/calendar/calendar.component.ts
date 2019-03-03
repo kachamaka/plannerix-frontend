@@ -76,56 +76,6 @@ export class CalendarComponent implements OnInit {
     })
   }
   
-  // getDataSource(){
-  //   let dataSource = new MatTableDataSource(this.upcommingTestDates);
-  //   return dataSource;
-  // }
-
-  // sortTestDates(){
-  //   this.upcommingTestDates.sort((a, b) => {
-  //     return new Date(a.date).getTime() - new Date(b.date).getTime() ;
-  //   });
-  // }
-  // getDate(date){
-  //   return new Date(date);
-  // }
-
-  // checkDueDate(date: Date){
-  //   if(date.getFullYear()>=this.today.getFullYear()){
-  //     if(date.getMonth()>this.today.getMonth()){
-  //       return true;
-  //     }else if(date.getMonth()==this.today.getMonth()){
-  //       if(date.getDate()>=this.today.getDate()){
-  //         return true;
-  //       }else{
-  //         return false;
-  //       }
-  //     }else{
-  //       return false;
-  //     }
-  //   }else{
-  //     return false;
-  //   }
-  // }
-  
-  // editMenu(){
-  //   this.edit = !this.edit;
-  //   this.backupTests = this.upcommingTestDates.slice();
-  // }
-
-  // saveEdit(){
-  //   this.editMenu();
-  // }
-
-  // cancelEdit(){
-  //   this.upcommingTestDates = this.backupTests;
-  //   this.editMenu();
-  // }
-
-  // removeTest(i){
-  //   this.upcommingTestDates.splice(i,1);
-  // }
-  
   // openDialog() {
   //   const dialogConfig = new MatDialogConfig();
   //   dialogConfig.minWidth = "100%";

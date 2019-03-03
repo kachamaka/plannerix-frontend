@@ -18,7 +18,7 @@ section{
     display: inline-block;
 }
 .color {
-    background-color: #0589E8;
-    /* background-color: #2094e8; */
+    /* background-color: #0589E8; */
+    background-color: #2094e8;
     color: #eee;
 }
