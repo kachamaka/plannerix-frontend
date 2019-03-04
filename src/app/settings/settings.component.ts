@@ -3,6 +3,7 @@ import { StorageService } from './../shared/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../shared/http.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -25,15 +26,16 @@ export class SettingsComponent implements OnInit {
   periodN = true;
   improvementN = true;
   passwordForm: FormGroup;
+  emailForm: FormGroup;
   
-  password = "";
-  confirmPassword = "";
   passwordError;
   confirmPasswordError;
-  validatePasswordError = "Invalid pass";
+  emailError;
+  validEmail = false;
 
 
   constructor(
+    private toastr: ToastrService,
     private fb: FormBuilder,
     private router: Router,
     public httpService: HttpService,
@@ -42,8 +44,11 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.passwordForm = this.fb.group({
-      password: ['', Validators.required, Validators.minLength(8), Validators.maxLength(35)],
-      confirmPassword: ['', Validators.required, Validators.minLength(8), Validators.maxLength(35)]
+      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(35)])],
+      confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(35)])]
+    })
+    this.emailForm = this.fb.group({
+      email: ['', Validators.compose([Validators.required])],
     })
     let postData = {
       token: localStorage.getItem("token"),
@@ -56,38 +61,108 @@ export class SettingsComponent implements OnInit {
   }
 
   changePassword(){
-    // console.log(this.passwordForm.controls["password"].value, this.passwordForm.controls["confirmPassword"].value);
-    console.log(this.passwordForm.controls["password"].errors);
+    console.log(this.passwordForm.valid);
+    let postData = {
+      token: localStorage.getItem("token"),
+      password: this.passwordForm.controls["password"].value
+    }
+    this.httpService.changePassword(postData).subscribe((data:any)=>{
+      this.passwordForm.reset();
+      if(data.success == true){
+        this.toastr.success("Паролата бе сменена успешно!");
+      }else{
+        this.toastr.error(data.errMsg, "Грешка!")
+      }
+    })
+  }
+
+  changeEmail(){
+    console.log(this.emailForm.valid);
+    let postData = {
+      token: localStorage.getItem("token"),
+      email: this.emailForm.controls["email"].value
+    }
+    this.httpService.changeEmail(postData).subscribe((data:any)=>{
+      this.emailForm.reset();
+      if(data.success == true){
+        this.toastr.success("Имейлът бе сменен успешно!");
+      }else{
+        this.toastr.error(data.errMsg, "Грешка!")
+      }
+    })
   }
 
   updateNotifications(){
     console.log("update notifications");
   }
 
+  checkPasswordFormValidation(){
+    if(this.validatePassword()==true && this.validateConfirmPassword() == true){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   validatePassword(){
     let password = this.passwordForm.controls["password"].value;
     if(this.httpService.passwordRegex.test(password)){
+      this.passwordError = "";
       return true;
     }else{
       if(password == ""){
         this.passwordError = "*Това поле е задължително";
+        this.passwordForm.controls["password"].setErrors({invalid: true});
       }else{
         this.passwordError = "*Невалидна парола";
+        this.passwordForm.controls["password"].setErrors({invalid: true});        
       }
     }
     return false;
   }
   
   validateConfirmPassword(){
-    if(this.confirmPassword == ""){
+    let password = this.passwordForm.controls["password"].value;
+    let confirmPassword = this.passwordForm.controls["confirmPassword"].value;
+    if(confirmPassword == ""){
       this.confirmPasswordError = "*Това поле е задължително";
+      this.passwordForm.controls["confirmPassword"].setErrors({invalid: true});
       return false;
     }
-    if(this.password != this.confirmPassword){
+    if(password != confirmPassword){
       this.confirmPasswordError = "*Паролите не съвпадат";
+      this.passwordForm.controls["confirmPassword"].setErrors({invalid: true});
       return false;
     }
+    this.confirmPasswordError = "";
     return true;
+  }
+  
+  validateEmail(){
+    let email = this.emailForm.controls["email"].value;
+    if(this.httpService.emailRegex.test(email)){
+      this.emailError = "";
+      this.validEmail = true;
+      return true;
+    }else{
+      if(email == ""){
+        this.emailError = "*Това поле е задължително";
+        this.emailForm.controls["email"].setErrors({invalid: true});
+      }else{
+        this.emailError = "*Невалиден имейл адрес";
+        this.emailForm.controls["email"].setErrors({invalid: true});
+      }
+    }
+    this.validEmail = false;
+    return false;
+  }
+
+  validateEmailForm(){
+    if(this.validateEmail()==true && this.validEmail == true){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   disableAll(){

@@ -92,6 +92,14 @@ export class HttpService {
     return this.http.post(this.domain + 'updateNotifications', data);
   }
 
+  changePassword(data){
+    return this.http.post(this.domain + 'changePassword', data);
+  }
+
+  changeEmail(data){
+    return this.http.post(this.domain + 'changeEmail', data);
+  }
+
   logoutUser() {
     this.authToken = null;
     localStorage.clear();
