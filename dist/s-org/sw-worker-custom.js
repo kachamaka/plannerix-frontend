@@ -4,10 +4,11 @@ let version = makeVersion()
 //                        (eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|js|json|html|css|ico)
 let reg = new RegExp(".*\.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|js|json|html|css|ico)$");
 let cacheRequests = [
-    "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule",
-    "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getWeeklyEvents",
-    "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getYearGrades",
-    "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/nextPeriod"
+  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule",
+  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getWeeklyEvents",
+  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getYearGrades",
+  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/nextPeriod",
+  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getProfile"
 ]
 
 let routers = [
@@ -150,8 +151,8 @@ function handleOpenHome(event) {
 //   data
 // })
 let getNotifications = new Promise((resolve, reject)=>{
-  // let checkTime = 1; //when to open 
-  let checkTime = getTime() + 5
+  let checkTime = 1; //when to open 
+  // let checkTime = getTime() + 5
   let notification ;
   let p = undefined;
   let parsedTime = 0;
@@ -164,41 +165,50 @@ let getNotifications = new Promise((resolve, reject)=>{
     dateDay = date.getDay();
     if(dateDay == 6 || dateDay == 7){
       if(parseTime("08:00") == getTime()){
-        getWeeklyEvents.then((weeklyEventsCount)=>{
-          if(weeklyEventsCount > 0){
-            let n = self.registration.showNotification("Седмични събития", {
-              body: `${weeklyEventsCount} събития за следващата седмица`,
-              actions: [
-                {action: "cancel",title: "cancel"}
-              ],
-              tag: "weekly-events"
-            })
-          }
+        getProfileNotifications().then((notifications)=>{
+          if (!notifications["all"]) return
+          if (!notification["events"]) return
+          getWeeklyEvents.then((weeklyEventsCount)=>{
+            if(weeklyEventsCount > 0){
+              let n = self.registration.showNotification("Седмични събития", {
+                body: `${weeklyEventsCount} събития за следващата седмица`,
+                actions: [
+                  {action: "cancel",title: "cancel"}
+                ],
+                tag: "weekly-events"
+              })
+            }
+          })
+          .catch(err=>{
+            console.log(`Error with geting weekly events: ${err}`)
+          })
         })
-        .catch(err=>{
-          console.log(`Error with geting weekly events: ${err}`)
-        })
+
       }
       if(parseTime("09:00") == getTime()){
         //do stuff
-        getYearGrades.then((averageScores)=>{
-          let verbesserungSubjects = [];
-          for (let sub in averageScores){
-            if(averageScores[sub]<4.5){
-              verbesserungSubjects.push(sub);
+        getProfileNotifications().then((notifications)=>{
+          if (!notifications["all"]) return
+          if (!notification["improvement"]) return
+          getYearGrades.then((averageScores)=>{
+            let verbesserungSubjects = [];
+            for (let sub in averageScores){
+              if(averageScores[sub]<4.5){
+                verbesserungSubjects.push(sub);
+              }
             }
-          }
-          if(verbesserungSubjects.length > 0){
-            let n = self.registration.showNotification("Предмети за подобряване", {
-              body: `Трябва да си подобриш успеха по тези предмети: ${verbesserungSubjects}`,
-              actions: [
-                {action: "cancel",title: "cancel"}
-              ],
-              tag: "verbesserung-subjects"
-            })
-          }
-        }).catch(err => {
-          console.log(`Error with getting year grades: ${err}`);
+            if(verbesserungSubjects.length > 0){
+              let n = self.registration.showNotification("Предмети за подобряване", {
+                body: `Трябва да си подобриш успеха по тези предмети: ${verbesserungSubjects}`,
+                actions: [
+                  {action: "cancel",title: "cancel"}
+                ],
+                tag: "verbesserung-subjects"
+              })
+            }
+          }).catch(err => {
+            console.log(`Error with getting year grades: ${err}`);
+          })
         })
       }
     }
@@ -221,12 +231,16 @@ let getNotifications = new Promise((resolve, reject)=>{
     if (p!=undefined && parsedTime - 60*60 ==getTime()) { // change (13*60*60 + 0 + 0) + i to getTime()
       i++;
       console.log("should notify");
-      let n = self.registration.showNotification("Следващ час", {
-        body: `Следваш час в ${p.startTime} ч.`,
-        actions: [
-          {action: "cancel",title: "cancel"}
-        ],
-        tag: "next-period"
+      getProfileNotifications().then((notifications)=>{
+        if (!notifications["all"]) return
+        if (!notification["period"]) return
+        let n = self.registration.showNotification("Следващ час", {
+          body: `Следваш час в ${p.startTime} ч.`,
+          actions: [
+            {action: "cancel",title: "cancel"}
+          ],
+          tag: "next-period"
+        })
       })
     }
   }, 1000);
@@ -297,7 +311,6 @@ let getYearGrades = new Promise((resolve, reject)=>{
       reject(err)
     })
     .then(j=>{
-      console.log(j);
       let grades = j.grades;
       let yearGrades = {};
       for(let i = 0; i<grades.length; i++){
@@ -325,3 +338,19 @@ let getYearGrades = new Promise((resolve, reject)=>{
       // resolve(weeklyEventsCount);
     });
 })
+
+
+function getProfileNotifications() {
+  console.log("hello from function")
+  return new Promise((resolve, reject) => {
+    console.log("hello from promise inside function");
+    let url = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getProfile";
+    caches.match(url)
+    .then(response=>response.json())
+    .catch(err => reject(err))
+    .then(object => {
+      if(!object["notifications"]) reject("Notifications not found");
+      resolve(object["notifications"])
+    })
+  })
+}
