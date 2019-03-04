@@ -28,14 +28,17 @@ export class HttpService {
   additionalSubjects: SingleSubject[] = [];
   
   subjects: SingleSubject[] = [
-    {"subject":"Math","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"English","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"BG","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"German","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"Geo","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"Bio","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"Chemistry","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"Physic","checked":false,"SIP":false,"ZIP":false}
+    {"subject":"Математика","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Английски","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Български","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Немски","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"География","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Биология","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Химия","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Физика","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Философия","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"История","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"ФВС","checked":false,"SIP":false,"ZIP":false}
   ];
 
   allCheckedSubjects = [];
