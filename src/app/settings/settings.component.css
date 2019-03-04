@@ -27,6 +27,17 @@
 .section{
     margin-bottom: 5px;
 }
+.logout {
+    width: 90%; 
+    border-bottom: thin solid lightgray;
+    position: absolute; 
+    bottom: 5%;
+    background-color: rgb(235, 75, 77); 
+    color: #eee;
+    display: block;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
 .submitButton{
     background-color: #00C853;
     color: white;

@@ -15,6 +15,12 @@ export class SettingsComponent implements OnInit {
   username = "";
   email = "";
   panelOpenState;
+  notifications = {
+    eventsN: true,
+    periodN:true,
+    improvementN: true
+  }
+  timer;
   allN = true;
   eventsN = true;
   periodN = true;
@@ -161,14 +167,60 @@ export class SettingsComponent implements OnInit {
 
   disableAll(){
     if(this.allN==true){
-      this.eventsN = false;
-      this.improvementN = false;
-      this.periodN = false;
+      this.notifications.eventsN = false;
+      this.notifications.improvementN = false;
+      this.notifications.periodN = false;
     }else{
-      this.eventsN = true;
-      this.improvementN = true;
-      this.periodN =true;
+      this.notifications.eventsN = true;
+      this.notifications.improvementN = true;
+      this.notifications.periodN =true;
     }
+  }
+
+  checkAll(id: number){
+    clearTimeout(this.timer);
+    if (this.allN == true && id == 0) {
+      this.notifications.eventsN = false;
+      this.notifications.improvementN = false;
+      this.notifications.periodN = false;
+    }
+    if (this.allN == false && id == 0) {
+      this.notifications.eventsN = true;
+      this.notifications.improvementN = true;
+      this.notifications.periodN = true;
+    }
+    let noftrue = 0
+    let noffalse = 0
+    for (const key in this.notifications) {
+      if (this.notifications.hasOwnProperty(key)) {
+        const element = this.notifications[key];
+        if (element == true) {
+          noftrue++
+        } else {
+          noffalse ++
+        }
+      }
+    }
+    if (noffalse==Object.keys(this.notifications).length) {
+      this.allN = false;
+    } else if (noftrue>=1) {
+      this.allN = true
+    }
+    this.timer = setTimeout(()=>{
+      console.log("Timer is called");
+      let postData = {
+        token: localStorage.getItem("token"),
+        notifications: {
+          all: this.allN,
+          events: this.notifications.eventsN,
+          period: this.notifications.periodN,
+          improvement: this.notifications.improvementN
+        }
+      }
+      this.httpService.updateNotifications(postData).subscribe((data)=>{
+        console.log(data);
+      })
+    }, 1000)
   }
 
   logout(){
