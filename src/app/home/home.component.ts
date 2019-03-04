@@ -1,3 +1,4 @@
+import { StorageService } from './../shared/storage.service';
 import { HttpService } from './../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { Grade } from '../shared/grades.model';
@@ -16,7 +17,11 @@ export class HomeComponent implements OnInit {
     // new SchoolEvent(1549752546, "Math", "test", 1)
   ];
   nextLesson = "Chem";
-  constructor(private httpService: HttpService, private router:Router) { }
+  lessonTime;
+  constructor(
+    public storageService: StorageService,
+    private httpService: HttpService,
+    private router:Router) { }
 
   ngOnInit() {
     let postData = {
@@ -28,6 +33,7 @@ export class HomeComponent implements OnInit {
         this.nextLesson = data.message;
       }else{
         this.nextLesson = data.nextPeriod.subject;
+        this.lessonTime = data.nextPeriod.startTime;
       }
     })
     this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
@@ -51,22 +57,24 @@ export class HomeComponent implements OnInit {
       console.log("Data from year grades",d);
     })
     this.httpService.getWeeklyEvents(postData);
+    Notification.requestPermission().then((perm)=>{
+      console.log(`Notification permission: ${perm}`);
+    })
+    navigator.serviceWorker.register("../sw-worker-custom.js").then(res=>{
+      console.warn("Registration succeeds:", res);
+      res.update().then(ures => {
+        console.log("Updated", ures);
+      }).then(err=>{
+        console.log("Error with pdate of service worker:",err);
+      })
+    }).catch(err =>{
+      console.error("An error occured when registering service worker", err);
+    }).finally().then(fin=>{
+      console.log("Yeah dont know bout this one", fin)
+    })
   }
 
-  isDesktop() {
-    let url= this.router.url;
-    let routesToHideNav = ["desktop"];
-    for(let i=0; i < routesToHideNav.length; i++) {
-      // console.log(i);
-      if (url.includes(routesToHideNav[i])){
-        // console.log(true)
-        return true;
-      }
-    }
-    // console.log(false);
-    return false;
-    // console.log(url);
-  }
+ 
 
   onResize() {
     // window.addEventListener("resize",)

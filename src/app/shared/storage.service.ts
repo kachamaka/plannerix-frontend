@@ -19,4 +19,17 @@ export class StorageService {
       }
     })
    }
+
+   isDesktop() {
+    let url= this.router.url;
+    let routesToHideNav = ["desktop", "login", "register"];
+    for(let i=0; i < routesToHideNav.length; i++) {
+      // console.log(i);
+      if (url.includes(routesToHideNav[i])){
+        // console.log(true)
+        return true;
+      }
+    }
+    return false;
+  }
 }

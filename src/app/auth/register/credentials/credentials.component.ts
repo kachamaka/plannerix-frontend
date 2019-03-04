@@ -1,3 +1,4 @@
+import { HttpService } from './../../../shared/http.service';
 import { StorageService } from './../../../shared/storage.service';
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 
@@ -8,23 +9,34 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 })
 export class CredentialsComponent implements OnInit, OnDestroy {
   
-  @ViewChild('test') test: ElementRef;
-  @ViewChild('username') username: ElementRef;
-  @ViewChild('email') email: ElementRef;
-  @ViewChild('password') password: ElementRef;
-  @ViewChild('confirmPassword') confirmPassword: ElementRef;
+  username = "";
+  email = "";
+  password = "";
+  confirmPassword = "";
+  usernameError;
+  emailError;
+  passwordError;
+  confirmPasswordError;
   
 
-  constructor(public storageService: StorageService) { }
+  constructor(
+    private httpService: HttpService,
+    public storageService: StorageService) { }
 
   ngOnInit() {
     // localStorage.removeItem("password");
+    if(localStorage.getItem("username") != "" && localStorage.getItem("username") != undefined){
+      this.username = localStorage.getItem("username");
+    }
+    if(localStorage.getItem("email") != "" && localStorage.getItem("email") != undefined){
+      this.email = localStorage.getItem("email");
+    }
   }
 
   saveData(){
-    localStorage.setItem("username", this.username.nativeElement.value);
-    localStorage.setItem("email", this.email.nativeElement.value);
-    localStorage.setItem("password", this.password.nativeElement.value);
+    localStorage.setItem("username", this.username);
+    localStorage.setItem("email", this.email);
+    localStorage.setItem("password", this.password);
   }
 
   getData(){
@@ -35,14 +47,55 @@ export class CredentialsComponent implements OnInit, OnDestroy {
     return user;
   }
 
-  log(e){
-    console.log(e);
-    // console.log(this.username.nativeElement.value,
-    //   this.firstname.nativeElement.value,
-    //   this.password.nativeElement.value,
-    //   this.confirmPassword.nativeElement.value);
-    // console.log(this.test.nativeElement.value);
-    // console.log(this.storageService.currentUrl == "register");
+  usernameValid(){
+    if(this.httpService.usernameRegex.test(this.username)){
+      return true;
+    }else{
+      if(this.username == ""){
+        this.usernameError = "*Това поле е задължително";
+      }else{
+        this.usernameError = "*Невалидно потребителско име";
+      }
+      return false;
+    }
+  }
+  
+  validateEmail(){
+    if(this.httpService.emailRegex.test(this.email)){
+      return true;
+    }else{
+      if(this.email == ""){
+        this.emailError = "*Това поле е задължително";
+      }else{
+        this.emailError = "*Невалиден имейл адрес";
+      }
+    }
+    return false;
+  }
+  
+  validatePassword(){
+    if(this.httpService.emailRegex.test(this.password)){
+      return true;
+    }else{
+      if(this.password == ""){
+        this.passwordError = "*Това поле е задължително";
+      }else{
+        this.passwordError = "*Невалидна парола";
+      }
+    }
+    return false;
+  }
+  
+  validateConfirmPassword(){
+    if(this.confirmPassword == ""){
+      this.confirmPasswordError = "*Това поле е задължително";
+      return false;
+    }
+    if(this.password != this.confirmPassword){
+      this.confirmPasswordError = "*Паролите не съвпадат";
+      return false;
+    }
+    return true;
   }
 
   ngOnDestroy() {

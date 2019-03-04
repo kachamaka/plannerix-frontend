@@ -2,12 +2,14 @@ import { HttpService } from './http.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
   constructor(
+    private location: Location,
     private httpService: HttpService,
     private router: Router) {}
 
@@ -19,7 +21,11 @@ export class AuthGuard implements CanActivate {
         return true;
       }else{
         //check for desktop or mobile
-        this.router.navigate(['/login']);            
+        if(location.pathname == '/login' || location.pathname.includes('/register')){
+          this.router.navigate([location.pathname]);            
+        }else{
+          this.router.navigate(['/login']);            
+        }
         return false;
       }
   }

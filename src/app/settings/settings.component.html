@@ -1,29 +1,92 @@
 <div class="color">
-    <h1 align="center">Plannerix</h1>
-    <h2 align="center">Profile</h2>
+    <img *ngIf="this.storageService.isDesktop()" align="center" style="width: 97%" src="assets/logo/plannerixLogo.png">
+    <div class="container" >
+      <h1 *ngIf="!this.storageService.isDesktop()" class="title">Профил</h1>
+    </div>
 </div>
+<mat-divider style="margin-bottom:5px"></mat-divider>
 <div class="main-body">
   <section style="padding-left:10px">
-      <h4>Martin Kowalski XI a klas</h4>  
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore culpa sequi magni debitis consectetur. Quia, quas iste rem totam ratione culpa ullam vitae, officia tempore itaque saepe tenetur, quasi facere.</p>
-    </section>
-    <mat-divider></mat-divider>
-    <section >
-      <button 
-      style="float: left; width:100%; border-bottom: thin solid lightgray" 
-      type="button" 
-      mat-button color="primary">
-      <p style="margin:0px;padding:0px;float: left">Edit profile</p></button>
-      <button 
-      style="float: left; width:100%; border-bottom: thin solid lightgray" 
-      type="button" 
-      mat-button color="primary">
-      <p style="margin:0px;padding:0px;float: left">Notification settings</p></button>
-      <button 
-      (click)="logout()"
-      style="float: left; width:100%; border-bottom: thin solid lightgray" 
-      type="button" 
-      mat-button color="warn">
-      <p style="margin:0px;padding:0px;float: left">Log out</p></button>
-    </section>
+      <h4>{{username}}</h4>  
+  </section>
+  <mat-divider></mat-divider>
+  <section >
+    <mat-accordion>
+
+      <mat-expansion-panel 
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Edit Profile
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <section>
+          <p>Смяна на парола: </p>
+          <mat-form-field>
+            <input matInput placeholder="Парола:">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Потвърди парола:">
+          </mat-form-field>
+          <br>
+          <button class="submitButton" mat-flat-button>Смени</button>
+        </section>
+        <mat-divider></mat-divider>
+        <section>
+          <p>Change Email</p>
+          
+        </section>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel 
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Notification Settings
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <section class="section">
+          <mat-slide-toggle (click)="checkAll(0)" [(ngModel)]="allN">
+            Turn notifications off
+          </mat-slide-toggle>
+        </section>
+        <section class="section">
+          <mat-slide-toggle (click)="checkAll(1)" [(ngModel)]="periodN">
+            Turn period notifications off
+          </mat-slide-toggle>
+        </section>
+        <section class="section">
+          <mat-slide-toggle (click)="checkAll(2)" [(ngModel)]="eventsN">
+            Turn event notifications off
+          </mat-slide-toggle>
+        </section>
+        <section class="section">
+          <mat-slide-toggle (click)="checkAll(3)" [(ngModel)]="improvementN">
+            Turn improve notifications off
+          </mat-slide-toggle>
+        </section>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+    <button 
+    style="float: left; width:100%; border-bottom: thin solid lightgray" 
+    type="button" 
+    mat-button color="primary">
+    <p style="margin:0px;padding:0px;float: left">Edit profile</p></button>
+    <button 
+    style="float: left; width:100%; border-bottom: thin solid lightgray" 
+    type="button" 
+    mat-button color="primary">
+    <p style="margin:0px;padding:0px;float: left">Notification settings</p></button>
+    
+    
+    <button 
+    (click)="logout()"
+    style="float: left; width:100%; border-bottom: thin solid lightgray" 
+    type="button" 
+    mat-button color="warn">
+    <p style="margin:0px;padding:0px;float: left">Log out</p></button>
+  </section>
 </div>

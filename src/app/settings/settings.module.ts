@@ -1,11 +1,14 @@
-import { NgModule } from '@angular/core';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationSettingsComponent } from './notification-settings/notification-settings.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SettingsComponent } from './settings.component';
-import { MatDividerModule, MatButtonModule, MatListModule } from '@angular/material';
+import { MatDividerModule, MatButtonModule, MatExpansionModule, MatSlideToggleModule } from '@angular/material';
 
 @NgModule({
+  // schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     NotificationSettingsComponent,
     EditProfileComponent,
@@ -14,12 +17,18 @@ import { MatDividerModule, MatButtonModule, MatListModule } from '@angular/mater
   imports: [
     MatDividerModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    MatExpansionModule,
+    MatSlideToggleModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     NotificationSettingsComponent,
     EditProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    MatDividerModule
   ]
 })
 export class SettingsModule { }

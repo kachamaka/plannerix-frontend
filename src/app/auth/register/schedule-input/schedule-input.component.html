@@ -1,5 +1,10 @@
-<h4 style="margin:0 0 7px 0" align="center">{{days[currentDay]}}</h4>
-
+<div>
+  <h4 style="margin:0 0 7px 0" align="center">{{days[currentDay]}}</h4>
+  <div class="add" mat-menu-item (click)="addPeriod()">
+      <i class="flaticon-add menuItem"></i>
+    </div>
+</div>
+    
 <table mat-table [dataSource]="getDataSource()">
     <ng-container matColumnDef="startTime">
       <th mat-header-cell *matHeaderCellDef>Начало</th>
@@ -14,7 +19,7 @@
             placeholder="12:00"
             [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].startTime"
             readonly>
-            <ngx-material-timepicker #startTime></ngx-material-timepicker>
+            <ngx-material-timepicker [minutesGap]="5" #startTime></ngx-material-timepicker>
           </div>
     </td>
     </ng-container>
@@ -77,9 +82,6 @@
     <i class="flaticon-back right" (click)="nextDay()"></i>
 </div>
 
-<div mat-menu-item (click)="addPeriod()">
-    <i class="flaticon-add menuItem"></i>
-</div>
   
 
 <!-- <div style="float:right">

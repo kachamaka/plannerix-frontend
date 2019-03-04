@@ -20,6 +20,7 @@ export class HttpService {
   domain = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/";
   usernameRegex = new RegExp("^\\w.{3,16}$");
   passwordRegex = new RegExp("^[a-z0-9]{8,35}$");
+  emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
   constructor(private http: HttpClient) { }
  
@@ -27,14 +28,17 @@ export class HttpService {
   additionalSubjects: SingleSubject[] = [];
   
   subjects: SingleSubject[] = [
-    {"subject":"Math","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"English","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"BG","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"German","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"Geo","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"Bio","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"Chemistry","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"Physic","checked":false,"SIP":false,"ZIP":false}
+    {"subject":"Математика","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Английски","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Български","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Немски","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"География","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Биология","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Химия","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Физика","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Философия","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"История","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"ФВС","checked":false,"SIP":false,"ZIP":false}
   ];
 
   allCheckedSubjects = [];
@@ -47,12 +51,16 @@ export class HttpService {
 
   periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
 
+  getJoke() {
+    return this.http.get("https://api.chucknorris.io/jokes/random");
+  }
+
   getEvents(data) {
     return this.http.post(this.domain + 'getAllEvents', data); 
   }
 
   getWeeklyEvents(data) {
-    console.log(data);
+    // console.log(data);
     return this.http.post(this.domain + 'getWeeklyEvents', data); 
   }
 
@@ -72,9 +80,16 @@ export class HttpService {
     this.authToken.token = localStorage.getItem('token');
   }
 
-
   loginUser(user){
     return this.http.post(this.domain + 'login', user);
+  }
+
+  getProfile(data){
+    return this.http.post(this.domain + 'getProfile', data);
+  }
+
+  updateNotifications(data){
+    return this.http.post(this.domain + 'updateNotifications', data);
   }
 
   logoutUser() {
@@ -144,10 +159,10 @@ export class HttpService {
     }
 
     this.getSchedule(postData).subscribe((data:any)=>{
-      console.log(data);
+      // console.log(data);
       if(data.success==true){
         this.periods = data.schedule;
-        console.log(this.periods);
+        // console.log(this.periods);
       }
     })
   }
@@ -159,7 +174,7 @@ export class HttpService {
     }
 
     this.getEvents(postData).subscribe((data:any)=>{
-      console.log(data);
+      // console.log(data);
         if(data.success==true){
           this.events = [];
           for(let i = 0;i<data.events.length; i++){
@@ -184,7 +199,9 @@ export class HttpService {
       let thisWeekMonday = new Date((d.setDate(diff))).getTime();
       this.weeklyGrades = [];
       for(let i = 0; i<5;i++){
-        let gradesDate = this.getDateFormat(new Date(thisWeekMonday + i*86400000).toLocaleDateString());
+        // console.log(new Date(thisWeekMonday + i*86400000).toLocaleDateString('bg-BG'));
+        let gradesDate = this.getDateFormat(new Date(thisWeekMonday + i*86400000).toLocaleDateString('bg-BG'));
+        // console.log("gradesDate", gradesDate);
         let newWeeklyGrade = {
           date: gradesDate,
           grades: []
@@ -197,7 +214,7 @@ export class HttpService {
       this.getWeeklyGrades(postData).subscribe((data:any)=>{
         // console.log(data);
         for(let k = 0; k<data.weeklyGrades.length; k++){
-          let gradeRawDate = new Date(data.weeklyGrades[k].timestamp*1000).toLocaleDateString();
+          let gradeRawDate = new Date(data.weeklyGrades[k].timestamp*1000).toLocaleDateString('bg-BG');
           let gradeDate = this.getDateFormat(gradeRawDate);
           // console.log(gradeDate);
           for(let j = 0; j<this.weeklyGrades.length; j++){
@@ -228,15 +245,19 @@ export class HttpService {
       });
     }
 
-  getDateFormat(date){
-    let dateField = date.split("/")
+  getDateFormat(initDate: string){
+    // console.log(initDate);
+    let date = initDate.replace(/\./g, "/");
+    let dateField = date.split("/");
+    // console.log("dateField",dateField);
     if(dateField[0].length == 1){
       dateField[0] = "0" + dateField[0];
     }
     if(dateField[1].length == 1 ){
       dateField[1] = "0" + dateField[1];
     }
-    let dateData = dateField[1]+"."+dateField[0]+"."+dateField[2];
+    let dateData = dateField[0]+"."+dateField[1]+"."+dateField[2];
+    // console.log("dateData", dateData);
     return dateData
   }
     

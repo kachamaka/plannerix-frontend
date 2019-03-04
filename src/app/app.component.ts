@@ -2,7 +2,6 @@ import { HttpService } from './shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { slideInAnimation } from './animation';
-import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +14,8 @@ import { SwUpdate } from '@angular/service-worker';
 export class AppComponent implements OnInit {
   title = 's-org';
 
-  constructor(private httpService: HttpService,private sw: SwUpdate, private router: Router) {
-    sw.available.subscribe((event)=>{
-      sw.activateUpdate().then(()=>document.location.reload());
-    })
+  constructor(private httpService: HttpService, private router: Router) {
+
   }
   ngOnInit(){
     let tokenData = {
@@ -29,9 +26,6 @@ export class AppComponent implements OnInit {
     this.showNav();
     this.onResize();
     window.addEventListener("resize", this.onResize.bind(this));
-    Notification.requestPermission().then((perm)=>{
-      console.log(`Notification permission: ${perm}`);
-    })
   }
 
   prepareRoute(outlet: RouterOutlet) {
