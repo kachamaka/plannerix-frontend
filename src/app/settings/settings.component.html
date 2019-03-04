@@ -33,10 +33,26 @@
             Notification Settings
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p>Turn notifications off</p>
-        <p>Turn period notifications off</p>
-        <p>Turn event notifications off</p>
-        <p>Turn improve notifications off</p>
+        <section class="section">
+          <mat-slide-toggle (click)="checkAll(0)" [(ngModel)]="allN">
+            Turn notifications off
+          </mat-slide-toggle>
+        </section>
+        <section class="section">
+          <mat-slide-toggle (click)="checkAll(1)" [(ngModel)]="periodN">
+            Turn period notifications off
+          </mat-slide-toggle>
+        </section>
+        <section class="section">
+          <mat-slide-toggle (click)="checkAll(2)" [(ngModel)]="eventsN">
+            Turn event notifications off
+          </mat-slide-toggle>
+        </section>
+        <section class="section">
+          <mat-slide-toggle (click)="checkAll(3)" [(ngModel)]="improvementN">
+            Turn improve notifications off
+          </mat-slide-toggle>
+        </section>
       </mat-expansion-panel>
 
     </mat-accordion>

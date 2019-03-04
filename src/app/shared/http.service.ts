@@ -88,6 +88,10 @@ export class HttpService {
     return this.http.post(this.domain + 'getProfile', data);
   }
 
+  updateNotifications(data){
+    return this.http.post(this.domain + 'updateNotifications', data);
+  }
+
   logoutUser() {
     this.authToken = null;
     localStorage.clear();

@@ -17,3 +17,13 @@
 .title {
     display: inline-block;
 }
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+.section{
+    margin-bottom: 5px;
+}

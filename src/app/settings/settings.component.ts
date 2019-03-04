@@ -13,6 +13,10 @@ export class SettingsComponent implements OnInit {
   username = "";
   email = "";
   panelOpenState;
+  allN = true;
+  eventsN = true;
+  periodN = true;
+  improvementN = true;
 
 
   constructor(
@@ -32,9 +36,25 @@ export class SettingsComponent implements OnInit {
     })
   }
 
-  log(){
-    console.log(this.username); 
-  }  
+  updateNotifications(){
+    console.log("update notifications");
+  }
+
+  disableAll(){
+    if(this.allN==true){
+      this.eventsN = false;
+      this.improvementN = false;
+      this.periodN = false;
+    }else{
+      this.eventsN = true;
+      this.improvementN = true;
+      this.periodN =true;
+    }
+  }
+
+  checkAll(id: number){
+    
+  }
 
   logout(){
     this.httpService.logoutUser();
