@@ -11,6 +11,35 @@
   </section>
   <mat-divider></mat-divider>
   <section >
+    <mat-accordion>
+
+      <mat-expansion-panel 
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Edit Profile
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Change Password</p>
+        <p>Change Email</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel 
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Notification Settings
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Turn notifications off</p>
+        <p>Turn period notifications off</p>
+        <p>Turn event notifications off</p>
+        <p>Turn improve notifications off</p>
+      </mat-expansion-panel>
+
+    </mat-accordion>
     <button 
     style="float: left; width:100%; border-bottom: thin solid lightgray" 
     type="button" 
@@ -21,6 +50,8 @@
     type="button" 
     mat-button color="primary">
     <p style="margin:0px;padding:0px;float: left">Notification settings</p></button>
+    
+    
     <button 
     (click)="logout()"
     style="float: left; width:100%; border-bottom: thin solid lightgray" 
