@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class SettingsComponent implements OnInit {
   username = "";
   email = "";
+  panelOpenState;
+
+
   constructor(
       private router: Router,
       public httpService: HttpService,
