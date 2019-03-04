@@ -1,21 +1,22 @@
 import { HttpService } from './../../../shared/http.service';
 import { StorageService } from './../../../shared/storage.service';
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy, DoCheck } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-credentials',
   templateUrl: './credentials.component.html',
   styleUrls: ['./credentials.component.css']
 })
-export class CredentialsComponent implements OnInit, OnDestroy, DoCheck {
+export class CredentialsComponent implements OnInit, OnDestroy {
   
-  @ViewChild('test') test: ElementRef;
-  @ViewChild('username') username: ElementRef;
-  @ViewChild('email') email: ElementRef;
-  @ViewChild('password') password: ElementRef;
-  @ViewChild('confirmPassword') confirmPassword: ElementRef;
+  username = "";
+  email = "";
+  password = "";
+  confirmPassword = "";
   usernameError;
   emailError;
+  passwordError;
+  confirmPasswordError;
   
 
   constructor(
@@ -27,9 +28,9 @@ export class CredentialsComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   saveData(){
-    localStorage.setItem("username", this.username.nativeElement.value);
-    localStorage.setItem("email", this.email.nativeElement.value);
-    localStorage.setItem("password", this.password.nativeElement.value);
+    localStorage.setItem("username", this.username);
+    localStorage.setItem("email", this.email);
+    localStorage.setItem("password", this.password);
   }
 
   getData(){
@@ -41,10 +42,10 @@ export class CredentialsComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   usernameValid(){
-    if(this.httpService.usernameRegex.test(this.username.nativeElement.value)){
+    if(this.httpService.usernameRegex.test(this.username)){
       return true;
     }else{
-      if(this.username.nativeElement.value == ""){
+      if(this.username == ""){
         this.usernameError = "*Това поле е задължително";
       }else{
         this.usernameError = "*Невалидно потребителско име";
@@ -52,19 +53,12 @@ export class CredentialsComponent implements OnInit, OnDestroy, DoCheck {
       return false;
     }
   }
-
-  ngDoCheck(): void {
-    console.log(this.validateEmail());    
-  }
-
   
   validateEmail(){
-    // console.log(this.httpService.emailRegex.test(this.email.nativeElement.value));
-    // console.log(this.emailError);
-    if(this.httpService.emailRegex.test(this.email.nativeElement.value)){
+    if(this.httpService.emailRegex.test(this.email)){
       return true;
     }else{
-      if(this.email.nativeElement.value == ""){
+      if(this.email == ""){
         this.emailError = "*Това поле е задължително";
       }else{
         this.emailError = "*Невалиден имейл адрес";
@@ -72,15 +66,34 @@ export class CredentialsComponent implements OnInit, OnDestroy, DoCheck {
     }
     return false;
   }
+  
+  validatePassword(){
+    if(this.httpService.emailRegex.test(this.password)){
+      return true;
+    }else{
+      if(this.password == ""){
+        this.passwordError = "*Това поле е задължително";
+      }else{
+        this.passwordError = "*Невалидна парола";
+      }
+    }
+    return false;
+  }
+  
+  validateConfirmPassword(){
+    if(this.confirmPassword == ""){
+      this.confirmPasswordError = "*Това поле е задължително";
+      return false;
+    }
+    if(this.password != this.confirmPassword){
+      this.confirmPasswordError = "*Паролите не съвпадат";
+      return false;
+    }
+    return true;
+  }
 
   log(e){
     console.log(e);
-    // console.log(this.username.nativeElement.value,
-    //   this.firstname.nativeElement.value,
-    //   this.password.nativeElement.value,
-    //   this.confirmPassword.nativeElement.value);
-    // console.log(this.test.nativeElement.value);
-    // console.log(this.storageService.currentUrl == "register");
   }
 
   ngOnDestroy() {
