@@ -1,8 +1,11 @@
+import { SnackbarComponent } from './../../shared/snackbar/snackbar.component';
 import { StorageService } from './../../shared/storage.service';
 import { HttpService } from './../../shared/http.service';
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { isNull } from 'util';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +14,10 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   
-  constructor(public storageService: StorageService,
+  constructor(
+    private toastr: ToastrService,
+    private snackBar: MatSnackBar,
+    public storageService: StorageService,
     private router: Router,
     private httpService: HttpService){
 
@@ -33,8 +39,36 @@ export class RegisterComponent implements OnInit, OnDestroy {
     console.log("checked subs",this.httpService.allCheckedSubjects);
     console.log("periods", this.httpService.periods);
     this.httpService.registerUser(registerCredentials).subscribe((data:any)=>{
-
+      // console.log(data);
+      if(data.success == false){
+        this.toastr.error(data.errMsg, "Грешка при регистрацията!");
+      }else{
+        localStorage.setItem("token", data.token);
+        this.toastr.success("Регистрацията е успешна!");
+        this.router.navigate(['/home']);
+      }
     });
+  }
+
+  openSnackbar(){
+    this.toastr.success('Hello world!', 'Toastr fun!', {
+      timeOut: 1500
+    });
+    // let config = new MatSnackBarConfig();
+    // config.panelClass = ['snackbar']
+    // console.log(window.innerWidth);
+    // let verticalPosition;
+    // if(window.innerWidth>=800){
+    //   verticalPosition = 'top';      
+    // }else{
+    //   verticalPosition = 'bottom';      
+    // }
+    // this.snackBar.openFromComponent(SnackbarComponent, {
+    //   duration: 180000,
+    //   horizontalPosition: 'right',
+    //   verticalPosition: verticalPosition,
+    //   panelClass: ['snackbar']
+    // });
   }
 
   checkRegisterValidation(){

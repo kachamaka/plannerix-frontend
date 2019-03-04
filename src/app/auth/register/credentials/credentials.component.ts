@@ -25,6 +25,12 @@ export class CredentialsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // localStorage.removeItem("password");
+    if(localStorage.getItem("username") != "" && localStorage.getItem("username") != undefined){
+      this.username = localStorage.getItem("username");
+    }
+    if(localStorage.getItem("email") != "" && localStorage.getItem("email") != undefined){
+      this.email = localStorage.getItem("email");
+    }
   }
 
   saveData(){
