@@ -20,9 +20,7 @@ export class SettingsComponent implements OnInit {
     improvementN: true
   }
   allN = true;
-<<<<<<< HEAD
   timer;
-=======
   eventsN = true;
   periodN = true;
   improvementN = true;
@@ -34,7 +32,6 @@ export class SettingsComponent implements OnInit {
   confirmPasswordError;
   validatePasswordError = "Invalid pass";
 
->>>>>>> 005ab62818746dcb9d08d1ae437fa9182f658f93
 
   constructor(
     private fb: FormBuilder,

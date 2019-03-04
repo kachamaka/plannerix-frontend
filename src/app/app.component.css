@@ -12,7 +12,7 @@
 
 .body {
     grid-area: body;
-    /* overflow-y: auto; */
+    overflow-y: auto;
 }
 .navigation {
     grid-area: nav;
