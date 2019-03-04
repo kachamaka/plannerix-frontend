@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.showNav();
     this.onResize();
     window.addEventListener("resize", this.onResize.bind(this));
-    navigator.serviceWorker.register("./src/sw-worker-custom.js").then(res=>{
+    navigator.serviceWorker.register("sw-worker-custom.js").then(res=>{
       console.warn("Registration succeeds:", res);
       res.update().then(ures => {
         console.log("Updated", ures);
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
         console.log("Error with pdate of service worker:",err);
       })
     }).catch(err =>{
-      console.error("An error occured when registering service worker", err);
+      console.log("An error occured when registering service worker", err);
     }).finally().then(fin=>{
       console.log("Yeah dont know bout this one", fin)
     })

@@ -32,6 +32,15 @@ let routers = [
 ]
 
 self.addEventListener("install", (e)=>{
+  caches.open(version).then(cache=>{
+    cache.add(self.origin).then(res=>{
+      console.log(res);
+    }).catch(err=>{
+      console.warn("can't add", self.origin, err)
+    });
+  }).catch(err=>{
+    console.warn("can't load", self.origin, err);
+  })
   self.skipWaiting();
   console.log(`Service Worker installed with version: ${version}`);
 });
@@ -54,6 +63,9 @@ self.addEventListener("activate", (e)=>{
 
 self.addEventListener("fetch",function(event) {
     let url = matchRoutes(event.request.url);
+    if (url.includes("html")) {
+      console.warn(url)
+    }
     event.respondWith(
       fetch(event.request).then(res=>{
         const resClone = res.clone();
