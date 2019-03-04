@@ -1,5 +1,5 @@
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationSettingsComponent } from './notification-settings/notification-settings.component';
@@ -19,6 +19,7 @@ import { MatDividerModule, MatButtonModule, MatExpansionModule, MatSlideToggleMo
     MatButtonModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatExpansionModule,
     MatSlideToggleModule,
     MatFormFieldModule,
