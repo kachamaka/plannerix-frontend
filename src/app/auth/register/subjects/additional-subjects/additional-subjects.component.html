@@ -6,7 +6,7 @@
         
                   <ng-container matColumnDef="subject">
                       
-                    <th mat-header-cell *matHeaderCellDef> Subject </th>
+                    <th mat-header-cell *matHeaderCellDef> Предмет </th>
                     <td style="padding:0" mat-cell *matCellDef="let subject"> 
 
                       <mat-checkbox [(ngModel)]="subject.checked" style="padding: 0; margin: 0;padding-right:15px">
@@ -19,14 +19,14 @@
                   </ng-container>
                 
                   <ng-container matColumnDef="SIP">
-                    <th mat-header-cell *matHeaderCellDef> SIP </th>
+                    <th mat-header-cell *matHeaderCellDef> СИП </th>
                     <td style="padding:0" mat-cell *matCellDef="let subject"> 
                         <mat-checkbox [(ngModel)]="subject.SIP" style="padding: 0; margin: 0"></mat-checkbox>
                     </td>
                   </ng-container>
                 
                   <ng-container matColumnDef="ZIP">
-                    <th mat-header-cell *matHeaderCellDef> ZIP </th>
+                    <th mat-header-cell *matHeaderCellDef> ЗИП </th>
                     <td style="padding:0" mat-cell *matCellDef="let subject; index as i">
                         <mat-checkbox (click)="log(i)" [(ngModel)]="subject.ZIP" style="padding: 0; margin: 0"></mat-checkbox>              
                         
