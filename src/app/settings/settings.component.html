@@ -21,16 +21,17 @@
             Edit Profile
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <section style="display:inline"></section>
+        <section [formGroup]="passwordForm">
           <p>Смяна на парола: </p>
           <mat-form-field>
-            <input matInput placeholder="Парола:">
+            <input formControlName="password" matInput placeholder="Парола:">
+            <mat-error *ngIf="!validatePassword()" >{{validatePasswordError}}</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Потвърди парола:">
+            <input formControlName="confirmPassword" matInput placeholder="Потвърди парола:">
           </mat-form-field>
           <br>
-          <button class="submitButton" mat-flat-button>Смени</button>
+          <button (click)="changePassword()" class="submitButton" mat-flat-button>Смени</button>
         </section>
         <mat-divider></mat-divider>
         <section>

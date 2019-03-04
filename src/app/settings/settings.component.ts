@@ -1,7 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ElementRef } from '@angular/core';
 import { StorageService } from './../shared/storage.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../shared/http.service';
 import { Router } from '@angular/router';
 
@@ -19,25 +18,26 @@ export class SettingsComponent implements OnInit {
   eventsN = true;
   periodN = true;
   improvementN = true;
-  password = "";
-  passwordError;
-  confirmPassword = "";
-  confirmPasswordError;
-  // @ViewChild('confirmPasswordViewChild') confirmPasswordViewChild: ElementRef;
   passwordForm: FormGroup;
+  
+  password = "";
+  confirmPassword = "";
+  passwordError;
+  confirmPasswordError;
+  validatePasswordError = "Invalid pass";
 
 
   constructor(
-      private fb: FormBuilder,
-      private router: Router,
-      public httpService: HttpService,
-      public storageService: StorageService
+    private fb: FormBuilder,
+    private router: Router,
+    public httpService: HttpService,
+    public storageService: StorageService
     ) { }
 
   ngOnInit() {
     this.passwordForm = this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(35)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(35)]]
+      password: ['', Validators.required, Validators.minLength(8), Validators.maxLength(35)],
+      confirmPassword: ['', Validators.required, Validators.minLength(8), Validators.maxLength(35)]
     })
     let postData = {
       token: localStorage.getItem("token"),
@@ -49,12 +49,21 @@ export class SettingsComponent implements OnInit {
     })
   }
 
+  changePassword(){
+    // console.log(this.passwordForm.controls["password"].value, this.passwordForm.controls["confirmPassword"].value);
+    console.log(this.passwordForm.controls["password"].errors);
+  }
+
+  updateNotifications(){
+    console.log("update notifications");
+  }
 
   validatePassword(){
-    if(this.httpService.emailRegex.test(this.password)){
+    let password = this.passwordForm.controls["password"].value;
+    if(this.httpService.passwordRegex.test(password)){
       return true;
     }else{
-      if(this.password == ""){
+      if(password == ""){
         this.passwordError = "*Това поле е задължително";
       }else{
         this.passwordError = "*Невалидна парола";
@@ -65,8 +74,6 @@ export class SettingsComponent implements OnInit {
   
   validateConfirmPassword(){
     if(this.confirmPassword == ""){
-      this.passwordForm.controls['password'].setErrors({'incorrect':true});
-      // (this.confirmPasswordViewChild.nativeElement as HTMLInputElement).setCustomValidity("INVALID WE");
       this.confirmPasswordError = "*Това поле е задължително";
       return false;
     }
@@ -74,18 +81,7 @@ export class SettingsComponent implements OnInit {
       this.confirmPasswordError = "*Паролите не съвпадат";
       return false;
     }
-    // this.confirmPasswordError = "";
     return true;
-  }
-
-
-  updateNotifications(){
-    console.log("update notifications");
-  }
-
-  changePassword(){
-    console.log(this.password, this.confirmPassword);
-
   }
 
   disableAll(){
