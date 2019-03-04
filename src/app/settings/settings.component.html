@@ -1,78 +1,66 @@
-<div class="color">
+<div style="height:100%;width: 100%;position: relative;">
+
+  <div class="color">
     <img *ngIf="this.storageService.isDesktop()" align="center" style="width: 97%" src="assets/logo/plannerixLogo.png">
     <div class="container" >
       <h1 *ngIf="!this.storageService.isDesktop()" class="title">Профил</h1>
     </div>
-</div>
-<mat-divider style="margin-bottom:5px"></mat-divider>
-<div class="main-body">
-  <section style="padding-left:10px">
-      <h4>{{username}}</h4>  
-  </section>
-  <mat-divider></mat-divider>
-  <section >
-    <mat-accordion>
-
-      <mat-expansion-panel 
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Edit Profile
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Change Password</p>
-        <p>Change Email</p>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel 
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false">
+  </div>
+  <mat-divider style="margin-bottom:5px"></mat-divider>
+  <div class="main-body">
+    <section style="padding-left:10px">
+        <h4>{{username}}</h4>  
+      </section>
+      <mat-divider></mat-divider>
+      <section >
+        <mat-accordion>
+          <mat-expansion-panel 
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Edit Profile
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Change Password</p>
+          <p>Change Email</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel 
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Notification Settings
           </mat-panel-title>
         </mat-expansion-panel-header>
         <section class="section">
-          <mat-slide-toggle (click)="checkAll(0)" [(ngModel)]="allN">
-            Turn notifications off
+          <mat-slide-toggle (ngModelChange)="checkAll(0)" [(ngModel)]="allN">
+            Turn notifications on
           </mat-slide-toggle>
         </section>
         <section class="section">
-          <mat-slide-toggle (click)="checkAll(1)" [(ngModel)]="periodN">
-            Turn period notifications off
+          <mat-slide-toggle  [(ngModel)]="notifications.periodN" (ngModelChange)="checkAll(1)">
+            Turn period notifications on
           </mat-slide-toggle>
         </section>
         <section class="section">
-          <mat-slide-toggle (click)="checkAll(2)" [(ngModel)]="eventsN">
-            Turn event notifications off
+          <mat-slide-toggle  [(ngModel)]="notifications.eventsN" (ngModelChange)="checkAll(2)">
+            Turn event notifications on
           </mat-slide-toggle>
         </section>
         <section class="section">
-          <mat-slide-toggle (click)="checkAll(3)" [(ngModel)]="improvementN">
-            Turn improve notifications off
+          <mat-slide-toggle  [(ngModel)]="notifications.improvementN" (ngModelChange)="checkAll(3)">
+            Turn improve notifications on
           </mat-slide-toggle>
         </section>
       </mat-expansion-panel>
-
     </mat-accordion>
-    <button 
-    style="float: left; width:100%; border-bottom: thin solid lightgray" 
-    type="button" 
-    mat-button color="primary">
-    <p style="margin:0px;padding:0px;float: left">Edit profile</p></button>
-    <button 
-    style="float: left; width:100%; border-bottom: thin solid lightgray" 
-    type="button" 
-    mat-button color="primary">
-    <p style="margin:0px;padding:0px;float: left">Notification settings</p></button>
-    
-    
-    <button 
-    (click)="logout()"
-    style="float: left; width:100%; border-bottom: thin solid lightgray" 
-    type="button" 
-    mat-button color="warn">
-    <p style="margin:0px;padding:0px;float: left">Log out</p></button>
   </section>
+</div>
+  <button 
+    (click)="logout()"
+    class="logout"
+    type="button" 
+    mat-button>Log out
+  </button>
 </div>
