@@ -8,7 +8,6 @@ table {
     position: relative;
     min-height: 2rem;
 }
-
 i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
     width: 25px;
     height: 25px;
@@ -21,8 +20,10 @@ i.flaticon-add::before, i.flaticon-add{
 }
 
 .add {
-    position: absolute;
     right: 2rem;
+    margin-right:5px;
+    border-radius: 5px;
+    width: 5%; 
 }
 .mat-column-startTime{
     width: 20%;

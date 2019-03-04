@@ -23,8 +23,8 @@
         <br>
         <div class="buttons">
           <button (click)="openRegister()" class="register" mat-button color="primary">Register</button>
-          <button (click)="login()" class="login" mat-button color="primary">Login</button>
-          <!-- <button (click)="log()" style="color:white;float:right;background-color:lightseagreen" mat-button color="primary">Log</button> -->
+          <button (click)="login()" [disabled]="!validForm()" class="login" mat-button color="primary">Login</button>
+          <button (click)="log()" style="color:white;float:right;background-color:lightseagreen" mat-button color="primary">Log</button>
         </div>
         
       </div>

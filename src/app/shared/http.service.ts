@@ -77,9 +77,12 @@ export class HttpService {
     this.authToken.token = localStorage.getItem('token');
   }
 
-
   loginUser(user){
     return this.http.post(this.domain + 'login', user);
+  }
+
+  getProfile(data){
+    return this.http.post(this.domain + 'getProfile', data);
   }
 
   logoutUser() {

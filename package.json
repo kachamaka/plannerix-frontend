@@ -34,6 +34,7 @@
     "moment": "^2.22.2",
     "ng-knife": "^0.2.5",
     "ngx-material-timepicker": "^2.10.0",
+    "ngx-toastr": "^9.1.2",
     "normalize.css": "^8.0.1",
     "rxjs": "^6.4.0",
     "zone.js": "~0.8.26"

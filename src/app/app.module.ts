@@ -12,9 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
-
+import { ToastrModule } from 'ngx-toastr';
 import { NgKnifeModule } from 'ng-knife';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -59,6 +60,7 @@ import {ScheduleModule} from './schedule/schedule.module';
 import { AuthGuard } from './shared/auth.guard';
 import { NotAuthGuard } from './shared/notAuth.guard';
 import { StorageService } from './shared/storage.service';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 registerLocaleData(localeBg);
 
 
@@ -74,6 +76,7 @@ registerLocaleData(localeBg);
     CredentialsComponent,
     SubjectsComponent,
     ScheduleInputComponent,
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +100,7 @@ registerLocaleData(localeBg);
     FormsModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule.forRoot(),
+    ToastrModule.forRoot(),
     MatMenuModule,
     GradesModule,
     EventListModule,
@@ -107,7 +111,8 @@ registerLocaleData(localeBg);
     HomeModule,
     CalendarModule,
     ScheduleModule,
-    NgKnifeModule
+    NgKnifeModule,
+    MatSnackBarModule
   ],
   providers: [{
     provide: LOCALE_ID,
@@ -119,7 +124,8 @@ registerLocaleData(localeBg);
     AddTestComponent,
     EventDialogComponent,
     GradeDialogComponent,
-    GradeToastComponent
+    GradeToastComponent,
+    SnackbarComponent
   ]
 })
 export class AppModule { }
