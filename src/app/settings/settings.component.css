@@ -27,3 +27,7 @@
 .section{
     margin-bottom: 5px;
 }
+.submitButton{
+    background-color: #00C853;
+    color: white;
+}
