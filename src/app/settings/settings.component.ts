@@ -20,8 +20,8 @@ export class SettingsComponent implements OnInit {
     periodN:true,
     improvementN: true
   }
-  timer;
   allN = true;
+  timer;
   eventsN = true;
   periodN = true;
   improvementN = true;
