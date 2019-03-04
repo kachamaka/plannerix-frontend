@@ -74,7 +74,7 @@ export class CredentialsComponent implements OnInit, OnDestroy {
   }
   
   validatePassword(){
-    if(this.httpService.emailRegex.test(this.password)){
+    if(this.httpService.passwordRegex.test(this.password)){
       return true;
     }else{
       if(this.password == ""){

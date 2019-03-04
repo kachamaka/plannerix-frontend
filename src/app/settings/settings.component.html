@@ -5,29 +5,46 @@
     <div class="container" >
       <h1 *ngIf="!this.storageService.isDesktop()" class="title">Профил</h1>
     </div>
-  </div>
-  <mat-divider style="margin-bottom:5px"></mat-divider>
-  <div class="main-body">
-    <section style="padding-left:10px">
-        <h4>{{username}}</h4>  
-      </section>
-      <mat-divider></mat-divider>
-      <section >
-        <mat-accordion>
-          <mat-expansion-panel 
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Edit Profile
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>Change Password</p>
+</div>
+<mat-divider style="margin-bottom:5px"></mat-divider>
+<div class="main-body">
+  <section style="padding-left:10px">
+      <h4>{{username}}</h4>  
+  </section>
+  <mat-divider></mat-divider>
+  <section >
+    <mat-accordion>
+
+      <mat-expansion-panel 
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Edit Profile
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <section [formGroup]="passwordForm">
+          <p>Смяна на парола: </p>
+          <mat-form-field>
+            <input formControlName="password" matInput placeholder="Парола:">
+            <mat-error *ngIf="!validatePassword()" >{{validatePasswordError}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="confirmPassword" matInput placeholder="Потвърди парола:">
+          </mat-form-field>
+          <br>
+          <button (click)="changePassword()" class="submitButton" mat-flat-button>Смени</button>
+        </section>
+        <mat-divider></mat-divider>
+        <section>
           <p>Change Email</p>
-        </mat-expansion-panel>
-        <mat-expansion-panel 
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false">
+          
+        </section>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel 
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Notification Settings
