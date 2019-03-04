@@ -111,6 +111,7 @@ function validUrl(url) {
 function matchRoutes(url) {
   for(let i =0; i < routers.length;i++) {
     let r = new RegExp(".*"+ routers[i] + "$")
+    console.log(url, r.test(url))
     if (r.test(url)) return "/"
   }
   return url;
