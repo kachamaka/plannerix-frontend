@@ -92,10 +92,6 @@ export class CredentialsComponent implements OnInit, OnDestroy {
     return true;
   }
 
-  log(e){
-    console.log(e);
-  }
-
   ngOnDestroy() {
     this.saveData();
   }
