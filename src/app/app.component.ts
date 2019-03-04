@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.showNav();
     this.onResize();
     window.addEventListener("resize", this.onResize.bind(this));
-    navigator.serviceWorker.register("sw-worker-custom.js").then(res=>{
+    navigator.serviceWorker.register("./src/sw-worker-custom.js").then(res=>{
       console.warn("Registration succeeds:", res);
       res.update().then(ures => {
         console.log("Updated", ures);
