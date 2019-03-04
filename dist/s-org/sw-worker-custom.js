@@ -53,7 +53,7 @@ self.addEventListener("activate", (e)=>{
 })
 
 self.addEventListener("fetch",function(event) {
-    let url = event.request.url;
+    let url = matchRoutes(event.request.url);
     event.respondWith(
       fetch(event.request).then(res=>{
         const resClone = res.clone();
