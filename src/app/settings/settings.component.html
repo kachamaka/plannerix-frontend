@@ -26,11 +26,11 @@
         <section [formGroup]="passwordForm" (change)="checkPasswordFormValidation()">
           <p>Смяна на парола: </p>
           <mat-form-field hintLabel="От 8 до 35 символа">
-            <input type="password" formControlName="password" matInput placeholder="Парола:">
+            <input knifeNoCopyPaste type="password" formControlName="password" matInput placeholder="Парола:">
             <mat-error >{{passwordError}}</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input type="password" formControlName="confirmPassword" matInput placeholder="Потвърди парола:">
+            <input knifeNoCopyPaste type="password" formControlName="confirmPassword" matInput placeholder="Потвърди парола:">
             <mat-error >{{confirmPasswordError}}</mat-error>
           </mat-form-field>
           <br>
