@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationSettingsComponent } from './notification-settings/notification-settings.component';
@@ -14,7 +15,8 @@ import { MatDividerModule, MatButtonModule, MatListModule } from '@angular/mater
   imports: [
     MatDividerModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     NotificationSettingsComponent,
