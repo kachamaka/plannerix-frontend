@@ -21,22 +21,28 @@
             Edit Profile
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <section [formGroup]="passwordForm">
+        <section [formGroup]="passwordForm" (change)="checkPasswordFormValidation()">
           <p>Смяна на парола: </p>
-          <mat-form-field>
-            <input formControlName="password" matInput placeholder="Парола:">
-            <mat-error *ngIf="!validatePassword()" >{{validatePasswordError}}</mat-error>
+          <mat-form-field hintLabel="От 8 до 35 символа">
+            <input type="password" formControlName="password" matInput placeholder="Парола:">
+            <mat-error >{{passwordError}}</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input formControlName="confirmPassword" matInput placeholder="Потвърди парола:">
+            <input type="password" formControlName="confirmPassword" matInput placeholder="Потвърди парола:">
+            <mat-error >{{confirmPasswordError}}</mat-error>
           </mat-form-field>
           <br>
-          <button (click)="changePassword()" class="submitButton" mat-flat-button>Смени</button>
+          <button (click)="changePassword()" [disabled]="!this.passwordForm.valid" class="submitButton" mat-flat-button>Смени парола</button>
         </section>
         <mat-divider></mat-divider>
-        <section>
-          <p>Change Email</p>
-          
+        <section [formGroup]="emailForm" >
+          <p>Смяна на имейл: </p>
+          <mat-form-field (input)="validateEmailForm()">
+            <input type="email" formControlName="email" matInput placeholder="Нов имейл:">
+            <mat-error >{{emailError}}</mat-error>
+          </mat-form-field>
+          <br>
+          <button (click)="changeEmail()" [disabled]="!this.validEmail" class="submitButton" mat-flat-button>Смени имейл</button>
         </section>
       </mat-expansion-panel>
 
