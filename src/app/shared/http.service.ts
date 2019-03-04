@@ -20,6 +20,7 @@ export class HttpService {
   domain = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/";
   usernameRegex = new RegExp("^\\w.{3,16}$");
   passwordRegex = new RegExp("^[a-z0-9]{8,35}$");
+  emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
   constructor(private http: HttpClient) { }
  
