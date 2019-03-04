@@ -61,3 +61,13 @@
   background-color: #fefefe;
   overflow: hidden;
 }
+.register{
+  color:white;
+  float:left;
+  background-color:#00C853;
+}
+.login{
+  color:white;
+  float:right;
+  background-color:#00C853;
+}

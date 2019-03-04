@@ -1,3 +1,4 @@
+import { HttpService } from './../../../shared/http.service';
 import { StorageService } from './../../../shared/storage.service';
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 
@@ -13,9 +14,13 @@ export class CredentialsComponent implements OnInit, OnDestroy {
   @ViewChild('email') email: ElementRef;
   @ViewChild('password') password: ElementRef;
   @ViewChild('confirmPassword') confirmPassword: ElementRef;
+  usernameError;
+  emailError;
   
 
-  constructor(public storageService: StorageService) { }
+  constructor(
+    private httpService: HttpService,
+    public storageService: StorageService) { }
 
   ngOnInit() {
     // localStorage.removeItem("password");
@@ -33,6 +38,29 @@ export class CredentialsComponent implements OnInit, OnDestroy {
       "email":localStorage.getItem("email"),
     }
     return user;
+  }
+
+  usernameValid(){
+    if(this.httpService.usernameRegex.test(this.username.nativeElement.value)){
+      console.log("valid");
+      return true;
+    }else{
+      if(this.username.nativeElement.value == ""){
+        this.usernameError = "*Това поле е задължително";
+      }else{
+        this.usernameError = "*Невалидно потребителско име";
+      }
+      return false;
+    }
+  }
+  
+  validateEmail(){
+    console.log(this.email.nativeElement.value);
+    if(this.email.nativeElement.value == ""){
+      this.emailError = "*Това поле е задължително";
+      return false;
+    }
+    return true;
   }
 
   log(e){

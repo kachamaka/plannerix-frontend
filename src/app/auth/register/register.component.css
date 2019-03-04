@@ -60,3 +60,16 @@ i,div,li:focus{
   background-color: #fefefe;
   overflow: hidden;
 }
+
+.registerBtn{
+  color:white;
+  float:right;
+  background-color: #0589E8;
+  background-color:#00C853;
+}
+.loginBtn{
+  color:white;
+  float:left;
+  background-color: #0589E8;
+  background-color:#00C853;
+}
