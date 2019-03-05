@@ -33,7 +33,7 @@ export class ScheduleInputComponent implements OnInit {
   // today = new Date("2018-11-31T16:00:00");
   dataSource = new MatTableDataSource(this.httpService.periods);
 
-  days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  days = ["Неделя","Понеделник","Вторник","Сряда","Четвъртък","Петък","Събота"];
 
   displayedColumns: string[] = ['startTime', 'endTime', 'subject', 'remove'];
 

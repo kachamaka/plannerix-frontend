@@ -4,26 +4,26 @@
     <div class="box">
       
       <div class="color">
-        <h2 align="center">Login</h2>
+        <h2 align="center">Логин</h2>
       </div>
       
       <mat-divider></mat-divider>
       
       <div [formGroup]="userCredentials" class="example-container">
-        <mat-form-field  hintLabel="Max 16 characters">
-          <input knifeAlphanumeric formControlName="usernameField" (keydown.enter)="onKeydown()" matInput #username minlength="3" maxlength="16" placeholder="Username" required>
+        <mat-form-field  hintLabel="Между 3 и 16 символа">
+          <input knifeAlphanumeric formControlName="usernameField" (keydown.enter)="onKeydown()" matInput #username minlength="3" maxlength="16" placeholder="Потребителско име" required>
           <mat-hint align="end">{{username.value?.length || 0}}/16</mat-hint>
           <mat-error *ngIf="f.usernameField.invalid || f.usernameField.hasError || usernameInvalid">{{usernameInvalid}}</mat-error>
         </mat-form-field>
-        <mat-form-field hintLabel="Max 35 characters">
-          <input type="password" knifeNoCopyPaste formControlName="passwordField" (keydown.enter)="onKeydown()" matInput #password minlength="8" maxlength="35" placeholder="Password">
+        <mat-form-field hintLabel="Между 8 и 35 символа">
+          <input type="password" knifeNoCopyPaste formControlName="passwordField" (keydown.enter)="onKeydown()" matInput #password minlength="8" maxlength="35" placeholder="Парола">
           <mat-hint align="end">{{password.value?.length || 0}}/35</mat-hint>
           <mat-error *ngIf="f.passwordField.invalid || f.passwordField.hasError || passwordInvalid">{{passwordInvalid}}</mat-error>
         </mat-form-field>
         <br>
         <div class="buttons">
-          <button (click)="openRegister()" class="register" mat-button color="primary">Register</button>
-          <button (click)="login()" [disabled]="!validForm()" class="login" mat-flat-button color="primary">Login</button>
+          <button (click)="openRegister()" class="register" mat-button color="primary">Регистрация</button>
+          <button (click)="login()" [disabled]="!validForm()" class="login" mat-flat-button color="primary">Влизане</button>
           <!-- <button (click)="log()" style="color:white;float:right;background-color:lightseagreen" mat-button color="primary">Log</button> -->
         </div>
         

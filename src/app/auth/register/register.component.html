@@ -2,7 +2,7 @@
   <div class="container"> 
     <div class="shadow">
       <div class="color">
-        <h2 class="register" align="center">Register</h2>
+        <h2 class="register" align="center">Регистрация</h2>
       </div>
       <mat-divider style="margin-bottom:5px"></mat-divider>
       <router-outlet></router-outlet>
@@ -13,7 +13,7 @@
           (click)="openLogin()" 
           class="loginBtn"
           mat-button 
-          color="primary">Login</button>
+          color="primary">Влизане</button>
       </div>
       <div class="buttons" style="float:right">
 
@@ -22,7 +22,7 @@
         [routerLink]="['/register/subjects']"
         mat-flat-button 
         style="margin-right:5px;background-color:#00C853"
-        color="primary">Next
+        color="primary">Напред
         </button>
         
         <button 
@@ -30,14 +30,14 @@
         [routerLink]="['/register/schedule-input']"
         mat-flat-button 
         style="margin-right:5px;float:right;background-color:#00C853"
-        color="primary">Next
+        color="primary">Напред
         </button>
         <button 
         *ngIf="this.storageService.fullUrl=='/register/subjects'"
         [routerLink]="['/register']"
         mat-flat-button 
         style="float:right;margin-right:2px;background-color:#00C853"
-        color="primary">Previous
+        color="primary">Назад
         </button>
 
         <button 
@@ -45,7 +45,7 @@
         *ngIf="this.storageService.fullUrl=='/register/schedule-input'"
         mat-flat-button   
         style="margin-right:2px;background-color:#00C853"
-        color="primary">Previous
+        color="primary">Назад
         </button>
         <button 
         (click)="register()"
@@ -53,7 +53,7 @@
         *ngIf="this.storageService.fullUrl=='/register/schedule-input'"
         mat-flat-button 
         class="registerBtn"
-        color="primary">Register
+        color="primary">Регистрация
         </button>
       </div>
       <!-- <button mat-button (click)="openSnackbar()">Test</button> -->

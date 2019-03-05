@@ -12,14 +12,14 @@
         {{singleSubject}}
       </mat-option>
   </mat-select>
-  <mat-error>Empty</mat-error>
+  <mat-error>Празно</mat-error>
 </mat-form-field>
 
   <br>
   <mat-form-field class="read-only" (click)="openDatePicker()" >
       <input type="text" matInput [min]="minDate" placeholder="Дата" formControlName="date" [matDatepicker]="picker" required>
       <mat-datepicker #picker disabled="false" (closed)="closeDatePicker()"></mat-datepicker>
-      <mat-error>Empty</mat-error>
+      <mat-error>Празно</mat-error>
   </mat-form-field>
   <mat-form-field>
       <mat-select placeholder="Тип" formControlName="type" [appReadOnly]="isInEditMode()" required>
@@ -27,12 +27,12 @@
         <mat-option value="1">Проект</mat-option>
         <mat-option value="2">Друго</mat-option>
       </mat-select>
-      <mat-error>Empty</mat-error>
+      <mat-error>Празно</mat-error>
   </mat-form-field>
   <br>
   <mat-form-field style="width: 100%" [appReadOnly]="isInEditMode()">
     <textarea matInput placeholder="Описание" maxlength="255" cdkTextareaAutosize formControlName="description" required></textarea>
-    <mat-error>Empty</mat-error>
+    <mat-error>Празно</mat-error>
   </mat-form-field>
   <div class="control">
       <i class="flaticon-cancel" (click)="cancelEditMode()" *ngIf="isInEditMode()"></i>

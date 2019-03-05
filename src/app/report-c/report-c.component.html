@@ -4,12 +4,12 @@
         <h1 class="title">Моите оценки</h1>
         <i class="menu flaticon-menu" [matMenuTriggerFor]="menu"></i>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="recent-grades" routerLinkActive="active">Recent grades</button>
-            <button mat-menu-item routerLink="year-grades" routerLinkActive="active">This year grades</button>
-            <button mat-menu-item routerLink="all-grades" routerLinkActive="active">All grades</button>
+            <button mat-menu-item routerLink="recent-grades" routerLinkActive="active">За тази цедмица</button>
+            <button mat-menu-item routerLink="year-grades" routerLinkActive="active">За този срок</button>
+            <button mat-menu-item routerLink="all-grades" routerLinkActive="active">Всички</button>
             
             <button mat-menu-item (click)="addGradeDialog()">
-                <i class="flaticon-add menuItem"></i><span class="menuItemText">Input Grade</span>
+                <i class="flaticon-add menuItem"></i><span class="menuItemText">Добави оценка</span>
             </button>
         </mat-menu>
     </div>

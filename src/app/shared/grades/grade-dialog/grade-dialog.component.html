@@ -7,7 +7,7 @@
           {{singleSubject}}
         </mat-option>
     </mat-select>
-    <mat-error>Empty</mat-error>
+    <mat-error>Празно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -17,11 +17,12 @@
           {{gradeValue}}
         </mat-option>
     </mat-select>
-    <mat-error>Empty</mat-error>
+    <mat-error>Празно</mat-error>
   </mat-form-field>
 
   <br>
   <div style="float:right" class="control">
-      <i class="flaticon-checked" (click)="addGrade()"></i>
+      <i class="flaticon-checked" (click)="checkValidGrade()"></i>
   </div>
+  <button type="button" (click)="log()">Log</button>
 </form>

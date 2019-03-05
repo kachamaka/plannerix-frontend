@@ -9,7 +9,7 @@
 <mat-divider style="margin-bottom:5px"></mat-divider>
 <div class="main-body">
   <section style="padding-left:10px">
-      <h4>{{username}}</h4>  
+      <h4>Потребителско име: {{username}}</h4>  
   </section>
   <mat-divider></mat-divider>
   <section >
@@ -20,13 +20,13 @@
       (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Edit Profile
+            Настройки на профила
           </mat-panel-title>
         </mat-expansion-panel-header>
         <section [formGroup]="passwordForm" (change)="checkPasswordFormValidation()">
           <p>Смяна на парола: </p>
           <mat-form-field hintLabel="От 8 до 35 символа">
-            <input knifeNoCopyPaste type="password" formControlName="password" matInput placeholder="Парола:">
+            <input knifeNoCopyPaste type="password" formControlName="password" matInput placeholder="Нова парола:">
             <mat-error >{{passwordError}}</mat-error>
           </mat-form-field>
           <mat-form-field>
@@ -53,27 +53,27 @@
       (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Notification Settings
+            Нотификации
           </mat-panel-title>
         </mat-expansion-panel-header>
         <section class="section">
           <mat-slide-toggle (ngModelChange)="checkAll(0)" [(ngModel)]="allN">
-            Turn notifications on
+            Всички
           </mat-slide-toggle>
         </section>
         <section class="section">
           <mat-slide-toggle  [(ngModel)]="notifications.periodN" (ngModelChange)="checkAll(1)">
-            Turn period notifications on
+            За час
           </mat-slide-toggle>
         </section>
         <section class="section">
           <mat-slide-toggle  [(ngModel)]="notifications.eventsN" (ngModelChange)="checkAll(2)">
-            Turn event notifications on
+            За събития
           </mat-slide-toggle>
         </section>
         <section class="section">
           <mat-slide-toggle  [(ngModel)]="notifications.improvementN" (ngModelChange)="checkAll(3)">
-            Turn improve notifications on
+            За подобряване на нивото 
           </mat-slide-toggle>
         </section>
       </mat-expansion-panel>
@@ -87,6 +87,6 @@
     (click)="logout()"
     class="logout"
     type="button" 
-    mat-button>Log out
+    mat-button>Излизане
   </button>
 </div>

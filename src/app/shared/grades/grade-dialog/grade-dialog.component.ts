@@ -1,6 +1,7 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { HttpService } from '../../http.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-grade-dialog',
@@ -12,11 +13,23 @@ export class GradeDialogComponent implements OnInit {
   @ViewChild('subject') subject;
   @ViewChild('gradeValue') gradeValue;
   gradeValues = [2,3,4,5,6];
-  constructor(public dialogRef: MatDialogRef<GradeDialogComponent>,
+  constructor(
+    private toastr: ToastrService,
+    public dialogRef: MatDialogRef<GradeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public httpService: HttpService) { }
 
   ngOnInit() {
+  }
+
+  checkValidGrade(){
+    if(this.subject.value == undefined || this.gradeValue.value == undefined){
+      this.toastr.error("Всички полета са задължителни!", "", {timeOut: 1500});
+      return false;
+    }else{
+      this.addGrade();
+      return true;
+    }
   }
 
   addGrade(){
