@@ -7,7 +7,7 @@ let cacheRequests = [
   "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule",
   "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getWeeklyEvents",
   "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getYearGrades",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/nextPeriod",
+  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getNextPeriod",
   "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getProfile"
 ]
 
