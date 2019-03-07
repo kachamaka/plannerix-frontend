@@ -334,11 +334,6 @@ let getYearGrades = new Promise((resolve, reject)=>{
         }
       }
       let averageScore = {};
-      // for(let k = 0; k<Object.keys(yearGrades).length; k++){
-        // for(let j = 0; j<yearGrades[k].length; j++){
-        //   averageScore[yearGrades[k]].push
-        // }
-      // }
       for (let sub in yearGrades){
         let subScore = 0;
         for(let j = 0; j<yearGrades[sub].length; j++){

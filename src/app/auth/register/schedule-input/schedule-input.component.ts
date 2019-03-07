@@ -21,11 +21,11 @@ export class ScheduleInputComponent implements OnInit {
     public storageService: StorageService) { }
 
   ngOnInit() {
-    if(this.today!=0 && this.today!=6){
-      this.currentDay = this.today;
-    }else{
+    // if(this.today!=0 && this.today!=6){
+    //   this.currentDay = this.today;
+    // }else{
       this.currentDay = 1;
-    }
+    // }
   }  
   
   currentDay;

@@ -38,8 +38,16 @@ export class HttpService {
     {"subject":"Физика","checked":false,"SIP":false,"ZIP":false},
     {"subject":"Философия","checked":false,"SIP":false,"ZIP":false},
     {"subject":"История","checked":false,"SIP":false,"ZIP":false},
-    {"subject":"ФВС","checked":false,"SIP":false,"ZIP":false}
+    {"subject":"ФВС","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Информатика","checked":false,"SIP":false,"ZIP":false},
+    {"subject":"Информационни технологии","checked":false,"SIP":false,"ZIP":false},
   ];
+
+  nextPeriod;
+  weeklyEventsTest = [];
+  verbesserungSubjects = [];
+  // hours = [7,8,9,10,11,12,13,14,15,16,17,18,19];
+  // minutes = ["00","05",];
 
   allCheckedSubjects = [];
   subjectData = [];
@@ -102,6 +110,11 @@ export class HttpService {
 
   logoutUser() {
     this.authToken = null;
+    this.subjectData = [];
+    this.allCheckedSubjects = [];
+    this.weeklyGrades = [];
+    this.events = [];
+    this.periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
     localStorage.clear();
   }
 

@@ -1,6 +1,6 @@
 <div>
   <h4 style="margin:0 0 7px 0" align="center">{{days[currentDay]}}</h4>
-  <div class="add" mat-menu-item (click)="addPeriod()">
+  <div class="add" style="margin:0" mat-menu-item (click)="addPeriod()">
       <i class="flaticon-add menuItem"></i>
     </div>
 </div>
@@ -10,6 +10,11 @@
       <th mat-header-cell *matHeaderCellDef>Начало</th>
       <td mat-cell *matCellDef="let subject; index as i">
           <div style="margin:0;padding:0;">
+            <!-- <mat-select [(ngModel)]="this.httpService.periods[currentDay-1].periods[i].subject">
+              <mat-option *ngFor="let singleSubject of this.httpService.allCheckedSubjects" [value]="singleSubject">
+                {{singleSubject}}
+                </mat-option>
+            </mat-select> -->
             <input 
             matInput
             [min]="'06:30'" 
