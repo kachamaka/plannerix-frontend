@@ -166,6 +166,7 @@ function handleOpenHome(event) {
 let getNotifications = new Promise((resolve, reject)=>{
   let checkTime = 1; //when to open 
   // let checkTime = getTime() + 5
+  let over5s = getTime() + 5;
   let notification ;
   let p = undefined;
   let parsedTime = 0;
@@ -227,21 +228,19 @@ let getNotifications = new Promise((resolve, reject)=>{
     }
 
     // get period
-    if (checkTime == getTime()) {
+    if (checkTime == getTime()|| over5s == getTime() || parseTime("04:00")==getTime()) {
       console.log(checkTime, parsedTime, parsedTime - 60*60);
       getScheduleData.then((period)=>{
         console.log("setting first period");
         p = period;
         parsedTime = parseTime(p.startTime);
-        // console.log(period, p, p == undefined)
       }).catch((err)=>{
         console.log(`Error with getting schedule: ${err}`);
-        // console.error(err);
         p = undefined;
       })
     }
     //show period notification
-    if (p!=undefined && parsedTime - 60*60 ==getTime()) { // change (13*60*60 + 0 + 0) + i to getTime()
+    if (p!=undefined && parsedTime - 60*60 == getTime()) { // change (13*60*60 + 0 + 0) + i to getTime()
       i++;
       console.log("should notify");
       getProfileNotifications().then((notifications)=>{
@@ -334,11 +333,6 @@ let getYearGrades = new Promise((resolve, reject)=>{
         }
       }
       let averageScore = {};
-      // for(let k = 0; k<Object.keys(yearGrades).length; k++){
-        // for(let j = 0; j<yearGrades[k].length; j++){
-        //   averageScore[yearGrades[k]].push
-        // }
-      // }
       for (let sub in yearGrades){
         let subScore = 0;
         for(let j = 0; j<yearGrades[sub].length; j++){
