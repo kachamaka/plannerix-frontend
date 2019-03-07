@@ -14,7 +14,7 @@ i,div,li:focus{
 
 .shadow {
   box-shadow: 1px 1px 1px 1px gray;
-  /* min-height: 600px; */
+  padding-bottom: 3rem;
 }
 
 .container {
@@ -27,18 +27,9 @@ i,div,li:focus{
     width: 80%;
     margin: 0 auto;
     padding: 2rem; 
-    /* position: absolute; */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
   }
   .the-big {
     height: 100%;
-    /* min-height: unset; */
-  }
-  .shadow {
-    /* height: unset; */
-    padding-bottom: 1rem;
   }
 }
 @media only screen and (min-width: 1200px) {
