@@ -113,6 +113,7 @@ export class EventDialogComponent implements OnInit {
         // console.log(this.current_event.valid, this.current_event.controls['date'].value);
         return
       }
+      console.log(this.current_event.controls['date'].value.getTime(),"event-dialog 116");
       let out:SchoolEvent =new SchoolEvent(
         this.current_event.controls['date'].value.getTime(), 
         this.current_event.controls['subject'].value,

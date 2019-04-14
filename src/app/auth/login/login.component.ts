@@ -64,7 +64,9 @@ export class LoginComponent implements OnInit {
     this.httpService.loginUser(postData).subscribe((data:any)=>{
       if(data.success==true){
         this.toastr.success("Влизането успешно!");
-        localStorage.setItem("token", data.token)
+        localStorage.setItem("token", data.token);
+        this.httpService.loadSchedule();
+        this.httpService.loadSubjects();
         this.router.navigate(['/home'])
       }else{
         console.log(data);

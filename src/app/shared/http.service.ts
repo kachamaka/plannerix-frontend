@@ -110,9 +110,9 @@ export class HttpService {
 
   logoutUser() {
     this.authToken = null;
-    // this.subjectData = [];
+    this.subjectData = [];
     this.allCheckedSubjects = [];
-    // this.weeklyGrades = [];
+    this.weeklyGrades = [];
     this.events = [];
     this.periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
     localStorage.clear();

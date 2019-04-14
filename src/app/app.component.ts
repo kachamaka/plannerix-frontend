@@ -21,35 +21,10 @@ export class AppComponent implements OnInit {
     let tokenData = {
       token: localStorage.getItem("token")
     }
-    this.httpService.loadSchedule();
-    this.httpService.loadSubjects();
     this.showNav();
     this.onResize();
     window.addEventListener("resize", this.onResize.bind(this));
     navigator.serviceWorker.register("sw-worker-custom.js").then(res=>{
-      this.httpService.getProfile(tokenData).subscribe((data:any)=>{
-        if(data.profile.username == "testUser"){
-          setTimeout(() => {
-            let p = this.httpService.nextPeriod;
-            res.showNotification("Следващ час",{
-              body: `Следваш час ${p.subject} в ${p.startTime} ч.`,
-              tag: "next-period"});
-            }, 5000);
-            setTimeout(() => {
-            res.showNotification("Седмични събития", {
-              body: `${this.httpService.weeklyEventsTest.length} събития за следващата седмица`,
-              tag: "weekly-events"
-            });
-            }, 10000);
-            
-            setTimeout(() => {
-              res.showNotification("Успех за подобряване", {
-                body: `Трябва да си подобриш успеха по тези предмети: ${this.httpService.verbesserungSubjects}`,
-                tag: "verbesserung-subjects"
-              });
-              }, 15000);
-          }
-        })
       console.warn("Registration succeeds:", res);
       res.update().then(ures => {
         console.log("Updated", ures);
