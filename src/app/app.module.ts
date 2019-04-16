@@ -51,6 +51,7 @@ import { AuthGuard } from './shared/auth.guard';
 import { NotAuthGuard } from './shared/notAuth.guard';
 import { StorageService } from './shared/storage.service';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+import { LinkComponent } from './link/link.component';
 registerLocaleData(localeBg);
 
 
@@ -67,6 +68,7 @@ registerLocaleData(localeBg);
     SubjectsComponent,
     ScheduleInputComponent,
     SnackbarComponent,
+    LinkComponent,
   ],
   imports: [
     BrowserModule,

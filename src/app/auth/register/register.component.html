@@ -5,7 +5,32 @@
         <h2 class="register" align="center">Регистрация</h2>
       </div>
       <mat-divider style="margin-bottom:5px"></mat-divider>
-      <router-outlet></router-outlet>
+      
+  <div (input)="checkRegisterValidation()" [formGroup]="registerForm" class="example-container">
+      <mat-form-field hintLabel="Между 3 и 16 символа">
+        <input formControlName="username" knifeAlphanumeric [(ngModel)]="username" matInput minlength="3" maxlength="16" placeholder="Потребителско име" required>
+        <mat-hint align="end">{{username?.length || 0}}/16</mat-hint>
+        <mat-error *ngIf="!usernameValid()">{{usernameError}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="email" [(ngModel)]="email" type="email" email matInput maxlength="100" placeholder="Имейл" required>
+        <mat-hint align="end">{{email?.length || 0}}/100</mat-hint>
+        <mat-error *ngIf="!validateEmail()" >{{emailError}}</mat-error>
+      </mat-form-field>
+      <mat-form-field hintLabel="Между 8 и 35 символа">
+        <input formControlName="password" [(ngModel)]="password" type="password" knifeNoCopyPaste matInput minlength="8" maxlength="35" placeholder="Парола" required>
+        <mat-hint align="end">{{password?.length || 0}}/35</mat-hint>
+        <mat-error *ngIf="!validatePassword()" >{{passwordError}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="confirmPassword" type="password" [(ngModel)]="confirmPassword" knifeNoCopyPaste matInput minlength="8" maxlength="35" placeholder="Потвърди" required>
+        <mat-hint align="end">{{confirmPassword?.length || 0}}/35</mat-hint>
+        <mat-error *ngIf="!validateConfirmPassword()" >{{confirmPasswordError}}</mat-error>
+      </mat-form-field>
+  </div>
+  
+
+
 
       <div style="margin-left: 5px;">
           <button 
@@ -17,7 +42,7 @@
       </div>
       <div class="buttons" style="float:right">
 
-        <button 
+        <!-- <button 
         *ngIf="this.storageService.fullUrl=='/register'"
         [routerLink]="['/register/subjects']"
         mat-flat-button 
@@ -46,11 +71,10 @@
         mat-flat-button   
         style="margin-right:2px;background-color:#00C853"
         color="primary">Назад
-        </button>
+        </button> -->
         <button 
         (click)="register()"
         [disabled]="checkRegisterValidation()"
-        *ngIf="this.storageService.fullUrl=='/register/schedule-input'"
         mat-flat-button 
         class="registerBtn"
         color="primary">Регистрация

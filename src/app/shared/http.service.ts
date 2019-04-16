@@ -126,8 +126,12 @@ export class HttpService {
     }
   }
 
-  registerUser(user){
-    return this.http.post(this.domain + 'register', user);
+  registerUnverifiedUser(user){
+    return this.http.post(this.domain + 'registerUnverified', user);
+  }
+  
+  registerUser(data){
+    return this.http.post(this.domain + 'register', data);
   }
 
   getSchedule(data){

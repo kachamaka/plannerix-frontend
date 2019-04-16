@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   get f() { return this.userCredentials.controls; }  
 
   log(){
-    console.log(this.validForm());
+    console.log("log");
   }
 
   validForm(){

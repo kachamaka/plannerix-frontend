@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
 
   showNav() {
     let url= this.router.url;
-    let routesToHideNav = ["desktop", "login", "register"];
+    let routesToHideNav = ["desktop", "login", "register", "link"];
     for(let i=0; i < routesToHideNav.length; i++) {
       if (url.includes(routesToHideNav[i])){
         return true;
@@ -62,7 +62,8 @@ export class AppComponent implements OnInit {
       }
     } else {
       if (!url.includes("desktop")) {
-        this.router.navigate(["/desktop"]);
+        // has to be here
+        // this.router.navigate(["/desktop"]);
       }
     }
   }
