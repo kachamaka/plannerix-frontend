@@ -1,6 +1,6 @@
 import { HttpService } from './../shared/http.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-link',
@@ -9,7 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LinkComponent implements OnInit {
   verificationKey;
-  constructor(private route: ActivatedRoute, private httpService: HttpService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute, 
+    private httpService: HttpService) { }
 
   ngOnInit() {
     this.verificationKey = this.route.snapshot.queryParamMap.get("verificationKey");
@@ -19,7 +22,8 @@ export class LinkComponent implements OnInit {
         verificationKey: this.verificationKey
       }
       this.httpService.registerUser(postData).subscribe((data:any)=>{
-        console.log(data);
+        localStorage.setItem("token", data.token);
+        this.router.navigate(['/home'])
       })
     }
     // this.verificationKey = this.route.snapshot.paramMap.get("verificationKey")

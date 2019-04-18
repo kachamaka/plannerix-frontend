@@ -126,6 +126,12 @@ export class HttpService {
     }
   }
 
+  
+  sendEmail(email){
+    return this.http.post(this.domain + 'sendEmail', email);
+  }
+
+
   registerUnverifiedUser(user){
     return this.http.post(this.domain + 'registerUnverified', user);
   }
