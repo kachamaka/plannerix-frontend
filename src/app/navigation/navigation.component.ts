@@ -34,6 +34,17 @@ export class NavigationComponent implements OnInit {
     }, 10);
     
   }
+  
+  setColor(){
+    if (this.storageService.currentUrl=="home"||this.storageService.currentUrl==""){
+      return "home";
+    }else{
+      return this.storageService.currentUrl;
+    }
+  }
+  test(){
+    console.log(this.setColor()=="settings");
+  }
 
   ngOnInit(){
     // let sidebar_backdrop = document.getElementsByClassName("ng-sidebar__backdrop");

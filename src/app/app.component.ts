@@ -1,18 +1,30 @@
+import { HeaderComponent } from './header/header.component';
 import { HttpService } from './shared/http.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { slideInAnimation } from './animation';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    slideInAnimation
+    trigger('slideInOut', [
+      state('in', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('out', style({
+        transform: 'translate3d(-100%, 0, 0)'
+      })),
+      transition('in => out', animate('250ms ease-in-out')),
+      transition('out => in', animate('250ms ease-in-out'))
+    ]),
   ]
 })
 export class AppComponent implements OnInit {
   title = 's-org';
+  @ViewChild(HeaderComponent) header: HeaderComponent;
 
   constructor(private httpService: HttpService, private router: Router) {
 
@@ -67,11 +79,24 @@ export class AppComponent implements OnInit {
       }
     }
   }
-  _opened: boolean = false;
 
-  _toggleSidebar() {
-    this._opened = !this._opened;
-  }  
+  menuState:string = 'out';
+  menuStateBefore:string;
+ 
+  toggleMenu() {
+    // 1-line if statement that toggles the value:
+    this.menuState = this.menuState === 'out' ? 'in' : 'out';
+  }
+
+  toggleMenuFalse(e){
+    this.menuState = this.header.toggleMenuFalse(e);
+    // console.log(e.target.id);
+    // if(e.target.id=="sidebar"){
+    //   this.toggleMenu();
+    // }else{
+    //   this.menuState = 'out';
+    // }
+  }
 
 
 }

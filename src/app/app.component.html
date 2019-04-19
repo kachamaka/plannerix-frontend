@@ -1,6 +1,7 @@
-<div class="main scroll">
-  <app-navigation class="navigation" *ngIf="!showNav()"></app-navigation>
+<div (click)="toggleMenuFalse($event)" class="main scroll">
+    <app-header class="navigation"></app-header>
   <!-- <div [@routeAnimations]="prepareRoute(outlet)" class="body"> -->
+  <div class="backdrop" *ngIf="menuState=='in'"></div>
   <div class="body">
     <!-- <router-outlet #outlet="outlet" class="scroll"></router-outlet> -->
     <router-outlet class="scroll"></router-outlet>

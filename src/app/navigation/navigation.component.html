@@ -1,31 +1,121 @@
-<div >
-    <div style="margin:0; width:100%" class="container">   
-        <ng-sidebar-container backdropClass="color" style="width:100%; height: 100vh">
-            <ng-sidebar style="width:50%; background-color:#2094e8;" [(opened)]="_opened" 
-            mode="over" 
-            animate="true" 
-            showBackdrop="true" 
-            closeOnClickBackdrop="true"
-            closeOnClickOutside="true"
-            autoFocus="false"
-            autoCollapseWidth=100
-            >
+    <div style="margin:0; width:100%" class="header">   
         
-              <p>Sidebar contents</p>
-              <p>Sidebar contents</p>
-              <p>Sidebar contents</p>
-              <p>Sidebar contents</p>
-              <p>Sidebar contents</p>
-        
-            </ng-sidebar>
-            
-            <div class="color" ng-sidebar-content>
-              <button class="sidenav-toggle no-hover" mat-button (click)="_toggleSidebar()"><i class="flaticon-menu-button"></i></button>
-            <h1 class="title" >Plannerix</h1>
-              
-            </div>
-        
-          </ng-sidebar-container> 
+          <h1 class="title" >Plannerix</h1>
+          
+
     </div>
+
+    <mat-divider></mat-divider>
+    <br>
+    
+  <div class="container">
+    
+      <button
+      style="height:100%;"
+      routerLink="/home" 
+      [ngClass]="{
+        'color':setColor()=='home'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left" class="mat-button-wrapper flaticon-home">Home</i>
+      <div 
+      class="mat-button-ripple mat-ripple" 
+      matripple="" 
+      ng-reflect-centered="false" 
+      ng-reflect-disabled="false" 
+      ng-reflect-trigger="[object HTMLButtonElement]"
+      class="home">
+      </div>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
+
+
+      <button 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      [ngClass]="{
+        'color':setColor()=='schedule'
+      }"
+      routerLink="/schedule" 
+      class="mat-button">
+      <i style="float:left" class="mat-button-wrapper flaticon-checklist">Schedule</i>
+      <div 
+      class="mat-button-ripple mat-ripple" 
+      matripple="" 
+      ng-reflect-centered="false" 
+      ng-reflect-disabled="false" 
+      ng-reflect-trigger="[object HTMLButtonElement]"
+      class="schedule">
+      </div>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
+
+      
+      <button
+      style="height:100%;"
+      routerLink="/calendar" 
+      [ngClass]="{
+        'color':setColor()=='calendar'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left" class="mat-button-wrapper flaticon-calendar">Calendar</i>
+      <div 
+      class="mat-button-ripple mat-ripple" 
+      matripple="" 
+      ng-reflect-centered="false" 
+      ng-reflect-disabled="false" 
+      ng-reflect-trigger="[object HTMLButtonElement]"
+      class="calendar">
+      </div>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
+      
+
+      <button
+      style="height:100%;"
+      routerLink="/grades" 
+      [ngClass]="{
+        'color':setColor()=='grades'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left" class="mat-button-wrapper flaticon-scores">Grades</i>
+      <div 
+      class="mat-button-ripple mat-ripple" 
+      matripple="" 
+      ng-reflect-centered="false" 
+      ng-reflect-disabled="false" 
+      ng-reflect-trigger="[object HTMLButtonElement]"
+      class="calendar">
+      </div>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
+
+
+      <button
+      style="height:100%;"
+      routerLink="/settings" 
+      [ngClass]="{
+        'color':setColor()=='settings'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left" class="mat-button-wrapper flaticon-settings-work-tool">Settings</i>
+      <div 
+      class="mat-button-ripple mat-ripple" 
+      matripple="" 
+      ng-reflect-centered="false" 
+      ng-reflect-disabled="false" 
+      ng-reflect-trigger="[object HTMLButtonElement]"
+      class="settings">
+      </div>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
+      
   </div>
-  

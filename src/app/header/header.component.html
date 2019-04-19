@@ -1,0 +1,9 @@
+<div class="navigation" style="margin:0; width:100%" class="container color">   
+      
+    <button id="sidebar" mat-button>
+      <i id="sidebar" class="flaticon-menu-button"></i>
+    </button>
+    <h1 class="title" >Plannerix</h1>
+      
+    </div>
+  <app-navigation id="sidebar-content" [@slideInOut]="menuState" *ngIf="!showNav()"></app-navigation>

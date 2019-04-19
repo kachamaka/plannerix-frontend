@@ -28,3 +28,33 @@
         width: 100%;
     }
 }
+
+
+  .container::before{
+    background-color: #78C6FF;
+}
+.container{ 
+    width: 90%;
+    margin: 0 auto;
+}
+.title {
+    display: inline-block;
+}
+.color {
+    background-color: #2094e8;
+    color: #eee;
+}
+
+.flaticon-menu-button::before{
+  margin:0;
+}
+
+.backdrop{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
