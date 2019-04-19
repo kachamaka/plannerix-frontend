@@ -67,5 +67,11 @@ export class AppComponent implements OnInit {
       }
     }
   }
+  _opened: boolean = false;
+
+  _toggleSidebar() {
+    this._opened = !this._opened;
+  }  
+
 
 }

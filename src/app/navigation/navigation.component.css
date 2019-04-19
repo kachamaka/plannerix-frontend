@@ -1,149 +1,44 @@
-[class^="flaticon-"]:before, 
-[class*=" flaticon-"]:before, 
-[class^="flaticon-"]:after, 
-[class*=" flaticon-"]:after {
-    font-size: 2rem;
+.container::before{
+    background-color: #78C6FF;
 }
-
-
-.container {
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: "schedule calendar home grades settings";
+.container{ 
+    width: 90%;
+    margin: 0 auto;
 }
-
-/* calendar */
-.calendar{
-    grid-area: calendar;
-    /* background-color:red; */
-    height: 100%;
-    width: 100%; 
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas: ". cal .";
-}
-.flaticon-calendar{
-    grid-area: cal;
-    align-self: center;
+.title {
     display: inline-block;
-    text-align: center;
 }
-.flaticon-calendar::before{
-    align-self: center;
-    align-content: center;
-    /* text-align: center; */
-    margin-left:0;
-}
-/* end of calendar */
-
-/* schedule */
-.schedule{
-    grid-area: schedule;
-    /* background-color:red; */
-    height: 100%;
-    width: 100%; 
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas: ". sched .";
-}
-.flaticon-checklist{
-    grid-area: sched;
-    align-self: center;
-    display: inline-block;
-    text-align: center;
-}
-.flaticon-checklist::before{
-    align-self: center;
-    align-content: center;
-    /* text-align: center; */
-    margin-left:0;
-}
-
-/* end of schedule */
-
-/* home */
-.home{
-    grid-area: home;
-    /* background-color:red; */
-    height: 100%;
-    width: 100%; 
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas: ". hom .";
-}
-.flaticon-home{
-    grid-area: hom;
-    align-self: center;
-    display: inline-block;
-    text-align: center;
-}
-.flaticon-home::before{
-    align-self: center;
-    align-content: center;
-    /* text-align: center; */
-    margin-left:0;
-}
-/* end of home */
-
-/* grades */
-.grades{
-    grid-area: grades;
-    /* background-color:red; */
-    height: 100%;
-    width: 100%; 
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas: ". scores .";
-}
-.flaticon-scores{
-    grid-area: scores;
-    align-self: center;
-    display: inline-block;
-    text-align: center;
-}
-.flaticon-scores::before{
-    align-self: center;
-    align-content: center;
-    /* text-align: center; */
-    margin-left:0;
-}
-/* end of grades */
-
-/* settings */
-.settings{
-    grid-area: settings;
-    /* background-color:red; */
-    height: 100%;
-    width: 100%; 
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas: ". sett .";
-}
-.flaticon-settings-work-tool{
-    grid-area: sett;
-    align-self: center;
-    display: inline-block;
-    text-align: center;
-}
-.flaticon-settings-work-tool::before{
-    align-self: center;
-    align-content: center;
-    /* text-align: center; */
-    margin-left:0;
-}
-/* end of settings */
-
-
-i,div,li:focus{
-    outline: 0px;
-}
-
-.color{
-    /* background-color: lightskyblue; */
-    background-color: #0589E8;
+.color {
+    background-color: #2094e8;
     color: #eee;
 }
+
+.flaticon-menu-button::before{
+  margin:0;
+}
+
+.mat-button.no-hover ::ng-deep .mat-button-focus-overlay {
+  background: none;
+}
+
+.sidebar {
+  width:60%;
+  opacity:1;
+  background-color: #2094e8;
+}
+/* .example-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  } */
+  
+  /* .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  } */

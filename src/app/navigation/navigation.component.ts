@@ -1,7 +1,6 @@
 import { StorageService } from './../shared/storage.service';
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { isUndefined } from 'util';
+import { Component, OnInit, ViewContainerRef, Renderer, ElementRef } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-navigation',
@@ -9,38 +8,42 @@ import { isUndefined } from 'util';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  el: HTMLCollectionOf<HTMLElement>;
-  prevEl: HTMLCollectionOf<HTMLElement>;
-  route: any;
-  emptyString = "";
+  mode = "over";
+  cssUrl: string;
 
-  // private previousUrl: string;
-  // private currentUrl: string;
-
-  // constructor(private router: Router) {
-  //   router.events.subscribe((val)=>{
-  //     if(val instanceof NavigationEnd){
-  //       this.previousUrl = this.currentUrl;
-  //       this.currentUrl = val.url.split("/")[1];
-  //     }
-  //   })
-  //  }
-  constructor(private storageService: StorageService){
-
+  constructor(
+    // public viewContainer:ViewContainerRef,
+    public sanitizer: DomSanitizer,
+    private storageService: StorageService){
   }
+  
+  _opened: boolean = false;
+ 
+  _toggleSidebar() {
+    this._opened = !this._opened;
 
-  ngOnInit(){
+    // let dom = new BrowserDomAdapter();
+    //    let el = this.viewContainer.element.nativeElement; 
+    //    let myEle = dom.getElementsByClassName(el, "ng-sidebar__backdrop")[0];
+    // console.log(myEle);
+    setTimeout(() => {
+      let sidebar_backdrop = document.getElementsByClassName("ng-sidebar__backdrop"); 
+      let sidebar = sidebar_backdrop.item(0);
+      console.log(sidebar);
+      sidebar.classList.add("sidebar");
+    }, 10);
     
   }
 
-  setColor(){
-    if (this.storageService.currentUrl=="home"||this.storageService.currentUrl==""){
-      return "home";
-    }else{
-      return this.storageService.currentUrl;
-    }
+  ngOnInit(){
+    // let sidebar_backdrop = document.getElementsByClassName("ng-sidebar__backdrop");
+    // console.log(sidebar_backdrop[0]);
+
+    // setInterval(()=>{
+
+    //   let sidebar_backdrop = document.getElementsByClassName("ng-sidebar__backdrop"); 
+    //   console.log(sidebar_backdrop.item(0));
+    // }, 1000)
   }
-
-
 
 }

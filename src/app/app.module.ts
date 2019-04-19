@@ -9,6 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
+import { SidebarModule } from 'ng-sidebar';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { ToastrModule } from 'ngx-toastr';
 import { NgKnifeModule } from 'ng-knife';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -103,7 +106,9 @@ registerLocaleData(localeBg);
     CalendarModule,
     ScheduleModule,
     NgKnifeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    SidebarModule.forRoot()
   ],
   providers: [{
     provide: LOCALE_ID,
