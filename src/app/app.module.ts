@@ -54,6 +54,12 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 registerLocaleData(localeBg);
 
 
+import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { ModifyScheduleComponent } from './modify-schedule/modify-schedule.component';
+import { ModifyScheduleState } from './states/modifySchedule.state';
+import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
+
 @NgModule({
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
@@ -101,7 +107,12 @@ registerLocaleData(localeBg);
     CalendarModule,
     ScheduleModule,
     NgKnifeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ModifyScheduleModule,
+    NgxsModule.forRoot([
+      ModifyScheduleState
+    ]),
+    NgxsLoggerPluginModule.forRoot({ logger: console, collapsed: false }),
   ],
   providers: [{
     provide: LOCALE_ID,

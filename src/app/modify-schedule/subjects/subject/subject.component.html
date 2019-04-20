@@ -1,0 +1,14 @@
+<div class="subject default" [hidden]="edit">
+  <p>{{subject.name}}</p>
+  <div class="options right" >
+    <i class="flaticon-edit" (click)="toggleEdit()"></i>
+    <i class="flaticon-rubbish-bin red" (click)="deleteSubject()"></i>
+  </div>
+</div>
+<div class="subject edit" [hidden]="!edit" >
+    <input type="text" [placeholder]="subject.name" #name>
+    <div class="edit-menu right"> 
+      <i class="flaticon-correct-symbol" (click)="updateSubject(name.value)"></i>
+      <i class="flaticon-cancel" (click)="toggleEdit()"></i>
+    </div>
+</div>

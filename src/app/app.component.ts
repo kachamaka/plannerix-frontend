@@ -25,16 +25,16 @@ export class AppComponent implements OnInit {
     this.onResize();
     window.addEventListener("resize", this.onResize.bind(this));
     navigator.serviceWorker.register("sw-worker-custom.js").then(res=>{
-      console.warn("Registration succeeds:", res);
+      // console.warn("Registration succeeds:", res);
       res.update().then(ures => {
-        console.log("Updated", ures);
+        // console.log("Updated", ures);
       }).then(err=>{
-        console.log("Error with pdate of service worker:",err);
+        // console.log("Error with pdate of service worker:",err);
       })
     }).catch(err =>{
-      console.log("An error occured when registering service worker", err);
+      // console.log("An error occured when registering service worker", err);
     }).finally().then(fin=>{
-      console.log("Yeah dont know bout this one", fin)
+      // console.log("Yeah dont know bout this one", fin)
     })
   }
 
@@ -55,16 +55,16 @@ export class AppComponent implements OnInit {
   }
   onResize() {
     // window.addEventListener("resize",)
-    let url= this.router.url;
-    if (window.innerWidth < 800) {
-      if (url.includes("desktop")) {
-        this.router.navigate(["/home"]);
-      }
-    } else {
-      if (!url.includes("desktop")) {
-        this.router.navigate(["/desktop"]);
-      }
-    }
+    // let url= this.router.url;
+    // if (window.innerWidth < 800) {
+    //   if (url.includes("desktop")) {
+    //     this.router.navigate(["/home"]);
+    //   }
+    // } else {
+    //   if (!url.includes("desktop")) {
+    //     this.router.navigate(["/desktop"]);
+    //   }
+    // }
   }
 
 }

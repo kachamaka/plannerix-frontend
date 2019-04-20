@@ -12,6 +12,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './shared/auth.guard';
 import { NotAuthGuard } from './shared/notAuth.guard';
+import { ModifyScheduleComponent } from './modify-schedule/modify-schedule.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, data: {animation: 'Home'}, canActivate: [AuthGuard]},
@@ -30,6 +31,7 @@ const routes: Routes = [
   },
   {path: "grades", loadChildren: './report-c/report-card.module#ReportCardModule', data:{animation: 'ReportC'}, canActivate: [AuthGuard]},
   {path: "desktop", loadChildren: './desktop/desktop.module#DesktopModule', canActivate: [AuthGuard]},
+  {path: "modify-schedule", loadChildren: './modify-schedule/modify-schedule.module#ModifyScheduleModule'},
   {path: '**', redirectTo: 'not-found'} // This sould be exported to separate Module
 ];
 

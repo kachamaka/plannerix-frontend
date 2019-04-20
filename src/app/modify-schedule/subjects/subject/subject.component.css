@@ -1,0 +1,19 @@
+.subject {
+    font-size: 1.5rem;
+    height: 60px;
+    display: flex; /* these two are good for alinging verticaly items in container */
+    align-items: center;
+    position: relative;
+}
+.red {
+    color: red;
+}
+
+.right {
+    position: absolute;
+    right: 0;
+}
+
+[hidden] {
+    display: none;
+}
