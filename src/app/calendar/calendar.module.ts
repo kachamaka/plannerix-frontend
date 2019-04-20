@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarComponent } from './calendar.component';
 import { AddTestComponent } from './add-test/add-test.component';
-import { MatDividerModule, MatTableModule, MatDialogModule, MatSelectModule, MatDatepickerModule } from '@angular/material';
+import { MatDividerModule, MatTableModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatMenuModule, MatButtonModule } from '@angular/material';
 import { EventListModule } from '../shared/event/event-list.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   exports: [
     CalendarComponent,

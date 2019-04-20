@@ -10,4 +10,19 @@
     </div>
   </div>
 <mat-divider style="margin-bottom:5px"></mat-divider>
-<app-events [events]="this.httpService.events" [editable]="true"></app-events>
+<app-events style="z-index: auto" [events]="this.httpService.events" [editable]="true"></app-events>
+
+
+
+<button class="editButton" style="float: right;" mat-mini-fab color="primary">
+  <i class="menu flaticon-menu" [matMenuTriggerFor]="menu">
+    
+  </i>
+</button>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item >Test1</button>
+    <button mat-menu-item >Test2</button>
+    <button mat-menu-item >Test3</button>
+    
+</mat-menu>

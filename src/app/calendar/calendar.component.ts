@@ -95,4 +95,8 @@ export class CalendarComponent implements OnInit {
   //   });
   // }
 
+  test() {
+    console.log("test");
+  }
+
 }

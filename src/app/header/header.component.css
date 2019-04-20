@@ -1,18 +1,8 @@
-.container::before{
-    background-color: #78C6FF;
-}
-.container{ 
-    width: 90%;
-    margin: 0 auto;
-}
+
 .title {
     display: inline-block;
 }
-.color {
-    /* background-color: #2094e8; */
-    background-color: #0589E8;
-    color: #eee;
-}
+
 
 .flaticon-menu-button::before{
   margin:0;
@@ -30,7 +20,7 @@
     display: inline-block;
 }
 .color {
-    background-color: #2094e8;
+    background-color: #0589E8;
     color: #eee;
 }
 
