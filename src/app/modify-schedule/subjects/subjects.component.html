@@ -1,0 +1,8 @@
+<div calss="container">
+  <app-subject *ngFor="let subject of subjects | async" [subject]="subject"></app-subject>
+</div>
+<div class="navigation">
+  <button mat-button class="flaticon-add" (click)="openDialog()"></button>
+  <!-- <div><i class="flaticon-add" mat-button></i></div> -->
+  <button mat-button matStepperNext>Next</button>
+</div>

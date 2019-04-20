@@ -36,13 +36,13 @@ self.addEventListener("install", (e)=>{
     cache.add(self.origin).then(res=>{
       // console.log(res);
     }).catch(err=>{
-      console.warn("can't add", self.origin, err)
+      // console.warn("can't add", self.origin, err)
     });
   }).catch(err=>{
-    console.warn("can't load", self.origin, err);
+    // console.warn("can't load", self.origin, err);
   })
   self.skipWaiting();
-  console.log(`Service Worker installed with version: ${version}`);
+  // console.log(`Service Worker installed with version: ${version}`);
 });
 
 self.addEventListener("activate", (e)=>{
@@ -51,20 +51,20 @@ self.addEventListener("activate", (e)=>{
       return Promise.all(
         cachesNames.map(cache =>{
           if(!cache.includes(version)) {
-            console.log(`Deleting chache ${cache}`);
+            // console.log(`Deleting chache ${cache}`);
             caches.delete(cache);
           }
         })
       );
     })
   );
-  console.log("Service worker active");
+  // console.log("Service worker active");
 })
 
 self.addEventListener("fetch",function(event) {
     let url = matchRoutes(event.request.url);
     if (url.includes("html")) {
-      console.warn(url)
+      // console.warn(url)
     }
     event.respondWith(
       fetch(event.request).then(res=>{
@@ -194,7 +194,7 @@ let getNotifications = new Promise((resolve, reject)=>{
             }
           })
           .catch(err=>{
-            console.log(`Error with geting weekly events: ${err}`)
+            // console.log(`Error with geting weekly events: ${err}`)
           })
         })
 
@@ -221,7 +221,7 @@ let getNotifications = new Promise((resolve, reject)=>{
               })
             }
           }).catch(err => {
-            console.log(`Error with getting year grades: ${err}`);
+            // console.log(`Error with getting year grades: ${err}`);
           })
         })
       }
@@ -235,14 +235,14 @@ let getNotifications = new Promise((resolve, reject)=>{
         p = period;
         parsedTime = parseTime(p.startTime);
       }).catch((err)=>{
-        console.log(`Error with getting schedule: ${err}`);
+        // console.log(`Error with getting schedule: ${err}`);
         p = undefined;
       })
     }
     //show period notification
     if (p!=undefined && parsedTime - 60*60 == getTime()) { // change (13*60*60 + 0 + 0) + i to getTime()
       i++;
-      console.log("should notify");
+      // console.log("should notify");
       getProfileNotifications().then((notifications)=>{
         if (!notifications["all"]) return
         if (!notification["period"]) return

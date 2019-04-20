@@ -11,3 +11,11 @@ export class SingleSubject {
         this.ZIP = ZIP;
     }
 }
+
+export class Subject {
+    constructor(public name: String, public id:Number = undefined){}
+
+    prepereToSendForChange() {
+        return name;
+    }
+}

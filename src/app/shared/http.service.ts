@@ -1,11 +1,13 @@
 import { isUndefined } from 'util';
-import { SingleSubject } from './../models/subject.model';
+import { SingleSubject, Subject } from './../models/subject.model';
 import { Injectable } from '@angular/core';
 import { SchoolEvent } from './event.model';
 import 'rxjs/add/operator/map' ;
 import { HttpClient } from '@angular/common/http';
 import { DailyGrades } from './weeklyGrades.model';
 import { isNull } from '@angular/compiler/src/output/output_ast';
+import { Observable, observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +65,11 @@ export class HttpService {
 
   editMode(){
     this.edit = !this.edit;
+  }
+  
+  getSubjectsNew(): Observable<Subject[]> {
+    let mock = of([new Subject("math")]);
+    return mock;
   }
 
   getJoke() {
@@ -299,4 +306,6 @@ export class HttpService {
   }
     
   
+
+
 }
