@@ -34,15 +34,15 @@ let routers = [
 self.addEventListener("install", (e)=>{
   caches.open(version).then(cache=>{
     cache.add(self.origin).then(res=>{
-      console.log(res);
+      // console.log(res);
     }).catch(err=>{
-      console.warn("can't add", self.origin, err)
+      // console.warn("can't add", self.origin, err)
     });
   }).catch(err=>{
-    console.warn("can't load", self.origin, err);
+    // console.warn("can't load", self.origin, err);
   })
   self.skipWaiting();
-  console.log(`Service Worker installed with version: ${version}`);
+  // console.log(`Service Worker installed with version: ${version}`);
 });
 
 self.addEventListener("activate", (e)=>{
@@ -51,20 +51,20 @@ self.addEventListener("activate", (e)=>{
       return Promise.all(
         cachesNames.map(cache =>{
           if(!cache.includes(version)) {
-            console.log(`Deleting chache ${cache}`);
+            // console.log(`Deleting chache ${cache}`);
             caches.delete(cache);
           }
         })
       );
     })
   );
-  console.log("Service worker active");
+  // console.log("Service worker active");
 })
 
 self.addEventListener("fetch",function(event) {
     let url = matchRoutes(event.request.url);
     if (url.includes("html")) {
-      console.warn(url)
+      // console.warn(url)
     }
     event.respondWith(
       fetch(event.request).then(res=>{
@@ -76,7 +76,7 @@ self.addEventListener("fetch",function(event) {
           })
           }
           if(!res) {
-            console.log(url, res);
+            // console.log(url, res);
           }
           return res;
       })
@@ -123,14 +123,14 @@ function validUrl(url) {
 function matchRoutes(url) {
   for(let i =0; i < routers.length;i++) {
     let r = new RegExp(".*"+ routers[i] + "$")
-    console.log(url, r.test(url))
+    // console.log(url, r.test(url))
     if (r.test(url)) return "/"
   }
   return url;
 }
 
 self.addEventListener("notificationclick", (event)=>{
-  console.log(event);
+  // console.log(event);
   switch (event.notification.tag) {
     default:
       handleOpenHome(event);
@@ -194,7 +194,7 @@ let getNotifications = new Promise((resolve, reject)=>{
             }
           })
           .catch(err=>{
-            console.log(`Error with geting weekly events: ${err}`)
+            // console.log(`Error with geting weekly events: ${err}`)
           })
         })
 
@@ -221,7 +221,7 @@ let getNotifications = new Promise((resolve, reject)=>{
               })
             }
           }).catch(err => {
-            console.log(`Error with getting year grades: ${err}`);
+            // console.log(`Error with getting year grades: ${err}`);
           })
         })
       }
@@ -229,20 +229,20 @@ let getNotifications = new Promise((resolve, reject)=>{
 
     // get period
     if (checkTime == getTime()|| over5s == getTime() || parseTime("04:00")==getTime()) {
-      console.log(checkTime, parsedTime, parsedTime - 60*60);
+      // console.log(checkTime, parsedTime, parsedTime - 60*60);
       getScheduleData.then((period)=>{
-        console.log("setting first period");
+        // console.log("setting first period");
         p = period;
         parsedTime = parseTime(p.startTime);
       }).catch((err)=>{
-        console.log(`Error with getting schedule: ${err}`);
+        // console.log(`Error with getting schedule: ${err}`);
         p = undefined;
       })
     }
     //show period notification
     if (p!=undefined && parsedTime - 60*60 == getTime()) { // change (13*60*60 + 0 + 0) + i to getTime()
       i++;
-      console.log("should notify");
+      // console.log("should notify");
       getProfileNotifications().then((notifications)=>{
         if (!notifications["all"]) return
         if (!notification["period"]) return
@@ -348,9 +348,9 @@ let getYearGrades = new Promise((resolve, reject)=>{
 
 
 function getProfileNotifications() {
-  console.log("hello from function")
+  // console.log("hello from function")
   return new Promise((resolve, reject) => {
-    console.log("hello from promise inside function");
+    // console.log("hello from promise inside function");
     let url = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getProfile";
     caches.match(url)
     .then(response=>response.json())
