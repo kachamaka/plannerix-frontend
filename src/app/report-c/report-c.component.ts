@@ -65,5 +65,8 @@ export class ReportCComponent implements OnInit {
 
   // }
 
+  test(){
+    console.log("test");
+  }
   
 }

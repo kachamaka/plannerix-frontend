@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { NgModule, NO_ERRORS_SCHEMA} from "@angular/core";
 import { ReportCComponent } from "./report-c.component";
 import { ReportCardRoutingModule } from "./report-card-routing.module";
@@ -31,7 +32,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/compiler/src/core";
         GradesModule,
         MatMenuModule,
         MatExpansionModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatButtonModule
         //input other modules here
     ],
     exports: [
