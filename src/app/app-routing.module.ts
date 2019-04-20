@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   {path: "grades", loadChildren: './report-c/report-card.module#ReportCardModule', data:{animation: 'ReportC'}, canActivate: [AuthGuard]},
   {path: "desktop", loadChildren: './desktop/desktop.module#DesktopModule', canActivate: [AuthGuard]},
-  {path: "modify-schedule", loadChildren: './modify-schedule/modify-schedule.module#ModifyScheduleModule'},
+  {path: "modify-schedule", loadChildren: './modify-schedule/modify-schedule.module#ModifyScheduleModule'}, //what netlify
   {path: '**', redirectTo: 'not-found'} // This sould be exported to separate Module
 ];
 
