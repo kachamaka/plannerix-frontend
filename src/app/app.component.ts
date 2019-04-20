@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     this.onResize();
     window.addEventListener("resize", this.onResize.bind(this));
     navigator.serviceWorker.register("sw-worker-custom.js").then(res=>{
-      // console.warn("Registration succeeds:", res);
+      console.warn("Registration succeeds:", res);
       res.update().then(ures => {
         // console.log("Updated", ures);
       }).then(err=>{
