@@ -1,12 +1,13 @@
 .main {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 15% auto;
+    grid-template-rows: 6.25rem auto;
     grid-template-areas:
     "nav"
     "body";
     height: 100%;
     background-color: #fefefe;
+    /* grid-gap: 5%; */
     /* overflow: hidden; */
 }
 

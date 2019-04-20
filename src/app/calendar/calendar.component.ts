@@ -1,3 +1,4 @@
+import { StorageService } from 'src/app/shared/storage.service';
 import { AddTestComponent } from './add-test/add-test.component';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
@@ -21,7 +22,9 @@ export class CalendarComponent implements OnInit {
 
   fetchedEvents: any;
 
-  constructor(public httpService: HttpService,
+  constructor(
+    public storageService: StorageService,
+    public httpService: HttpService,
     public dialog: MatDialog) { }
   
   // upcommingTestDates = [{"date":new Date(2018,11,26).toISOString(),"subject":"History"},

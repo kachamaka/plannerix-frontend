@@ -1,10 +1,10 @@
 <div style="height:100%; width: 100%;position: relative;">
 
-  <div class="color">
-    <img *ngIf="this.storageService.isDesktop()" align="center" style="width: 97%" src="assets/logo/plannerixLogo.png">
-    <div class="container" >
+  <div *ngIf="this.storageService.isDesktop()" class="color">
+    <img align="center" style="width: 97%" src="assets/logo/plannerixLogo.png">
+    <!-- <div class="container" >
       <h1 *ngIf="!this.storageService.isDesktop()" class="title">Профил</h1>
-    </div>
+    </div> -->
 </div>
 <mat-divider style="margin-bottom:5px"></mat-divider>
 <div class="main-body">

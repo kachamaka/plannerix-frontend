@@ -1,3 +1,4 @@
+import { StorageService } from './shared/storage.service';
 import { HeaderComponent } from './header/header.component';
 import { HttpService } from './shared/http.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -23,10 +24,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class AppComponent implements OnInit {
-  title = 's-org';
+  title = 'plannerix';
   @ViewChild(HeaderComponent) header: HeaderComponent;
 
-  constructor(private httpService: HttpService, private router: Router) {
+  constructor(
+    public storageService: StorageService,
+    private httpService: HttpService,
+    private router: Router) {
 
   }
   ngOnInit(){
@@ -41,13 +45,14 @@ export class AppComponent implements OnInit {
       res.update().then(ures => {
         console.log("Updated", ures);
       }).then(err=>{
-        console.log("Error with pdate of service worker:",err);
+        // console.log("Error with pdate of service worker:",err);
       })
     }).catch(err =>{
       console.log("An error occured when registering service worker", err);
     }).finally().then(fin=>{
-      console.log("Yeah dont know bout this one", fin)
+      // console.log("Yeah dont know bout this one", fin)
     })
+    this.httpService.loadSubjects();
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -75,7 +80,8 @@ export class AppComponent implements OnInit {
     } else {
       if (!url.includes("desktop")) {
         // has to be here
-        // this.router.navigate(["/desktop"]);
+        this.httpService.edit = false;
+        this.router.navigate(["/desktop"]);
       }
     }
   }
@@ -89,7 +95,10 @@ export class AppComponent implements OnInit {
   }
 
   toggleMenuFalse(e){
-    this.menuState = this.header.toggleMenuFalse(e);
+    // console.log(this.storageService.isDesktop());
+    if(this.storageService.isDesktop()==false){
+      this.menuState = this.header.toggleMenuFalse(e);
+    }
     // console.log(e.target.id);
     // if(e.target.id=="sidebar"){
     //   this.toggleMenu();

@@ -27,6 +27,12 @@
 .flaticon-menu-button::before{
   margin:0;
 }
+.flaticon-edit-1::before{
+  margin: 0;
+}
+.flaticon-back::before{
+  margin: 0;
+}
 
 .backdrop{
   position: absolute;
@@ -36,4 +42,38 @@
   height: 100%;
   z-index: 10;
   background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
+
+.navigation{
+  /* width: 90%; */
+  margin: 0 auto;
+  /* text-align: center; */
+  display: grid;
+  grid-template-columns: 15% 52% 5% 5% 5% 3% 10% 5%;
+  grid-template-rows: auto;
+  grid-template-areas:"sidebar title . . . . editMode .";
+  /* height: 100%; */
+  overflow:auto;
+}
+
+.sidebar{
+  grid-area: sidebar;
+}
+
+.title{
+  grid-area: title;
+}
+
+.editMode{
+  grid-area: editMode;
+  display: grid;
+  grid-template-areas:
+  ". . ."
+  ". . ."
+  ". editButton ."
+  ". . .";
+}
+.editButton{
+  grid-area: editButton;
+  background-color: #2094e8;
 }

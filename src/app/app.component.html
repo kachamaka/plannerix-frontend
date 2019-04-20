@@ -1,5 +1,5 @@
 <div (click)="toggleMenuFalse($event)" class="main scroll">
-    <app-header class="navigation"></app-header>
+    <app-header *ngIf="!this.storageService.isDesktop()" class="navigation"></app-header>
   <!-- <div [@routeAnimations]="prepareRoute(outlet)" class="body"> -->
   <div class="backdrop" style="height: 100vmax;" *ngIf="menuState=='in'"></div>
   <div class="body">

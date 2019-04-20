@@ -1,6 +1,8 @@
+import { StorageService } from 'src/app/shared/storage.service';
+import { HttpService } from './../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -21,9 +23,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  routeName: string;
+  constructor(
+    public httpService: HttpService,
+    public storageService: StorageService,
+    private router: Router) { }
 
   ngOnInit() {
+    this.storageService.getRouteName();
   }
 
   showNav() {

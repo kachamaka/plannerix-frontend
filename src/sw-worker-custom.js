@@ -34,7 +34,7 @@ let routers = [
 self.addEventListener("install", (e)=>{
   caches.open(version).then(cache=>{
     cache.add(self.origin).then(res=>{
-      console.log(res);
+      // console.log(res);
     }).catch(err=>{
       console.warn("can't add", self.origin, err)
     });
@@ -76,7 +76,7 @@ self.addEventListener("fetch",function(event) {
           })
           }
           if(!res) {
-            console.log(url, res);
+            // console.log(url, res);
           }
           return res;
       })
@@ -123,14 +123,14 @@ function validUrl(url) {
 function matchRoutes(url) {
   for(let i =0; i < routers.length;i++) {
     let r = new RegExp(".*"+ routers[i] + "$")
-    console.log(url, r.test(url))
+    // console.log(url, r.test(url))
     if (r.test(url)) return "/"
   }
   return url;
 }
 
 self.addEventListener("notificationclick", (event)=>{
-  console.log(event);
+  // console.log(event);
   switch (event.notification.tag) {
     default:
       handleOpenHome(event);
@@ -229,9 +229,9 @@ let getNotifications = new Promise((resolve, reject)=>{
 
     // get period
     if (checkTime == getTime()|| over5s == getTime() || parseTime("04:00")==getTime()) {
-      console.log(checkTime, parsedTime, parsedTime - 60*60);
+      // console.log(checkTime, parsedTime, parsedTime - 60*60);
       getScheduleData.then((period)=>{
-        console.log("setting first period");
+        // console.log("setting first period");
         p = period;
         parsedTime = parseTime(p.startTime);
       }).catch((err)=>{
@@ -348,9 +348,9 @@ let getYearGrades = new Promise((resolve, reject)=>{
 
 
 function getProfileNotifications() {
-  console.log("hello from function")
+  // console.log("hello from function")
   return new Promise((resolve, reject) => {
-    console.log("hello from promise inside function");
+    // console.log("hello from promise inside function");
     let url = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getProfile";
     caches.match(url)
     .then(response=>response.json())

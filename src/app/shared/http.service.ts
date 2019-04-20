@@ -24,6 +24,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
  
+  edit = false;
 
   additionalSubjects: SingleSubject[] = [];
   
@@ -58,6 +59,11 @@ export class HttpService {
   
 
   periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
+
+
+  editMode(){
+    this.edit = !this.edit;
+  }
 
   getJoke() {
     return this.http.get("https://api.chucknorris.io/jokes/random");
