@@ -79,7 +79,7 @@ import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
     ScheduleInputComponent,
     SnackbarComponent,
     LinkComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

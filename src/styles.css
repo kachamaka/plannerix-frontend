@@ -23,6 +23,11 @@ body {
 }
 
 
+.rotate::before{
+  transform: rotate(90deg) !important;
+  display: inline-block;
+}
+
 input:focus{
     outline: 0;
     outline: none;

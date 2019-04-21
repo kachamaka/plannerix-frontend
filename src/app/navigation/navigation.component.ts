@@ -42,6 +42,7 @@ export class NavigationComponent implements OnInit {
       return this.storageService.currentUrl;
     }
   }
+  
   test(){
     console.log(this.setColor()=="settings");
   }

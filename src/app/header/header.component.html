@@ -9,7 +9,10 @@
     <button
     class="editButton"
     (click)="this.httpService.editMode()"
-    *ngIf="this.storageService.routeName=='Програма' || this.storageService.routeName=='График'"
+    *ngIf="
+    this.storageService.routeName=='Програма' ||
+    this.storageService.routeName=='График'
+    "
     mat-mini-fab>
       <i *ngIf="this.httpService.edit==false" class="flaticon-edit-1"></i>
       <i *ngIf="this.httpService.edit==true" class="flaticon-back"></i>
