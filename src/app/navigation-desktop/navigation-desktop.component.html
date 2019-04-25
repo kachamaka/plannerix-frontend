@@ -1,0 +1,122 @@
+<div style="background-color: #2094e8; margin:0; width:100%" class="header">   
+        
+    <!-- <h1 class="title" >Plannerix</h1> -->
+    <img class="logo" src="assets/logo/plannerixLogo.png" >
+    
+
+    <mat-divider></mat-divider>
+</div>
+
+<!-- <br> -->
+
+<div class="container">
+
+<button
+style="height:100%;"
+routerLink="/home" 
+[ngClass]="{
+  'color':setColor()=='home'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-home">Накратко</i>
+<div 
+class="mat-button-ripple mat-ripple" 
+matripple="" 
+ng-reflect-centered="false" 
+ng-reflect-disabled="false" 
+ng-reflect-trigger="[object HTMLButtonElement]"
+class="home">
+</div>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+
+<button 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+[ngClass]="{
+  'color':setColor()=='schedule'
+}"
+routerLink="/schedule" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-checklist">Програма</i>
+<div 
+class="mat-button-ripple mat-ripple" 
+matripple="" 
+ng-reflect-centered="false" 
+ng-reflect-disabled="false" 
+ng-reflect-trigger="[object HTMLButtonElement]"
+class="schedule">
+</div>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+
+<button
+style="height:100%;"
+routerLink="/calendar" 
+[ngClass]="{
+  'color':setColor()=='calendar'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal;" class="mat-button-wrapper flaticon-calendar">График</i>
+<div 
+class="mat-button-ripple mat-ripple" 
+matripple="" 
+ng-reflect-centered="false" 
+ng-reflect-disabled="false" 
+ng-reflect-trigger="[object HTMLButtonElement]"
+class="calendar">
+</div>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+
+<button
+style="height:100%;"
+routerLink="/grades" 
+[ngClass]="{
+  'color':setColor()=='grades'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-scores">Оценки</i>
+<div 
+class="mat-button-ripple mat-ripple" 
+matripple="" 
+ng-reflect-centered="false" 
+ng-reflect-disabled="false" 
+ng-reflect-trigger="[object HTMLButtonElement]"
+class="calendar">
+</div>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+
+<button
+style="height:100%;"
+routerLink="/settings" 
+[ngClass]="{
+  'color':setColor()=='settings'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-settings-work-tool">Настройки</i>
+<div 
+class="mat-button-ripple mat-ripple" 
+matripple="" 
+ng-reflect-centered="false" 
+ng-reflect-disabled="false" 
+ng-reflect-trigger="[object HTMLButtonElement]"
+class="settings">
+</div>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+</div>

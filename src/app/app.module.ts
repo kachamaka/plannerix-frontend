@@ -64,6 +64,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { ModifyScheduleComponent } from './modify-schedule/modify-schedule.component';
 import { ModifyScheduleState } from './states/modifySchedule.state';
 import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
+import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop.module';
 
 @NgModule({
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
@@ -79,7 +80,7 @@ import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
     ScheduleInputComponent,
     SnackbarComponent,
     LinkComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,6 +112,7 @@ import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
     HttpClientModule,
     SettingsModule,
     HomeModule,
+    NavigationDesktopModule,
     CalendarModule,
     ScheduleModule,
     NgKnifeModule,

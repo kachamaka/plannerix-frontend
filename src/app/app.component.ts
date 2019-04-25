@@ -82,6 +82,7 @@ export class AppComponent implements OnInit {
         // has to be here
         this.httpService.edit = false;
         this.router.navigate(["/desktop"]);
+        this.menuState = 'out';
       }
     }
   }
