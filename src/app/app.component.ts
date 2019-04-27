@@ -38,8 +38,10 @@ export class AppComponent implements OnInit {
       token: localStorage.getItem("token")
     }
     this.showNav();
-    this.onResize();
-    window.addEventListener("resize", this.onResize.bind(this));
+    
+    // this.onResize();
+    // window.addEventListener("resize", this.onResize.bind(this));
+
     navigator.serviceWorker.register("sw-worker-custom.js").then(res=>{
       console.warn("Registration succeeds:", res);
       res.update().then(ures => {
@@ -71,20 +73,18 @@ export class AppComponent implements OnInit {
     // console.log(url);
   }
   onResize() {
-    // window.addEventListener("resize",)
-    let url= this.router.url;
-    if (window.innerWidth < 800) {
-      if (url.includes("desktop")) {
-        this.router.navigate(["/home"]);
-      }
-    } else {
-      if (!url.includes("desktop")) {
-        // has to be here
-        this.httpService.edit = false;
-        this.router.navigate(["/desktop"]);
-        this.menuState = 'out';
-      }
-    }
+    // let url= this.router.url;
+    // if (window.innerWidth < 800) {
+    //   if (url.includes("desktop")) {
+    //     this.router.navigate(["/home"]);
+    //   }
+    // } else {
+    //   if (!url.includes("desktop")) {
+    //     this.httpService.edit = false;
+    //     this.router.navigate(["/desktop"]);
+    //     this.menuState = 'out';
+    //   }
+    // }
   }
 
   menuState:string = 'out';
