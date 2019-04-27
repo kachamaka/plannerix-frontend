@@ -1,12 +1,27 @@
-<mat-nav-list (click)="dismissBottomSheet()" >
-    <button 
+<mat-nav-list style="padding:0" (click)="dismissBottomSheet()" >
+    <button
+    style="color: white"
+    [ngClass]="{'gradesMenuColor': setColor()=='recent-grades'}"
     mat-menu-item 
     routerLink="/grades/recent-grades" 
     routerLinkActive="active">За тази седмица</button>
-    <button mat-menu-item routerLink="/grades/year-grades" routerLinkActive="active">За този срок</button>
-    <button mat-menu-item routerLink="/grades/all-grades" routerLinkActive="active">Всички</button>
+    <button 
+    style="color: white"
+    [ngClass]="{'gradesMenuColor': setColor()=='year-grades'}"
+    mat-menu-item 
+    routerLink="/grades/year-grades" 
+    routerLinkActive="active">За този срок</button>
+    <button 
+    style="color: white"
+    [ngClass]="{'gradesMenuColor': setColor()=='all-grades'}"
+    mat-menu-item 
+    routerLink="/grades/all-grades" 
+    routerLinkActive="active">Всички</button>
     
-    <button mat-menu-item (click)="addGradeDialog()">
+    <button 
+    style="color: white"
+    mat-menu-item 
+    (click)="addGradeDialog()">
         <!-- <i class="flaticon-add menuItem"></i><span class="menuItemText">Добави оценка</span> -->
         Добави оценки
     </button>

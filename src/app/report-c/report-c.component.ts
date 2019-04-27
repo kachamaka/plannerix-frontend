@@ -1,7 +1,7 @@
 import { GradeDialogComponent } from './../shared/grades/grade-dialog/grade-dialog.component';
 import { HttpService } from './../shared/http.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatDialog, MatSnackBar, MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import {MatDialog, MatSnackBar, MatBottomSheet, MatBottomSheetRef, MatBottomSheetConfig} from '@angular/material';
 import { isUndefined } from 'util';
 import { GradeToastComponent } from '../shared/grades/grade-toast/grade-toast.component';
 import { Router } from '@angular/router';
@@ -55,7 +55,10 @@ export class ReportCComponent implements OnInit {
 
   openBottomSheet(){
     // console.log("test");
-    this.bottomSheet.open(BottomSheetOverviewExampleSheet);
+    console.log(this.bottomSheet);
+    this.bottomSheet.open(BottomSheetOverviewExampleSheet, {
+      panelClass: 'gradesMenu'
+    });
   }
   
 }
@@ -69,7 +72,6 @@ export class BottomSheetOverviewExampleSheet implements OnInit {
 
   @ViewChild(ReportCComponent) reportC: ReportCComponent;
   
-
   constructor(
     public dialog: MatDialog,
     private httpService: HttpService,
@@ -84,6 +86,15 @@ export class BottomSheetOverviewExampleSheet implements OnInit {
 
   ngOnInit(){
     console.log(this.storageService.fullUrl);
+  }
+
+  setColor(){
+    let url = this.storageService.fullUrl.split("/")[2];
+    if(url == undefined){
+      return 'recent-grades';
+    }
+    // console.log(url);
+    return url
   }
 
   addGradeDialog(): void {

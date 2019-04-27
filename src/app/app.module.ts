@@ -65,6 +65,7 @@ import { ModifyScheduleComponent } from './modify-schedule/modify-schedule.compo
 import { ModifyScheduleState } from './states/modifySchedule.state';
 import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
 import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop.module';
+import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
@@ -81,6 +82,7 @@ import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop
     SnackbarComponent,
     LinkComponent,
     HeaderComponent,
+    GroupsComponent,
   ],
   imports: [
     BrowserModule,

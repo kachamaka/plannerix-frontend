@@ -28,6 +28,16 @@ body {
   display: inline-block;
 }
 
+.gradesMenu{
+  background-color: #2094e8;
+  /* background-color: #0589E8; */
+  padding: 0 !important;;
+}
+
+.mat-menu-content{
+  padding: 0 !important;
+}
+
 input:focus{
     outline: 0;
     outline: none;
