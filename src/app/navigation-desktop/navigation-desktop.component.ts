@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../shared/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-desktop',
@@ -13,6 +14,7 @@ export class NavigationDesktopComponent implements OnInit {
 
   constructor(
     // public viewContainer:ViewContainerRef,
+    public router: Router,
     private storageService: StorageService){
   }
   
@@ -35,15 +37,20 @@ export class NavigationDesktopComponent implements OnInit {
   }
   
   setColor(){
-    if (this.storageService.currentUrl=="home"||this.storageService.currentUrl==""){
-      return "home";
+    // console.log(this.storageService.fullUrl);
+    if (this.storageService.fullUrl=="/desktop/home"||this.storageService.fullUrl==""){
+      return "/desktop/home";
     }else{
-      return this.storageService.currentUrl;
+      return this.storageService.fullUrl;
     }
   }
   
-  test(){
-    console.log(this.setColor()=="settings");
+  test(e?){
+    console.log(e.target);
+  }
+
+  changeRoute(route){
+    this.router.navigate([route]);
   }
 
 

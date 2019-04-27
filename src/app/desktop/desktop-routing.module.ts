@@ -9,18 +9,22 @@ import { RecentGradesComponent } from '../report-c/recent-grades/recent-grades.c
 import { YearGradesComponent } from '../report-c/year-grades/year-grades.component';
 import { AllGradesComponent } from '../report-c/all-grades/all-grades.component';
 import { SettingsComponent } from '../settings/settings.component';
+import { ReportCComponent } from '../report-c/report-c.component';
 
 const routes: Routes = [
 
     {path:"", component: DesktopComponent,children:[
-        // {path: 'home', component: HomeComponent},
-        // {path: '', redirectTo: 'home'},
-        // {path: 'schedule', component: ScheduleComponent},
+        {path: 'home', component: HomeComponent},
+        {path: '', pathMatch: 'full', redirectTo: 'home'},
+        {path: 'schedule', component: ScheduleComponent},
         {path: 'calendar', component: CalendarComponent},
-        // {path: 'settings', component: SettingsComponent},
-        // {path: '', pathMatch: 'full', redirectTo: 'recent-grades'},
-        // {path: 'year-grades', component: YearGradesComponent},
-        // {path: 'all-grades', component: AllGradesComponent},
+        {path: 'settings', component: SettingsComponent},
+        {path: 'grades', component: ReportCComponent, children: [
+            {path: 'year-grades', component: YearGradesComponent},
+            {path: 'all-grades', component: AllGradesComponent},
+            {path: 'recent-grades', component: RecentGradesComponent},
+            {path: '', pathMatch: 'full', redirectTo: 'recent-grades'},
+        ]},
     ]}
 ]
 

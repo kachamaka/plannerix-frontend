@@ -13,22 +13,14 @@
 
 <button
 style="height:100%;"
-routerLink="desktop/home" 
+(click)="changeRoute('/desktop/home')"
 [ngClass]="{
-  'color':setColor()=='home'
+  'color':setColor()=='/desktop/home'
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
 class="mat-button">
 <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-home">Накратко</i>
-<div 
-class="mat-button-ripple mat-ripple" 
-matripple="" 
-ng-reflect-centered="false" 
-ng-reflect-disabled="false" 
-ng-reflect-trigger="[object HTMLButtonElement]"
-class="home">
-</div>
 <div class="mat-button-focus-overlay"></div>
 </button>
 
@@ -37,85 +29,53 @@ class="home">
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
 [ngClass]="{
-  'color':setColor()=='schedule'
+  'color':setColor()=='/desktop/schedule'
 }"
-routerLink="desktop/schedule" 
+(click)="changeRoute('/desktop/schedule')"
 class="mat-button">
 <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-checklist">Програма</i>
-<div 
-class="mat-button-ripple mat-ripple" 
-matripple="" 
-ng-reflect-centered="false" 
-ng-reflect-disabled="false" 
-ng-reflect-trigger="[object HTMLButtonElement]"
-class="schedule">
-</div>
 <div class="mat-button-focus-overlay"></div>
 </button>
 
 
 <button
 style="height:100%;"
-routerLink='/desktop/calendar' 
+(click)="changeRoute('/desktop/calendar')"
 [ngClass]="{
-  'color':setColor()=='calendar'
+  'color':setColor()=='/desktop/calendar'
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
 class="mat-button">
 <i style="float:left; font-style: normal;" class="mat-button-wrapper flaticon-calendar">График</i>
-<div 
-class="mat-button-ripple mat-ripple" 
-matripple="" 
-ng-reflect-centered="false" 
-ng-reflect-disabled="false" 
-ng-reflect-trigger="[object HTMLButtonElement]"
-class="calendar">
-</div>
 <div class="mat-button-focus-overlay"></div>
 </button>
 
 
 <button
 style="height:100%;"
-routerLink="desktop/grades" 
+(click)="changeRoute('/desktop/grades')"
 [ngClass]="{
-  'color':setColor()=='grades'
+  'color':setColor()=='/desktop/grades'
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
 class="mat-button">
 <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-scores">Оценки</i>
-<div 
-class="mat-button-ripple mat-ripple" 
-matripple="" 
-ng-reflect-centered="false" 
-ng-reflect-disabled="false" 
-ng-reflect-trigger="[object HTMLButtonElement]"
-class="calendar">
-</div>
 <div class="mat-button-focus-overlay"></div>
 </button>
 
 
 <button
 style="height:100%;"
-routerLink="desktop/settings" 
+(click)="changeRoute('/desktop/settings')"
 [ngClass]="{
-  'color':setColor()=='settings'
+  'color':setColor()=='/desktop/settings'
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
 class="mat-button">
 <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-settings-work-tool">Настройки</i>
-<div 
-class="mat-button-ripple mat-ripple" 
-matripple="" 
-ng-reflect-centered="false" 
-ng-reflect-disabled="false" 
-ng-reflect-trigger="[object HTMLButtonElement]"
-class="settings">
-</div>
 <div class="mat-button-focus-overlay"></div>
 </button>
 

@@ -2,7 +2,7 @@ import { StorageService } from './shared/storage.service';
 import { HeaderComponent } from './header/header.component';
 import { HttpService } from './shared/http.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { RouterOutlet, Router } from '@angular/router';
+import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { slideInAnimation } from './animation';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   @ViewChild(HeaderComponent) header: HeaderComponent;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     public storageService: StorageService,
     private httpService: HttpService,
     private router: Router) {
@@ -38,10 +39,10 @@ export class AppComponent implements OnInit {
       token: localStorage.getItem("token")
     }
     this.showNav();
-    
-    // this.onResize();
-    // window.addEventListener("resize", this.onResize.bind(this));
-
+    setTimeout(() => {
+      this.onResize();
+    }, 200);
+    window.addEventListener("resize", this.onResize.bind(this));
     navigator.serviceWorker.register("sw-worker-custom.js").then(res=>{
       console.warn("Registration succeeds:", res);
       res.update().then(ures => {
@@ -73,18 +74,18 @@ export class AppComponent implements OnInit {
     // console.log(url);
   }
   onResize() {
-    // let url= this.router.url;
-    // if (window.innerWidth < 800) {
-    //   if (url.includes("desktop")) {
-    //     this.router.navigate(["/home"]);
-    //   }
-    // } else {
-    //   if (!url.includes("desktop")) {
-    //     this.httpService.edit = false;
-    //     this.router.navigate(["/desktop"]);
-    //     this.menuState = 'out';
-    //   }
-    // }
+    let url= this.router.url;
+    if (window.innerWidth < 800) {
+      if (url.includes("desktop")) {
+        this.router.navigate(["/home"]);
+      }
+    } else {
+      if (!url.includes("desktop")) {
+        this.httpService.edit = false;
+        this.router.navigate(["/desktop"]);
+        this.menuState = 'out';
+      }
+    }
   }
 
   menuState:string = 'out';

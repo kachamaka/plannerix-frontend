@@ -20,7 +20,7 @@ export class StorageService {
       }
     })
    }
-
+   
    isDesktop() {
     let url= this.router.url;
     let routesToHideNav = ["desktop", "login", "register"];

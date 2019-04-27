@@ -10,7 +10,7 @@
     /* position: relative; */
     display: grid;
     grid-template-areas: "navbar . . . desktop-body";
-    grid-template-columns: 15% 10% 10% 5% 60%;
+    grid-template-columns: 15% 10% 10% 3% 62%;
     /* background-color: #dbd4b8; */
     /* background-color: #9068be; */
     /* background-color: #ee9ca0; */
