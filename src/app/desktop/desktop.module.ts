@@ -1,3 +1,4 @@
+import { GroupsModule } from './../groups/groups.module';
 import { NavigationDesktopModule } from './../navigation-desktop/navigation-desktop.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,8 @@ import { ScheduleModule } from '../schedule/schedule.module';
     HomeModule,
     CalendarModule,
     ScheduleModule,
-    NavigationDesktopModule
+    NavigationDesktopModule,
+    GroupsModule
   ]
 })
 export class DesktopModule { }

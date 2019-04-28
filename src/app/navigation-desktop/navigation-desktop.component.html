@@ -68,6 +68,19 @@ class="mat-button">
 
 <button
 style="height:100%;"
+(click)="changeRoute('/desktop/groups')"
+[ngClass]="{
+  'color':setColor()=='groups'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-multiple-users-silhouette">Групи</i>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+<button
+style="height:100%;"
 (click)="changeRoute('/desktop/settings')"
 [ngClass]="{
   'color':setColor()=='/desktop/settings'

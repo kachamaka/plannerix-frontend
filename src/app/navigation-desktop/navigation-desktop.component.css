@@ -46,6 +46,13 @@
   margin:0;
 }
 
+.flaticon-multiple-users-silhouette::before{
+    align-self: center;
+    align-content: center;
+    /* text-align: center; */
+    margin-left:0;
+}
+
 .mat-button.no-hover ::ng-deep .mat-button-focus-overlay {
   background: none;
 }

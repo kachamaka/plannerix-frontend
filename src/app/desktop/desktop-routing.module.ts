@@ -1,3 +1,4 @@
+import { GroupsComponent } from './../groups/groups.component';
 import { CalendarComponent } from './../calendar/calendar.component';
 import { ScheduleComponent } from './../schedule/schedule.component';
 import { HomeComponent } from './../home/home.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
         {path: '', pathMatch: 'full', redirectTo: 'home'},
         {path: 'schedule', component: ScheduleComponent},
         {path: 'calendar', component: CalendarComponent},
+        {path: 'groups', component: GroupsComponent},
         {path: 'settings', component: SettingsComponent},
         {path: 'grades', component: ReportCComponent, children: [
             {path: 'year-grades', component: YearGradesComponent},
