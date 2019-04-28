@@ -82,7 +82,7 @@ mat-sidenav {
     display: grid;
 
     grid-template-columns: auto;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
     /* grid-template-areas: "schedule calendar home grades settings"; */
 }
 
@@ -206,6 +206,12 @@ mat-sidenav {
 }
 /* end of settings */
 
+.flaticon-multiple-users-silhouette::before{
+    align-self: center;
+    align-content: center;
+    /* text-align: center; */
+    margin-left:0;
+}
 
 i,div,li:focus{
     outline: 0px;

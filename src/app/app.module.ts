@@ -1,3 +1,4 @@
+import { GroupsModule } from './groups/groups.module';
 import { HttpService } from './shared/http.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
@@ -65,7 +66,6 @@ import { ModifyScheduleComponent } from './modify-schedule/modify-schedule.compo
 import { ModifyScheduleState } from './states/modifySchedule.state';
 import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
 import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop.module';
-import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
@@ -81,8 +81,7 @@ import { GroupsComponent } from './groups/groups.component';
     ScheduleInputComponent,
     SnackbarComponent,
     LinkComponent,
-    HeaderComponent,
-    GroupsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -117,6 +116,7 @@ import { GroupsComponent } from './groups/groups.component';
     NavigationDesktopModule,
     CalendarModule,
     ScheduleModule,
+    GroupsModule,
     NgKnifeModule,
     MatSnackBarModule,
     MatSidenavModule,

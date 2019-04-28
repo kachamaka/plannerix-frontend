@@ -51,6 +51,10 @@ export class StorageService {
           case "grades":
             this.routeName = "Оценки";
             break;
+
+          case "groups":
+            this.routeName = "Групи";
+            break;
             
           case "settings":
           this.routeName = "Настройки";

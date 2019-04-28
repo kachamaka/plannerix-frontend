@@ -65,6 +65,18 @@
       <div class="mat-button-focus-overlay"></div>
       </button>
 
+      <button
+      style="height:100%;"
+      routerLink="/groups" 
+      [ngClass]="{
+        'color':setColor()=='groups'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-multiple-users-silhouette">Групи</i>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
 
       <button
       style="height:100%;"
@@ -78,5 +90,6 @@
       <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-settings-work-tool">Настройки</i>
       <div class="mat-button-focus-overlay"></div>
       </button>
+
       
   </div>
