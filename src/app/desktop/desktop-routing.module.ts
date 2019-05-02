@@ -20,10 +20,11 @@ const routes: Routes = [
         {path: '', pathMatch: 'full', redirectTo: 'home'},
         {path: 'schedule', component: ScheduleComponent},
         {path: 'calendar', component: CalendarComponent},
-        {path: 'groups', component: GroupsComponent, children: [
-            { path: 'singleGroup/:group_id', component: GroupComponent },
-            { path: 'singleGroup', pathMatch: "full", redirectTo: '' }
-        ]},
+        
+        {path: 'groups', component: GroupsComponent},
+        {path: 'groups/singleGroup/:group_id', component: GroupComponent },
+        {path: 'groups/singleGroup', pathMatch: "full", redirectTo: '' },
+        
         {path: 'settings', component: SettingsComponent},
         {path: 'grades', component: ReportCComponent, children: [
             {path: 'year-grades', component: YearGradesComponent},

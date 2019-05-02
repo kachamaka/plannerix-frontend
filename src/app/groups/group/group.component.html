@@ -1,8 +1,17 @@
-<p>
-  group works!
-</p>
+<h4 style="margin-top: 14px; margin-bottom: 14px;" align="center">
+  {{currentGroup.group_name}}
+</h4>
+
+<hr style="margin-bottom: 0px">
+<mat-tab-group>
+  <mat-tab label="Events">
+    <app-events style="z-index: auto" [events]="this.group_events" [editable]="canEdit()"></app-events>
+  </mat-tab>
+  <!-- <mat-tab label="Files"> Content 3 </mat-tab> -->
+  <mat-tab *ngIf="this.currentGroup.owner == this.httpService.username" label="Members"> Content 2 </mat-tab>
+</mat-tab-group>
+
+
 {{currentGroup.owner}}
-
-
 <button mat-mini-fab style="background-color: #0589E8" (click)="plus()">+</button>
 <button mat-mini-fab style="background-color: #0589E8" (click)="minus()" >-</button>

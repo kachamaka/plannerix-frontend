@@ -23,6 +23,16 @@ body {
 }
 
 
+.mat-tab-labels{
+  /* background-color: #0589E8; */
+}
+.mat-tab-label-content{
+  /* color: white; */
+}
+.mat-tab-label{
+  width: 100% !important;
+}
+
 .rotate::before{
   transform: rotate(90deg) !important;
   display: inline-block;
