@@ -12,8 +12,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  username = "";
-  email = "";
   panelOpenState;
   notifications = {
     eventsN: true,
@@ -49,14 +47,6 @@ export class SettingsComponent implements OnInit {
     })
     this.emailForm = this.fb.group({
       email: ['', Validators.compose([Validators.required])],
-    })
-    let postData = {
-      token: localStorage.getItem("token"),
-    }
-    this.httpService.getProfile(postData).subscribe((data:any)=>{
-      console.log(data);
-      this.username = data.profile.username;
-      this.email = data.profile.email;
     })
   }
 

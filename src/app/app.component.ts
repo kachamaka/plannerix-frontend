@@ -56,6 +56,12 @@ export class AppComponent implements OnInit {
       // console.log("Yeah dont know bout this one", fin)
     })
     this.httpService.loadSubjects();
+
+    this.httpService.getProfile(tokenData).subscribe((data:any)=>{
+      console.log(data);
+      this.httpService.username = data.profile.username;
+      this.httpService.email = data.profile.email;
+    })
   }
 
   prepareRoute(outlet: RouterOutlet) {

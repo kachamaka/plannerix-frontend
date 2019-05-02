@@ -11,6 +11,7 @@ import { YearGradesComponent } from '../report-c/year-grades/year-grades.compone
 import { AllGradesComponent } from '../report-c/all-grades/all-grades.component';
 import { SettingsComponent } from '../settings/settings.component';
 import { ReportCComponent } from '../report-c/report-c.component';
+import { GroupComponent } from '../groups/group/group.component';
 
 const routes: Routes = [
 
@@ -19,7 +20,10 @@ const routes: Routes = [
         {path: '', pathMatch: 'full', redirectTo: 'home'},
         {path: 'schedule', component: ScheduleComponent},
         {path: 'calendar', component: CalendarComponent},
-        {path: 'groups', component: GroupsComponent},
+        {path: 'groups', component: GroupsComponent, children: [
+            { path: 'singleGroup/:group_id', component: GroupComponent },
+            { path: 'singleGroup', pathMatch: "full", redirectTo: '' }
+        ]},
         {path: 'settings', component: SettingsComponent},
         {path: 'grades', component: ReportCComponent, children: [
             {path: 'year-grades', component: YearGradesComponent},

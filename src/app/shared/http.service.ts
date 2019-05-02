@@ -18,8 +18,79 @@ export class HttpService {
   authToken = {
     "token":""
   };
-  options;
+  currentGroup;
+  username = "";
+  email = "";
   domain = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/";
+
+
+  exampleGroups = [
+    {
+      group_id: 1,
+      group_name: "1Nemski izrodi Gruppe 2",
+      owner: "kachamaka",
+      group_events: [],
+      members: []
+    },
+    {
+      group_id: 2,
+      group_name: "2Nemski izrodi Gruppe 2",
+      owner: "Pesho",
+      group_events: [],
+      members: []
+    },
+    {
+      group_id: 3,
+      group_name: "3Nemski izrodi Gruppe 2",
+      owner: "Georgi",
+      group_events: [],
+      members: []
+    },
+    {
+      group_id: 4,
+      group_name: "4Nemski izrodi Gruppe 2",
+      owner: "Ivan",
+      group_events: [],
+      members: []
+    },
+    {
+      group_id: 5,
+      group_name: "5Nemski izrodi Gruppe 2",
+      owner: "kachamaka",
+      group_events: [],
+      members: []
+    },
+    {
+      group_id: 6,
+      group_name: "6Nemski izrodi Gruppe 2",
+      owner: "Aleks",
+      group_events: [],
+      members: []
+    },
+    {
+      group_id: 7,
+      group_name: "7Nemski izrodi Gruppe 2",
+      owner: "Ivan",
+      group_events: [],
+      members: []
+    },
+    {
+      group_id: 8,
+      group_name: "8Nemski izrodi Gruppe 2",
+      owner: "Ivan",
+      group_events: [],
+      members: []
+    },
+    {
+      group_id: 9,
+      group_name: "9Nemski izrodi Gruppe 2",
+      owner: "kachamaka",
+      group_events: [],
+      members: []
+    },
+  ];
+
+
   usernameRegex = new RegExp("^\\w.{3,16}$");
   passwordRegex = new RegExp("^[a-z0-9]{8,35}$");
   emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);

@@ -37,8 +37,8 @@ export class NavigationDesktopComponent implements OnInit {
   }
   
   setColor(){
-    // console.log(this.storageService.fullUrl);
-    if (this.storageService.fullUrl=="/desktop/home"||this.storageService.fullUrl==""){
+    console.log(this.storageService.fullUrl);
+    if (this.storageService.fullUrl=="/desktop"||this.storageService.fullUrl==""){
       return "/desktop/home";
     }else{
       return this.storageService.fullUrl;

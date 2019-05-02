@@ -9,7 +9,7 @@ export class StorageService {
   public previousUrl: string;
   public currentUrl: string;
   public fullUrl: string;
-  public routeName: string;
+  public routeName = "Накратко";
 
   constructor(private router: Router) {
     router.events.subscribe((val)=>{
