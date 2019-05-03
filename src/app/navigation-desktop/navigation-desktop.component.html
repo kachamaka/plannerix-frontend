@@ -70,7 +70,7 @@ class="mat-button">
 style="height:100%;"
 (click)="changeRoute('/desktop/groups')"
 [ngClass]="{
-  'color':setColor()=='/desktop/groups'
+  'color':setColor().includes('groups')
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 

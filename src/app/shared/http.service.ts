@@ -43,7 +43,11 @@ export class HttpService {
       group_id: 3,
       group_name: "3Nemski izrodi Gruppe 2",
       owner: "Georgi",
-      group_events: [],
+      group_events: [
+        new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
+        new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
+        new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
+        new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)],
       members: []
     },
     {
@@ -57,8 +61,13 @@ export class HttpService {
       group_id: 5,
       group_name: "5Nemski izrodi Gruppe 2",
       owner: "kachamaka",
-      group_events: [],
-      members: []
+      group_events: [
+          new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
+          new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
+          new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
+          new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)
+      ],
+      members: ["Ivancho", "Pencho", "Stefcho"]
     },
     {
       group_id: 6,

@@ -23,6 +23,32 @@ body {
 }
 
 
+.flaticon-rubbish-bin:before{
+  color: red;
+}
+
+
+i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
+  width: 25px;
+  height: 25px;
+}
+
+.mat-list-item-content{
+  display: grid !important;
+  grid-template-areas: "member . . . delete ." !important;
+  grid-template-columns: 20% 20% 20% 25% 10% 5% !important;
+}
+
+.member{
+  grid-area: member !important;
+}
+
+.delete{
+  grid-area: delete !important;
+  float: right !important;
+}
+
+
 .mat-tab-labels{
   /* background-color: #0589E8; */
 }

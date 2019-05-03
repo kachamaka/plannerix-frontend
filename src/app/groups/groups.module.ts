@@ -3,7 +3,7 @@ import { GroupsRoutingModule } from './groups.routing.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GroupsComponent } from './groups.component';
-import { MatButtonModule, MatToolbarModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatListModule, MatDividerModule } from '@angular/material';
 import { GroupComponent } from './group/group.component';
 import { EventListModule } from '../shared/event/event-list.module';
 
@@ -20,7 +20,9 @@ import { EventListModule } from '../shared/event/event-list.module';
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
-    EventListModule
+    EventListModule,
+    MatListModule,
+    MatDividerModule
   ],
   exports: [
     GroupsComponent

@@ -1,3 +1,4 @@
+import { StorageService } from './../../shared/storage.service';
 import { SchoolEvent } from './../../shared/event.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from './../../shared/http.service';
@@ -13,14 +14,15 @@ export class GroupComponent implements OnInit {
   groupID;
   currentGroup;
 
-  group_events: Array<SchoolEvent> = [
-    new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
-    new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
-    new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
-    new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)
-  ]
+  // group_events: Array<SchoolEvent> = [
+  //   new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
+  //   new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
+  //   new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
+  //   new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)
+  // ]
 
   constructor(
+    public storageService: StorageService,
     private router: Router,
     public httpService: HttpService, 
     private route: ActivatedRoute) {
@@ -31,10 +33,10 @@ export class GroupComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params:any)=> {
       this.groupID = params.group_id;      
-      console.log('groupID :', this.groupID);
+      // console.log('groupID :', this.groupID);
       this.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
     })
-    console.log(this.currentGroup);
+    // console.log(this.currentGroup);
   }
 
   canEdit(){
@@ -43,6 +45,13 @@ export class GroupComponent implements OnInit {
     }else{
       return false;
     }
+  }
+
+  deleteMember(member){
+    // console.log(member);
+    this.currentGroup.members = this.currentGroup.members.filter(mem => mem != member);
+    //update members
+    
   }
 
   loadGroup(){
