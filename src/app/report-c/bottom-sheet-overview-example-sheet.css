@@ -1,0 +1,11 @@
+
+.menuColor{
+    background-color: red;
+    /* color: #eee; */
+}
+.active{
+    background-color: #D3D3D3;
+}
+.gradesMenuColor{
+    background-color: #0589E8;
+}

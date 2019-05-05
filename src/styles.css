@@ -25,6 +25,63 @@ body {
 [hidden] {
   display: none;
 }
+.flaticon-rubbish-bin:before{
+  color: red;
+}
+
+
+i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
+  width: 25px;
+  height: 25px;
+}
+
+.mat-list-item-content{
+  display: grid !important;
+  grid-template-areas: "member . . . delete ." !important;
+  grid-template-columns: 20% 20% 20% 25% 10% 5% !important;
+}
+
+@media only screen and (min-width: 450px) {
+  .mat-list-item-content{
+    grid-template-areas: "member . . . delete" !important;
+    grid-template-columns: 20% 20% 20% 30% 10% !important;
+  }
+}
+
+.member{
+  grid-area: member !important;
+}
+
+.delete{
+  grid-area: delete !important;
+  float: right !important;
+}
+
+
+.mat-tab-labels{
+  /* background-color: #0589E8; */
+}
+.mat-tab-label-content{
+  /* color: white; */
+}
+.mat-tab-label{
+  width: 100% !important;
+}
+
+.rotate::before{
+  transform: rotate(90deg) !important;
+  display: inline-block;
+}
+
+.gradesMenu{
+  background-color: #2094e8;
+  /* background-color: #0589E8; */
+  padding: 0 !important;;
+}
+
+.mat-menu-content{
+  padding: 0 !important;
+}
 
 input:focus{
     outline: 0;

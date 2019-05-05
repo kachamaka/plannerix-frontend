@@ -1,7 +1,7 @@
 <div class="color">
 
     <div class="container">
-        <h1 class="title">Моите оценки</h1>
+        <h1 *ngIf="this.storageService.isDesktop()" class="title">Моите оценки</h1>
         <i class="menu flaticon-menu" [matMenuTriggerFor]="menu"></i>
         <mat-menu #menu="matMenu">
             <button mat-menu-item routerLink="recent-grades" routerLinkActive="active">За тази цедмица</button>
@@ -15,6 +15,12 @@
     </div>
 </div>
 <mat-divider style="margin-bottom:5px"></mat-divider>
-<div class="container">
+<div style="z-index: auto;" class="container">
     <router-outlet ></router-outlet>
 </div>
+
+<button *ngIf="!this.storageService.isDesktop()" (click)="openBottomSheet()" class="editButton" mat-mini-fab color="primary">
+  <i class="flaticon-menu rotate">
+
+  </i>
+</button>

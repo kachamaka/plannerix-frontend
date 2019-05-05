@@ -24,7 +24,13 @@
         <div class="buttons">
           <button (click)="openRegister()" class="register" mat-button color="primary">Регистрация</button>
           <button (click)="login()" [disabled]="!validForm()" class="login" mat-flat-button color="primary">Влизане</button>
-          <!-- <button (click)="log()" style="color:white;float:right;background-color:lightseagreen" mat-button color="primary">Log</button> -->
+          <button 
+          (click)="log()"
+          style="color:white;float:right;background-color:lightseagreen" 
+          [routerLink]="['/link']"
+          [queryParams]="{verificationKey: 'test'}"
+          mat-button 
+          color="primary">Log</button>
         </div>
         
       </div>

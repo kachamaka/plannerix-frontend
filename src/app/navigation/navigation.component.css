@@ -2,18 +2,88 @@
 [class*=" flaticon-"]:before, 
 [class^="flaticon-"]:after, 
 [class*=" flaticon-"]:after {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
+[class^="flaticon-"]:before, 
+[class*=" flaticon-"]:before{
+    margin-right: 5px;
+}
+[class^="flaticon-"], 
+[class*=" flaticon-"]{
+    padding-top: 0.3rem;
+} 
+
+.header::before{
+    background-color: #78C6FF;
+}
+.header{
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "logo";
+  /* height: 100%; */
+  overflow:auto;
+}
+
+.logo{
+    grid-area: logo;
+    width: 100%;
+}
+
+.title {
+    display: inline-block;
+}
+.color {
+    background-color: #0589E8;
+    color: #eee;
+}
+
+.flaticon-menu-button::before{
+  margin:0;
+}
+
+.mat-button.no-hover ::ng-deep .mat-button-focus-overlay {
+  background: none;
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+    height: 100%;
+}
+ 
+mat-sidenav {
+    width: 250px;
+}
+:host {
+  background: #2094e8;
+  color: #fff;
+  position: fixed;
+  right: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20%;
+  min-width: 250px;
+  z-index: 9999;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
 
 
 .container {
     margin: 0px;
     padding: 0px;
-    height: 100%;
+    margin: 0px;
+    width: 100%;
+    /* height: 100%; */
     display: grid;
+
     grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: "schedule calendar home grades settings";
+    grid-template-rows: auto auto auto auto auto auto;
+    /* grid-template-areas: "schedule calendar home grades settings"; */
 }
 
 /* calendar */
@@ -35,7 +105,6 @@
 .flaticon-calendar::before{
     align-self: center;
     align-content: center;
-    /* text-align: center; */
     margin-left:0;
 }
 /* end of calendar */
@@ -137,6 +206,12 @@
 }
 /* end of settings */
 
+.flaticon-multiple-users-silhouette::before{
+    align-self: center;
+    align-content: center;
+    /* text-align: center; */
+    margin-left:0;
+}
 
 i,div,li:focus{
     outline: 0px;

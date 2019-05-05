@@ -50,3 +50,21 @@ i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
     background-color: #0589E8;
     color: #eee;
 }
+
+.flaticon-add-1::before{
+    margin: 0;
+}
+
+.flaticon-menu::before{
+    margin: 0;
+}
+
+.editButton{
+    /* bottom: 10px; */
+    position: absolute;
+    z-index: 1;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    background-color: #0589E8;
+    /* margin-bottom: 50px; */
+}

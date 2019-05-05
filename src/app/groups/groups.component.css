@@ -1,0 +1,30 @@
+.group-heading{
+    /* margin-top: 1.5rem; */
+    color: white;
+    background-color: #0589E8;
+    /* background-color: #00ADF4; */
+    background-color: #00A3E8;
+    /* background-color: #03AFF1; */
+}
+.group{
+    margin-left: 1rem;
+}
+.heading-margin{
+    margin-top: 1.5rem;
+}
+
+.container::before{
+    background-color: #78C6FF;
+}
+.container{ 
+    width: 90%;
+    margin: 0 auto;
+}
+.title {
+    display: inline-block;
+}
+.color {
+    /* background-color: #0589E8; */
+    background-color: #2094e8;
+    color: #eee;
+}

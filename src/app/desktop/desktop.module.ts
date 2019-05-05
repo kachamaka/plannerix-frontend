@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { GroupsModule } from './../groups/groups.module';
+import { NavigationDesktopModule } from './../navigation-desktop/navigation-desktop.module';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DesktopComponent } from './desktop.component';
 import { DesktopRoutingModule } from './desktop-routing.module';
@@ -9,6 +11,7 @@ import { CalendarModule } from '../calendar/calendar.module';
 import { ScheduleModule } from '../schedule/schedule.module';
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     DesktopComponent
   ],
@@ -19,7 +22,9 @@ import { ScheduleModule } from '../schedule/schedule.module';
     ReportCardModule,
     HomeModule,
     CalendarModule,
-    ScheduleModule
+    ScheduleModule,
+    NavigationDesktopModule,
+    GroupsModule
   ]
 })
 export class DesktopModule { }

@@ -71,3 +71,16 @@ i,div,li:focus{
   float:left;
   background-color:#00C853;
 }
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+}
+  
+.example-container > * {
+  width: 100%;
+}

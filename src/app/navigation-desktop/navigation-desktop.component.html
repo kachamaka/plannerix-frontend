@@ -1,0 +1,95 @@
+<div style="background-color: #2094e8; margin:0; width:100%" class="header">   
+        
+    <!-- <h1 class="title" >Plannerix</h1> -->
+    <img class="logo" src="assets/logo/plannerixLogo.png" >
+    
+
+    <mat-divider></mat-divider>
+</div>
+
+<!-- <br> -->
+
+<div class="container">
+
+<button
+style="height:100%;"
+(click)="changeRoute('/desktop/home')"
+[ngClass]="{
+  'color':setColor()=='/desktop/home'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-home">Накратко</i>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+
+<button 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+[ngClass]="{
+  'color':setColor()=='/desktop/schedule'
+}"
+(click)="changeRoute('/desktop/schedule')"
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-checklist">Програма</i>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+
+<button
+style="height:100%;"
+(click)="changeRoute('/desktop/calendar')"
+[ngClass]="{
+  'color':setColor()=='/desktop/calendar'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal;" class="mat-button-wrapper flaticon-calendar">График</i>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+
+<button
+style="height:100%;"
+(click)="changeRoute('/desktop/grades')"
+[ngClass]="{
+  'color':setColor()=='/desktop/grades'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-scores">Оценки</i>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+
+<button
+style="height:100%;"
+(click)="changeRoute('/desktop/groups')"
+[ngClass]="{
+  'color':setColor().includes('groups')
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-multiple-users-silhouette">Групи</i>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+<button
+style="height:100%;"
+(click)="changeRoute('/desktop/settings')"
+[ngClass]="{
+  'color':setColor()=='/desktop/settings'
+}" 
+style="height:100%; width:100%; border-radius: 0"
+mat-button="" 
+class="mat-button">
+<i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-settings-work-tool">Настройки</i>
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+</div>

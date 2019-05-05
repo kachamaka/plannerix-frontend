@@ -1,3 +1,4 @@
+import { GroupsModule } from './groups/groups.module';
 import { HttpService } from './shared/http.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
@@ -9,6 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
+import { SidebarModule } from 'ng-sidebar';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { ToastrModule } from 'ngx-toastr';
 import { NgKnifeModule } from 'ng-knife';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -51,6 +55,8 @@ import { AuthGuard } from './shared/auth.guard';
 import { NotAuthGuard } from './shared/notAuth.guard';
 import { StorageService } from './shared/storage.service';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+import { LinkComponent } from './link/link.component';
+import { HeaderComponent } from './header/header.component';
 registerLocaleData(localeBg);
 
 
@@ -59,6 +65,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { ModifyScheduleComponent } from './modify-schedule/modify-schedule.component';
 import { ModifyScheduleState } from './states/modifySchedule.state';
 import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
+import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop.module';
 
 @NgModule({
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
@@ -73,6 +80,8 @@ import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
     SubjectsComponent,
     ScheduleInputComponent,
     SnackbarComponent,
+    LinkComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -104,10 +113,14 @@ import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
     HttpClientModule,
     SettingsModule,
     HomeModule,
+    NavigationDesktopModule,
     CalendarModule,
     ScheduleModule,
+    GroupsModule,
     NgKnifeModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    SidebarModule.forRoot(),
     ModifyScheduleModule,
     NgxsModule.forRoot([
       ModifyScheduleState

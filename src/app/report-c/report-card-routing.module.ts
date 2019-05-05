@@ -9,10 +9,10 @@ import { AllGradesComponent } from './all-grades/all-grades.component';
 
 const routes: Routes = [
     { path: '', component: ReportCComponent , children:[
-        {path: 'recent-grades', component: RecentGradesComponent},
-        {path: '', pathMatch: 'full', redirectTo: 'recent-grades'},
         {path: 'year-grades', component: YearGradesComponent},
-        {path: 'all-grades', component: AllGradesComponent}
+        {path: 'all-grades', component: AllGradesComponent},
+        {path: 'recent-grades', component: RecentGradesComponent},
+        {path: '', pathMatch: 'full', redirectTo: 'recent-grades'}
     ]}
 ];
 

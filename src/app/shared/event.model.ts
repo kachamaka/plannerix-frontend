@@ -2,7 +2,7 @@ export class SchoolEvent{
     date: number;
     subject: string;
     description: string;
-    type: number
+    type: number;
     constructor(date:number, subject:string, description: string, type: number) {
         this.date = date/1000;
         this.subject = subject;

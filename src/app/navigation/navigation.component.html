@@ -1,180 +1,95 @@
-<mat-toolbar color="secondary" class="container">
+    <div style="background-color: #2094e8; margin:0; width:100%" class="header">   
+        
+          <!-- <h1 class="title" >Plannerix</h1> -->
+          <img class="logo" src="assets/logo/plannerixLogo.png" >
+          
 
-  <button 
-  style="height:100%; border-radius: 0"
-  mat-button="" 
-  [ngClass]="{
-    'color':setColor()=='schedule'
-  }"
-  routerLink="/schedule" 
-  class="mat-button">
-  <i class="mat-button-wrapper flaticon-checklist"></i>
-  <div 
-  class="mat-button-ripple mat-ripple" 
-  matripple="" 
-  ng-reflect-centered="false" 
-  ng-reflect-disabled="false" 
-  ng-reflect-trigger="[object HTMLButtonElement]"
-  class="schedule">
-  </div>
-  <div class="mat-button-focus-overlay"></div>
-  </button>
+          <mat-divider></mat-divider>
+    </div>
 
-  <button 
-  style="height:100%; border-radius: 0"
-  mat-button="" 
-  [ngClass]="{
-    'color':setColor()=='calendar'
-  }"
-  routerLink="/calendar" 
-  class="mat-button">
-  <i class="mat-button-wrapper flaticon-calendar"></i>
-  <div 
-  class="mat-button-ripple mat-ripple" 
-  matripple="" 
-  ng-reflect-centered="false" 
-  ng-reflect-disabled="false" 
-  ng-reflect-trigger="[object HTMLButtonElement]"
-  class="calendar">
-  </div>
-  <div class="mat-button-focus-overlay"></div>
-  </button>
+    <!-- <br> -->
+    
+  <div class="container">
+    
+      <button
+      style="height:100%;"
+      routerLink="/home" 
+      [ngClass]="{
+        'color':setColor()=='home'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-home">Накратко</i>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
 
-  <button 
-  style="height:100%; border-radius: 0"
-  mat-button="" 
-  [ngClass]="{
-    'color':setColor()=='home'
-  }"
-  routerLink="/home" 
-  class="mat-button">  
-  <!-- <i class="mat-button-wrapper flaticon-home"></i> -->
-  <img style="margin-top: -6px;" class="icon mat-button-wrapper" src="assets/logo/android/android-launchericon-48-48.png" height="38px">
-  <div 
-  class="mat-button-ripple mat-ripple" 
-  matripple="" 
-  ng-reflect-centered="false" 
-  ng-reflect-disabled="false" 
-  ng-reflect-trigger="[object HTMLButtonElement]"
-  class="home">
-  </div>
-  <div class="mat-button-focus-overlay"></div>
-  </button>
 
-  <button 
-  style="height:100%; border-radius: 0"
-  mat-button="" 
-  [ngClass]="{
-    'color':setColor()=='grades'
-  }"
-  routerLink="/grades" 
-  class="mat-button">
-  <i class="mat-button-wrapper flaticon-scores"></i>
-  <div 
-  class="mat-button-ripple mat-ripple" 
-  matripple="" 
-  ng-reflect-centered="false" 
-  ng-reflect-disabled="false" 
-  ng-reflect-trigger="[object HTMLButtonElement]"
-  class="grades">
-  </div>
-  <div class="mat-button-focus-overlay"></div>
-  </button>
+      <button 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      [ngClass]="{
+        'color':setColor()=='schedule'
+      }"
+      routerLink="/schedule" 
+      class="mat-button">
+      <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-checklist">Програма</i>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
 
-  <button 
-  style="height:100%; border-radius: 0"
-  mat-button="" 
-  [ngClass]="{
-    'color':setColor()=='settings'
-  }"
-  routerLink="/settings" 
-  class="mat-button">
-  <i class="mat-button-wrapper flaticon-settings-work-tool"></i>
-  <div 
-  class="mat-button-ripple mat-ripple" 
-  matripple="" 
-  ng-reflect-centered="false" 
-  ng-reflect-disabled="false" 
-  ng-reflect-trigger="[object HTMLButtonElement]"
-  class="settings">
-  </div>
-  <div class="mat-button-focus-overlay"></div>
-  </button>
+      
+      <button
+      style="height:100%;"
+      routerLink="/calendar" 
+      [ngClass]="{
+        'color':setColor()=='calendar'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left; font-style: normal;" class="mat-button-wrapper flaticon-calendar">График</i>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
+      
 
-  <!-- -------------------------------------------------- -->
+      <button
+      style="height:100%;"
+      routerLink="/grades" 
+      [ngClass]="{
+        'color':setColor()=='grades'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-scores">Оценки</i>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
 
-<!--   
-  <div 
-  routerLink="/schedule" 
-  class="schedule" 
-  matRipple
-  [matRippleCentered]="centered"
-  [matRippleDisabled]="disabled"
-  [matRippleUnbounded]="unbounded"
-  [matRippleRadius]="radius"
-  [matRippleColor]="color"
-  [ngClass]="{
-    'color':setColor()=='schedule'
-  }">
-    <i class="flaticon-checklist">
-    </i>
-  </div>
-  <div 
-  routerLink="/calendar" 
-  class="calendar" 
-  matRipple
-  [matRippleCentered]="centered"
-  [matRippleDisabled]="disabled"
-  [matRippleUnbounded]="unbounded"
-  [matRippleRadius]="radius"
-  [matRippleColor]="color"
-  [ngClass]="{
-    'color':setColor()=='calendar'
-  }">
-    <i class="flaticon-calendar">
-    </i>
-  </div>
-  <div 
-  routerLink="/home" 
-  class="home" 
-  matRipple
-  [matRippleCentered]="centered"
-  [matRippleDisabled]="disabled"
-  [matRippleUnbounded]="unbounded"
-  [matRippleRadius]="radius"
-  [matRippleColor]="color"
-  [ngClass]="{
-    'color':setColor()=='home'
-  }">
-    <i class="flaticon-home-1"></i>
-  </div>
-  <div 
-  routerLink="/grades" 
-  class="grades"
-  matRipple
-  [matRippleCentered]="centered"
-  [matRippleDisabled]="disabled"
-  [matRippleUnbounded]="unbounded"
-  [matRippleRadius]="radius"
-  [matRippleColor]="color" 
-  [ngClass]="{
-    'color':setColor()=='grades'
-  }">
-    <i class="flaticon-scores"></i>
-  </div>
-  <div 
-  routerLink="/settings" 
-  class="settings" 
-  matRipple
-  [matRippleCentered]="centered"
-  [matRippleDisabled]="disabled"
-  [matRippleUnbounded]="unbounded"
-  [matRippleRadius]="radius"
-  [matRippleColor]="color"
-  [ngClass]="{
-    'color':setColor()=='settings'
-  }">
-    <i class="flaticon-settings-work-tool"></i> 
-  </div>  -->
+      <button
+      style="height:100%;"
+      routerLink="/groups" 
+      [ngClass]="{
+        'color':setColor()=='groups'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-multiple-users-silhouette">Групи</i>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
 
-</mat-toolbar>
+      <button
+      style="height:100%;"
+      routerLink="/settings" 
+      [ngClass]="{
+        'color':setColor()=='settings'
+      }" 
+      style="height:100%; width:100%; border-radius: 0"
+      mat-button="" 
+      class="mat-button">
+      <i style="float:left; font-style: normal" class="mat-button-wrapper flaticon-settings-work-tool">Настройки</i>
+      <div class="mat-button-focus-overlay"></div>
+      </button>
+
+      
+  </div>

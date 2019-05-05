@@ -1,13 +1,17 @@
-<div class="color">
+<div *ngIf="this.storageService.isDesktop()" class="color">
   <div class="container">
     <h1 class="title">График</h1>
     <div class="block">
       <i class="flaticon-add-1" (click)="addEvent()"></i>
-      <!-- <i class="flaticon-edit" *ngIf="edit==false" (click)="editMenu()"></i>
-        <i class="flaticon-cancel" *ngIf="edit==true" (click)="cancelEdit()"></i>
-        <i class="flaticon-checked" *ngIf="edit==true" (click)="saveEdit()"></i> -->
+      
       </div> 
     </div>
   </div>
 <mat-divider style="margin-bottom:5px"></mat-divider>
-<app-events [events]="this.httpService.events" [editable]="true"></app-events>
+<app-events style="z-index: auto" [events]="this.httpService.events" [editable]="true"></app-events>
+
+<button *ngIf="this.httpService.edit == true" (click)="addEvent()" class="editButton" mat-mini-fab color="primary">
+  <i class="menu flaticon-add-1">
+    
+  </i>
+</button>

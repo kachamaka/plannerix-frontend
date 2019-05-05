@@ -1,3 +1,4 @@
+import { LinkComponent } from './link/link.component';
 import { ScheduleInputComponent } from './auth/register/schedule-input/schedule-input.component';
 import { SubjectsComponent } from './auth/register/subjects/subjects.component';
 import { CredentialsComponent } from './auth/register/credentials/credentials.component';
@@ -30,7 +31,9 @@ const routes: Routes = [
     ]
   },
   {path: "grades", loadChildren: './report-c/report-card.module#ReportCardModule', data:{animation: 'ReportC'}, canActivate: [AuthGuard]},
+  {path: 'link', component: LinkComponent, canActivate: [NotAuthGuard] },
   {path: "desktop", loadChildren: './desktop/desktop.module#DesktopModule', canActivate: [AuthGuard]},
+  {path: "groups", loadChildren: './groups/groups.module#GroupsModule', canActivate: [AuthGuard]},
   {path: "modify-schedule", loadChildren: './modify-schedule/modify-schedule.module#ModifyScheduleModule'}, //what netlify
   {path: '**', redirectTo: 'not-found'} // This sould be exported to separate Module
 ];

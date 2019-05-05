@@ -9,6 +9,7 @@ export class StorageService {
   public previousUrl: string;
   public currentUrl: string;
   public fullUrl: string;
+  public routeName = "Накратко";
 
   constructor(private router: Router) {
     router.events.subscribe((val)=>{
@@ -19,7 +20,7 @@ export class StorageService {
       }
     })
    }
-
+   
    isDesktop() {
     let url= this.router.url;
     let routesToHideNav = ["desktop", "login", "register"];
@@ -32,4 +33,42 @@ export class StorageService {
     }
     return false;
   }
+  
+
+  getRouteName(){
+    this.router.events.subscribe((val)=>{
+      if(val instanceof NavigationEnd){
+        let url = val.url.split("/")[1];
+        switch (url) {
+          case "calendar":
+            this.routeName = "График";
+            break;
+            
+          case "schedule":
+          this.routeName = "Програма";
+          break;
+          
+          case "grades":
+            this.routeName = "Оценки";
+            break;
+
+          case "groups":
+            this.routeName = "Групи";
+            break;
+            
+          case "settings":
+          this.routeName = "Настройки";
+          break;
+
+          case "home":
+            this.routeName = "Накратко";
+            break;
+        
+          default:
+            break;
+        } 
+      }
+    })
+  }
+
 }

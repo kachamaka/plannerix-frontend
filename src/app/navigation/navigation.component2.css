@@ -1,0 +1,149 @@
+[class^="flaticon-"]:before, 
+[class*=" flaticon-"]:before, 
+[class^="flaticon-"]:after, 
+[class*=" flaticon-"]:after {
+    font-size: 2rem;
+}
+
+
+.container {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "schedule calendar home grades settings";
+}
+
+/* calendar */
+.calendar{
+    grid-area: calendar;
+    /* background-color:red; */
+    height: 100%;
+    width: 100%; 
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas: ". cal .";
+}
+.flaticon-calendar{
+    grid-area: cal;
+    align-self: center;
+    display: inline-block;
+    text-align: center;
+}
+.flaticon-calendar::before{
+    align-self: center;
+    align-content: center;
+    /* text-align: center; */
+    margin-left:0;
+}
+/* end of calendar */
+
+/* schedule */
+.schedule{
+    grid-area: schedule;
+    /* background-color:red; */
+    height: 100%;
+    width: 100%; 
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas: ". sched .";
+}
+.flaticon-checklist{
+    grid-area: sched;
+    align-self: center;
+    display: inline-block;
+    text-align: center;
+}
+.flaticon-checklist::before{
+    align-self: center;
+    align-content: center;
+    /* text-align: center; */
+    margin-left:0;
+}
+
+/* end of schedule */
+
+/* home */
+.home{
+    grid-area: home;
+    /* background-color:red; */
+    height: 100%;
+    width: 100%; 
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas: ". hom .";
+}
+.flaticon-home{
+    grid-area: hom;
+    align-self: center;
+    display: inline-block;
+    text-align: center;
+}
+.flaticon-home::before{
+    align-self: center;
+    align-content: center;
+    /* text-align: center; */
+    margin-left:0;
+}
+/* end of home */
+
+/* grades */
+.grades{
+    grid-area: grades;
+    /* background-color:red; */
+    height: 100%;
+    width: 100%; 
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas: ". scores .";
+}
+.flaticon-scores{
+    grid-area: scores;
+    align-self: center;
+    display: inline-block;
+    text-align: center;
+}
+.flaticon-scores::before{
+    align-self: center;
+    align-content: center;
+    /* text-align: center; */
+    margin-left:0;
+}
+/* end of grades */
+
+/* settings */
+.settings{
+    grid-area: settings;
+    /* background-color:red; */
+    height: 100%;
+    width: 100%; 
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas: ". sett .";
+}
+.flaticon-settings-work-tool{
+    grid-area: sett;
+    align-self: center;
+    display: inline-block;
+    text-align: center;
+}
+.flaticon-settings-work-tool::before{
+    align-self: center;
+    align-content: center;
+    /* text-align: center; */
+    margin-left:0;
+}
+/* end of settings */
+
+
+i,div,li:focus{
+    outline: 0px;
+}
+
+.color{
+    /* background-color: lightskyblue; */
+    background-color: #0589E8;
+    color: #eee;
+}

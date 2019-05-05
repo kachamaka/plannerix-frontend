@@ -1,6 +1,9 @@
-<div class="main scroll">
-  <!-- <app-navigation class="navigation" *ngIf="!showNav()"></app-navigation> -->
-  <div [@routeAnimations]="prepareRoute(outlet)" class="body">
-    <router-outlet #outlet="outlet" class="scroll"></router-outlet>
+<div (click)="toggleMenuFalse($event)" class="main scroll">
+    <app-header *ngIf="!this.storageService.isDesktop()" class="navigation"></app-header>
+  <!-- <div [@routeAnimations]="prepareRoute(outlet)" class="body"> -->
+  <div class="backdrop" style="height: 100vmax;" *ngIf="menuState=='in'"></div>
+  <div class="body">
+    <!-- <router-outlet #outlet="outlet" class="scroll"></router-outlet> -->
+    <router-outlet class="scroll"></router-outlet>
   </div>
 </div>
