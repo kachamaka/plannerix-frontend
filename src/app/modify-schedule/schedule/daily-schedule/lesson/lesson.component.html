@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="start">
+    <span>{{lesson.start | time}}</span>
+  </div>
+  <div class="end">
+    <span>{{lesson.start + lesson.duration | time}}</span>
+  </div>
+  <div class="subject">
+    <span>{{lesson.subject.name}}</span>
+  </div>
+  <div class="options">
+    <span class="flaticon-edit"></span>
+    <span class="flaticon-rubbish-bin" (click)="deleteLesson()"></span>
+  </div>
+</div>

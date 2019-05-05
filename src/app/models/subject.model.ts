@@ -13,7 +13,7 @@ export class SingleSubject {
 }
 
 export class Subject {
-    constructor(public name: String, public id:Number = undefined){}
+    constructor(public name: String, public id:string = undefined){}
 
     prepereToSendForChange() {
         return name;

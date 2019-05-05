@@ -6,7 +6,9 @@
   </div>
 </div>
 <div class="subject edit" [hidden]="!edit" >
-    <input type="text" [placeholder]="subject.name" #name>
+    <mat-form-field>
+      <input type="text" matInput [value]="subject.name" #name>
+    </mat-form-field>
     <div class="edit-menu right"> 
       <i class="flaticon-correct-symbol" (click)="updateSubject(name.value)"></i>
       <i class="flaticon-cancel" (click)="toggleEdit()"></i>

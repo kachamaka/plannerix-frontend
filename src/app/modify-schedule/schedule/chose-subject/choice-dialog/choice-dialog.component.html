@@ -1,0 +1,19 @@
+<div>
+  <h2 >Add {{data.subject.name}}</h2>
+  <mat-form-field>
+    <input type="number" matInput #hours [formControl]="hoursControl" placeholder="Час"> <!-- Maybe separete component? -->
+    <mat-error *ngIf="hoursControl.invalid">{{getHoursError()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="number" matInput #minutes [formControl]="minutesControl" placeholder="Минути">
+    <mat-error *ngIf="minutesControl.invalid">{{getMinutesErrors()}}</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="number" #duration [formControl]="duartionControl" placeholder="Времетраене">
+    <mat-error *ngIf="duartionControl.invalid">{{getDurationErrors()}}</mat-error>
+  </mat-form-field>
+  <br>
+  <button (click)="addSubjectAndClose()" mat-button>Add</button>
+  <button (click)="dialogRef.close()" mat-button>Close</button>
+</div>

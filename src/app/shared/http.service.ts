@@ -8,6 +8,7 @@ import { DailyGrades } from './weeklyGrades.model';
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Observable, observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Schedule } from '../models/modifySchedule.model';
 
 @Injectable({
   providedIn: 'root'
@@ -61,10 +62,37 @@ export class HttpService {
 
   periods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
 
-  getSubjectsNew(): Observable<Subject[]> {
-    let mock = of([new Subject("math")]);
-    return mock;
+  //=================Subjects
+  
+  getSubjectsNew(){
+    // let mock = of([new Subject("math")]);
+    let obj = this.http.post<{message:string, subjects: Subject[]}>(this.domain + 'getSubjects', {token: localStorage.getItem("token")});
+    return obj;
   }
+
+  updateSubjects(subjectsForUpdate: Subject[]) {
+    return this.http.post(this.domain + 'updateSubjects', {token: localStorage.getItem("token"), subjects: subjectsForUpdate});
+  }
+
+  deletSubjects(subjectsIDsForDelete: string[]){
+    return this.http.post(this.domain + 'deleteSubjects', {token: localStorage.getItem("token"), subjects: subjectsIDsForDelete});
+  }
+
+  createSubjects(subjectsToCreate: Subject[]):Observable<Schedule>{
+    return this.http.post<Schedule>(this.domain + 'createSubjects', {token: localStorage.getItem("token"), subjects: subjectsToCreate});
+  }
+  //=================Schdeule
+
+  putSchedule(schedule: Schedule) {
+    console.log(schedule,localStorage.getItem("token"));
+    return this.http.post(this.domain + "putSchedule", {token: localStorage.getItem("token"), schedule: schedule});
+  }
+
+  getNewSchedule() {
+    return this.http.post<{success:boolean,message: string, schedule: Schedule}>(this.domain+"getSchedule", {token: localStorage.getItem("token")});
+  }
+
+
 
   getJoke() {
     return this.http.get("https://api.chucknorris.io/jokes/random");

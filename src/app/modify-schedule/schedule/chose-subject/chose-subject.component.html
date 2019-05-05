@@ -1,0 +1,4 @@
+<ul class="subject-list">
+  <!-- <li (click)="openDialogWithBreak()">Break</li> -->
+  <li *ngFor="let subject of subjects | async" (click)="openDialog(subject)" >{{subject.name}}</li>
+</ul>

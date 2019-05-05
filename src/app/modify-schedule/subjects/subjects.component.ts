@@ -3,7 +3,7 @@ import { Select, Store } from '@ngxs/store';
 import { ModifyScheduleState } from 'src/app/states/modifySchedule.state';
 import { Observable } from 'rxjs';
 import { Subject } from 'src/app/models/subject.model';
-import { AddSubject, RemoveSubject } from 'src/app/actions/modifySchedule.action';
+import { AddSubject, RemoveSubject, AllModifiedSubjectsServer } from 'src/app/actions/modifySchedule.action';
 import { MatDialog } from '@angular/material';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
 
@@ -22,7 +22,7 @@ export class SubjectsComponent implements OnInit {
     this.subjects.subscribe(s=>{
       console.log("subjects:",s);
     })
-    this.store.dispatch(new AddSubject(new Subject("bg")))
+    // this.store.dispatch(new AddSubject(new Subject("bg")))
   }
 
   deleteSubject(s: Subject){
@@ -37,4 +37,6 @@ export class SubjectsComponent implements OnInit {
       }
     })
   }
+
+
 }

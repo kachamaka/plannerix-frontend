@@ -1,0 +1,11 @@
+<div>
+  <div class="lebels">
+    <span>start</span>
+    <span>end</span>
+    <span>subject</span>
+    <span>options</span>
+  </div>
+  <app-lesson
+  *ngFor="let lesson of lessons" [lesson]="lesson"
+  ></app-lesson>
+</div>

@@ -22,9 +22,23 @@ body {
     min-height: 100%;
 }
 
+[hidden] {
+  display: none;
+}
+
 input:focus{
     outline: 0;
     outline: none;
+}
+.mat-horizontal-stepper{
+  height: 100%;
+}
+.mat-horizontal-content-container{
+  height: 90%;
+  padding-bottom: 0;
+}
+.mat-horizontal-stepper-content{
+  height: 100%;
 }
 
 .read-only .mat-form-field-underline {
@@ -42,6 +56,10 @@ input:focus{
 .mat-menu-item:focus{
     outline: 0;
     outline: none;
+}
+
+.disable-body .mat-tab-body-wrapper {
+  display: none;
 }
 
 /* .show-on-desktop {
