@@ -51,15 +51,21 @@ i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
         grid-template-columns: 70% 10% 19% 1%;
     }
   }
+  
+@media only screen and (min-width: 600px) {
+    .group_info{
+        grid-template-areas: "group_name . actions";
+        grid-template-columns: 70% 10% 20%;
+    }
+  }
 
 .group_name{
     grid-area: group_name;
-    margin-top: 14px; 
-    margin-bottom: 14px;
+    margin: 14px auto 12px 14px;
 }
 
 .actions{
-    margin-top: 14px; 
+    margin-top: 12px; 
     /* margin-bottom: 14px; */
     grid-area: actions;
 }

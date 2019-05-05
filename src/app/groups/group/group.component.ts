@@ -1,8 +1,10 @@
+import { EventDialogComponent } from './../../shared/event/event-dialog/event-dialog.component';
 import { StorageService } from './../../shared/storage.service';
 import { SchoolEvent } from './../../shared/event.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from './../../shared/http.service';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-group',
@@ -23,6 +25,7 @@ export class GroupComponent implements OnInit {
 
   constructor(
     public storageService: StorageService,
+    public dialog: MatDialog,
     private router: Router,
     public httpService: HttpService, 
     private route: ActivatedRoute) {
@@ -45,6 +48,41 @@ export class GroupComponent implements OnInit {
     }else{
       return false;
     }
+  }
+
+  addGroupEvent(){
+    console.log("works");
+    
+    let dialogRef= this.dialog.open(EventDialogComponent, {
+      data: {
+        event: new SchoolEvent(Date.now(), "", "", -1),
+        editable: true,
+        new: true
+      }
+    })
+    dialogRef.afterClosed().subscribe((out)=>{
+      if(!out) {
+        console.log("canceled");
+      }
+      if(out) {
+        console.log(out.date);
+        // return;
+        let postData = {
+          token: localStorage.getItem("token"),
+          timestamp: out.date,
+          subject: out.subject,
+          description: out.description,
+          subjectType: out.type
+        } 
+        // console.log(postData);
+        this.httpService.createEvent(postData).subscribe((data:any)=>{
+          console.log(data);
+          if(data.success==true){
+            this.httpService.loadEvents();
+          }
+        })
+      }
+    })
   }
 
   deleteMember(member){

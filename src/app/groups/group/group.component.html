@@ -10,8 +10,8 @@
     {{currentGroup.group_name}}
   </h4>
   <div class="actions">
-      <i class="flaticon-add menuItem"></i>
-      <i class="flaticon-add menuItem"></i>
+      <i (click)="addGroupEvent()" class="flaticon-add menuItem">E</i>
+      <i class="flaticon-add menuItem">M</i>
   </div>
 
 </div>
@@ -19,7 +19,7 @@
 
 
 
-<hr style="margin-bottom: 0px">
+<hr style="margin: 0">
 <mat-tab-group>
   <mat-tab label="Events">
     <app-events style="z-index: auto" [events]="this.currentGroup.group_events" [editable]="canEdit()"></app-events>
