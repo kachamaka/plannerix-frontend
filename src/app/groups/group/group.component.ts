@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from './../../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { AddMemberComponent } from './add-member/add-member.component';
 
 @Component({
   selector: 'app-group',
@@ -107,5 +108,7 @@ export class GroupComponent implements OnInit {
     this.router.navigate(['/groups/singleGroup/' + (this.groupID-1)]);
     this.loadGroup();
   }
-
+  openAddMember(){
+    let dialogRef = this.dialog.open(AddMemberComponent, {data: {groupID: this.groupID}});
+  }
 }

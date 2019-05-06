@@ -1,0 +1,11 @@
+<div>
+  <h3>Add member</h3>
+  <mat-form-field>
+    <input matInput [formControl]="user" >
+    <mat-error *ngIf="user.invalid">Must not be empty</mat-error>
+  </mat-form-field>
+  <br>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button (click)="addMember()">Add member</button>
+</div>
+

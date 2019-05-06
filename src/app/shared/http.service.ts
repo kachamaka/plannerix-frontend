@@ -147,6 +147,14 @@ export class HttpService {
     this.edit = !this.edit;
   }
 
+  //=================Groups
+
+  addMember(user: string, groupID: string) {
+    console.log("addMember",user, groupID);
+    return
+    return this.http.post(this.domain + "addMember", {token: localStorage.getItem("token"), member: user, group_id: groupID});
+  }
+
   //=================Subjects
   
   getSubjectsNew(){
