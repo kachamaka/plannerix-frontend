@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       // "subjects": this.httpService.allCheckedSubjects,
       // "schedule": this.httpService.periods
     }
-    console.log(registerCredentials);
+    // console.log(registerCredentials);
     // console.log("credentials", registerCredentials);
     // console.log("checked subs",this.httpService.allCheckedSubjects);
     // console.log("periods", this.httpService.periods);

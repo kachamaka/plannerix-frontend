@@ -25,13 +25,14 @@ export class LinkComponent implements OnInit, OnDestroy {
       }
       this.httpService.registerUser(postData).subscribe((data:any)=>{
         localStorage.setItem("token", data.token);
+        console.log("token",data.token)
         this.notService.registerForPushMessages().then((sub:string)=>{
           console.log("subscription", sub);
           this.httpService.wellcomeNotificationAndRegister(sub).subscribe(d =>{
             console.log("registered?",d)
           })
         }).catch(err=>{
-          console.error(err)
+          console.error("registerforPush", err)
         }).finally(()=>{
           this.router.navigate(['/home']);
         })

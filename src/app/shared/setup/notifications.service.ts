@@ -31,13 +31,14 @@ export class NotificationsService {
   }
 
   registerForPushMessages() {
+    console.log("register for push msg init");
     return new Promise((resolve, reject)=>{
-
-      navigator.serviceWorker.ready.then(res=>{
+      navigator.serviceWorker.getRegistration().then(res=>{
         const option = {
           userVisibleOnly: true,
           applicationServerKey: this.urlBase64ToUint8Array(this.vapidPublicKey)
         }
+        console.log("after service worker ready",res, option)
         res.pushManager.subscribe(option).then(sub=>{
           let stringifiedSub = JSON.stringify(sub);
           console.log(sub);
