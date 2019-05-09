@@ -1,5 +1,5 @@
 import { HttpService } from './../shared/http.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsService } from '../shared/setup/notifications.service';
 
@@ -8,7 +8,7 @@ import { NotificationsService } from '../shared/setup/notifications.service';
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.css']
 })
-export class LinkComponent implements OnInit {
+export class LinkComponent implements OnInit, OnDestroy {
   verificationKey;
   constructor(
     private router: Router,
@@ -36,6 +36,19 @@ export class LinkComponent implements OnInit {
       })
     }
     // this.verificationKey = this.route.snapshot.paramMap.get("verificationKey")
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    let tokenData = {
+      token: localStorage.getItem("token")
+    }
+    this.httpService.getProfile(tokenData).subscribe((data:any)=>{
+      console.log(data);
+      this.httpService.username = data.profile.username;
+      this.httpService.email = data.profile.email;
+    })
   }
 
 }

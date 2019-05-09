@@ -29,6 +29,12 @@ body {
   color: red;
 }
 
+.mat-horizontal-content-container{
+  height: 85% !important;
+  overflow: scroll !important;
+  padding-bottom: 0px !important;
+}
+
 
 i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
   width: 25px;

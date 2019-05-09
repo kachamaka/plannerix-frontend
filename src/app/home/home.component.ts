@@ -27,49 +27,51 @@ export class HomeComponent implements OnInit {
     let postData = {
       token: localStorage.getItem("token")
     }
-    this.httpService.getSchedule(postData).subscribe((data:any)=>{
-      console.log(data);
-    })
-    // this.httpService.events.push(new SchoolEvent(1557753770000, "Биология", "Контролно", 0));    
-    this.httpService.getNextPeriod(postData).subscribe((data:any)=>{
-      // console.log(data.nextPeriod);
-      if(data.nextPeriod.subject == ""){
-        this.nextLesson = data.message;
-      }else{
-        this.nextLesson = data.nextPeriod.subject;
-        this.httpService.nextPeriod = data.nextPeriod; //test
-        this.lessonTime = data.nextPeriod.startTime;
-      }
-    })
-    // this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
+    // this.httpService.getSchedule(postData).subscribe((data:any)=>{
     //   console.log(data);
-    //   // console.log("weeklyEvents");
-    //   // console.log(data.weeklyEvents);
-    //   this.httpService.weeklyEventsTest = [];
-    //   for(let i = 0; i<data.weeklyEvents.length; i++){
-    //     this.events.push(
-    //       new SchoolEvent(
-    //           data.weeklyEvents[i].timestamp*1000,
-    //           data.weeklyEvents[i].subject,
-    //           data.weeklyEvents[i].description,
-    //           data.weeklyEvents[i].subjectType
-    //       )
-    //     );
-    //     //test to be removed
-    //     this.httpService.weeklyEventsTest.push(
-    //       new SchoolEvent(
-    //           data.weeklyEvents[i].timestamp*1000,
-    //           data.weeklyEvents[i].subject,
-    //           data.weeklyEvents[i].description,
-    //           data.weeklyEvents[i].subjectType
-    //       )
-    //     )
-    //     //
-    //   }
-    //   // this.httpService.weeklyEventsTest.push(new SchoolEvent(1557705600000, "Биология", "Контролно", 0));
     // })
+    // this.httpService.events.push(new SchoolEvent(1557753770000, "Биология", "Контролно", 0));    
+    // this.httpService.getNextPeriod(postData).subscribe((data:any)=>{
+    //   // console.log(data.nextPeriod);
+    //   if(data.nextPeriod.subject == ""){
+    //     this.nextLesson = data.message;
+    //   }else{
+    //     this.nextLesson = data.nextPeriod.subject;
+    //     this.httpService.nextPeriod = data.nextPeriod; //test
+    //     this.lessonTime = data.nextPeriod.startTime;
+    //   }
+    // })
+    this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
+      console.log(data,"da");
+      // console.log("weeklyEvents");
+      // console.log(data.weeklyEvents);
+      this.httpService.weeklyEventsTest = [];
+      for(let i = 0; i<data.weeklyEvents.length; i++){
+        this.events.push(
+          new SchoolEvent(
+              0,
+              data.weeklyEvents[i].eventTime*1000,
+              data.weeklyEvents[i].subject,
+              data.weeklyEvents[i].description,
+              data.weeklyEvents[i].subjectType
+          )
+        );
+        //test to be removed
+        this.httpService.weeklyEventsTest.push(
+          new SchoolEvent(
+              0,
+              data.weeklyEvents[i].eventTime*1000,
+              data.weeklyEvents[i].subject,
+              data.weeklyEvents[i].description,
+              data.weeklyEvents[i].subjectType
+          )
+        )
+        //
+      }
+      // this.httpService.weeklyEventsTest.push(new SchoolEvent(1557705600000, "Биология", "Контролно", 0));
+    })
     this.onResize();
-    this.httpService.getSchedule(postData);
+    // this.httpService.getSchedule(postData);
     this.httpService.getYearGrades(postData).subscribe((d:any)=>{
       // console.log("Data from year grades",d);
       //remove

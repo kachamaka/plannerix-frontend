@@ -1,3 +1,4 @@
+import { MatDividerModule } from '@angular/material/divider';
 import { NgModule } from "@angular/core";
 import { NgxsModule } from "@ngxs/store";
 import { ModifySchemeRouting } from "./modify-scheme.routing";
@@ -51,7 +52,8 @@ import { ReactiveFormsModule } from "@angular/forms";
         MatFormFieldModule,
         ReactiveFormsModule,
         MatChipsModule,
-        MatIconModule
+        MatIconModule,
+        MatDividerModule
     ],
     entryComponents: [
         AddSubjectComponent,

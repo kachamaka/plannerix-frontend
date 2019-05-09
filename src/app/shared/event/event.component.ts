@@ -57,13 +57,14 @@ export class EventComponent implements OnInit {
               timestamp: out.date,
               subject: out.subject,
               description: out.description,
-              subjectType: out.type
+              subjectType: out.type,
+              subject_id: out.subject_id
             } 
             
             this.httpService.editEvent(postData).subscribe((data:any)=>{
               console.log(data)
               if(data.success==true){
-                console.log(data);
+                // console.log(data);
                 // this.calComp.getEvents();
                 this.httpService.loadEvents();
               }

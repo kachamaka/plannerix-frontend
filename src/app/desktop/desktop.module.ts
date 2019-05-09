@@ -1,3 +1,4 @@
+import { ModifyScheduleModule } from './../modify-schedule/modify-schedule.module';
 import { GroupsModule } from './../groups/groups.module';
 import { NavigationDesktopModule } from './../navigation-desktop/navigation-desktop.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -23,6 +24,7 @@ import { ScheduleModule } from '../schedule/schedule.module';
     HomeModule,
     CalendarModule,
     ScheduleModule,
+    ModifyScheduleModule,
     NavigationDesktopModule,
     GroupsModule
   ]

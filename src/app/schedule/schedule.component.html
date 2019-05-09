@@ -9,36 +9,21 @@
   </div>
 </div>  -->
 
-<div class="color">
+
+
+<div *ngIf="this.storageService.isDesktop()" class="color">
 
   <div class="container">
     <h1 class="title">Програма</h1>
     <div class="block">
       <i class="flaticon-edit" *ngIf="edit==false" (click)="modifySchedule()"></i>
-      <!-- <i class="menu flaticon-menu" *ngIf="edit==true" [matMenuTriggerFor]="menu"></i>
-      <mat-menu #menu="matMenu" class="menuItems">
-        <div mat-menu-item (click)="cancelEdit()">
-          <i class="flaticon-cancel menuItem"></i><span class="menuItemText">Откажи</span>
-        </div>
-        <div mat-menu-item (click)="saveEdit()">
-          <i class="flaticon-checked menuItem"></i><span class="menuItemText">Запази</span>
-        </div>
-        <div mat-menu-item (click)="addPeriod()">
-          <i class="flaticon-add menuItem"></i><span class="menuItemText">Добави</span>
-        </div>
-        <div mat-menu-item (click)="sortPeriods(this.currentDay-1)">
-          <i class="flaticon-sort-by-attributes-interface-button-option menuItem"></i><span class="menuItemText">Сортирай</span>
-        </div>
-        
-      </mat-menu> -->
-      <!-- <i class="flaticon-checked" *ngIf="edit==true" (click)="saveEdit()"></i> -->
     </div>
   </div>
 </div>
   
 <mat-divider style="margin-bottom:5px"></mat-divider>
 
-<h4 style="margin:0 0 7px 0" align="center">{{days[currentDay]}}</h4>
+<h4 style="margin:7px 0 7px 0" align="center">{{days[currentDay]}}</h4>
 
 <table mat-table [dataSource]="getDataSource()" style="background-color: inherit">
     <ng-container matColumnDef="startTime">

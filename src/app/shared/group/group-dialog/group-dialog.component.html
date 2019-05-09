@@ -1,0 +1,12 @@
+<form [formGroup]="newGroup" >
+
+<mat-form-field>
+  <mat-label >Име на група</mat-label>
+  <input matInput placeholder="Group name" formControlName="group_name" value="">
+  <mat-error>Празно</mat-error>
+</mat-form-field>
+  <br>
+  <div class="control">
+      <i class="flaticon-checked" (click)="acceptEdit()"></i>
+  </div>
+</form>
