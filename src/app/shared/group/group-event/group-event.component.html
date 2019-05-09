@@ -1,0 +1,43 @@
+<form [formGroup]="current_event" >
+
+  <!-- <mat-form-field class="title-box" [appReadOnly]="isInEditMode()">
+      <mat-label *ngIf="data.new">Заглавие</mat-label>
+      <input type="text" matInput  class="title " formControlName="subject" required>
+      <mat-error>Empty</mat-error>
+  </mat-form-field> -->
+<mat-form-field>
+  <mat-label *ngIf="data.new">Предмет</mat-label>
+  <mat-select formControlName="subject">
+      <mat-option *ngFor="let singleSubject of this.httpService.subjectData" [value]="singleSubject.name">
+        {{singleSubject.name}}
+      </mat-option>
+  </mat-select>
+  <mat-error>Празно</mat-error>
+</mat-form-field>
+
+  <br>
+  <mat-form-field class="read-only" (click)="openDatePicker()" >
+      <input type="text" matInput [min]="minDate" placeholder="Дата" formControlName="date" [matDatepicker]="picker" required>
+      <mat-datepicker #picker disabled="false" (closed)="closeDatePicker()"></mat-datepicker>
+      <mat-error>Празно</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-select placeholder="Тип" formControlName="type" [appReadOnly]="isInEditMode()" required>
+        <mat-option value="0">Тест</mat-option>
+        <mat-option value="1">Проект</mat-option>
+        <mat-option value="2">Друго</mat-option>
+      </mat-select>
+      <mat-error>Празно</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field style="width: 100%" [appReadOnly]="isInEditMode()">
+    <textarea matInput placeholder="Описание" maxlength="255" cdkTextareaAutosize formControlName="description"></textarea>
+    <mat-error>Празно</mat-error>
+  </mat-form-field>
+  <div class="control">
+      <i class="flaticon-cancel" (click)="cancelEditMode()" *ngIf="isInEditMode()"></i>
+      <i class="flaticon-edit" (click)="startEdit()" *ngIf="!isInEditMode()&&data.editable"></i>
+      <i class="flaticon-rubbish-bin" (click)="deleteEvent()" *ngIf="isInEditMode()&&!data.new"></i>
+      <i class="flaticon-checked" (click)="acceptEdit()"></i>
+  </div>
+</form>
