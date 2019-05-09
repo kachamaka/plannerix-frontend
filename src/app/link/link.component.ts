@@ -26,7 +26,7 @@ export class LinkComponent implements OnInit, OnDestroy {
       this.httpService.registerUser(postData).subscribe((data:any)=>{
         localStorage.setItem("token", data.token);
         this.notService.registerForPushMessages().then((sub:string)=>{
-          console.log(sub);
+          console.log("subscription", sub);
           this.httpService.wellcomeNotificationAndRegister(sub).subscribe(d =>{
             console.log("registered?",d)
           })
