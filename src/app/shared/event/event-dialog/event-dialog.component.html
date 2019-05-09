@@ -8,8 +8,8 @@
 <mat-form-field>
   <mat-label *ngIf="data.new">Предмет</mat-label>
   <mat-select formControlName="subject">
-      <mat-option *ngFor="let singleSubject of this.httpService.subjectData" [value]="singleSubject">
-        {{singleSubject}}
+      <mat-option *ngFor="let singleSubject of this.httpService.subjectData" [value]="singleSubject.name">
+        {{singleSubject.name}}
       </mat-option>
   </mat-select>
   <mat-error>Празно</mat-error>

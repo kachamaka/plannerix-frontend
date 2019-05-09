@@ -36,6 +36,7 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.loadEvents();
+    // console.log(this.httpService.subjectData);
       // this.events = data.events;
       // console.log(data.events);
     setTimeout(()=>{
@@ -49,7 +50,7 @@ export class CalendarComponent implements OnInit {
 
     let dialogRef= this.dialog.open(EventDialogComponent, {
       data: {
-        event: new SchoolEvent(Date.now(), "", "", -1),
+        event: new SchoolEvent(0, Date.now(), "", "", -1),
         editable: true,
         new: true
       }
@@ -59,12 +60,12 @@ export class CalendarComponent implements OnInit {
         console.log("canceled");
       }
       if(out) {
-        console.log(out.date);
+        console.log(out, "out");
         // return;
         let postData = {
           token: localStorage.getItem("token"),
           timestamp: out.date,
-          subject: out.subject,
+          subject: out.subject.id,
           description: out.description,
           subjectType: out.type
         } 

@@ -55,7 +55,7 @@ export class GroupComponent implements OnInit {
     
     let dialogRef= this.dialog.open(EventDialogComponent, {
       data: {
-        event: new SchoolEvent(Date.now(), "", "", -1),
+        event: new SchoolEvent(0, Date.now(), "", "", -1),
         editable: true,
         new: true
       }

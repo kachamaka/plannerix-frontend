@@ -1,3 +1,4 @@
+import { NotificationsService } from './../shared/setup/notifications.service';
 import { StorageService } from './../shared/storage.service';
 import { HttpService } from './../shared/http.service';
 import { Component, OnInit, NgZone } from '@angular/core';
@@ -17,15 +18,19 @@ export class HomeComponent implements OnInit {
   nextLesson = "Chem";
   lessonTime;
   constructor(
+    private notificationsService: NotificationsService,
     public storageService: StorageService,
     private httpService: HttpService,
     private router:Router) { }
 
   ngOnInit() {
-    // this.httpService.events.push(new SchoolEvent(1557753770000, "Биология", "Контролно", 0));    
     let postData = {
       token: localStorage.getItem("token")
     }
+    this.httpService.getSchedule(postData).subscribe((data:any)=>{
+      console.log(data);
+    })
+    // this.httpService.events.push(new SchoolEvent(1557753770000, "Биология", "Контролно", 0));    
     this.httpService.getNextPeriod(postData).subscribe((data:any)=>{
       // console.log(data.nextPeriod);
       if(data.nextPeriod.subject == ""){
@@ -36,33 +41,33 @@ export class HomeComponent implements OnInit {
         this.lessonTime = data.nextPeriod.startTime;
       }
     })
-    this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
-      console.log(data);
-      // console.log("weeklyEvents");
-      // console.log(data.weeklyEvents);
-      this.httpService.weeklyEventsTest = [];
-      for(let i = 0; i<data.weeklyEvents.length; i++){
-        this.events.push(
-          new SchoolEvent(
-              data.weeklyEvents[i].timestamp*1000,
-              data.weeklyEvents[i].subject,
-              data.weeklyEvents[i].description,
-              data.weeklyEvents[i].subjectType
-          )
-        );
-        //test to be removed
-        this.httpService.weeklyEventsTest.push(
-          new SchoolEvent(
-              data.weeklyEvents[i].timestamp*1000,
-              data.weeklyEvents[i].subject,
-              data.weeklyEvents[i].description,
-              data.weeklyEvents[i].subjectType
-          )
-        )
-        //
-      }
-      // this.httpService.weeklyEventsTest.push(new SchoolEvent(1557705600000, "Биология", "Контролно", 0));
-    })
+    // this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
+    //   console.log(data);
+    //   // console.log("weeklyEvents");
+    //   // console.log(data.weeklyEvents);
+    //   this.httpService.weeklyEventsTest = [];
+    //   for(let i = 0; i<data.weeklyEvents.length; i++){
+    //     this.events.push(
+    //       new SchoolEvent(
+    //           data.weeklyEvents[i].timestamp*1000,
+    //           data.weeklyEvents[i].subject,
+    //           data.weeklyEvents[i].description,
+    //           data.weeklyEvents[i].subjectType
+    //       )
+    //     );
+    //     //test to be removed
+    //     this.httpService.weeklyEventsTest.push(
+    //       new SchoolEvent(
+    //           data.weeklyEvents[i].timestamp*1000,
+    //           data.weeklyEvents[i].subject,
+    //           data.weeklyEvents[i].description,
+    //           data.weeklyEvents[i].subjectType
+    //       )
+    //     )
+    //     //
+    //   }
+    //   // this.httpService.weeklyEventsTest.push(new SchoolEvent(1557705600000, "Биология", "Контролно", 0));
+    // })
     this.onResize();
     this.httpService.getSchedule(postData);
     this.httpService.getYearGrades(postData).subscribe((d:any)=>{

@@ -20,6 +20,7 @@ export class GradeDialogComponent implements OnInit {
     public httpService: HttpService) { }
 
   ngOnInit() {
+    console.log(this.subject);
   }
 
   checkValidGrade(){

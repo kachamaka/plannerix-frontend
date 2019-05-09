@@ -29,7 +29,7 @@ export class EventDialogComponent implements OnInit {
     public httpService: HttpService) { }
 
   ngOnInit() {
-    // console.log(this.httpService.periods);
+    console.log(this.httpService.subjectData, "subjectData");
     if(this.data.new) {
       this.newEvent();
       return
@@ -49,7 +49,8 @@ export class EventDialogComponent implements OnInit {
  
   }
   openDatePicker() {
-    if(this.data.new) {
+    // if(this.data.new) {
+    if(this.edit == true) {
       if(window.innerWidth < 450) {
         this.picker.touchUi = true;
       }
@@ -74,6 +75,7 @@ export class EventDialogComponent implements OnInit {
     this.current_event.controls['type'].enable();
     this.current_event.controls['description'].enable();
     this.current_event.controls['subject'].enable();
+    // this.current_event.controls['date'].enable();
   }
   isInEditMode() {
     return this.edit;
@@ -107,7 +109,7 @@ export class EventDialogComponent implements OnInit {
   }
 
   acceptEdit() {
-    // console.log(this.data);
+    // console.log(this.data.event, "event!");
     if(this.data.new) {
       if (!this.current_event.valid || !this.current_event.controls['date'].value) {
         // console.log(this.current_event.valid, this.current_event.controls['date'].value);
@@ -115,6 +117,7 @@ export class EventDialogComponent implements OnInit {
       }
       console.log(this.current_event.controls['date'].value.getTime(),"event-dialog 116");
       let out:SchoolEvent =new SchoolEvent(
+        this.data.event.event_id,
         this.current_event.controls['date'].value.getTime(), 
         this.current_event.controls['subject'].value,
         this.current_event.controls['description'].value,
@@ -129,16 +132,17 @@ export class EventDialogComponent implements OnInit {
     this.current_event.controls['description'].disable();
     this.current_event.controls['subject'].disable();
 
-    // console.log(this.current_event.controls['type'].value);
+    console.log(this.current_event.controls['subject'].value);
 
     let out:SchoolEvent = new SchoolEvent(
+      this.data.event.event_id,
       this.current_event.controls['date'].value.getTime(), 
       this.current_event.controls['subject'].value,
       this.current_event.controls['description'].value,
       parseInt(this.current_event.controls['type'].value)
     )
 
-    // console.log(out);
+    console.log(out,"OUT WE");
 
     this.dialogRef.close(out)
     //send to server and refresh

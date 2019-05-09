@@ -39,9 +39,9 @@ export class EventComponent implements OnInit {
         if(out.action){
           let postData = {
             token: localStorage.getItem("token"),
-            timestamp: out.timestamp
+            event_id: event.event_id
           }
-          // console.log(out, postData);
+          // console.log(event, postData);
           // return
           this.httpService.deleteEvent(postData).subscribe((data:any)=>{
             console.log(data);
@@ -50,8 +50,10 @@ export class EventComponent implements OnInit {
 
         }else{
           if(this.editable == true){
+            console.log(out,"o");
             let postData = {
               token: localStorage.getItem("token"),
+              event_id: out.event_id, 
               timestamp: out.date,
               subject: out.subject,
               description: out.description,
@@ -59,6 +61,7 @@ export class EventComponent implements OnInit {
             } 
             
             this.httpService.editEvent(postData).subscribe((data:any)=>{
+              console.log(data)
               if(data.success==true){
                 console.log(data);
                 // this.calComp.getEvents();
