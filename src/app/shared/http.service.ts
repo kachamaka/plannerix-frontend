@@ -303,9 +303,8 @@ export class HttpService {
     return this.http.post(this.domain + 'inputGrade', data);
   }
 
-  registerPush(data){
-    //finish the function
-    return this.http.post(this.domain + '', data);    
+  registerPush(data:string){
+    return this.http.post(this.domain + 'updateSubscription', {token:localStorage.getItem("token"), subscription: data});    
   }
 
   loadSubjects(){

@@ -11,8 +11,8 @@ export class NotificationsService {
 
   convertedVapidKey = this.urlBase64ToUint8Array(this.vapidPublicKey);
   
-  askForNotifications(cb) {
-    Notification.requestPermission()
+  askForNotifications() {
+    return Notification.requestPermission()
   }
 
   urlBase64ToUint8Array(base64String) {
@@ -31,7 +31,7 @@ export class NotificationsService {
   }
 
   registerForPushMessages() {
-    navigator.serviceWorker.ready.then(res=>{
+    return navigator.serviceWorker.ready.then(res=>{
       const option = {
           userVisibleOnly: true,
           applicationServerKey: this.urlBase64ToUint8Array(this.vapidPublicKey)
