@@ -33,16 +33,14 @@ let routers = [
 
 self.addEventListener("install", (e)=>{
   caches.open(version).then(cache=>{
-    cache.add(self.origin).then(res=>{
-      // console.log(res);
-    }).catch(err=>{
-      // console.warn("can't add", self.origin, err)
-    });
-  }).catch(err=>{
-    // console.warn("can't load", self.origin, err);
+    return cache.add(self.origin)
+  }).then(res=>{
+    console.log("ServiceWorker install success", res)
+  })
+  .catch(err=>{
+    console.log("ServiceWorker install err", err)
   })
   self.skipWaiting();
-  // console.log(`Service Worker installed with version: ${version}`);
 });
 
 self.addEventListener("activate", (e)=>{
@@ -51,15 +49,33 @@ self.addEventListener("activate", (e)=>{
       return Promise.all(
         cachesNames.map(cache =>{
           if(!cache.includes(version)) {
-            // console.log(`Deleting chache ${cache}`);
+            console.log(`Deleting chache ${cache}`);
             caches.delete(cache);
           }
         })
       );
     })
   );
-  // console.log("Service worker active");
+  console.log("Service worker active");
 })
+
+addEventListener("push", e=>{
+  console.log(e);
+  console.log(e.data);
+  console.log(e.data.text())
+  var options = {
+      body: 'This notification was generated from a push!'+e.data.text(),
+      icon: 'images/example.png',
+      vibrate: [100, 50, 100],
+      data: {
+          dateOfArrival: Date.now(),
+          primaryKey: '2'
+      },
+  };
+  e.waitUntil(
+      self.registration.showNotification('Hello There!', options)
+  );
+});
 
 self.addEventListener("fetch",function(event) {
     let url = matchRoutes(event.request.url);
