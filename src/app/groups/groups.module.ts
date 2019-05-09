@@ -29,7 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     GroupsComponent

@@ -69,6 +69,7 @@ import { ModifyScheduleState } from './states/modifySchedule.state';
 import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
 import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop.module';
 import { GroupDialogComponent } from './shared/group/group-dialog/group-dialog.component';
+import { ConfirmComponent } from './shared/confirm/confirm.component';
 
 @NgModule({
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
@@ -84,7 +85,8 @@ import { GroupDialogComponent } from './shared/group/group-dialog/group-dialog.c
     ScheduleInputComponent,
     SnackbarComponent,
     LinkComponent,
-    HeaderComponent
+    HeaderComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -144,7 +146,8 @@ import { GroupDialogComponent } from './shared/group/group-dialog/group-dialog.c
     GradeToastComponent,
     SnackbarComponent,
     GroupDialogComponent,
-    GroupEventComponent
+    GroupEventComponent,
+    ConfirmComponent
   ]
 })
 export class AppModule { }

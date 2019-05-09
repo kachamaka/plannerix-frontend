@@ -467,6 +467,29 @@ export class HttpService {
       });
     }
 
+    
+  loadGroupEvents(){
+    let postData = {
+      token: localStorage.getItem("token"),
+      group_id: this.currentGroup.group_id
+    }
+    this.getGroupEvents(postData).subscribe((data: any)=>{
+      console.log(data);
+      this.currentGroup.group_events = [];
+      for(let i = 0; i<data.events.length; i++){
+        this.currentGroup.group_events.push(
+          new SchoolEvent(
+            data.events[i].event_id, 
+            data.events[i].eventTime*1000, 
+            data.events[i].subject,
+            data.events[i].description,
+            data.events[i].subjectType,
+            data.events[i].subject_id
+          ));
+      }
+    })
+  }
+
   getDateFormat(initDate: string){
     // console.log(initDate);
     let date = initDate.replace(/\./g, "/");

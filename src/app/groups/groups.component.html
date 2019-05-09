@@ -23,7 +23,7 @@ class="group-heading">
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div *ngFor="let gr of otherGroups" class="group">
+<div *ngFor="let gr of otherGroups" (click)="selectGroup(gr)" class="group">
   <p>{{gr.group_name}}</p>
 </div>
 

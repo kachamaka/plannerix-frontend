@@ -37,22 +37,35 @@ export class EventComponent implements OnInit {
         console.log("canceled");
       }
       if(out) {
+        let group_id = window.location.href.split("/")[window.location.href.split("/").length-1];
+        console.log(group_id);
         if(out.action){
           let postData = {
             token: localStorage.getItem("token"),
+            group_id: group_id,
             event_id: event.event_id
           }
           // console.log(event, postData);
           // return
-          this.httpService.deleteEvent(postData).subscribe((data:any)=>{
-            console.log(data);
-            this.httpService.loadEvents();
-          })
+          
+          if(group_id == "calendar"){
+            this.httpService.deleteEvent(postData).subscribe((data:any)=>{
+              console.log(data)
+              if(data.success==true){
+                // console.log(data);
+                // this.calComp.getEvents();
+                this.httpService.loadEvents();
+              }
+            })
+          }else{
+            this.httpService.deleteGroupEvent(postData).subscribe((data:any)=>{
+              console.log(data);
+              this.httpService.loadGroupEvents();
+            })
+          }
 
         }else{
           if(this.editable == true){
-            let group_id = window.location.href.split("/")[window.location.href.split("/").length-1];
-            console.log(group_id);
             let postData = {
               token: localStorage.getItem("token"),
               event_id: out.event_id, 
@@ -75,6 +88,7 @@ export class EventComponent implements OnInit {
             }else{
               this.httpService.editGroupEvent(postData).subscribe((data:any)=>{
                 console.log(data);
+                this.httpService.loadGroupEvents();
               })
             }
           }

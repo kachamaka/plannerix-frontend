@@ -43,26 +43,26 @@ i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
 .group_info{
     display: grid;
     grid-template-areas: "group_name actions .";
-    grid-template-columns: 70% 29% 1%;
+    grid-template-columns: 56% 29% 1%;
 }
 @media only screen and (min-width: 450px) {
     .group_info{
         grid-template-areas: "group_name . actions .";
-        grid-template-columns: 70% 10% 19% 1%;
+        grid-template-columns: 56% 10% 19% 1%;
     }
   }
   
 @media only screen and (min-width: 600px) {
     .group_info{
         grid-template-areas: "group_name . actions";
-        grid-template-columns: 70% 10% 20%;
+        grid-template-columns: 56% 10% 20%;
     }
   }
   
 @media only screen and (min-width: 684px) {
     .group_info{
         grid-template-areas: "group_name . actions";
-        grid-template-columns: 70% 15% 15%;
+        grid-template-columns: 56% 15% 15%;
     }
   }
 
@@ -79,4 +79,8 @@ i.flaticon-rubbish-bin::before, i.flaticon-rubbish-bin{
     margin-top: 12px; 
     /* margin-bottom: 14px; */
     grid-area: actions;
+}
+
+.invisible{
+    display: none;
 }

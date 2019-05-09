@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
         }).catch(err=>{
           console.error("Something went wrong with registration for push messages", err);
         }).finally(()=>{
+          this.httpService.username = this.username.nativeElement.value;
           this.router.navigate(['/home']);
         })
       }else{

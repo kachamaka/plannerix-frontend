@@ -22,6 +22,7 @@ export class GroupsComponent implements OnInit {
     public httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.exampleGroups = [];
     //get groups
     if(this.httpService.exampleGroups.length == 0){
       this.loadGroups();
@@ -50,6 +51,7 @@ export class GroupsComponent implements OnInit {
       this.httpService.exampleGroups = data.ownedGroups.concat(data.myGroups);
       console.log(this.httpService.exampleGroups);
       this.httpService.exampleGroups.forEach(gr => {
+        console.log(gr.owner, this.httpService.username);
         if(gr.owner == this.httpService.username){
           this.userGroups.push(gr);
         }else{

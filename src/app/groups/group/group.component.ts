@@ -1,3 +1,4 @@
+import { ConfirmComponent } from './../../shared/confirm/confirm.component';
 import { GroupEventComponent } from './../../shared/group/group-event/group-event.component';
 import { EventDialogComponent } from './../../shared/event/event-dialog/event-dialog.component';
 import { StorageService } from './../../shared/storage.service';
@@ -17,7 +18,6 @@ import { AddMemberComponent } from './add-member/add-member.component';
 export class GroupComponent implements OnInit {
 
   groupID;
-  currentGroup;
 
   // group_events: Array<SchoolEvent> = [
   //   new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
@@ -43,57 +43,36 @@ export class GroupComponent implements OnInit {
         this.route.params.subscribe((params:any)=> {
           this.groupID = params.group_id;      
           // console.log('groupID :', this.groupID);
-          this.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
+          this.httpService.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
         })
       })
       .then(()=>{
-        this.loadGroupEvents();
+        this.httpService.loadGroupEvents();
         }
       );
     }else{
       this.route.params.subscribe((params:any)=> {
         this.groupID = params.group_id;      
         // console.log('groupID :', this.groupID);
-        this.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
-        this.loadGroupEvents();
+        this.httpService.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
+        this.httpService.loadGroupEvents();
       })
     }
     // console.log(this.currentGroup);
   }
 
   canEdit(){
-    if(this.currentGroup.owner == this.httpService.username){
+    if(this.httpService.currentGroup.owner == this.httpService.username){
       return true;
     }else{
       return false;
     }
   }
 
-  loadGroupEvents(){
-    let postData = {
-      token: localStorage.getItem("token"),
-      group_id: this.currentGroup.group_id
-    }
-    this.httpService.getGroupEvents(postData).subscribe((data: any)=>{
-      console.log(data);
-      this.currentGroup.group_events = [];
-      for(let i = 0; i<data.events.length; i++){
-        this.currentGroup.group_events.push(
-          new SchoolEvent(
-            data.events[i].event_id, 
-            data.events[i].eventTime*1000, 
-            data.events[i].subject,
-            data.events[i].description,
-            data.events[i].subjectType,
-            data.events[i].subject_id
-          ));
-      }
-    })
-  }
 
   isOwner(){
-    if(!isUndefined(this.currentGroup)){
-      if(this.currentGroup.owner == this.httpService.username){
+    if(!isUndefined(this.httpService.currentGroup)){
+      if(this.httpService.currentGroup.owner == this.httpService.username){
         return true;
       }else{
         return false;
@@ -123,7 +102,7 @@ export class GroupComponent implements OnInit {
         // return;
         let postData = {
           token: localStorage.getItem("token"),
-          group_id: this.currentGroup.group_id,
+          group_id: this.httpService.currentGroup.group_id,
           timestamp: out.date,
           subject_id: subject.id,
           description: out.description,
@@ -134,7 +113,7 @@ export class GroupComponent implements OnInit {
           console.log(data);
           if(data.success==true){
             // this.httpService.this.loloadEvents();
-            this.loadGroupEvents();
+            this.httpService.loadGroupEvents();
           }
         })
       }
@@ -143,9 +122,40 @@ export class GroupComponent implements OnInit {
 
   deleteMember(member){
     // console.log(member);
-    this.currentGroup.members = this.currentGroup.members.filter(mem => mem != member);
+    this.httpService.currentGroup.members = this.httpService.currentGroup.members.filter(mem => mem != member);
+    let postData = {
+      token: localStorage.getItem("token"),
+      group_id: this.groupID,
+      member: member
+    }
+    this.httpService.deleteMember(postData).subscribe((data:any)=>{
+      console.log(data);
+    })
     //update members
     
+  }
+
+  deleteGroup(){
+    
+    let dialogRef= this.dialog.open(ConfirmComponent, {});
+    dialogRef.afterClosed().subscribe((out)=>{
+      if(out==true){
+        let postData = {
+          token: localStorage.getItem("token"),
+          group_id: this.groupID
+        }
+        this.httpService.deleteGroup(postData).subscribe((data:any)=>{
+          console.log(data);
+          if(data.success==true){
+              if(this.storageService.isDesktop()){
+                this.router.navigate(['/desktop/groups'])
+              }else{
+                this.router.navigate(['/groups'])
+              }
+          }
+        })
+      }
+    })
   }
 
   loadGroups(){
@@ -164,7 +174,7 @@ export class GroupComponent implements OnInit {
     this.route.params.subscribe((params:any)=> {
       this.groupID = params.group_id;      
       console.log('groupID :', this.groupID);
-      this.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
+      this.httpService.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
     })
   };
   plus(){

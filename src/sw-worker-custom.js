@@ -3,12 +3,14 @@
 let version = makeVersion()
 //                        (eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|js|json|html|css|ico)
 let reg = new RegExp(".*\.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|js|json|html|css|ico)$");
+let domain = "https://v3z9qzjgug.execute-api.eu-central-1.amazonaws.com/dev/";
 let cacheRequests = [
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getWeeklyEvents",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getYearGrades",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getNextPeriod",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getProfile"
+  domain + "getSchedule",
+  domain + "getWeeklyEvents",
+  domain + "getYearGrades",
+  domain + "getNextPeriod",
+  domain + "getProfile",
+  domain + "getDailySchedule"
 ]
 
 let routers = [
