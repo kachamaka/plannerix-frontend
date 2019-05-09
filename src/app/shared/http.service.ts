@@ -26,79 +26,71 @@ export class HttpService {
 
 
   exampleGroups = [
-    {
-      group_id: 1,
-      group_name: "1Nemski izrodi Gruppe 2",
-      owner: "kachamaka",
-      group_events: [],
-      members: []
-    },
-    {
-      group_id: 2,
-      group_name: "2Nemski izrodi Gruppe 2",
-      owner: "Pesho",
-      group_events: [],
-      members: []
-    },
-    {
-      group_id: 3,
-      group_name: "3Nemski izrodi Gruppe 2",
-      owner: "Georgi",
-      group_events: [
-        // new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
-        // new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
-        // new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
-        // new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)
-      ],
-      members: []
-    },
-    {
-      group_id: 4,
-      group_name: "4Nemski izrodi Gruppe 2",
-      owner: "Ivan",
-      group_events: [],
-      members: []
-    },
-    {
-      group_id: 5,
-      group_name: "5Nemski izrodi Gruppe 2",
-      owner: "kachamaka",
-      group_events: [
-          // new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
-          // new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
-          // new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
-          // new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)
-      ],
-      members: ["Ivancho", "Pencho", "Stefcho"]
-    },
-    {
-      group_id: 6,
-      group_name: "6Nemski izrodi Gruppe 2",
-      owner: "Aleks",
-      group_events: [],
-      members: []
-    },
-    {
-      group_id: 7,
-      group_name: "7Nemski izrodi Gruppe 2",
-      owner: "Ivan",
-      group_events: [],
-      members: []
-    },
-    {
-      group_id: 8,
-      group_name: "8Nemski izrodi Gruppe 2",
-      owner: "Ivan",
-      group_events: [],
-      members: []
-    },
-    {
-      group_id: 9,
-      group_name: "9Nemski izrodi Gruppe 2",
-      owner: "kachamaka",
-      group_events: [],
-      members: []
-    },
+    // {
+    //   group_id: 1,
+    //   group_name: "1Nemski izrodi Gruppe 2",
+    //   owner: "kachamaka",
+    //   group_events: [],
+    //   members: []
+    // },
+    // {
+    //   group_id: 2,
+    //   group_name: "2Nemski izrodi Gruppe 2",
+    //   owner: "Pesho",
+    //   group_events: [],
+    //   members: []
+    // },
+    // {
+    //   group_id: 3,
+    //   group_name: "3Nemski izrodi Gruppe 2",
+    //   owner: "Georgi",
+    //   group_events: [
+    //   ],
+    //   members: []
+    // },
+    // {
+    //   group_id: 4,
+    //   group_name: "4Nemski izrodi Gruppe 2",
+    //   owner: "Ivan",
+    //   group_events: [],
+    //   members: []
+    // },
+    // {
+    //   group_id: 5,
+    //   group_name: "5Nemski izrodi Gruppe 2",
+    //   owner: "kachamaka",
+    //   group_events: [
+    //   ],
+    //   members: ["Ivancho", "Pencho", "Stefcho"]
+    // },
+    // {
+    //   group_id: 6,
+    //   group_name: "6Nemski izrodi Gruppe 2",
+    //   owner: "Aleks",
+    //   group_events: [],
+    //   members: []
+    // },
+    // {
+    //   group_id: 7,
+    //   group_name: "7Nemski izrodi Gruppe 2",
+    //   owner: "Ivan",
+    //   group_events: [],
+    //   members: []
+    // },
+    // {
+    //   group_id: 8,
+    //   group_name: "8Nemski izrodi Gruppe 2",
+    //   owner: "Ivan",
+    //   group_events: [],
+    //   members: []
+    // },
+    // {
+    //   group_id: 9,
+    //   group_name: "9Nemski izrodi Gruppe 2",
+    //   owner: "kachamaka",
+    //   group_events: [],
+    //   members: []
+    // },
   ];
 
 
@@ -184,6 +176,42 @@ export class HttpService {
 
   getJoke() {
     return this.http.get("https://api.chucknorris.io/jokes/random");
+  }
+
+  createGroup(data){
+    return this.http.post(this.domain + 'createGroup', data); 
+  }
+
+  createGroupEvent(data) {
+    return this.http.post(this.domain + 'createGroupEvent', data); 
+  }
+
+  getGroups(data) {
+    return this.http.post(this.domain + 'getGroups', data); 
+  }
+
+  getGroupEvents(data) {
+    return this.http.post(this.domain + 'getGroupEvents', data); 
+  }
+  
+  editGroupEvent(data) {
+    return this.http.post(this.domain + 'editGroupEvent', data); 
+  }
+  
+  addMember(data) {
+    return this.http.post(this.domain + 'addMember', data); 
+  }
+
+  deleteMember(data) {
+    return this.http.post(this.domain + 'deleteMember', data); 
+  }
+
+  deleteGroup(data) {
+    return this.http.post(this.domain + 'deleteGroup', data); 
+  }
+
+  deleteGroupEvent(data) {
+    return this.http.post(this.domain + 'deleteGroupEvent', data); 
   }
 
   getEvents(data) {
