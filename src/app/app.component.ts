@@ -1,3 +1,4 @@
+import { NotificationsService } from './shared/setup/notifications.service';
 import { StorageService } from './shared/storage.service';
 import { HeaderComponent } from './header/header.component';
 import { HttpService } from './shared/http.service';
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
   @ViewChild(HeaderComponent) header: HeaderComponent;
 
   constructor(
+    private notificationsService: NotificationsService,
     private activatedRoute: ActivatedRoute,
     public storageService: StorageService,
     private httpService: HttpService,
@@ -35,6 +37,7 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(){
+    
     let tokenData = {
       token: localStorage.getItem("token")
     }
@@ -55,13 +58,16 @@ export class AppComponent implements OnInit {
     }).finally().then(fin=>{
       // console.log("Yeah dont know bout this one", fin)
     })
-    this.httpService.loadSubjects();
 
     this.httpService.getProfile(tokenData).subscribe((data:any)=>{
       console.log(data);
       this.httpService.username = data.profile.username;
       this.httpService.email = data.profile.email;
     })
+    this.httpService.getSubjectsNew().subscribe((data:any)=>{
+      console.log(data);
+      this.httpService.subjectData = data.subjects;
+    });
   }
 
   prepareRoute(outlet: RouterOutlet) {

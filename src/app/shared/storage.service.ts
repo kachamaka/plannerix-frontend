@@ -33,6 +33,14 @@ export class StorageService {
     }
     return false;
   }
+
+  getFullRoute(){
+    this.router.events.subscribe((val)=>{
+      if(val instanceof NavigationEnd){
+        return val.url;
+      }
+    })
+  }
   
 
   getRouteName(){

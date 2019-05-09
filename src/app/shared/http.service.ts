@@ -22,7 +22,7 @@ export class HttpService {
   currentGroup;
   username = "";
   email = "";
-  domain = "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/";
+  domain = "https://nklkfmvouc.execute-api.eu-central-1.amazonaws.com/dev/";
 
 
   exampleGroups = [
@@ -45,10 +45,11 @@ export class HttpService {
       group_name: "3Nemski izrodi Gruppe 2",
       owner: "Georgi",
       group_events: [
-        new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
-        new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
-        new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
-        new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)],
+        // new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
+        // new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
+        // new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
+        // new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)
+      ],
       members: []
     },
     {
@@ -63,10 +64,10 @@ export class HttpService {
       group_name: "5Nemski izrodi Gruppe 2",
       owner: "kachamaka",
       group_events: [
-          new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
-          new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
-          new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
-          new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)
+          // new SchoolEvent(1556939226000, "Немски", "ZA WARUUUDOOOOO1", 1),
+          // new SchoolEvent(1556939228000, "NE", "ZA WARUUUDOOOOO2", 1),
+          // new SchoolEvent(1556939230000, "NE", "ZA WARUUUDOOOOO3", 1),
+          // new SchoolEvent(1556939240000, "NE", "ZA WARUUUDOOOOO4", 1)
       ],
       members: ["Ivancho", "Pencho", "Stefcho"]
     },
@@ -302,12 +303,18 @@ export class HttpService {
     return this.http.post(this.domain + 'inputGrade', data);
   }
 
+  registerPush(data){
+    //finish the function
+    return this.http.post(this.domain + '', data);    
+  }
+
   loadSubjects(){
     let postData = {
       token: localStorage.getItem("token")
     }
 
-    this.getSubjects(postData).subscribe((data:any)=>{
+    this.getSubjectsNew().subscribe((data:any)=>{
+      console.log("data");
       if(data.success==true){
         this.subjectData = data.subjects;
       }
@@ -319,9 +326,24 @@ export class HttpService {
       token: localStorage.getItem("token")
     }
 
-    this.getSchedule(postData).subscribe((data:any)=>{
-      // console.log(data);
+    this.getNewSchedule().subscribe((data:any)=>{
+      console.log(data);
       if(data.success==true){
+        // console.log(data.s);
+        Object.keys(data.schedule).forEach(key => {
+          data.schedule[key].allLessons.forEach(period => {
+            // data.schedule[key].allLessons.start = this.getHourFromMinutes(data.schedule[key].allLessons.start);            
+            period.end = this.getHourFromMinutes(period.start + period.duration);
+            period.start = this.getHourFromMinutes(period.start);
+          });
+        });
+        // for(let i = 0; i< Object.keys(data.schedule).length; i++){
+        //   Object.keys(data.schedule).forEach(key => {
+        //     console.log(key);
+        //     console.log(data.schedule[key],"???");
+        //     data.schedule[key].allLessons.start = this.getHourFromMinutes(data.schedule[key].allLessons.start);
+        //   })
+        // }
         this.periods = data.schedule;
         // console.log(this.periods);
       }
@@ -341,10 +363,11 @@ export class HttpService {
           for(let i = 0;i<data.events.length; i++){
             this.events.push(
               new SchoolEvent(
-                data.events[i].timestamp*1000,
+                data.events[i].event_id,
+                data.events[i].eventTime*1000,
                 data.events[i].subject,
                 data.events[i].description,
-                data.events[i].subjectType
+                data.events[i].subjectType,
                 )
               );
             }
@@ -422,6 +445,10 @@ export class HttpService {
     // console.log("dateData", dateData);
     return dateData
   }
+  
+  getHourFromMinutes(n){
+    return `0${n / 60 ^ 0}`.slice(-2) + ':' + ('0' + n % 60).slice(-2);
+ }
     
   
 

@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { isUndefined } from 'util';
 import { HttpService } from './../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { StorageService } from '../shared/storage.service';
 
 @Component({
   selector: 'app-schedule',
@@ -16,8 +18,20 @@ export class ScheduleComponent implements OnInit {
   backupPeriods = [{"periods": []},{"periods": []},{"periods": []},{"periods": []},{"periods": []}];
 
   days = ["Неделя","Понеделник","Вторник","Сряда","Четвъртък","Петък","Събота"];
-
-  constructor(public httpService: HttpService) { }
+  dayNames = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
+  
+  constructor(
+    private router: Router,
+    private storageService: StorageService,
+    public httpService: HttpService) { }
   displayedColumns: string[] = ['startTime', 'endTime', 'subject', 'remove'];
   // schedule = [
   //   [
@@ -64,13 +78,19 @@ export class ScheduleComponent implements OnInit {
   // ]
 
   ngOnInit() {
-    if(this.todayDay!=0 && this.todayDay!=6){
-      this.currentDay = this.todayDay;
-    }else{
+    // if(this.todayDay!=0 && this.todayDay!=6){
+      // this.currentDay = this.todayDay;
+    // }else{
       this.currentDay = 1;
-    }
+    // }
     // console.log("hello from schedule");
     this.httpService.loadSchedule();
+    setTimeout(() => {
+      console.log(this.httpService.periods);
+      console.log(this.dayNames[this.currentDay].toLowerCase());
+      // console.log(this.httpService.periods[this.dayNames[this.currentDay].toLowerCase()].allLessons[0].start);
+      // console.log(this.getHourFromMinutes(this.httpService.periods[this.dayNames[this.currentDay].toLowerCase()].allLessons[0].start));
+    }, 1000);
   }
 
   getBackupPeriods(){
@@ -85,10 +105,19 @@ export class ScheduleComponent implements OnInit {
     return array;
   }
 
+  modifySchedule(){ 
+    // console.log(this.storageService.fullUrl.includes('desktop'));
+    if(this.storageService.fullUrl.includes('desktop')){
+      this.router.navigate(['/desktop/modify-schedule']);
+    }else{
+      this.router.navigate(['/modify-schedule']);
+    }
+  }
+
 
   previousDay(){
-    if(this.currentDay==1){
-      this.currentDay=5;
+    if(this.currentDay==0){
+      this.currentDay=6;
     }else{
       this.currentDay--;
     }
@@ -96,8 +125,8 @@ export class ScheduleComponent implements OnInit {
   }
 
   nextDay(){
-    if(this.currentDay==5){
-      this.currentDay=1;
+    if(this.currentDay==6){
+      this.currentDay=0;
     }else{
       this.currentDay++;
     }
@@ -105,8 +134,13 @@ export class ScheduleComponent implements OnInit {
   
   getDataSource(){
     if(!isUndefined(this.httpService.periods)){
-      let dataSource = new MatTableDataSource(this.httpService.periods[this.currentDay-1].periods);
-      return dataSource;
+      if(!isUndefined(this.httpService.periods[this.dayNames[this.currentDay].toLowerCase()])){
+        let dataSource = new MatTableDataSource(this.httpService.periods[this.dayNames[this.currentDay].toLowerCase()].allLessons);
+        return dataSource;
+      }else{
+        let dataSource = new MatTableDataSource([]);        
+        return dataSource;
+      }
     }
   }
 
@@ -165,5 +199,13 @@ export class ScheduleComponent implements OnInit {
       return parseInt(minutesArray[0])*60 + parseInt(minutesArray[1]);
     }
   }
+  getHourFromMinutes(n){
+     return `0${n / 60 ^ 0}`.slice(-2) + ':' + ('0' + n % 60).slice(-2);
+  }
+
+  getData(i){
+    return this.getHourFromMinutes(this.httpService.periods[this.dayNames[this.currentDay].toLowerCase()].allLessons[i].start);
+  }
+
 
 }
