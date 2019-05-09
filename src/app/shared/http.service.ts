@@ -171,7 +171,7 @@ export class HttpService {
   }
 
   getGroupEvents(data) {
-    return this.http.post(this.domain + 'getGroupEvents', data); 
+    return this.http.post<{success: boolean, message: string, events: SchoolEvent[]}>(this.domain + 'getGroupEvents', data); 
   }
   
   editGroupEvent(data) {

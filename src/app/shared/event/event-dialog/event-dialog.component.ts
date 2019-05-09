@@ -36,6 +36,7 @@ export class EventDialogComponent implements OnInit {
     }
     this.event = this.data.event;
     this.date = this.event.getDate();
+    console.log(this.event,"wtf we deiba");
     this.current_event.setValue({
       subject: this.event.subject,
       type: this.event.type.toString(),
@@ -132,7 +133,7 @@ export class EventDialogComponent implements OnInit {
     this.current_event.controls['description'].disable();
     this.current_event.controls['subject'].disable();
 
-    console.log(this.current_event.controls['subject'].value);
+    console.log(this.data.event);
 
     let subject = this.httpService.subjectData.filter(s => s.name == this.current_event.controls['subject'].value)[0];
 

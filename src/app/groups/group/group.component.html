@@ -22,7 +22,7 @@
 <hr style="margin: 0">
 <mat-tab-group>
   <mat-tab label="Events">
-    <app-group-event *ngIf="this.currentGroup != undefined" style="z-index: auto" [events]="this.currentGroup.group_events" [editable]="canEdit()"></app-group-event>
+    <app-events *ngIf="this.currentGroup != undefined" style="z-index: auto" [events]="this.currentGroup.group_events" [editable]="canEdit()"></app-events>
   </mat-tab>
   <!-- <mat-tab label="Files"> Content 3 </mat-tab> -->
   <mat-tab *ngIf="isOwner()" label="Members"> 

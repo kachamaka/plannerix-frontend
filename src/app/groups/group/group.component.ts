@@ -74,9 +74,20 @@ export class GroupComponent implements OnInit {
       token: localStorage.getItem("token"),
       group_id: this.currentGroup.group_id
     }
-    this.httpService.getGroupEvents(postData).subscribe((data:any)=>{
+    this.httpService.getGroupEvents(postData).subscribe((data: any)=>{
       console.log(data);
-      this.currentGroup.group_events = data.events;
+      this.currentGroup.group_events = [];
+      for(let i = 0; i<data.events.length; i++){
+        this.currentGroup.group_events.push(
+          new SchoolEvent(
+            data.events[i].event_id, 
+            data.events[i].eventTime*1000, 
+            data.events[i].subject,
+            data.events[i].description,
+            data.events[i].subjectType,
+            data.events[i].subject_id
+          ));
+      }
     })
   }
 
@@ -107,13 +118,14 @@ export class GroupComponent implements OnInit {
         console.log("canceled");
       }
       if(out) {
-        console.log(out.date);
+        // console.log(out);
+        let subject = this.httpService.subjectData.filter(s => s.name == out.subject)[0];
         // return;
         let postData = {
           token: localStorage.getItem("token"),
           group_id: this.currentGroup.group_id,
           timestamp: out.date,
-          subject: out.subject,
+          subject_id: subject.id,
           description: out.description,
           subjectType: out.type
         } 

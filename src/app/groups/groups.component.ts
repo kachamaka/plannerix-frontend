@@ -41,6 +41,8 @@ export class GroupsComponent implements OnInit {
   }
 
   loadGroups(){
+    this.userGroups = [];
+    this.otherGroups = [];
     let postData = {
       token: localStorage.getItem("token"),
     }
@@ -79,6 +81,9 @@ export class GroupsComponent implements OnInit {
       } 
       this.httpService.createGroup(postData).subscribe((data:any)=>{
         console.log(data);
+        if(data.success==true){
+          this.loadGroups();
+        }
       })
     });
   }

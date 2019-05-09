@@ -5,12 +5,13 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MatDialogModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatDatepicker } from "@angular/material";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { EventColorDirective } from '../event/event-color.directive';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     declarations: [
         GroupDialogComponent,
-        GroupEventComponent
+        GroupEventComponent,
     ],
     imports: [
         CommonModule,
@@ -21,10 +22,10 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
         FormsModule,
         MatInputModule,
         MatDatepickerModule,
-        MatNativeDateModule,
+        MatNativeDateModule
     ], exports: [
         GroupDialogComponent,
-        GroupEventComponent
+        GroupEventComponent,
     ]
 })
 

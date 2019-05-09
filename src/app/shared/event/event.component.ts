@@ -24,6 +24,7 @@ export class EventComponent implements OnInit {
     // this.openModal(this.events[0]);
   }
   openModal(event: SchoolEvent) {
+    console.log(event);
     let dialogRef = this.dialog.open(EventDialogComponent, {
       data: {
         event: event,
@@ -50,25 +51,32 @@ export class EventComponent implements OnInit {
 
         }else{
           if(this.editable == true){
-            console.log(out,"o");
+            let group_id = window.location.href.split("/")[window.location.href.split("/").length-1];
+            console.log(group_id);
             let postData = {
               token: localStorage.getItem("token"),
               event_id: out.event_id, 
+              group_id: group_id,
               timestamp: out.date,
               subject: out.subject,
               description: out.description,
               subjectType: out.type,
               subject_id: out.subject_id
             } 
-            
-            this.httpService.editEvent(postData).subscribe((data:any)=>{
-              console.log(data)
-              if(data.success==true){
-                // console.log(data);
-                // this.calComp.getEvents();
-                this.httpService.loadEvents();
-              }
-            })
+            if(group_id == "calendar"){
+              this.httpService.editEvent(postData).subscribe((data:any)=>{
+                console.log(data)
+                if(data.success==true){
+                  // console.log(data);
+                  // this.calComp.getEvents();
+                  this.httpService.loadEvents();
+                }
+              })
+            }else{
+              this.httpService.editGroupEvent(postData).subscribe((data:any)=>{
+                console.log(data);
+              })
+            }
           }
         }
       }
