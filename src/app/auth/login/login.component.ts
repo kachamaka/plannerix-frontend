@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token", data.token);
         this.httpService.loadSchedule();
         this.httpService.loadSubjects();
-        this.router.navigate(['/home']);
         this.notService.askForNotifications().then(()=>{
           return this.notService.registerForPushMessages()
         }).then((subscription:string)=>{
@@ -79,6 +78,8 @@ export class LoginComponent implements OnInit {
           })
         }).catch(err=>{
           console.error("Something went wrong with registration for push messages", err);
+        }).finally(()=>{
+          this.router.navigate(['/home']);
         })
       }else{
         console.log(data);
