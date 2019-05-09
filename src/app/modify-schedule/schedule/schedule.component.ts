@@ -6,6 +6,7 @@ import { Subject } from 'src/app/models/subject.model';
 import { Schedule } from 'src/app/models/modifySchedule.model';
 import { UpdateSchdeule } from 'src/app/actions/modifySchedule.action';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/shared/storage.service';
 
 @Component({
   selector: 'app-schedule',
@@ -15,13 +16,18 @@ import { Router } from '@angular/router';
 export class ScheduleComponent implements OnInit {
   @Select(ModifyScheduleState.getChosenSchedule) schedule: Observable<Schedule>;
   @Select(ModifyScheduleState.getSubjects) subjects:Observable<Subject>;
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router, private storageService: StorageService) { }
 
   ngOnInit() {
   }
 
   onDone(){
     this.store.dispatch(new UpdateSchdeule());
-    // this.router.navigate(["modify-schedule"]);
+    // this.router.navigate(["schedule"]);
+    if(this.storageService.isDesktop()){
+      this.router.navigate(["/desktop/schedule"]);      
+    }else{
+      this.router.navigate(["schedule"]);
+    }
   }
 }

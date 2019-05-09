@@ -60,12 +60,13 @@ export class CalendarComponent implements OnInit {
         console.log("canceled");
       }
       if(out) {
-        console.log(out, "out");
+        // console.log(out, "out");
+        let subject = this.httpService.subjectData.filter(s => s.name == out.subject)[0];
         // return;
         let postData = {
           token: localStorage.getItem("token"),
           timestamp: out.date,
-          subject: out.subject,
+          subject: subject.id,
           description: out.description,
           subjectType: out.type
         } 
