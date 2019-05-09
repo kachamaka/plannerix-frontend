@@ -31,22 +31,28 @@ export class NotificationsService {
   }
 
   registerForPushMessages() {
-    return navigator.serviceWorker.ready.then(res=>{
-      const option = {
+    return new Promise((resolve, reject)=>{
+
+      navigator.serviceWorker.ready.then(res=>{
+        const option = {
           userVisibleOnly: true,
           applicationServerKey: this.urlBase64ToUint8Array(this.vapidPublicKey)
-      }
-      res.pushManager.subscribe(option).then(sub=>{
-        let stringifiedSub = JSON.stringify(sub);
-        console.log(sub);
-        console.log(stringifiedSub);
-        this.httpService.registerPush(stringifiedSub).subscribe((data:any)=>{
-          console.log(data);
-        })
-      }).catch(err=>{
+        }
+        res.pushManager.subscribe(option).then(sub=>{
+          let stringifiedSub = JSON.stringify(sub);
+          console.log(sub);
+          console.log(stringifiedSub);
+          // this.httpService.registerPush(stringifiedSub).subscribe((data:any)=>{
+          //   console.log(data);
+          // })
+          resolve(stringifiedSub);
+        }).catch(err=>{
           console.log(err, typeof err, Object.keys(err));
           // console.error(err);
-      });
+          reject(err);
+        });
+      })
+
     })
   }
 

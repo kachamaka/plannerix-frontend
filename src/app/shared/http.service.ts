@@ -148,6 +148,17 @@ export class HttpService {
     this.edit = !this.edit;
   }
 
+  //===========notifications
+
+  registerPush(data:string){
+    return this.http.post(this.domain + 'updateSubscription', {token:localStorage.getItem("token"), subscription: data});    
+  }
+
+  wellcomeNotificationAndRegister(sub: string) {
+    return this.http.post(this.domain + "wellcomeNotification", {token: localStorage.getItem("token"), subscription: sub});
+  }
+
+
   //=================Groups
 
   addMember(user: string, groupID: string) {
@@ -303,9 +314,6 @@ export class HttpService {
     return this.http.post(this.domain + 'inputGrade', data);
   }
 
-  registerPush(data:string){
-    return this.http.post(this.domain + 'updateSubscription', {token:localStorage.getItem("token"), subscription: data});    
-  }
 
   loadSubjects(){
     let postData = {

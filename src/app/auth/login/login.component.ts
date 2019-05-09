@@ -73,8 +73,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
         this.notService.askForNotifications().then(()=>{
           return this.notService.registerForPushMessages()
-        }).then(()=>{
-          console.log("registered");
+        }).then((subscription:string)=>{
+          this.httpService.registerPush(subscription).subscribe((data)=>{
+            console.log(data, "registered")
+          })
         }).catch(err=>{
           console.error("Something went wrong with registration for push messages", err);
         })
