@@ -32,14 +32,14 @@ let routers = [
 ]
 
 self.addEventListener("install", (e)=>{
-  caches.open(version).then(cache=>{
-    return cache.add(self.origin)
-  }).then(res=>{
-    console.log("ServiceWorker install success", res)
-  })
-  .catch(err=>{
-    console.log("ServiceWorker install err", err)
-  })
+  // caches.open(version).then(cache=>{
+  //   return cache.add(self.origin)
+  // }).then(res=>{
+  //   console.log("ServiceWorker install success", res)
+  // })
+  // .catch(err=>{
+  //   console.log("ServiceWorker install err", err)
+  // })
   self.skipWaiting();
 });
 
