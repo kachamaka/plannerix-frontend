@@ -335,7 +335,7 @@ export class HttpService {
     }
 
     this.getEvents(postData).subscribe((data:any)=>{
-      // console.log(data);
+      console.log(data);
         if(data.success==true){
           this.events = [];
           for(let i = 0;i<data.events.length; i++){
@@ -348,6 +348,7 @@ export class HttpService {
                 )
               );
             }
+
           }
         }
       )

@@ -24,18 +24,18 @@ export class ReportCardHttpService {
     getWeeklyGrades() {
         //should return an observable with 7 days
         let weeklyGrades: Array<DailyGrades> = [
-            {date: "06.01.2019",grades:[
+            {date: "06.05.2019",grades:[
               {subject: 'Music', grades: [5,5]},
               {subject: 'IT', grades: [5,6]}
             ]},
-            {date: "09.01.2019", grades :[
+            {date: "09.05.2019", grades :[
                 {subject: 'Nz', grades:[4,5]}
             ]},
-            {date: "05.01.2019", grades :[
+            {date: "07.05.2019", grades :[
               {subject:'Math', grades: [6]},
               {subject: 'Bg', grades: [4,5]}
             ]},
-            {date: "07.01.2019", grades :[
+            {date: "08.05.2019", grades :[
               {subject: 'History', grades:[4,5]}
             ]},
           ]

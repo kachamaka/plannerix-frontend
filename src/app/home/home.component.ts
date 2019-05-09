@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     private router:Router) { }
 
   ngOnInit() {
-    
+    // this.httpService.events.push(new SchoolEvent(1557753770000, "Биология", "Контролно", 0));    
     let postData = {
       token: localStorage.getItem("token")
     }
@@ -61,6 +61,7 @@ export class HomeComponent implements OnInit {
         )
         //
       }
+      // this.httpService.weeklyEventsTest.push(new SchoolEvent(1557705600000, "Биология", "Контролно", 0));
     })
     this.onResize();
     this.httpService.getSchedule(postData);
