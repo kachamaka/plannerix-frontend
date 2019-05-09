@@ -6,13 +6,12 @@ import { GradesModule } from '../shared/grades/grades.module';
 import { EventListModule } from '../shared/event/event-list.module';
 import { ReportCardModule } from '../report-c/report-card.module';
 import { NextLessonComponent } from './next-lesson/next-lesson.component';
-import { TimePipe } from '../models/timeConverter.model';
 import { TimeModule } from '../models/time.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    NextLessonComponent,
+    NextLessonComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +21,8 @@ import { TimeModule } from '../models/time.module';
     TimeModule
   ],
   exports: [
-    HomeComponent
+    HomeComponent,
+    NextLessonComponent
   ]
 })
 export class HomeModule { }

@@ -8,14 +8,14 @@
       "updateMode": "prefetch",
       "urls": [
         "/1.363e81b3696eca836de4.js",
-        "/5.424ab220ce3f6fe81f32.js",
+        "/5.e5d9d3b7051d45352330.js",
         "/favicon.ico",
         "/index.html",
-        "/main.a45b3b4e295b0f62cfec.js",
+        "/main.9ebcb07ca3a942985a20.js",
         "/manifest.json",
         "/polyfills.e1a4abc8348b9ad73b4f.js",
-        "/runtime.2c381bc7cfe0b3c2d111.js",
-        "/styles.33ea1ed21e87b01412bc.css",
+        "/runtime.319a509e6a4d2bc85480.js",
+        "/styles.d0ab9e5dfcff27792493.css",
         "/sw-worker-custom.js"
       ],
       "patterns": []
@@ -278,7 +278,7 @@
   ],
   "hashTable": {
     "/1.363e81b3696eca836de4.js": "75a7e32c72eb1b8776e675db24c5226b5b0a7162",
-    "/5.424ab220ce3f6fe81f32.js": "8bb8659a689fb56f56c04a94a42c0f6553bf4276",
+    "/5.e5d9d3b7051d45352330.js": "52c36258d5b4750cc3a1ffa3f6a9be8db639a022",
     "/Flaticon.554c5ee83437d728c17e.woff": "8cec54fed564012f17c27979a618182ee329d217",
     "/Flaticon.a5232bdeeffde7e1dd96.svg": "b5c7ec9f73cdc84c3914ea9a77ebc5088c69d130",
     "/Flaticon.a60f9c21cebf0fff1847.woff2": "de4bf3c560bb15a1a92649e48fe0580a17e46a4b",
@@ -512,13 +512,13 @@
     "/assets/logo_2/windows10/Wide310x150Logo.scale-200.png": "362c945ed5a6f98fca24494f33f1dde32696d65e",
     "/assets/logo_2/windows10/Wide310x150Logo.scale-400.png": "f4e69e62120a4c699bbcd00fc5cdd27e2b53d777",
     "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/index.html": "4fa40c6a4627407f526d9e1562ff2c0d77bb053d",
-    "/main.a45b3b4e295b0f62cfec.js": "82ffd9251256e8b50a692f046f2393eeaee01be2",
+    "/index.html": "2b9d15a55844d21e4b1a41b7a0b32767c321dc31",
+    "/main.9ebcb07ca3a942985a20.js": "35dcd70a0bdb6e827be031841ef8c28f8fa44b16",
     "/manifest.json": "010566a17795e88a5bfecd78d2c1c2b2a852d26a",
     "/polyfills.e1a4abc8348b9ad73b4f.js": "f74cb77289d73f571412f0b62746fec4b19e6220",
-    "/runtime.2c381bc7cfe0b3c2d111.js": "c9efe480cabd77ad652e12a2607103dbe37a0b9d",
-    "/styles.33ea1ed21e87b01412bc.css": "d6db1bf64f0e449699cf562d2a6788fa00b16e8b",
-    "/sw-worker-custom.js": "18029e30b17fb4f2474d8c0a49f0cf77f06ca178"
+    "/runtime.319a509e6a4d2bc85480.js": "429cc37c106829b7ed93ea970da9e67928b74414",
+    "/styles.d0ab9e5dfcff27792493.css": "2ed90a443a7b68b8597f7468670bf96968192f5b",
+    "/sw-worker-custom.js": "f8749f666d046215bee922aef909fec60e113872"
   },
   "navigationUrls": [
     {

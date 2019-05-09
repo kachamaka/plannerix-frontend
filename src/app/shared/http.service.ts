@@ -223,7 +223,7 @@ export class HttpService {
   }
 
   getDailySchedule() {
-    return this.http.post<{success:boolean,message: string, schedule: DailySchedule}>(this.domain + "getDailySchedule", {token: localStorage.getItem("token")});
+    return this.http.post<{success:boolean,message: string, schedule: DailySchedule}>(this.domain+"getDailySchedule", {token: localStorage.getItem("token")});
   }
 
 

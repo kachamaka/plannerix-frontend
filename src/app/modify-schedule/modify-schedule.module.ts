@@ -22,7 +22,7 @@ import { LessonComponent } from './schedule/daily-schedule/lesson/lesson.compone
 import { TimePipe } from "../models/timeConverter.model";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from "@angular/forms";
-import { TimeModule } from "../models/time.module";
+import { TimeModule } from '../models/time.module';
 @NgModule({
     declarations: [
         ModifyScheduleComponent,
@@ -53,8 +53,8 @@ import { TimeModule } from "../models/time.module";
         ReactiveFormsModule,
         MatChipsModule,
         MatIconModule,
-        TimeModule,
         MatDividerModule,
+        TimeModule
     ],
     entryComponents: [
         AddSubjectComponent,

@@ -53,41 +53,40 @@ export class DailySchedule {
         let lastLesson = this.allLessons[this.allLessons.length -1];
         return lastLesson.start + lastLesson.duration;
     }
-
+//fix if fistlesson is next lesson
     getNextLesson():Lesson {
-        this.sort()
         let tc = new TimeConverter();
-        let now = new Date();
+        let now = new Date()
         let minutes = tc.convertDateToMinutes(now);
-        let currentLesson = this.getCurrentLesson(minutes);
         let allLessons = this.getLessons();
-        if (currentLesson == allLessons[allLessons.length -1]) return null;
-        if (currentLesson == null) return null;
-        let currentId = this.getIdOfLesson(currentLesson);
-        return allLessons[currentId+1];
-
+        if (allLessons.length == 0) return null;
+        if (minutes <= allLessons[0].start) return allLessons[0];
+        let current = this.getCurrentLesson(minutes);
+        if (current == null) return null;
+        if (current == allLessons[allLessons.length -1]) return null;
+        let i = this.getIndexByLesson(current);
+        let next = allLessons[i+1];
+        return next;
     }
 
     getCurrentLesson(minutes: number):Lesson {
-        let lessons = this.getLessons();
-        for(let i= 0; i < lessons.length; i++) {
-            if(lessons[i].start <= minutes && lessons[i].start+lessons[i].duration <= minutes) {
-                return lessons[i]
+        let allLessons = this.getLessons();
+        for(let i = 0; i < allLessons.length; i++){
+            if (allLessons[i].start <= minutes && allLessons[i].start + allLessons[i].duration >= minutes) {
+                return allLessons[i]
             }
         }
         return null
     }
 
-    getIdOfLesson(l: Lesson):number {
-        let lessons = this.getLessons();
-        // let i = -1;
-        // for
-        for(let i = 0; i<lessons.length; i++) {
-            if (l = lessons[i]) {
-                return i;
+    getIndexByLesson(l:Lesson):number {
+        let allLessons = this.getLessons();
+        for(let i = 0; i < allLessons.length; i ++) {
+            if (l == allLessons[i]) {
+                return i
             }
         }
-        return -1
+        return -1;
     }
 }
 
