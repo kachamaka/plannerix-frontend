@@ -5,19 +5,24 @@ import { MatDividerModule } from '@angular/material';
 import { GradesModule } from '../shared/grades/grades.module';
 import { EventListModule } from '../shared/event/event-list.module';
 import { ReportCardModule } from '../report-c/report-card.module';
+import { NextLessonComponent } from './next-lesson/next-lesson.component';
+import { TimeModule } from '../models/time.module';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    NextLessonComponent
   ],
   imports: [
     CommonModule,
     MatDividerModule,
     GradesModule,
     EventListModule,
+    TimeModule
   ],
   exports: [
-    HomeComponent
+    HomeComponent,
+    NextLessonComponent
   ]
 })
 export class HomeModule { }

@@ -1,4 +1,5 @@
 import { Subject } from "./subject.model";
+import { TimeConverter } from "./timeConverter.model";
 
 export const MONDAY: string = "monday"; 
 export const TUESDAY: string = "tuesday";
@@ -51,6 +52,41 @@ export class DailySchedule {
     getLastLessonEnd():number {
         let lastLesson = this.allLessons[this.allLessons.length -1];
         return lastLesson.start + lastLesson.duration;
+    }
+//fix if fistlesson is next lesson
+    getNextLesson():Lesson {
+        let tc = new TimeConverter();
+        let now = new Date()
+        let minutes = tc.convertDateToMinutes(now);
+        let allLessons = this.getLessons();
+        if (allLessons.length == 0) return null;
+        if (minutes <= allLessons[0].start) return allLessons[0];
+        let current = this.getCurrentLesson(minutes);
+        if (current == null) return null;
+        if (current == allLessons[allLessons.length -1]) return null;
+        let i = this.getIndexByLesson(current);
+        let next = allLessons[i+1];
+        return next;
+    }
+
+    getCurrentLesson(minutes: number):Lesson {
+        let allLessons = this.getLessons();
+        for(let i = 0; i < allLessons.length; i++){
+            if (allLessons[i].start <= minutes && allLessons[i].start + allLessons[i].duration >= minutes) {
+                return allLessons[i]
+            }
+        }
+        return null
+    }
+
+    getIndexByLesson(l:Lesson):number {
+        let allLessons = this.getLessons();
+        for(let i = 0; i < allLessons.length; i ++) {
+            if (l == allLessons[i]) {
+                return i
+            }
+        }
+        return -1;
     }
 }
 
