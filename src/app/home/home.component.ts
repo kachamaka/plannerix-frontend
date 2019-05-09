@@ -27,20 +27,9 @@ export class HomeComponent implements OnInit {
     let postData = {
       token: localStorage.getItem("token")
     }
-    this.httpService.getSchedule(postData).subscribe((data:any)=>{
-      console.log(data);
-    })
+
     // this.httpService.events.push(new SchoolEvent(1557753770000, "Биология", "Контролно", 0));    
-    this.httpService.getNextPeriod(postData).subscribe((data:any)=>{
-      // console.log(data.nextPeriod);
-      if(data.nextPeriod.subject == ""){
-        this.nextLesson = data.message;
-      }else{
-        this.nextLesson = data.nextPeriod.subject;
-        this.httpService.nextPeriod = data.nextPeriod; //test
-        this.lessonTime = data.nextPeriod.startTime;
-      }
-    })
+
     // this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
     //   console.log(data);
     //   // console.log("weeklyEvents");

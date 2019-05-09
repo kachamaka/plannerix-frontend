@@ -8,7 +8,7 @@ import { DailyGrades } from './weeklyGrades.model';
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Observable, observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Schedule } from '../models/modifySchedule.model';
+import { Schedule, DailySchedule } from '../models/modifySchedule.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class HttpService {
   currentGroup;
   username = "";
   email = "";
-  domain = "https://nklkfmvouc.execute-api.eu-central-1.amazonaws.com/dev/";
+  domain = "https://v3z9qzjgug.execute-api.eu-central-1.amazonaws.com/dev/";
 
 
   exampleGroups = [
@@ -199,7 +199,12 @@ export class HttpService {
     return this.http.post<{success:boolean,message: string, schedule: Schedule}>(this.domain+"getSchedule", {token: localStorage.getItem("token")});
   }
 
+  getDailySchedule() {
+    return this.http.post<{success:boolean,message: string, schedule: DailySchedule}>(this.domain + "getDailySchedule", {token: localStorage.getItem("token")});
+  }
 
+
+  //
 
   getJoke() {
     return this.http.get("https://api.chucknorris.io/jokes/random");

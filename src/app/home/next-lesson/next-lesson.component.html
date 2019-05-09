@@ -1,0 +1,4 @@
+<div>
+  <h3 *ngIf="nextLesson==null">Днес нямаш повече часове</h3>
+  <h3 *ngIf="nextLesson!=null">{{nextLesson.subject}} - почва в {{nextLesson.start | time }}</h3>
+</div>
