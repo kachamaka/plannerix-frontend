@@ -62,4 +62,13 @@ export class HeaderComponent implements OnInit {
     }
     return this.menuState;
   }
+  
+  modifySchedule(){ 
+    console.log(this.storageService.fullUrl.includes('desktop'));
+    if(this.storageService.fullUrl.includes('desktop')){
+      this.router.navigate(['/desktop/modify-schedule']);
+    }else{
+      this.router.navigate(['/modify-schedule']);
+    }
+  }
 }

@@ -1,15 +1,15 @@
-import { HttpService } from './../../http.service';
-import { Component, OnInit, Input, Inject, ViewChild, ElementRef } from '@angular/core';
+import { HttpService } from '../../http.service'
 import { SchoolEvent } from 'src/app/shared/event.model';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDatepicker } from '@angular/material';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { MatDatepicker, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-event-dialog',
-  templateUrl: './event-dialog.component.html',
-  styleUrls: ['./event-dialog.component.css']
+  selector: 'app-group-event',
+  templateUrl: './group-event.component.html',
+  styleUrls: ['./group-event.component.css']
 })
-export class EventDialogComponent implements OnInit {
+export class GroupEventComponent implements OnInit {
   
   tempData = "---";
   minDate = new Date();
@@ -24,7 +24,7 @@ export class EventDialogComponent implements OnInit {
   event: SchoolEvent;
   fallback;
   @ViewChild('picker') picker: MatDatepicker<null>;
-  constructor(public dialogRef: MatDialogRef<EventDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<GroupEventComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public httpService: HttpService) { }
 
@@ -134,15 +134,12 @@ export class EventDialogComponent implements OnInit {
 
     console.log(this.current_event.controls['subject'].value);
 
-    let subject = this.httpService.subjectData.filter(s => s.name == this.current_event.controls['subject'].value)[0];
-
     let out:SchoolEvent = new SchoolEvent(
       this.data.event.event_id,
       this.current_event.controls['date'].value.getTime(), 
       this.current_event.controls['subject'].value,
       this.current_event.controls['description'].value,
-      parseInt(this.current_event.controls['type'].value),
-      subject.id
+      parseInt(this.current_event.controls['type'].value)
     )
 
     console.log(out,"OUT WE");

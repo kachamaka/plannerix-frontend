@@ -65,7 +65,7 @@ export class CalendarComponent implements OnInit {
         let postData = {
           token: localStorage.getItem("token"),
           timestamp: out.date,
-          subject: out.subject.id,
+          subject: out.subject,
           description: out.description,
           subjectType: out.type
         } 

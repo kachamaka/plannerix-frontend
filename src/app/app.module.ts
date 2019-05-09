@@ -1,3 +1,5 @@
+import { GroupEventComponent } from './shared/group/group-event/group-event.component';
+import { GroupDialogModule } from './shared/group/group-dialog.module';
 import { GroupsModule } from './groups/groups.module';
 import { HttpService } from './shared/http.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -66,6 +68,7 @@ import { ModifyScheduleComponent } from './modify-schedule/modify-schedule.compo
 import { ModifyScheduleState } from './states/modifySchedule.state';
 import { ModifyScheduleModule } from './modify-schedule/modify-schedule.module';
 import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop.module';
+import { GroupDialogComponent } from './shared/group/group-dialog/group-dialog.component';
 
 @NgModule({
   // schemas:[CUSTOM_ELEMENTS_SCHEMA],
@@ -109,6 +112,7 @@ import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop
     MatMenuModule,
     GradesModule,
     EventListModule,
+    GroupDialogModule,
     HttpModule,
     HttpClientModule,
     SettingsModule,
@@ -138,7 +142,9 @@ import { NavigationDesktopModule } from './navigation-desktop/navigation-desktop
     EventDialogComponent,
     GradeDialogComponent,
     GradeToastComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    GroupDialogComponent,
+    GroupEventComponent
   ]
 })
 export class AppModule { }

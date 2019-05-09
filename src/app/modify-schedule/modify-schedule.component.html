@@ -1,8 +1,8 @@
-<mat-horizontal-stepper linear="true" #stepper style="height:100vh" (selectionChange)="selectionChange($event)">
-  <mat-step label="Subjects">
+<mat-horizontal-stepper linear="true" #stepper style="height:100%" (selectionChange)="selectionChange($event)">
+  <mat-step label="Предмети">
     <app-subjects></app-subjects>
   </mat-step>
-  <mat-step label="Schedule" style="height:100%">
+  <mat-step label="Програма" style="height:100%">
     <app-schedule style="height:100%"></app-schedule>
   </mat-step>
 </mat-horizontal-stepper>

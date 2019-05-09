@@ -86,13 +86,22 @@ export class AppComponent implements OnInit {
     // console.log(url);
   }
   onResize() {
-    let url= this.router.url;
+    let url= window.location.href;
     if (window.innerWidth < 800) {
       if (url.includes("desktop")) {
         this.router.navigate(["/home"]);
       }
+      if (url.includes("modify-schedule")) {
+        this.router.navigate(["/home"]);
+      }
     } else {
+      // console.log("tuk", window.location.href);
       if (!url.includes("desktop")) {
+        this.httpService.edit = false;
+        this.router.navigate(["/desktop"]);
+        this.menuState = 'out';
+      }
+      if (url.includes("modify-schedule")) {
         this.httpService.edit = false;
         this.router.navigate(["/desktop"]);
         this.menuState = 'out';

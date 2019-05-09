@@ -1,3 +1,4 @@
+import { GroupEventComponent } from './../../shared/group/group-event/group-event.component';
 import { EventDialogComponent } from './../../shared/event/event-dialog/event-dialog.component';
 import { StorageService } from './../../shared/storage.service';
 import { SchoolEvent } from './../../shared/event.model';
@@ -5,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from './../../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { isUndefined } from 'util';
 import { AddMemberComponent } from './add-member/add-member.component';
 
 @Component({
@@ -35,11 +37,27 @@ export class GroupComponent implements OnInit {
    
 
   ngOnInit() {
-    this.route.params.subscribe((params:any)=> {
-      this.groupID = params.group_id;      
-      // console.log('groupID :', this.groupID);
-      this.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
-    })
+    if(this.httpService.exampleGroups.length == 0){
+      this.loadGroups()
+      .then(()=>{
+        this.route.params.subscribe((params:any)=> {
+          this.groupID = params.group_id;      
+          // console.log('groupID :', this.groupID);
+          this.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
+        })
+      })
+      .then(()=>{
+        this.loadGroupEvents();
+        }
+      );
+    }else{
+      this.route.params.subscribe((params:any)=> {
+        this.groupID = params.group_id;      
+        // console.log('groupID :', this.groupID);
+        this.currentGroup = this.httpService.exampleGroups.filter(g => g.group_id == this.groupID)[0];
+        this.loadGroupEvents();
+      })
+    }
     // console.log(this.currentGroup);
   }
 
@@ -51,10 +69,33 @@ export class GroupComponent implements OnInit {
     }
   }
 
+  loadGroupEvents(){
+    let postData = {
+      token: localStorage.getItem("token"),
+      group_id: this.currentGroup.group_id
+    }
+    this.httpService.getGroupEvents(postData).subscribe((data:any)=>{
+      console.log(data);
+      this.currentGroup.group_events = data.events;
+    })
+  }
+
+  isOwner(){
+    if(!isUndefined(this.currentGroup)){
+      if(this.currentGroup.owner == this.httpService.username){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+  }
+
   addGroupEvent(){
     console.log("works");
     
-    let dialogRef= this.dialog.open(EventDialogComponent, {
+    let dialogRef= this.dialog.open(GroupEventComponent, {
       data: {
         event: new SchoolEvent(0, Date.now(), "", "", -1),
         editable: true,
@@ -70,16 +111,18 @@ export class GroupComponent implements OnInit {
         // return;
         let postData = {
           token: localStorage.getItem("token"),
+          group_id: this.currentGroup.group_id,
           timestamp: out.date,
           subject: out.subject,
           description: out.description,
           subjectType: out.type
         } 
-        // console.log(postData);
-        this.httpService.createEvent(postData).subscribe((data:any)=>{
+        console.log(postData);
+        this.httpService.createGroupEvent(postData).subscribe((data:any)=>{
           console.log(data);
           if(data.success==true){
-            this.httpService.loadEvents();
+            // this.httpService.this.loloadEvents();
+            this.loadGroupEvents();
           }
         })
       }
@@ -91,6 +134,18 @@ export class GroupComponent implements OnInit {
     this.currentGroup.members = this.currentGroup.members.filter(mem => mem != member);
     //update members
     
+  }
+
+  loadGroups(){
+    let postData = {
+      token: localStorage.getItem("token"),
+    }
+    return new Promise((resolve, reject) => {
+      this.httpService.getGroups(postData).subscribe((data:any)=>{
+        this.httpService.exampleGroups = data.ownedGroups.concat(data.myGroups);
+        resolve();
+      })  
+    }) 
   }
 
   loadGroup(){

@@ -1,19 +1,27 @@
 .container {
-    width: 90%;
+    grid-area: container;
+    width: 100%;
     margin: 0 auto;
 }
 
 .navigation {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    /* justify-content: space-around; */
     width: 100%;
     height: 10%;
-    position: absolute;
-    left: 0;
+    /* left: 0; */
     bottom: 0;
+    grid-template-areas: ". add next ."
+}
+.flaticon-add{
+    grid-area: add;
 }
 .flaticon-add::before {
     margin: 0;
+    /* grid-area: add; */
+}
+.next{
+    grid-area: next;
 }
 /* 
 .flaticon-add {

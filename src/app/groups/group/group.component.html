@@ -6,7 +6,7 @@
 </div>
 
 <div class="group_info">
-  <h4 class="group_name" align="left">
+  <h4 *ngIf="this.currentGroup != undefined" class="group_name" align="left">
     {{currentGroup.group_name}}
   </h4>
   <div class="actions">
@@ -22,10 +22,10 @@
 <hr style="margin: 0">
 <mat-tab-group>
   <mat-tab label="Events">
-    <app-events style="z-index: auto" [events]="this.currentGroup.group_events" [editable]="canEdit()"></app-events>
+    <app-group-event *ngIf="this.currentGroup != undefined" style="z-index: auto" [events]="this.currentGroup.group_events" [editable]="canEdit()"></app-group-event>
   </mat-tab>
   <!-- <mat-tab label="Files"> Content 3 </mat-tab> -->
-  <mat-tab *ngIf="this.currentGroup.owner == this.httpService.username" label="Members"> 
+  <mat-tab *ngIf="isOwner()" label="Members"> 
     <!-- <div *ngFor="let mem of currentGroup.members">
       {{mem}}
     </div>  -->
@@ -45,6 +45,6 @@
   </mat-list> -->
 
 
-{{currentGroup.owner}}
+<!-- {{currentGroup.owner}}
 <button mat-mini-fab style="background-color: #0589E8" (click)="plus()">+</button>
-<button mat-mini-fab style="background-color: #0589E8" (click)="minus()" >-</button>
+<button mat-mini-fab style="background-color: #0589E8" (click)="minus()" >-</button> -->

@@ -12,6 +12,7 @@ import { AllGradesComponent } from '../report-c/all-grades/all-grades.component'
 import { SettingsComponent } from '../settings/settings.component';
 import { ReportCComponent } from '../report-c/report-c.component';
 import { GroupComponent } from '../groups/group/group.component';
+import { ModifyScheduleComponent } from '../modify-schedule/modify-schedule.component';
 
 const routes: Routes = [
 
@@ -25,6 +26,7 @@ const routes: Routes = [
         {path: 'groups/singleGroup/:group_id', component: GroupComponent },
         {path: 'groups/singleGroup', pathMatch: "full", redirectTo: '' },
         
+        {path: "modify-schedule", component: ModifyScheduleComponent}, //what netlify
         {path: 'settings', component: SettingsComponent},
         {path: 'grades', component: ReportCComponent, children: [
             {path: 'year-grades', component: YearGradesComponent},
