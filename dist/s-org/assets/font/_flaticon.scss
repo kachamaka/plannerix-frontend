@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 27/04/2019 19:27
+    Creation date: 05/05/2019 16:52
     */
 
     @font-face {
@@ -62,6 +62,8 @@
 .flaticon-group-of-people-in-a-formation:before { content: "\f116"; }
 .flaticon-group:before { content: "\f117"; }
 .flaticon-group-1:before { content: "\f118"; }
+.flaticon-add-user-button:before { content: "\f119"; }
+.flaticon-add-event:before { content: "\f11a"; }
     
     $font-Flaticon-home: "\f100";
     $font-Flaticon-home-1: "\f101";
@@ -88,3 +90,5 @@
     $font-Flaticon-group-of-people-in-a-formation: "\f116";
     $font-Flaticon-group: "\f117";
     $font-Flaticon-group-1: "\f118";
+    $font-Flaticon-add-user-button: "\f119";
+    $font-Flaticon-add-event: "\f11a";

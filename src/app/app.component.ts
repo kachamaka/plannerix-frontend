@@ -48,15 +48,11 @@ export class AppComponent implements OnInit {
     window.addEventListener("resize", this.onResize.bind(this));
     navigator.serviceWorker.register("sw-worker-custom.js").then(res=>{
       console.warn("Registration succeeds:", res);
-      res.update().then(ures => {
-        // console.log("Updated", ures);
-      }).then(err=>{
-        // console.log("Error with pdate of service worker:",err);
-      })
+
     }).catch(err =>{
-      // console.log("An error occured when registering service worker", err);
+      console.warn("An error occured when registering service worker", err);
     }).finally().then(fin=>{
-      // console.log("Yeah dont know bout this one", fin)
+      console.warn("Yeah dont know bout this one", fin)
     })
 
     this.httpService.getProfile(tokenData).subscribe((data:any)=>{

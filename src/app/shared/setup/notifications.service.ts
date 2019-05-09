@@ -57,9 +57,6 @@ export class NotificationsService {
     })
   }
 
-  registerServiceWorker(){
-    navigator.serviceWorker.register("../../sw-worker-custom.js");
-  }
 
   requestNotificationPermission(){
     return Notification.requestPermission().then((res)=>{

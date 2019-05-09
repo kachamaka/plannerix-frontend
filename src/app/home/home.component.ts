@@ -27,6 +27,10 @@ export class HomeComponent implements OnInit {
     let postData = {
       token: localStorage.getItem("token")
     }
+
+    // this.httpService.events.push(new SchoolEvent(1557753770000, "Биология", "Контролно", 0));    
+
+    // this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
     // this.httpService.getSchedule(postData).subscribe((data:any)=>{
     //   console.log(data);
     // })
