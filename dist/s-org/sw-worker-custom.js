@@ -32,6 +32,7 @@ let routers = [
 ]
 
 self.addEventListener("install", (e)=>{
+  console.warn("service Worker install",e)
   // caches.open(version).then(cache=>{
   //   return cache.add(self.origin)
   // }).then(res=>{
