@@ -22,7 +22,7 @@ export class HttpService {
   currentGroup;
   username = "";
   email = "";
-  domain = "https://nklkfmvouc.execute-api.eu-central-1.amazonaws.com/dev/";
+  domain = "https://v3z9qzjgug.execute-api.eu-central-1.amazonaws.com/dev/";
 
 
   exampleGroups = [
@@ -140,6 +140,56 @@ export class HttpService {
     this.edit = !this.edit;
   }
 
+  //===========notifications
+
+  registerPush(data:string){
+    return this.http.post(this.domain + 'updateSubscription', {token:localStorage.getItem("token"), subscription: data});    
+  }
+
+  wellcomeNotificationAndRegister(sub: string) {
+    return this.http.post(this.domain + "wellcomeNotification", {token: localStorage.getItem("token"), subscription: sub});
+  }
+
+
+  //=================Groups
+
+  addMember(user: string, groupID: string) {
+    console.log("addMember",user, groupID);
+    return this.http.post(this.domain + "addMember", {token: localStorage.getItem("token"), member: user, group_id: groupID});
+  }
+  
+  createGroup(data){
+    return this.http.post(this.domain + 'createGroup', data); 
+  }
+
+  createGroupEvent(data) {
+    return this.http.post(this.domain + 'createGroupEvent', data); 
+  }
+
+  getGroups(data) {
+    return this.http.post(this.domain + 'getGroups', data); 
+  }
+
+  getGroupEvents(data) {
+    return this.http.post(this.domain + 'getGroupEvents', data); 
+  }
+  
+  editGroupEvent(data) {
+    return this.http.post(this.domain + 'editGroupEvent', data); 
+  }
+
+  deleteMember(data) {
+    return this.http.post(this.domain + 'deleteMember', data); 
+  }
+
+  deleteGroup(data) {
+    return this.http.post(this.domain + 'deleteGroup', data); 
+  }
+
+  deleteGroupEvent(data) {
+    return this.http.post(this.domain + 'deleteGroupEvent', data); 
+  }
+
   //=================Subjects
   
   getSubjectsNew(){
@@ -178,41 +228,7 @@ export class HttpService {
     return this.http.get("https://api.chucknorris.io/jokes/random");
   }
 
-  createGroup(data){
-    return this.http.post(this.domain + 'createGroup', data); 
-  }
-
-  createGroupEvent(data) {
-    return this.http.post(this.domain + 'createGroupEvent', data); 
-  }
-
-  getGroups(data) {
-    return this.http.post(this.domain + 'getGroups', data); 
-  }
-
-  getGroupEvents(data) {
-    return this.http.post(this.domain + 'getGroupEvents', data); 
-  }
   
-  editGroupEvent(data) {
-    return this.http.post(this.domain + 'editGroupEvent', data); 
-  }
-  
-  addMember(data) {
-    return this.http.post(this.domain + 'addMember', data); 
-  }
-
-  deleteMember(data) {
-    return this.http.post(this.domain + 'deleteMember', data); 
-  }
-
-  deleteGroup(data) {
-    return this.http.post(this.domain + 'deleteGroup', data); 
-  }
-
-  deleteGroupEvent(data) {
-    return this.http.post(this.domain + 'deleteGroupEvent', data); 
-  }
 
   getEvents(data) {
     return this.http.post(this.domain + 'getAllEvents', data); 
@@ -323,10 +339,6 @@ export class HttpService {
     return this.http.post(this.domain + 'inputGrade', data);
   }
 
-  registerPush(data){
-    //finish the function
-    return this.http.post(this.domain + '', data);    
-  }
 
   loadSubjects(){
     let postData = {

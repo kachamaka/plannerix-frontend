@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     //   }
     // })
     this.httpService.getWeeklyEvents(postData).subscribe((data:any)=>{
-      console.log(data);
+      console.log(data,"da");
       // console.log("weeklyEvents");
       // console.log(data.weeklyEvents);
       this.httpService.weeklyEventsTest = [];

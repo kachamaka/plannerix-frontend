@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { NotificationsService } from 'src/app/shared/setup/notifications.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,9 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private httpService: HttpService) { }
+    private httpService: HttpService,
+    private notService: NotificationsService
+    ) { }
 
   ngOnInit() {
     this.userCredentials = this.formBuilder.group({
@@ -67,7 +70,16 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token", data.token);
         this.httpService.loadSchedule();
         this.httpService.loadSubjects();
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home']);
+        this.notService.askForNotifications().then(()=>{
+          return this.notService.registerForPushMessages()
+        }).then((subscription:string)=>{
+          this.httpService.registerPush(subscription).subscribe((data)=>{
+            console.log(data, "registered")
+          })
+        }).catch(err=>{
+          console.error("Something went wrong with registration for push messages", err);
+        })
       }else{
         console.log(data);
         this.toastr.error(data.errMsg ,"Грешка при влизането!");

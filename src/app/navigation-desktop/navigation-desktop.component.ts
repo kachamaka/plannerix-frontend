@@ -30,14 +30,14 @@ export class NavigationDesktopComponent implements OnInit {
     setTimeout(() => {
       let sidebar_backdrop = document.getElementsByClassName("ng-sidebar__backdrop"); 
       let sidebar = sidebar_backdrop.item(0);
-      console.log(sidebar);
+      // console.log(sidebar);
       sidebar.classList.add("sidebar");
     }, 10);
     
   }
   
   setColor(){
-    console.log(this.storageService.fullUrl);
+    // console.log(this.storageService.fullUrl);
     if (this.storageService.fullUrl=="/desktop"||this.storageService.fullUrl==""){
       return "/desktop/home";
     }else{

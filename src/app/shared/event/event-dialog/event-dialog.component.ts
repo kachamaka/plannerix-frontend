@@ -134,12 +134,15 @@ export class EventDialogComponent implements OnInit {
 
     console.log(this.current_event.controls['subject'].value);
 
+    let subject = this.httpService.subjectData.filter(s => s.name == this.current_event.controls['subject'].value)[0];
+
     let out:SchoolEvent = new SchoolEvent(
       this.data.event.event_id,
       this.current_event.controls['date'].value.getTime(), 
       this.current_event.controls['subject'].value,
       this.current_event.controls['description'].value,
-      parseInt(this.current_event.controls['type'].value)
+      parseInt(this.current_event.controls['type'].value),
+      subject.id
     )
 
     console.log(out,"OUT WE");

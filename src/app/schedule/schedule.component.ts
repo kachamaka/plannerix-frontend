@@ -30,7 +30,7 @@ export class ScheduleComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private storageService: StorageService,
+    public storageService: StorageService,
     public httpService: HttpService) { }
   displayedColumns: string[] = ['startTime', 'endTime', 'subject', 'remove'];
   // schedule = [
@@ -79,9 +79,9 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit() {
     // if(this.todayDay!=0 && this.todayDay!=6){
-      // this.currentDay = this.todayDay;
+      this.currentDay = this.todayDay;
     // }else{
-      this.currentDay = 1;
+      // this.currentDay = 1;
     // }
     // console.log("hello from schedule");
     this.httpService.loadSchedule();

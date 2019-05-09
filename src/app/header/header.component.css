@@ -71,10 +71,14 @@
   grid-template-areas:
   ". . ."
   ". . ."
-  ". editButton ."
+  ". scheduleMenu editButton ."
   ". . .";
 }
 .editButton{
   grid-area: editButton;
   background-color: #2094e8;
+}
+.scheduleMenu{
+  grid-area: scheduleMenu;
+
 }
