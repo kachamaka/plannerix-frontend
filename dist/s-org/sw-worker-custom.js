@@ -3,12 +3,14 @@
 let version = makeVersion()
 //                        (eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|js|json|html|css|ico)
 let reg = new RegExp(".*\.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|js|json|html|css|ico)$");
+let domain = "https://v3z9qzjgug.execute-api.eu-central-1.amazonaws.com/dev/";
 let cacheRequests = [
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getSchedule",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getWeeklyEvents",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getYearGrades",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getNextPeriod",
-  "https://np777gmeqe.execute-api.eu-central-1.amazonaws.com/dev/getProfile"
+  domain + "getSchedule",
+  domain + "getWeeklyEvents",
+  domain + "getYearGrades",
+  domain + "getNextPeriod",
+  domain + "getProfile",
+  domain + "getDailySchedule"
 ]
 
 let routers = [
@@ -33,14 +35,14 @@ let routers = [
 
 self.addEventListener("install", (e)=>{
   console.warn("service Worker install",e)
-  // caches.open(version).then(cache=>{
-  //   return cache.add(self.origin)
-  // }).then(res=>{
-  //   console.log("ServiceWorker install success", res)
-  // })
-  // .catch(err=>{
-  //   console.log("ServiceWorker install err", err)
-  // })
+  caches.open(version).then(cache=>{
+    return cache.add(self.origin)
+  }).then(res=>{
+    console.log("ServiceWorker install success", res)
+  })
+  .catch(err=>{
+    console.log("ServiceWorker install err", err)
+  })
   self.skipWaiting();
 });
 
@@ -60,12 +62,31 @@ self.addEventListener("activate", (e)=>{
   console.log("Service worker active");
 })
 
+function convertMinutesToString(minutes){
+  let h = Math.floor(minutes/60);
+  let m = minutes % 60;
+  // console.log(h, m, minutes % 60, minutes );
+  let hourString = ("0"+h.toString()).slice(-2);
+  let minutesString = ("0"+ m.toString()).slice(-2);
+  return (hourString + ":" + minutesString);
+}
+
 addEventListener("push", e=>{
-  console.log(e);
-  console.log(e.data);
-  console.log(e.data.text())
+  let data = e.data.text();
+  let body = "";
+  let title = "";
+  if (data.includes("Подобни")) {
+    body = data;
+    title = "Добре дошъл";
+  } else {
+    let lesson = JSON.parse(data);
+    let minutes = lesson.start;
+    let time = convertMinutesToString(minutes);
+    body = `Първият ти час - ${lesson.subject.name} - почва в ${time}ч.`;
+    title = "Първи час";
+  }
   var options = {
-      body: 'This notification was generated from a push!'+e.data.text(),
+      body: body, 
       icon: 'images/example.png',
       vibrate: [100, 50, 100],
       data: {
@@ -74,7 +95,7 @@ addEventListener("push", e=>{
       },
   };
   e.waitUntil(
-      self.registration.showNotification('Hello There!', options)
+      self.registration.showNotification(title, options)
   );
 });
 
