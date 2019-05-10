@@ -37,11 +37,13 @@ export class NavigationDesktopComponent implements OnInit {
   }
   
   setColor(){
-    // console.log(this.storageService.fullUrl);
+    // console.log(this.storageService.fullUrl.split("/")[2]);
+    let url = this.storageService.fullUrl.split("/")[2];
     if (this.storageService.fullUrl=="/desktop"||this.storageService.fullUrl==""){
-      return "/desktop/home";
+      return "home";
     }else{
-      return this.storageService.fullUrl;
+      // return this.storageService.fullUrl;
+      return url;
     }
   }
   

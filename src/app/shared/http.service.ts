@@ -371,13 +371,15 @@ export class HttpService {
       console.log(data);
       if(data.success==true){
         // console.log(data.s);
-        Object.keys(data.schedule).forEach(key => {
-          data.schedule[key].allLessons.forEach(period => {
-            // data.schedule[key].allLessons.start = this.getHourFromMinutes(data.schedule[key].allLessons.start);            
-            period.end = this.getHourFromMinutes(period.start + period.duration);
-            period.start = this.getHourFromMinutes(period.start);
-          });
-        });
+        // Object.keys(data.schedule).forEach(key => {
+        //   data.schedule[key].allLessons.forEach(period => {
+        //     // data.schedule[key].allLessons.start = this.getHourFromMinutes(data.schedule[key].allLessons.start);            
+        //     period.end = this.getHourFromMinutes(period.start + period.duration);
+        //     period.start = this.getHourFromMinutes(period.start);
+        //   });
+        // });
+
+
         // for(let i = 0; i< Object.keys(data.schedule).length; i++){
         //   Object.keys(data.schedule).forEach(key => {
         //     console.log(key);

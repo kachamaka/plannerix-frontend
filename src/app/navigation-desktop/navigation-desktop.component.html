@@ -15,7 +15,7 @@
 style="height:100%;"
 (click)="changeRoute('/desktop/home')"
 [ngClass]="{
-  'color':setColor()=='/desktop/home'
+  'color':setColor()=='home'
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
@@ -29,7 +29,7 @@ class="mat-button">
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
 [ngClass]="{
-  'color':setColor()=='/desktop/schedule'
+  'color':setColor()=='schedule'
 }"
 (click)="changeRoute('/desktop/schedule')"
 class="mat-button">
@@ -42,7 +42,7 @@ class="mat-button">
 style="height:100%;"
 (click)="changeRoute('/desktop/calendar')"
 [ngClass]="{
-  'color':setColor()=='/desktop/calendar'
+  'color':setColor()=='calendar'
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
@@ -56,7 +56,7 @@ class="mat-button">
 style="height:100%;"
 (click)="changeRoute('/desktop/grades')"
 [ngClass]="{
-  'color':setColor()=='/desktop/grades'
+  'color':setColor()=='grades'
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
@@ -83,7 +83,7 @@ class="mat-button">
 style="height:100%;"
 (click)="changeRoute('/desktop/settings')"
 [ngClass]="{
-  'color':setColor()=='/desktop/settings'
+  'color':setColor()=='settings'
 }" 
 style="height:100%; width:100%; border-radius: 0"
 mat-button="" 
