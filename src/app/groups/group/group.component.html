@@ -28,11 +28,11 @@
 
 <hr style="margin: 0">
 <mat-tab-group>
-  <mat-tab label="Events">
+  <mat-tab label="Събития">
     <app-events *ngIf="this.httpService.currentGroup != undefined" style="z-index: auto" [events]="this.httpService.currentGroup.group_events" [editable]="canEdit()"></app-events>
   </mat-tab>
   <!-- <mat-tab label="Files"> Content 3 </mat-tab> -->
-  <mat-tab *ngIf="isOwner()" label="Members"> 
+  <mat-tab *ngIf="isOwner()" label="Членове"> 
     <!-- <div *ngFor="let mem of currentGroup.members">
       {{mem}}
     </div>  -->

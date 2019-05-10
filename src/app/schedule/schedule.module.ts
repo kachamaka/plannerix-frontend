@@ -4,6 +4,7 @@ import {ScheduleComponent} from './schedule.component';
 import { MatMenuModule, MatFormFieldModule, MatDividerModule, MatTableModule, MatInputModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { TimeModule } from '../models/time.module';
 
 @NgModule({
   declarations: [ScheduleComponent],
@@ -19,6 +20,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     NgxMaterialTimepickerModule.forRoot(),
     MatOptionModule,
     MatSelectModule,
+    TimeModule
   ],
   exports: [ScheduleComponent]
 })

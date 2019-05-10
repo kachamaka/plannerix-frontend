@@ -87,9 +87,9 @@ export class AppComponent implements OnInit {
       if (url.includes("desktop")) {
         this.router.navigate(["/home"]);
       }
-      if (url.includes("modify-schedule")) {
-        this.router.navigate(["/home"]);
-      }
+      // if (url.includes("modify-schedule")) {
+      //   this.router.navigate(["/home"]);
+      // }
     } else {
       // console.log("tuk", window.location.href);
       if (!url.includes("desktop")) {
@@ -97,11 +97,11 @@ export class AppComponent implements OnInit {
         this.router.navigate(["/desktop"]);
         this.menuState = 'out';
       }
-      if (url.includes("modify-schedule")) {
-        this.httpService.edit = false;
-        this.router.navigate(["/desktop"]);
-        this.menuState = 'out';
-      }
+      // if (url.includes("modify-schedule")) {
+      //   this.httpService.edit = false;
+      //   this.router.navigate(["/desktop"]);
+      //   this.menuState = 'out';
+      // }
     }
   }
 
