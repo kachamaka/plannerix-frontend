@@ -186,6 +186,10 @@ export class HttpService {
     return this.http.post(this.domain + 'deleteGroup', data); 
   }
 
+  leaveGroup(data) {
+    return this.http.post(this.domain + 'leaveGroup', data); 
+  }
+
   deleteGroupEvent(data) {
     return this.http.post(this.domain + 'deleteGroupEvent', data); 
   }
