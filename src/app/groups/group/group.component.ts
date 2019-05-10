@@ -158,6 +158,30 @@ export class GroupComponent implements OnInit {
     })
   }
 
+  leaveGroup(){
+    console.log("test");
+
+    let dialogRef= this.dialog.open(ConfirmComponent, {});
+    dialogRef.afterClosed().subscribe((out)=>{
+      if(out==true){
+        let postData = {
+          token: localStorage.getItem("token"),
+          group_id: this.groupID
+        }
+        this.httpService.leaveGroup(postData).subscribe((data:any)=>{
+          console.log(data);
+          if(data.success==true){
+              if(this.storageService.isDesktop()){
+                this.router.navigate(['/desktop/groups'])
+              }else{
+                this.router.navigate(['/groups'])
+              }
+          }
+        })
+      }
+    })
+  }
+
   loadGroups(){
     let postData = {
       token: localStorage.getItem("token"),
