@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ConstantDuration, Schedule, Day, AllDays, DailySchedule, Lesson } from "../models/modifySchedule.model";
 import { Subject } from "../models/subject.model";
 import { State, Action, StateContext, Selector, InitState } from "@ngxs/store";
@@ -6,6 +7,8 @@ import { HttpService } from "../shared/http.service";
 
 import { tap, mergeMap } from 'rxjs/operators';
 import { combineLatest } from "rxjs";
+import { StorageService } from "../shared/storage.service";
+import { NgZone } from '@angular/core';
 
 export interface ModifyScheduleModel {
     modifiableSubjects: Subject[],
@@ -27,7 +30,11 @@ export interface ModifyScheduleModel {
 })
 export class ModifyScheduleState {
 
-    constructor(private httpService: HttpService) {}
+    constructor(
+        private zone: NgZone,
+        private router: Router, 
+        private storageService: StorageService, 
+        private httpService: HttpService) {}
 
     @Selector()
     static getSubjects(state: ModifyScheduleModel) {
@@ -196,8 +203,16 @@ export class ModifyScheduleState {
 
     @Action(UpdateSchdeule)
     updateSchedule({getState}: StateContext<ModifyScheduleModel>){
-        this.httpService.putSchedule(getState().schedule).subscribe(v=>{
-            console.log(v);
+        return this.httpService.putSchedule(getState().schedule).subscribe(v=>{
+            console.log(v); 
+            this.zone.run(() => {
+                if(this.storageService.isDesktop()){
+                    this.router.navigate(["/desktop/schedule"]);      
+                }else{
+                    this.router.navigate(["schedule"]);
+                }
+            })
+            return v;
         });
     }
 
