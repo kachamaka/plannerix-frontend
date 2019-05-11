@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
         this.toastr.error(data.errMsg, "Грешка при регистрацията!");
       }else{
         // localStorage.setItem("token", data.token);
-        this.toastr.success("Регистрацията е успешна!");
+        this.toastr.success("Регистрацията е успешна! Активирайте своя акаунт чрез изпратения имейл");
         this.username = "";
         this.email = "";
         this.password = "";
