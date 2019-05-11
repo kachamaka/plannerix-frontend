@@ -26,7 +26,10 @@ class="group-heading">
 <div *ngFor="let gr of otherGroups" (click)="selectGroup(gr)" class="group">
   <p>{{gr.group_name}}</p>
 </div>
+<div *ngIf="this.otherGroups.length == 0 && this.userGroups.length == 0" class="groupMsg">
+  <p style="color: gray">Нямате групи</p>
+</div>
 
 <!-- <button mat-button (click)="distributeGroups()">Distribute groups</button> -->
 <br>
-<button mat-button style="background-color: #2094e8; color: white" (click)="openDialog()" >Създай група</button>
+<button mat-button style="margin-left: 15px; background-color: #2094e8; color: white" (click)="openDialog()" >Създай група</button>
