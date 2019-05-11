@@ -37,7 +37,9 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(){
-    
+    let testUrl = "https://plannerix.eu/link?verificationKey=";
+    let splitU = testUrl.split("/");
+    console.log(splitU);
     let tokenData = {
       token: localStorage.getItem("token")
     }
